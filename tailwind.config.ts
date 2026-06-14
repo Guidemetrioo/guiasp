@@ -8,9 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ["var(--font-playfair)", "serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        brand: {
+          bg: "#0A0A0A",
+          gold: "#F59E0B",
+          goldHover: "#D97706",
+          text: "#FFFFFF",
+          muted: "#A3A3A3",
+        },
       },
     },
   },
