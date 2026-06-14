@@ -140,7 +140,7 @@ export default async function InfluencerPage({ params }: PageProps) {
     .filter((plan: any) => plan.restaurantes !== null)
     .map((plan: any) => {
       const rest = plan.restaurantes
-      const matchingVideo = formattedVideos.find((v) => v.restaurante_id === rest.id)
+      const matchingVideo = formattedVideos.find((v: any) => v.restaurante_id === rest.id)
       return {
         restaurant: {
           id: rest.id,

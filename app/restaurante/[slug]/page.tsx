@@ -228,7 +228,7 @@ export default async function RestaurantePage({ params }: PageProps) {
     if (plans) {
       otherRecommendations = plans
         .map((p: any) => p.restaurantes)
-        .filter((r) => r !== null)
+        .filter((r: any) => r !== null)
     }
   }
 
@@ -357,7 +357,7 @@ export default async function RestaurantePage({ params }: PageProps) {
               )}
 
               {/* Local Video player for Navegando SP reviews */}
-              {['pantchos-house-burger', 'stunt-burger', 'santomar-restaurante', 'outlet-do-suplemento', 'pecatto-bar-restaurante'].includes(restaurant.slug) && (
+              {['pantchos-house-burger', 'stunt-burger', 'santomar-restaurante', 'outlet-do-suplemento', 'pecatto-bar-restaurante', 'pizzaria-vero-paradiso', 'casa-na-praia-bar', 'hao-sushi-itaim', 'arabia-night-paulista', 'busger', 'villa-e-prosa', 'o-mineiro-prime', 'costelao-atibaia', 'legado-parrilla'].includes(restaurant.slug) && (
                 <div className="mt-6 border border-zinc-850 rounded-2xl overflow-hidden bg-black/50 backdrop-blur-md max-w-xs mx-auto shadow-2xl border-brand-gold/10">
                   <div className="px-4 py-2 bg-zinc-950/80 border-b border-zinc-900 flex items-center justify-between">
                     <span className="text-xs font-semibold text-zinc-300 flex items-center">

@@ -133,7 +133,7 @@ export default async function Home() {
 
         <div className="flex overflow-x-auto space-x-6 pb-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent -mx-4 px-4 sm:-mx-6 sm:px-6">
           {influencers && influencers.length > 0 ? (
-            influencers.map((inf) => (
+            influencers.map((inf: any) => (
               <Link
                 key={inf.id}
                 href={`/influencer/${inf.slug}`}

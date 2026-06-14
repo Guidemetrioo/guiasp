@@ -87,11 +87,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   // Extract unique filters
   const uniqueBairros = Array.from(
-    new Set(allRestaurantesBairros?.map((r) => r.bairro).filter(Boolean))
+    new Set(allRestaurantesBairros?.map((r: any) => r.bairro).filter(Boolean))
   ).sort() as string[]
 
   const uniqueCozinhas = Array.from(
-    new Set(allRestaurantesCozinhas?.map((r) => r.tipo_cozinha).filter(Boolean))
+    new Set(allRestaurantesCozinhas?.map((r: any) => r.tipo_cozinha).filter(Boolean))
   ).sort() as string[]
 
   const influencersList = allInfluencers || []
