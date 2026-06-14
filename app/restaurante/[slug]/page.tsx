@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
+import PremiumVideoPlayer from '@/components/PremiumVideoPlayer'
 import { MapPin, Compass, Sparkles, Quote, Clock, Phone, DollarSign, Calendar, ShoppingBag, Film } from 'lucide-react'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -188,6 +189,7 @@ export default async function RestaurantePage({ params }: PageProps) {
       palavras_chave,
       prato_destaque,
       thumbnail_url,
+      video_url,
       influencer_id,
       influencers (
         id,
@@ -356,8 +358,8 @@ export default async function RestaurantePage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Local Video player for Navegando SP reviews */}
-              {['pantchos-house-burger', 'stunt-burger', 'santomar-restaurante', 'outlet-do-suplemento', 'pecatto-bar-restaurante', 'pizzaria-vero-paradiso', 'casa-na-praia-bar', 'hao-sushi-itaim', 'arabia-night-paulista', 'busger', 'villa-e-prosa', 'o-mineiro-prime', 'costelao-atibaia', 'legado-parrilla'].includes(restaurant.slug) && (
+              {/* Local Video player for Reviews */}
+              {video && (
                 <div className="mt-6 border border-zinc-850 rounded-2xl overflow-hidden bg-black/50 backdrop-blur-md max-w-xs mx-auto shadow-2xl border-brand-gold/10">
                   <div className="px-4 py-2 bg-zinc-950/80 border-b border-zinc-900 flex items-center justify-between">
                     <span className="text-xs font-semibold text-zinc-300 flex items-center">
@@ -365,12 +367,10 @@ export default async function RestaurantePage({ params }: PageProps) {
                       Review em Vídeo
                     </span>
                   </div>
-                  <video
-                    src={`/videos/${restaurant.slug}.mp4`}
-                    poster={restaurant.foto_capa_url || `/images/${restaurant.slug}.jpg`}
-                    controls
-                    playsInline
-                    className="w-full aspect-[9/16] object-cover h-[480px]"
+                  <PremiumVideoPlayer
+                    src={video.video_url || `/videos/${restaurant.slug}.mp4`}
+                    poster={video.thumbnail_url || restaurant.foto_capa_url || `/images/${restaurant.slug}.jpg`}
+                    restaurantName={restaurant.nome}
                   />
                 </div>
               )}

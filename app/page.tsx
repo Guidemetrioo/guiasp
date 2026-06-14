@@ -86,75 +86,70 @@ export default async function Home() {
       </header>
 
       {/* Hero Section with food background photo */}
-      <section className="relative min-h-[520px] flex flex-col items-center justify-center pt-28 pb-24 px-4 text-center border-b border-zinc-900 overflow-hidden">
+      <section className="relative min-h-[600px] flex flex-col items-center justify-center pt-20 pb-20 px-4 text-center border-b border-zinc-900 overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/hero-bg.png"
             alt="Fundo Gastronômico Premium"
-            className="w-full h-full object-cover object-center opacity-25 filter brightness-75 contrast-125"
+            className="w-full h-full object-cover object-center opacity-15 filter brightness-50 contrast-125"
           />
           {/* Subtle gradient overlay to blend with dark page background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#0A0A0A]/80 to-[#0A0A0A]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0A0A0A]/90 to-[#0A0A0A]"></div>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto space-y-8">
-          <div className="space-y-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-zinc-950/80 backdrop-blur-sm border border-zinc-800 text-brand-gold">
-              ✨ O guia dos seus criadores favoritos
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center space-y-10 w-full">
+          {/* 1. Perfil dos influenciadores */}
+          <div className="space-y-4 w-full">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-950/80 backdrop-blur-sm border border-zinc-850 text-brand-gold animate-pulse">
+              ✨ Selecione um criador para ver suas dicas
             </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold font-serif tracking-tight text-white max-w-4xl mx-auto leading-tight drop-shadow-md">
+            
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-2">
+              {influencers && influencers.map((inf: any) => (
+                <Link
+                  key={inf.id}
+                  href={`/influencer/${inf.slug}`}
+                  className="group flex flex-col items-center space-y-2.5 transition-transform duration-300 hover:scale-105"
+                >
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden p-[3px] bg-gradient-to-tr from-brand-gold via-amber-500 to-amber-300 shadow-xl group-hover:shadow-brand-gold/15 transition-all">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-zinc-950 p-[2px]">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 flex items-center justify-center">
+                        {renderAvatar(inf.foto_url, inf.nome, "text-2xl")}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-xs sm:text-sm font-bold text-zinc-100 group-hover:text-brand-gold transition-colors font-serif leading-tight">
+                      {inf.nome}
+                    </h3>
+                    <p className="text-[10px] text-zinc-500 font-sans group-hover:text-zinc-400 transition-colors leading-none pt-0.5">
+                      @{inf.instagram_handle}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* 2. Aba de pesquisa */}
+          <div className="w-full max-w-2xl pt-2">
+            <SearchBar />
+          </div>
+
+          {/* 3. Texto */}
+          <div className="space-y-4 max-w-3xl pt-2">
+            <h1 className="text-3xl sm:text-5xl font-extrabold font-serif tracking-tight text-white leading-tight drop-shadow-md">
               Achou no vídeo. <br className="sm:hidden" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-amber-300">
                 Agora acha aqui.
               </span>
             </h1>
-            <p className="text-zinc-300 text-base sm:text-lg max-w-2xl mx-auto font-sans leading-relaxed drop-shadow">
-              Busque qualquer restaurante que você viu com os seus influencers favoritos,
-              pesquisando diretamente pelo que foi falado no vídeo.
+            <p className="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto font-sans leading-relaxed drop-shadow">
+              Busque qualquer restaurante ou prato que você viu nos stories, reels e posts de gastronomia,
+              pesquisando diretamente pelo que foi falado ou indicado nos vídeos.
             </p>
           </div>
-
-          {/* Search Component */}
-          <div className="relative pt-4 max-w-2xl mx-auto w-full">
-            <SearchBar />
-          </div>
-        </div>
-      </section>
-
-      {/* Influencers Scroll Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
-        <div className="flex items-center justify-between border-b border-zinc-900 pb-4">
-          <div className="space-y-1">
-            <h2 className="text-xl sm:text-2xl font-bold font-serif">Curado por quem você já segue</h2>
-            <p className="text-xs sm:text-sm text-zinc-500">Restaurantes indicados pelos principais críticos de gastronomia.</p>
-          </div>
-        </div>
-
-        <div className="flex overflow-x-auto space-x-6 pb-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent -mx-4 px-4 sm:-mx-6 sm:px-6">
-          {influencers && influencers.length > 0 ? (
-            influencers.map((inf: any) => (
-              <Link
-                key={inf.id}
-                href={`/influencer/${inf.slug}`}
-                className="group flex-shrink-0 w-36 text-center space-y-3 transition-transform hover:-translate-y-1"
-              >
-                <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-zinc-800 group-hover:border-brand-gold transition-all shadow-lg flex items-center justify-center">
-                  {renderAvatar(inf.foto_url, inf.nome, "text-3xl")}
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-zinc-200 group-hover:text-white truncate">
-                    {inf.nome}
-                  </h3>
-                  <p className="text-xs text-brand-gold font-sans truncate">
-                    @{inf.instagram_handle}
-                  </p>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <div className="text-zinc-500 text-sm py-4">Nenhum influencer cadastrado no momento.</div>
-          )}
         </div>
       </section>
 

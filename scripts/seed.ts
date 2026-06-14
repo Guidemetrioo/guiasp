@@ -45,42 +45,28 @@ async function runSeed() {
   // 2. Criar Influencers
   console.log('👤 Criando influencers embaixadores...')
   const influencersData = [
-    {
+{
       nome: 'Navegando SP',
       slug: 'navegando-sp',
       bio: 'Encontramos os melhores pontos gastronômicos e passeios de São Paulo. Dicas diárias e sinceras.',
       instagram_handle: 'navegandosp',
       foto_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&h=300&q=80',
     },
-    {
-      nome: 'Guia por SP',
-      slug: 'guia-por-sp',
-      bio: 'O seu roteiro definitivo da capital paulista. De botecos clássicos a alta gastronomia refinada.',
-      instagram_handle: 'guiaporsp',
-      foto_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=80',
-    },
-    {
-      nome: 'São Paulo Dicas',
-      slug: 'sp-dicas',
-      bio: 'Descubra São Paulo com a gente. Restaurantes, cafeterias, rooftops e segredos escondidos pela cidade.',
-      instagram_handle: 'spdicas',
-      foto_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&h=300&q=80',
-    },
-    {
+{
       nome: 'Perambulando em SP',
       slug: 'perambulando-em-sp',
       bio: 'Explorando as melhores dicas de gastronomia, passeios, viagens e achados imperdíveis em São Paulo. O seu guia para perambular pela capital!',
       instagram_handle: 'perambulandoemsp',
       foto_url: '/images/perambulando-em-sp-profile.jpg',
     },
-    {
+{
       nome: 'Esquenta SP',
       slug: 'esquenta-sp',
       bio: 'Dicas diárias das melhores experiências gastronômicas, rodízios, promoções e achados imperdíveis por toda São Paulo!',
       instagram_handle: 'esquentasp',
       foto_url: '/images/esquenta-sp-profile.jpg',
-    },
-  ]
+    }
+]
 
   const { data: influencers, error: infError } = await supabase
     .from('influencers')
@@ -96,79 +82,7 @@ async function runSeed() {
   // 3. Criar Restaurantes
   console.log('🍔 Criando restaurantes...')
   const restaurantesData = [
-    {
-      nome: 'Borger Hamburgueria',
-      slug: 'borger-hamburgueria',
-      descricao: 'Hamburgueria moderna em Pinheiros famosa pelos smash burgers fininhos, crocantes e muito cheddar.',
-      bairro: 'Pinheiros',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'hamburguer',
-      preco_medio: '$$',
-      instagram_handle: 'borger',
-      foto_capa_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
-      nome: 'Shin-Zushi',
-      slug: 'shin-zushi',
-      descricao: 'Tradicional sushi-bar japonês no Paraíso, focado em omakase premium preparado por chefs renomados.',
-      bairro: 'Paraíso',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'japones',
-      preco_medio: '$$$',
-      instagram_handle: 'shinzushi',
-      foto_capa_url: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
-      nome: 'Vicolo Nostro',
-      slug: 'vicolo-nostro',
-      descricao: 'Ambiente romântico de vila italiana no Brooklin servindo risotos trufados, gnocchi artesanal e vinhos.',
-      bairro: 'Brooklin',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'italiano',
-      preco_medio: '$$$',
-      instagram_handle: 'vicolonostro',
-      foto_capa_url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
-      nome: 'HM Food Cafe',
-      slug: 'hm-food-cafe',
-      descricao: 'Espaço descolado em Pinheiros perfeito para brunch no final de semana, com panquecas americanas e cafés especiais.',
-      bairro: 'Pinheiros',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'brunch',
-      preco_medio: '$$',
-      instagram_handle: 'hmfoodcafe',
-      foto_capa_url: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
-      nome: 'Taqueria La Sabrosa',
-      slug: 'taqueria-la-sabrosa',
-      descricao: 'Autêntica taqueria mexicana de rua no Baixo Augusta com tacos econômicos e margaritas refrescantes.',
-      bairro: 'Augusta',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'mexicano',
-      preco_medio: '$',
-      instagram_handle: 'lasabrosataqueria',
-      foto_capa_url: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
-      nome: 'Rufinos',
-      slug: 'rufinos-restaurante',
-      descricao: 'Tradicional especializado em frutos do mar e peixes grelhados, no Itaim Bibi.',
-      bairro: 'Itaim Bibi',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'frutos do mar',
-      preco_medio: '$$$',
-      instagram_handle: 'rufinos_restaurante',
-      foto_capa_url: 'https://images.unsplash.com/photo-1534080391025-097b03b7738c?auto=format&fit=crop&w=800&h=600&q=80',
-      ativo: true,
-    },
-    {
+{
       nome: 'Pizzaria Vero Paradiso',
       slug: 'pizzaria-vero-paradiso',
       descricao: 'Tradicional pizzaria no Paraíso famosa pelo rodízio com mais de 50 sabores e um excelente custo-benefício, com opções de pacotes de bebidas à vontade.',
@@ -180,7 +94,7 @@ async function runSeed() {
       foto_capa_url: '/images/pizzaria-vero-paradiso.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Casa na Praia Bar',
       slug: 'casa-na-praia-bar',
       descricao: 'Bar e restaurante aconchegante na Vila Mariana com ambiente descontraído, conhecido pelo tradicional festival de caldos servidos com diversos acompanhamentos e ótimas opções de porções.',
@@ -192,7 +106,7 @@ async function runSeed() {
       foto_capa_url: '/images/casa-na-praia-bar.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Hao Sushi Itaim',
       slug: 'hao-sushi-itaim',
       descricao: 'Espaço moderno na Vila Nova Conceição/Itaim focado em buffet japonês completo com mais de 100 opções frias e quentes, com bebidas (sucos, refrigerantes, sodas italianas) e sobremesas inclusas no valor fixo.',
@@ -204,7 +118,7 @@ async function runSeed() {
       foto_capa_url: '/images/hao-sushi-itaim.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Arábia Night Paulista',
       slug: 'arabia-night-paulista',
       descricao: 'Loja boutique e perfumaria no Market Paulista especializada nos perfumes árabes importados mais desejados e virais da internet, oferecendo fragrâncias exclusivas e preços imbatíveis.',
@@ -216,7 +130,7 @@ async function runSeed() {
       foto_capa_url: '/images/arabia-night-paulista.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Busger',
       slug: 'busger',
       descricao: 'Hamburgueria descolada operando de dentro de um ônibus americano antigo, famosa pelo xis prensadão gigante e lanches super recheados.',
@@ -228,7 +142,7 @@ async function runSeed() {
       foto_capa_url: '/images/busger.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Villa e Prosa',
       slug: 'villa-e-prosa',
       descricao: 'Restaurante acolhedor na Vila Mariana especializado em comida caseira brasileira, famoso pela gigantesca cubana de peixe que serve a família inteira.',
@@ -240,7 +154,7 @@ async function runSeed() {
       foto_capa_url: '/images/villa-e-prosa.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'O Mineiro Prime',
       slug: 'o-mineiro-prime',
       descricao: 'Restaurante de comida tipicamente mineira no centro de SP, célebre pelo joelho de porco crocante e pururucado servido com acompanhamentos tradicionais fartos.',
@@ -252,7 +166,7 @@ async function runSeed() {
       foto_capa_url: '/images/o-mineiro-prime.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Costelão Atibaia',
       slug: 'costelao-atibaia',
       descricao: 'Churrascaria de estrada rústica imperdível conhecida pelo rodízio de costela fogo de chão e picanha fatiada servidos à vontade a um preço fixo imbatível.',
@@ -264,7 +178,7 @@ async function runSeed() {
       foto_capa_url: '/images/costelao-atibaia.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Legado Parrilla',
       slug: 'legado-parrilla',
       descricao: 'Restaurante elegante de grelhados e massas no Anália Franco, famoso pelo espaguete flambado no conhaque e finalizado dentro de uma enorme peça de queijo provolone.',
@@ -275,8 +189,8 @@ async function runSeed() {
       instagram_handle: 'legadoparrilla',
       foto_capa_url: '/images/legado-parrilla.jpg',
       ativo: true,
-    },
-  ]
+    }
+]
 
   const { data: restaurantes, error: restError } = await supabase
     .from('restaurantes')
@@ -296,91 +210,77 @@ async function runSeed() {
   // 4. Criar Planos de Assinatura (3 planos ativos)
   console.log('💳 Vinculando planos de parceria...')
   const planosData = [
-    {
+{
       restaurante_id: mapRestaurante('borger-hamburgueria'),
       influencer_id: mapInfluencer('navegando-sp'),
       status: 'ativo',
       valor_mensal: 800.0,
       inicio_em: new Date().toISOString(),
     },
-    {
-      restaurante_id: mapRestaurante('shin-zushi'),
-      influencer_id: mapInfluencer('guia-por-sp'),
-      status: 'ativo',
-      valor_mensal: 1500.0,
-      inicio_em: new Date().toISOString(),
-    },
-    {
-      restaurante_id: mapRestaurante('vicolo-nostro'),
-      influencer_id: mapInfluencer('sp-dicas'),
-      status: 'ativo',
-      valor_mensal: 1200.0,
-      inicio_em: new Date().toISOString(),
-    },
-    {
+{
       restaurante_id: mapRestaurante('pizzaria-vero-paradiso'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       status: 'ativo',
       valor_mensal: 1000.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('casa-na-praia-bar'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       status: 'ativo',
       valor_mensal: 1200.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('hao-sushi-itaim'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       status: 'ativo',
       valor_mensal: 1500.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('arabia-night-paulista'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       status: 'ativo',
       valor_mensal: 800.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('busger'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1000.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('villa-e-prosa'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1200.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('o-mineiro-prime'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1100.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('costelao-atibaia'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1500.0,
       inicio_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('legado-parrilla'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1300.0,
       inicio_em: new Date().toISOString(),
-    },
-  ]
+    }
+]
 
   const { error: planError } = await supabase.from('planos').insert(planosData)
   if (planError) {
@@ -392,7 +292,7 @@ async function runSeed() {
   // 5. Criar Vídeos com transcrições
   console.log('📹 Criando vídeos transcritos...')
   const videosData = [
-    {
+{
       restaurante_id: mapRestaurante('borger-hamburgueria'),
       influencer_id: mapInfluencer('navegando-sp'),
       titulo: 'O melhor smash burger com cheddar derretido!',
@@ -404,31 +304,7 @@ async function runSeed() {
       thumbnail_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&h=300&q=80',
       publicado_em: new Date().toISOString(),
     },
-    {
-      restaurante_id: mapRestaurante('shin-zushi'),
-      influencer_id: mapInfluencer('guia-por-sp'),
-      titulo: 'Omakase tradicional e peixes frescos espetaculares no Paraíso',
-      url_original: 'https://www.instagram.com/p/DC67890/',
-      transcricao: 'Fala galera, hoje o Guia por SP está no Shin-Zushi no Paraíso para uma experiência de omakase tradicional espetacular. O sushiman prepara os nigiris na hora, o peixe é fresquíssimo e a qualidade é incomparável. Vale cada centavo!',
-      resumo: 'Uma autêntica experiência de omakase tradicional no bairro do Paraíso com peixes frescos preparados na hora.',
-      palavras_chave: ['omakase', 'sushi', 'japones', 'paraiso', 'nigiri'],
-      prato_destaque: 'Omakase Tradicional',
-      thumbnail_url: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&h=300&q=80',
-      publicado_em: new Date().toISOString(),
-    },
-    {
-      restaurante_id: mapRestaurante('vicolo-nostro'),
-      influencer_id: mapInfluencer('sp-dicas'),
-      titulo: 'Vila italiana super romântica secreta no Brooklin',
-      url_original: 'https://www.instagram.com/p/DD11121/',
-      transcricao: 'Procurando um lugar romântico em SP? Hoje viemos no Vicolo Nostro no Brooklin. Uma vila italiana linda, super aconchegante. Pedimos o risoto de funghi trufado e o gnocchi que derrete na boca. É o lugar perfeito para um encontro!',
-      resumo: 'Restaurante com ambiente charmoso de vila italiana servindo risotos trufados e massas artesanais impecáveis.',
-      palavras_chave: ['italiano', 'risoto', 'trufado', 'romantico', 'brooklin'],
-      prato_destaque: 'Risoto de Funghi Trufado',
-      thumbnail_url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&h=300&q=80',
-      publicado_em: new Date().toISOString(),
-    },
-    {
+{
       restaurante_id: mapRestaurante('hm-food-cafe'),
       influencer_id: mapInfluencer('navegando-sp'),
       titulo: 'O brunch mais charmoso e completo de Pinheiros',
@@ -440,7 +316,7 @@ async function runSeed() {
       thumbnail_url: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=400&h=300&q=80',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('pizzaria-vero-paradiso'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       titulo: 'O rodízio de pizza com melhor custo-benefício do Paraíso! 🍕😍',
@@ -452,7 +328,7 @@ async function runSeed() {
       thumbnail_url: '/images/pizzaria-vero-paradiso.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('casa-na-praia-bar'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       titulo: 'Festival de caldos completo por apenas R$ 49,90! 🍲🤤',
@@ -464,7 +340,7 @@ async function runSeed() {
       thumbnail_url: '/images/casa-na-praia-bar.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('hao-sushi-itaim'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       titulo: 'MUITO BARATO: Rodízio Japonês com Bebidas e Sobremesas inclusas! 🍱🥤',
@@ -476,7 +352,7 @@ async function runSeed() {
       thumbnail_url: '/images/hao-sushi-itaim.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('arabia-night-paulista'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       titulo: 'Encontramos a fonte dos Perfumes Árabes mais desejados em SP! 😍🔥',
@@ -488,7 +364,7 @@ async function runSeed() {
       thumbnail_url: '/images/arabia-night-paulista.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('busger'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: 'O maior e mais famoso Xis Prensadão do Brasil fica em São Paulo! 🍔🔥',
@@ -500,7 +376,7 @@ async function runSeed() {
       thumbnail_url: '/images/busger.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('villa-e-prosa'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: 'A maior Cubana de peixe de São Paulo! 🐟🔥',
@@ -512,7 +388,7 @@ async function runSeed() {
       thumbnail_url: '/images/villa-e-prosa.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('o-mineiro-prime'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: 'O Joelho de Porco mais famoso e crocante de SP! 🐷🔥',
@@ -524,7 +400,7 @@ async function runSeed() {
       thumbnail_url: '/images/o-mineiro-prime.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('costelao-atibaia'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: 'Costela e picanha à vontade por apenas R$ 75,90! 🥩🔥',
@@ -536,7 +412,7 @@ async function runSeed() {
       thumbnail_url: '/images/costelao-atibaia.jpg',
       publicado_em: new Date().toISOString(),
     },
-    {
+{
       restaurante_id: mapRestaurante('legado-parrilla'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: 'O macarrão flambado no queijo mais famoso de São Paulo! 🧀🍝',
@@ -547,8 +423,8 @@ async function runSeed() {
       prato_destaque: 'Espaguete no Provolone Flambado',
       thumbnail_url: '/images/legado-parrilla.jpg',
       publicado_em: new Date().toISOString(),
-    },
-  ]
+    }
+]
 
   const { error: videoError } = await supabase.from('videos').insert(videosData)
   if (videoError) {
