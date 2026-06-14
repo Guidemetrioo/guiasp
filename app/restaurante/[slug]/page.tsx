@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
-import { MapPin, Compass, Sparkles, Quote, Clock, Phone, DollarSign, Calendar, ShoppingBag } from 'lucide-react'
+import { MapPin, Compass, Sparkles, Quote, Clock, Phone, DollarSign, Calendar, ShoppingBag, Film } from 'lucide-react'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -112,6 +112,30 @@ const getRestaurantExtraDetails = (tipoCozinha: string | null | undefined, preco
       'https://images.unsplash.com/photo-1595295333158-4742f28fbd85?auto=format&fit=crop&w=400&h=400&q=80',
       'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&h=400&q=80',
       'https://images.unsplash.com/photo-1516100882582-76c9a886062e?auto=format&fit=crop&w=400&h=400&q=80'
+    ];
+  } else if (normalized.includes('sobremesa') || normalized.includes('doce')) {
+    menuItems = [
+      { nome: 'Bolo de Chocolate Pecatto*', desc: 'A famosa fatia gigante de bolo de chocolate super molhadinho com calda e morangos.', preco: 'R$ 38,00', foto: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=300&h=300&q=80' },
+      { nome: 'Taça Pecatto Supremo*', desc: 'Mix de sorvete de creme, creme de avelã, morangos frescos e raspas de chocolate belga.', preco: 'R$ 28,00', foto: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=300&h=300&q=80' },
+      { nome: 'Waffle com Nutella e Ninho*', desc: 'Waffle quentinho crocante coberto com generosa camada de Nutella e leite em pó Ninho.', preco: 'R$ 26,00', foto: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=300&h=300&q=80' }
+    ];
+    gallery = [
+      'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1508737027454-e6454ef45afd?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1514517604298-cf80e0fb7f1e?auto=format&fit=crop&w=400&h=400&q=80'
+    ];
+  } else if (normalized.includes('saudavel') || normalized.includes('suplemento')) {
+    menuItems = [
+      { nome: 'Albumina Pura (420g)*', desc: 'Albumina premium de alta pureza ideal para recuperação e ganho muscular.', preco: 'R$ 34,90', foto: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&h=300&q=80' },
+      { nome: 'Whey Protein Concentrado Dux (900g)*', desc: 'Whey protein com excelente perfil de aminoácidos e sabores deliciosos.', preco: 'R$ 149,00', foto: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&h=300&q=80' },
+      { nome: 'Creatina Monohidratada Creapure (300g)*', desc: 'Creatina de alto rendimento para força e explosão muscular nos treinos.', preco: 'R$ 89,00', foto: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=300&h=300&q=80' }
+    ];
+    gallery = [
+      'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&h=400&q=80',
+      'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=400&h=400&q=80'
     ];
   } else if (normalized.includes('brunch') || normalized.includes('cafe')) {
     menuItems = [
@@ -329,6 +353,25 @@ export default async function RestaurantePage({ params }: PageProps) {
                       </a>
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* Local Video player for Navegando SP reviews */}
+              {['pantchos-house-burger', 'stunt-burger', 'santomar-restaurante', 'outlet-do-suplemento', 'pecatto-bar-restaurante'].includes(restaurant.slug) && (
+                <div className="mt-6 border border-zinc-850 rounded-2xl overflow-hidden bg-black/50 backdrop-blur-md max-w-xs mx-auto shadow-2xl border-brand-gold/10">
+                  <div className="px-4 py-2 bg-zinc-950/80 border-b border-zinc-900 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-zinc-300 flex items-center">
+                      <Film className="w-3.5 h-3.5 mr-1.5 text-brand-gold" />
+                      Review em Vídeo
+                    </span>
+                  </div>
+                  <video
+                    src={`/videos/${restaurant.slug}.mp4`}
+                    poster={`/images/${restaurant.slug}.jpg`}
+                    controls
+                    playsInline
+                    className="w-full aspect-[9/16] object-cover h-[480px]"
+                  />
                 </div>
               )}
 
