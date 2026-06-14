@@ -1,0 +1,476 @@
+{
+  "restaurantes": [
+    {
+      "id": "8d592863-2ff4-4f1f-9d0a-b7bfdd09a3e5",
+      "nome": "Lindt Home of Chocolate",
+      "slug": "lindt-home-of-chocolate",
+      "descricao": "Nunca comemos tanto chocolate na nossa vida! 😂 📍Lindt Home Of Chocolate, Suíça",
+      "bairro": "Kilchberg",
+      "cidade": "Suíça",
+      "tipo_cozinha": "sobremesa",
+      "preco_medio": "$$",
+      "instagram_handle": "lindt_switzerland",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "de0f3e26-e29d-48f3-9b0e-74741317b642",
+      "nome": "Seja Total Galpão",
+      "slug": "seja-total-galpao",
+      "descricao": "DESCOBRIMOS UMA FONTE DE SUPLEMENTOS COM OS MELHORES PREÇOS DO MERCADO!! 😍😱  Fomos navegr na @sejatotalgalpao uma loja d...",
+      "bairro": "Parque Mandaqui",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "saudavel",
+      "preco_medio": "$$",
+      "instagram_handle": "sejatotalgalpao",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "1f039bba-6899-433d-b26d-68417151d20d",
+      "nome": "Pecatto - Tatuapé",
+      "slug": "pecatto-tatuape",
+      "descricao": "O RESTAURANTE MAIS ABSURDO DE SP!!! 😱😍  Fomos navegar no @pecattosp, que além de fazer o melhor parmegiana de SP, também...",
+      "bairro": "Tatuapé",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "italiano",
+      "preco_medio": "$$",
+      "instagram_handle": "pecattosp",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "e2ec837d-0c33-4682-a6e5-ab0a412f6f0f",
+      "nome": "Hippos Burger",
+      "slug": "hippos-burger",
+      "descricao": "O famoso molho cannes no 🇧🇷!   Basta usar o cupom: Desconto70 no app da 99 Food! 💛  O famoso molho canes da @hipposburge...",
+      "bairro": "Pinheiros",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "hamburguer",
+      "preco_medio": "$$",
+      "instagram_handle": "hipposburger",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "187265e3-afaa-46dc-94d0-640a5148d3d7",
+      "nome": "Stunt Burger - Cazé TV",
+      "slug": "stunt-burger-caze-tv",
+      "descricao": "Esse é um dos hambúrgueres mais absurdos de SP! 🍔  Uma parceria entre @hellmannsbr + @stuntburger, deu origem à essa del...",
+      "bairro": "Vila Lobos",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "hamburguer",
+      "preco_medio": "$$",
+      "instagram_handle": "stuntburger",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "77606427-cd5f-43aa-ad02-939b85580c06",
+      "nome": "Móveis Dubai",
+      "slug": "moveis-dubai",
+      "descricao": "Descobrimos uma loja de móveis à preço de fábrica em SP! 🪑🛋️  Fomos navegar na @moveisdubaioficial, e esse saldão da cop...",
+      "bairro": "Mogi das Cruzes",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "utilidades",
+      "preco_medio": "$$",
+      "instagram_handle": "moveisdubaioficial",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "326670c1-2815-4e2d-bcc3-b5c6f468cb90",
+      "nome": "Santomar - Tatuapé",
+      "slug": "santomar-tatuape",
+      "descricao": "Gostarão do sacão de frutos do mar? 🦞   Fomos conhecer o único restaurante de SP com o famoso Seafood Boil Bag (a sacola...",
+      "bairro": "Tatuapé",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "frutos do mar",
+      "preco_medio": "$$$",
+      "instagram_handle": "santomarestaurante",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "699be536-3f9b-4618-bf72-62c06533a3c7",
+      "nome": "Paparoto Cucina",
+      "slug": "paparoto-cucina",
+      "descricao": "Quanto custa comer no restaurante da campeã do Masterchef e indicado 3x ao Guia Michelin?! ⭐️🍝  Fomos navegar no @paparo...",
+      "bairro": "Pinheiros",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "italiano",
+      "preco_medio": "$$$",
+      "instagram_handle": "paparotocucina",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "9e5c8662-6495-4e81-8b80-db4b0ee5c47d",
+      "nome": "Bananas Outlet",
+      "slug": "bananas-outlet",
+      "descricao": "OUTLET DE PRODUTOS MUITO BARATOS EM SP!! 😱😍  Fomos navegar na maior outlet de utilidades de São Paulo! ❤️  São produtos ...",
+      "bairro": "Marginal Tietê",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "utilidades",
+      "preco_medio": "$$",
+      "instagram_handle": "bananasoutletmegaloja",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "61f5e4f9-5d3c-4d3b-be9d-2f4a6d1f63e7",
+      "nome": "99 Food Delivery",
+      "slug": "99-food-delivery",
+      "descricao": "Basta usar o cupom: FOME84 no app da 99 Food! 💛  CURTIU? Então já marca o @ que precisa saber disso!! 🔥🔥  *Válido soment...",
+      "bairro": "Consolação",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "brasileira",
+      "preco_medio": "$$",
+      "instagram_handle": "99foodbrasil",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "bb662de7-2279-4270-9121-40bb9dea7fa7",
+      "nome": "Só Marcas Outlet",
+      "slug": "so-marcas-outlet",
+      "descricao": "OUTLET DE MARCAS FAMOSAS EM SP! 😱😍  Fomos navegar no @somarcasoutletgru, que está rolando diversas promoções!❤️  🚨Mas...",
+      "bairro": "Guarulhos",
+      "cidade": "Guarulhos",
+      "tipo_cozinha": "utilidades",
+      "preco_medio": "$$",
+      "instagram_handle": "somarcasoutletgru",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    },
+    {
+      "id": "d3a23cd0-e903-4495-a3a5-efb64cb4cdf3",
+      "nome": "Legado Parrilla - Anália Franco",
+      "slug": "legado-parrilla-analia-franco",
+      "descricao": "Uma das sobremesas mais absurdas que já vimos!! 🍰😍  Fomos navegar no @legadoparrilla, responsável por essa sobremesa abs...",
+      "bairro": "Anália Franco",
+      "cidade": "São Paulo",
+      "tipo_cozinha": "churrasco",
+      "preco_medio": "$$",
+      "instagram_handle": "legadoparrilla",
+      "foto_capa_url": "/images/placeholder-restaurant.jpg",
+      "ativo": true
+    }
+  ],
+  "videos": [
+    {
+      "id": "0cc338a6-a036-4e43-aa1b-0ee09b293042",
+      "restaurante_id": "8d592863-2ff4-4f1f-9d0a-b7bfdd09a3e5",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Lindt Home of Chocolate por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DTgnR1hjzLQ/",
+      "transcricao": "Nunca comemos tanto chocolate na nossa vida! 😂 📍Lindt Home Of Chocolate, Suíça",
+      "resumo": "Review em vídeo detalhado do local Lindt Home of Chocolate recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "sobremesa",
+        "kilchberg",
+        "navegandosp"
+      ],
+      "prato_destaque": "Chocolates Variados Lindt",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-001.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "4959edba-bf11-450d-9637-e489aa4fbfcb",
+      "restaurante_id": "de0f3e26-e29d-48f3-9b0e-74741317b642",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Seja Total Galpão por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZTb8uHA1Za/",
+      "transcricao": "DESCOBRIMOS UMA FONTE DE SUPLEMENTOS COM OS MELHORES PREÇOS DO MERCADO!! 😍😱  Fomos navegr na @sejatotalgalpao uma loja de suplementos que sem dúvidas possui os melhor valores do mercado! ❤️  CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🏋🏻@sejatotalgalpao 📍Rua Ponta Grossa, 233-237 - Parque Mandaqui, SP *Publi",
+      "resumo": "Review em vídeo detalhado do local Seja Total Galpão recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "saudavel",
+        "parque mandaqui",
+        "navegandosp"
+      ],
+      "prato_destaque": "Suplementos e Vitaminas",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-002.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "35d84385-7f91-4f32-acb3-b8b5a8ad2594",
+      "restaurante_id": "1f039bba-6899-433d-b26d-68417151d20d",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Pecatto - Tatuapé por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZGiqj0tc2S/",
+      "transcricao": "O RESTAURANTE MAIS ABSURDO DE SP!!! 😱😍  Fomos navegar no @pecattosp, que além de fazer o melhor parmegiana de SP, também é responsável pela famosa raclette de Chocolate e o novo parmegiana de cupim com cheddar e bacon 😍  Esse é sem dúvidas o lugar perfeito para levar a sua dama!! ❤️  CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🥩@pecattosp 📍R. Francisco Marengo, 1845 - Tatuapé, SP *Publi",
+      "resumo": "Review em vídeo detalhado do local Pecatto - Tatuapé recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "italiano",
+        "tatuapé",
+        "navegandosp"
+      ],
+      "prato_destaque": "Parmegiana de Cupim com Cheddar & Bacon",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-003.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "91777b2a-267c-4589-b52c-b79c19c8cd58",
+      "restaurante_id": "e2ec837d-0c33-4682-a6e5-ab0a412f6f0f",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Hippos Burger por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZijdXJvoEm/",
+      "transcricao": "O famoso molho cannes no 🇧🇷!   Basta usar o cupom: Desconto70 no app da 99 Food! 💛  O famoso molho canes da @hipposburger   CURTIU? Então já marca o @ que precisa saber disso!! 🔥🔥  *Válido somente para primeiros pedidos de novos usuários.  *Publi",
+      "resumo": "Review em vídeo detalhado do local Hippos Burger recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "hamburguer",
+        "pinheiros",
+        "navegandosp"
+      ],
+      "prato_destaque": "Burger com Molho Cannes",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-004.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "1548f19a-bd3f-42ae-81c3-c66aca85c680",
+      "restaurante_id": "187265e3-afaa-46dc-94d0-640a5148d3d7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Stunt Burger - Cazé TV por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZgQoRIuwD2/",
+      "transcricao": "Esse é um dos hambúrgueres mais absurdos de SP! 🍔  Uma parceria entre @hellmannsbr + @stuntburger, deu origem à essa delícia! 🤤    Estará disponível somente na Casa Cazé TV, no parque Vila Lobos, aqui em SP, a partir do dia 13 de junho! 😋  Se eu fosse você, não perderia por nada! 😍  *Publi",
+      "resumo": "Review em vídeo detalhado do local Stunt Burger - Cazé TV recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "hamburguer",
+        "vila lobos",
+        "navegandosp"
+      ],
+      "prato_destaque": "Burger Hellmann's + Stunt",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-005.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "c6f9e2bf-8a0a-4294-941f-1744cb7c06b0",
+      "restaurante_id": "77606427-cd5f-43aa-ad02-939b85580c06",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Móveis Dubai por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZbBi2plUmy/",
+      "transcricao": "Descobrimos uma loja de móveis à preço de fábrica em SP! 🪑🛋️  Fomos navegar na @moveisdubaioficial, e esse saldão da copa com esses preços do vídeo irá ocorrer nos dias 12, 13 e 14 de junho, em todas as unidades. ❤️  SBC - Anchieta, SBC - Marechal, Mauá, Itaquaquecetuba e Suzano.   CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🛌 @moveisdubaioficial *Publi",
+      "resumo": "Review em vídeo detalhado do local Móveis Dubai recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "utilidades",
+        "mogi das cruzes",
+        "navegandosp"
+      ],
+      "prato_destaque": "Móveis e Decorações",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-006.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "6982ed43-8a9b-490a-84d0-fa80adf4e114",
+      "restaurante_id": "326670c1-2815-4e2d-bcc3-b5c6f468cb90",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Santomar - Tatuapé por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZYY3vdKras/",
+      "transcricao": "Gostarão do sacão de frutos do mar? 🦞   Fomos conhecer o único restaurante de SP com o famoso Seafood Boil Bag (a sacolada de frutos do mar típica do sul dos EUA) 😍  Estamos falando do @santomarestaurante • O Saco de Frutos do Mar inclui: 🦞 Lagosta 🍤 Camarões 🦀 Caranguejos 🦀 King Crab  😋Mexilhões  🐽 Calabresa 🌽 Milho 🥔 Batata  Tudo preparado no molho especial amanteigado da casa e servido direto na mesa, no estilo autêntico americano. (Mas se preferir ele servem na bowl também sem jogar direto na mesa) 🥰  Versão Tradicional sem King Crab Para 2 pessoas - 💲299,90 Para 3 pessoas - 💲449,90  Versão Premium com King Crab  Para 2 pessoas - 💲449,90 Para 3 pessoas - 💲799,90  CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  ⏰ Horários:  Terça a sexta: 12h às 16h / 19h às 22h Sábado e domingo: 12h às 17h | 19h às 22h  🐟@santomarestaurante 📍Rua Francisco Marengo, 773 - Tatuapé, SP (Unidade do vídeo) 📲 (11) 94467-2523 📍Av Luiz Dumont de Villares, 1306 - Santana, SP 📲 (11) 94207-6609  *Publi",
+      "resumo": "Review em vídeo detalhado do local Santomar - Tatuapé recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "frutos do mar",
+        "tatuapé",
+        "navegandosp"
+      ],
+      "prato_destaque": "Seafood Boil Bag com King Crab",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-007.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "0f3bcc97-2a98-45df-a9b1-f888638e0937",
+      "restaurante_id": "699be536-3f9b-4618-bf72-62c06533a3c7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Paparoto Cucina por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZV8iyAOdEi/",
+      "transcricao": "Quanto custa comer no restaurante da campeã do Masterchef e indicado 3x ao Guia Michelin?! ⭐️🍝  Fomos navegar no @paparotocucina, um dos nossos restaurantes preferidos em SP! ❤️  Pedimos👇🏻 🍅Burrata - 💲112,00 🥗Salada - 💲79,00 🥩Filetto - 💲212,00 🍝Linguini Al Tartufo Nero - 💲120,00 🍫Tiramisu - 💲68,00 🪴Vaso - 💲75,00 🌺Chá de Hibisco - 💲32,00 🌱Soda Italiana - 💲32,00  Ao todo gastamos 💲824,90 para 2 pessoas e achamos que valeu super à pena! E vocês?   CURTIU? Então ja marca o @ que vai te levar!! 🔥🔥  🍝@paparotocucina 📍R. Joaquim Antunes, 470 - Pinheiros, SP  *Publi",
+      "resumo": "Review em vídeo detalhado do local Paparoto Cucina recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "italiano",
+        "pinheiros",
+        "navegandosp"
+      ],
+      "prato_destaque": "Linguini Al Tartufo Nero",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-008.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "9f929f16-c8ad-41ee-b285-170718af12d8",
+      "restaurante_id": "9e5c8662-6495-4e81-8b80-db4b0ee5c47d",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Bananas Outlet por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZSjEfrxv10/",
+      "transcricao": "OUTLET DE PRODUTOS MUITO BARATOS EM SP!! 😱😍  Fomos navegar na maior outlet de utilidades de São Paulo! ❤️  São produtos limitados, e com preços muito mais acessíveis! Isso porque os produtos podem possuir pequenas avarias ou detalhes na embalagem, porém não interferem no funcionamento dos itens. 🤌🏻  CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🍌@bananasoutletmegaloja Mega loja: 📍Av. Embaixador Macedo Soares, 199 (Marginal Tietê) *Publi",
+      "resumo": "Review em vídeo detalhado do local Bananas Outlet recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "utilidades",
+        "marginal tietê",
+        "navegandosp"
+      ],
+      "prato_destaque": "Utilidades Domésticas",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-009.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "5e893e3c-a66e-4013-9847-9e7dd7d0791b",
+      "restaurante_id": "61f5e4f9-5d3c-4d3b-be9d-2f4a6d1f63e7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de 99 Food Delivery por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZQuioMPQWJ/",
+      "transcricao": "Basta usar o cupom: FOME84 no app da 99 Food! 💛  CURTIU? Então já marca o @ que precisa saber disso!! 🔥🔥  *Válido somente para primeiros pedidos de novos usuários.  *Publi",
+      "resumo": "Review em vídeo detalhado do local 99 Food Delivery recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "brasileira",
+        "consolação",
+        "navegandosp"
+      ],
+      "prato_destaque": "Promoções de Delivery",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-010.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "2790ea2a-ca4f-42fc-8f7a-759b7bb96790",
+      "restaurante_id": "bb662de7-2279-4270-9121-40bb9dea7fa7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Só Marcas Outlet por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZQFZJxxNP5/",
+      "transcricao": "OUTLET DE MARCAS FAMOSAS EM SP! 😱😍  Fomos navegar no @somarcasoutletgru, que está rolando diversas promoções!❤️  🚨Mas corre, because é por tempo limitado!  CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🛍️@somarcasoutletgru 📍Rod. Pres. Dutra, KM 222 - 3 - Jardim Santa Francisca, Guarulhos - SP. *Publi",
+      "resumo": "Review em vídeo detalhado do local Só Marcas Outlet recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "utilidades",
+        "guarulhos",
+        "navegandosp"
+      ],
+      "prato_destaque": "Moda e Acessórios",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-011.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "3cb0de6e-583e-4d49-ab4d-28f8c05481ae",
+      "restaurante_id": "d3a23cd0-e903-4495-a3a5-efb64cb4cdf3",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "titulo": "Review de Legado Parrilla - Anália Franco por @navegandosp",
+      "url_original": "https://www.instagram.com/navegandosp/reel/DZOV5ZqAxar/",
+      "transcricao": "Uma das sobremesas mais absurdas que já vimos!! 🍰😍  Fomos navegar no @legadoparrilla, responsável por essa sobremesa absurda. 😋  E juro que é tudo muito delicioso! Além dessa sobremesa, também tem diversos pratos deliciosos! 🤤   CURTIU? Então já marca o @ que vai te levar!! 🔥🔥  🥩@legadoparrilla 📍Rua Marechal Barbacena, 555 - Anália Franco, SP  *Publi",
+      "resumo": "Review em vídeo detalhado do local Legado Parrilla - Anália Franco recomendado pelo influenciador @navegandosp.",
+      "palavras_chave": [
+        "churrasco",
+        "anália franco",
+        "navegandosp"
+      ],
+      "prato_destaque": "Taça de Sobremesa Legado",
+      "thumbnail_url": "/images/placeholder-restaurant.jpg",
+      "video_url": "/videos/navegando-012.mp4",
+      "publicado_em": "2026-06-14T00:00:00Z"
+    }
+  ],
+  "planos": [
+    {
+      "id": "d92097f4-a8dc-4e68-9d9c-557ce887e10d",
+      "restaurante_id": "8d592863-2ff4-4f1f-9d0a-b7bfdd09a3e5",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "04a33b6a-6e86-442b-9e04-c3c6f47d9837",
+      "restaurante_id": "de0f3e26-e29d-48f3-9b0e-74741317b642",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "e0332385-68ab-4ff4-bb00-8628274777db",
+      "restaurante_id": "1f039bba-6899-433d-b26d-68417151d20d",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "0c79a69b-5c42-47fa-8e20-2b7104333d18",
+      "restaurante_id": "e2ec837d-0c33-4682-a6e5-ab0a412f6f0f",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "c632713c-0972-4627-855b-2b0efa7e9b56",
+      "restaurante_id": "187265e3-afaa-46dc-94d0-640a5148d3d7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "c1d12afb-1413-44e9-a220-101dde1f9c98",
+      "restaurante_id": "77606427-cd5f-43aa-ad02-939b85580c06",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "1df89daa-754b-4b5f-bc23-34da8591eedf",
+      "restaurante_id": "326670c1-2815-4e2d-bcc3-b5c6f468cb90",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "8bcc6487-652c-495e-9d62-2c0cd34ef7be",
+      "restaurante_id": "699be536-3f9b-4618-bf72-62c06533a3c7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "41986c9e-b44b-4d74-8402-de9cfb223c74",
+      "restaurante_id": "9e5c8662-6495-4e81-8b80-db4b0ee5c47d",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "30524eee-75b7-4868-a12d-26b158fac04f",
+      "restaurante_id": "61f5e4f9-5d3c-4d3b-be9d-2f4a6d1f63e7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "123769cd-2432-48f2-8419-0ed878cf5f67",
+      "restaurante_id": "bb662de7-2279-4270-9121-40bb9dea7fa7",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    },
+    {
+      "id": "3146b5c9-ea49-4417-b8a7-e47b8d6540a9",
+      "restaurante_id": "d3a23cd0-e903-4495-a3a5-efb64cb4cdf3",
+      "influencer_id": "11111111-1111-1111-1111-111111111111",
+      "status": "ativo",
+      "valor_mensal": 1200.0,
+      "inicio_em": "2026-06-14T00:00:00Z"
+    }
+  ]
+}

@@ -36,9 +36,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+    { label: 'Restaurantes', href: '/admin/restaurantes', icon: Utensils },
+    { label: 'Vídeos de Reviews', href: '/admin/videos', icon: Video },
     { label: 'Novo Influencer', href: '/admin/influencers/novo', icon: Users },
-    { label: 'Novo Restaurante', href: '/admin/restaurantes/novo', icon: Utensils },
-    { label: 'Novo Vídeo', href: '/admin/videos/novo', icon: Video },
     { label: 'Novo Plano', href: '/admin/planos/novo', icon: CreditCard },
     { label: 'Importar Vídeos', href: '/admin/videos/importar', icon: Download },
   ]

@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Scratch and scraped files
+/esquentasp/
+/navegando videos/
+/perambulando/
+/lagosta.png
+/suplemento.png
