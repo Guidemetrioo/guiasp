@@ -367,7 +367,7 @@ export default async function RestaurantePage({ params }: PageProps) {
                   </div>
                   <video
                     src={`/videos/${restaurant.slug}.mp4`}
-                    poster={`/images/${restaurant.slug}.jpg`}
+                    poster={restaurant.foto_capa_url || `/images/${restaurant.slug}.jpg`}
                     controls
                     playsInline
                     className="w-full aspect-[9/16] object-cover h-[480px]"

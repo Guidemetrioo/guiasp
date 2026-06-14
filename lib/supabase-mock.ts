@@ -117,7 +117,7 @@ const mockRestaurantes = [
     tipo_cozinha: 'saudavel',
     preco_medio: '$$',
     instagram_handle: 'outletdosuplemento',
-    foto_capa_url: '/images/outlet-do-suplemento.jpg',
+    foto_capa_url: '/images/outlet-do-suplemento.png',
     ativo: true,
   },
   {
@@ -208,7 +208,7 @@ const mockRestaurantes = [
     tipo_cozinha: 'frutos do mar',
     preco_medio: '$$$',
     instagram_handle: 'santomarrestaurante',
-    foto_capa_url: '/images/santomar-restaurante.jpg',
+    foto_capa_url: '/images/santomar-restaurante.png',
     ativo: true,
   },
   {
@@ -315,7 +315,7 @@ const mockVideos = [
     resumo: 'Maior outlet de suplementos esportivos com enorme estoque, albumina barata, whey de grandes marcas e descontos na Mooca.',
     palavras_chave: ['suplemento', 'whey protein', 'saudavel', 'outlet', 'mooca', 'fitness'],
     prato_destaque: 'Suplementos e Whey Protein*',
-    thumbnail_url: '/images/outlet-do-suplemento.jpg',
+    thumbnail_url: '/images/outlet-do-suplemento.png',
     publicado_em: new Date().toISOString(),
   },
   {
@@ -406,7 +406,7 @@ const mockVideos = [
     resumo: 'O famoso Seafood Boil Bag com lagosta, camarão, mexilhões e milho no molho cajun*, servido de forma rústica no Tatuapé.',
     palavras_chave: ['frutos do mar', 'seafood boil', 'lagosta', 'tatuape', 'camarao'],
     prato_destaque: 'Seafood Boil Bag (Sacão de Frutos do Mar)*',
-    thumbnail_url: '/images/santomar-restaurante.jpg',
+    thumbnail_url: '/images/santomar-restaurante.png',
     publicado_em: new Date().toISOString(),
   },
   {
