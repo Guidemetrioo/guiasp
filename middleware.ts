@@ -8,9 +8,29 @@ export async function middleware(request: NextRequest) {
     },
   })
 
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const path = request.nextUrl.pathname
+
+  if (!url || !key) {
+    const hasMockSession = request.cookies.has('sb-mock-session')
+    if (path.startsWith('/admin')) {
+      if (path === '/admin/login') {
+        if (hasMockSession) {
+          return NextResponse.redirect(new URL('/admin', request.url))
+        }
+      } else {
+        if (!hasMockSession) {
+          return NextResponse.redirect(new URL('/admin/login', request.url))
+        }
+      }
+    }
+    return response
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+    url,
+    key,
     {
       cookies: {
         get(name: string) {
@@ -41,8 +61,6 @@ export async function middleware(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-
-  const path = request.nextUrl.pathname
 
   if (path.startsWith('/admin')) {
     if (path === '/admin/login') {

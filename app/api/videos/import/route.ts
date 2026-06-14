@@ -1,5 +1,5 @@
-// Mock Supabase Database Client for offline development
-// This allows the entire website to function out-of-the-box without database credentials!
+import { NextResponse } from 'next/server'
+import { createAdminServer } from '@/lib/supabase-server'
 
 const mockInfluencers = [
   {
@@ -215,7 +215,7 @@ const mockRestaurantes = [
     id: 'r1616161-1616-1616-1616-161616161616',
     nome: 'D.O.M.',
     slug: 'dom-restaurante',
-    descricao: 'O renomado templo gastronômico do chef Alex Atala focado em ingredientes raros da Amazônia e culinária contemporânea.',
+    descricao: 'O renomado templo gastronomico do chef Alex Atala focado em ingredientes raros da Amazônia e culinária contemporânea.',
     bairro: 'Jardins',
     cidade: 'São Paulo',
     tipo_cozinha: 'brasileira',
@@ -238,7 +238,6 @@ const mockVideos = [
     palavras_chave: ['smash burger', 'cheddar', 'hamburguer', 'pinheiros'],
     prato_destaque: 'Smash Burger com Cheddar',
     thumbnail_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v2222222-2222-2222-2222-222222222222',
@@ -251,7 +250,6 @@ const mockVideos = [
     palavras_chave: ['omakase', 'sushi', 'japones', 'paraiso', 'nigiri'],
     prato_destaque: 'Omakase Tradicional',
     thumbnail_url: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v3333333-3333-3333-3333-333333333333',
@@ -264,7 +262,6 @@ const mockVideos = [
     palavras_chave: ['italiano', 'risoto', 'trufado', 'romantico', 'brooklin'],
     prato_destaque: 'Risoto de Funghi Trufado',
     thumbnail_url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v4444444-4444-4444-4444-444444444444',
@@ -277,7 +274,6 @@ const mockVideos = [
     palavras_chave: ['brunch', 'panqueca', 'ovos', 'cafe', 'pinheiros'],
     prato_destaque: 'Ovos Mexidos com Bacon e Panquecas',
     thumbnail_url: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v5555555-5555-5555-5555-555555555555',
@@ -290,7 +286,6 @@ const mockVideos = [
     palavras_chave: ['mexicano', 'tacos', 'margarita', 'augusta', 'al pastor'],
     prato_destaque: 'Tacos al Pastor',
     thumbnail_url: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v6666666-6666-6666-6666-666666666666',
@@ -303,7 +298,6 @@ const mockVideos = [
     palavras_chave: ['frutos do mar', 'camarao', 'peixe', 'itaim bibi'],
     prato_destaque: 'Grelhada de Frutos do Mar',
     thumbnail_url: 'https://images.unsplash.com/photo-1534080391025-097b03b7738c?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v7777777-7777-7777-7777-777777777777',
@@ -316,7 +310,6 @@ const mockVideos = [
     palavras_chave: ['carne de porco', 'degustacao', 'centro', 'brasileira', 'autoral'],
     prato_destaque: 'Porco San Zé',
     thumbnail_url: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v8888888-8888-8888-8888-888888888888',
@@ -329,7 +322,6 @@ const mockVideos = [
     palavras_chave: ['ramen', 'lamen', 'japones', 'cocktail', 'pinheiros'],
     prato_destaque: 'Shoyu Ramen Tradicional',
     thumbnail_url: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v9999999-9999-9999-9999-999999999999',
@@ -342,7 +334,6 @@ const mockVideos = [
     palavras_chave: ['hamburguer', 'pastrami', 'deli', 'batata frita', 'pinheiros'],
     prato_destaque: 'Sanduíche de Pastrami',
     thumbnail_url: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1010101-1010-1010-1010-101010101010',
@@ -350,12 +341,11 @@ const mockVideos = [
     influencer_id: '33333333-3333-3333-3333-333333333333',
     titulo: 'O clássico dadinho de tapioca no Mocotó!',
     url_original: 'https://www.instagram.com/p/DK44444/',
-    transcricao: 'Hoje viemos ao Mocotó provar a comida sertaneja do chef Rodrigo Oliveira. Os dadinhos de tapioca crocantes com geléia de pimenta e o baião de dois tradicional são lendários!',
+    transcricao: 'Hoje viemos au Mocotó provar a comida sertaneja do chef Rodrigo Oliveira. Os dadinhos de tapioca crocantes com geléia de pimenta e o baião de dois tradicional são lendários!',
     resumo: 'Deliciosa gastronomia nordestina e sertaneja tradicional servida em ambiente simples e acolhedor.',
     palavras_chave: ['nordestina', 'tapioca', 'baiao de dois', 'sertanejo', 'vila medeiros'],
     prato_destaque: 'Dadinhos de Tapioca com Geléia de Pimenta',
     thumbnail_url: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1212121-1212-1212-1212-121212121212',
@@ -368,7 +358,6 @@ const mockVideos = [
     palavras_chave: ['brasileira', 'michelin', 'contemporaneo', 'helena rizzo', 'jardins'],
     prato_destaque: 'Peixe com Tucupi e Coco',
     thumbnail_url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1313131-1313-1313-1313-131313131313',
@@ -381,7 +370,6 @@ const mockVideos = [
     palavras_chave: ['italiano', 'massas', 'trufa', 'chef', 'pinheiros'],
     prato_destaque: 'Gnocchi Soufflé com Trufa',
     thumbnail_url: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1414141-1414-1414-1414-141414141414',
@@ -394,7 +382,6 @@ const mockVideos = [
     palavras_chave: ['italiano', 'luxo', 'parmegiana', 'carpaccio', 'jardins'],
     prato_destaque: 'Filet Mignon à Parmegiana Clássico',
     thumbnail_url: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1515151-1515-1515-1515-151515151515',
@@ -407,7 +394,6 @@ const mockVideos = [
     palavras_chave: ['gelato', 'pistache', 'doce de leite', 'sobremesa', 'jardins'],
     prato_destaque: 'Gelato de Pistache e Bacio di Latte',
     thumbnail_url: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
   {
     id: 'v1616161-1616-1616-1616-161616161616',
@@ -420,7 +406,6 @@ const mockVideos = [
     palavras_chave: ['amazonia', 'contemporaneo', 'alex atala', 'michelin', 'jardins'],
     prato_destaque: 'Pirarucu Grelhado com Tucupi',
     thumbnail_url: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&h=300&q=80',
-    publicado_em: new Date().toISOString(),
   },
 ]
 
@@ -547,185 +532,80 @@ const mockPlanos = [
   },
 ]
 
-export function createMockSupabaseClient() {
-  const queryResult = (data: any) => ({
-    data,
-    error: null,
-    count: data ? (Array.isArray(data) ? data.length : 1) : 0,
-    select: () => queryResult(data),
-    single: () => ({ data: Array.isArray(data) ? data[0] : data, error: null }),
-    maybeSingle: () => ({ data: Array.isArray(data) ? data[0] || null : data, error: null }),
-    eq: (col: string, val: any) => {
-      let filtered = data
-      if (Array.isArray(data)) {
-        if (col === 'slug') {
-          filtered = data.filter((x) => x.slug === val)
-        } else if (col === 'id') {
-          filtered = data.filter((x) => x.id === val)
-        } else if (col === 'influencer_id') {
-          filtered = data.filter((x) => x.influencer_id === val)
-        } else if (col === 'restaurante_id') {
-          filtered = data.filter((x) => x.restaurante_id === val)
-        } else if (col === 'status') {
-          filtered = data.filter((x) => x.status === val)
+export async function POST() {
+  try {
+    const supabase = createAdminServer()
+
+    // 1. Check if mock mode is active (returns the mock client which won't perform actual inserts, but doesn't crash)
+    const isMock = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (isMock) {
+      return NextResponse.json({
+        success: true,
+        message: 'Modo simulado (offline) ativo. Os 15 vídeos de demonstração já estão disponíveis localmente no banco em memória!',
+        details: {
+          influencers: mockInfluencers.length,
+          restaurantes: mockRestaurantes.length,
+          videos: mockVideos.length,
+          planos: mockPlanos.length
         }
-      }
-      return queryResult(filtered)
-    },
-    neq: (col: string, val: any) => {
-      let filtered = data
-      if (Array.isArray(data)) {
-        if (col === 'restaurante_id') {
-          filtered = data.filter((x) => x.restaurante_id !== val)
-        }
-      }
-      return queryResult(filtered)
-    },
-    order: () => queryResult(data),
-    limit: (l: number) => {
-      const limited = Array.isArray(data) ? data.slice(0, l) : data
-      return queryResult(limited)
-    },
-    insert: (insertData: any) => {
-      return queryResult(insertData)
-    },
-    update: (updateData: any) => {
-      return queryResult(updateData)
-    },
-  })
+      })
+    }
 
-  return {
-    from: (table: string) => {
-      if (table === 'influencers') {
-        return queryResult(mockInfluencers)
+    // 2. Perform real database upserts
+    console.log('🔄 Iniciando importação em massa para Supabase...')
+
+    // A. Upsert Influencers
+    const { error: infError } = await supabase
+      .from('influencers')
+      .upsert(mockInfluencers, { onConflict: 'id' })
+
+    if (infError) {
+      throw new Error(`Erro ao importar influencers: ${infError.message}`)
+    }
+
+    // B. Upsert Restaurantes
+    const { error: restError } = await supabase
+      .from('restaurantes')
+      .upsert(mockRestaurantes, { onConflict: 'id' })
+
+    if (restError) {
+      throw new Error(`Erro ao importar restaurantes: ${restError.message}`)
+    }
+
+    // C. Upsert Planos de Parceria
+    const { error: planError } = await supabase
+      .from('planos')
+      .upsert(mockPlanos, { onConflict: 'id' })
+
+    if (planError) {
+      throw new Error(`Erro ao importar planos: ${planError.message}`)
+    }
+
+    // D. Upsert Vídeos
+    const { error: vidError } = await supabase
+      .from('videos')
+      .upsert(mockVideos, { onConflict: 'id' })
+
+    if (vidError) {
+      throw new Error(`Erro ao importar vídeos: ${vidError.message}`)
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Todos os 15 restaurantes, influencers e vídeos foram importados com sucesso para o banco de dados do Supabase!',
+      details: {
+        influencers: mockInfluencers.length,
+        restaurantes: mockRestaurantes.length,
+        videos: mockVideos.length,
+        planos: mockPlanos.length
       }
-      if (table === 'restaurantes') {
-        return queryResult(mockRestaurantes)
-      }
-      if (table === 'videos') {
-        // Mock join structures if loaded dynamically
-        const enrichedVideos = mockVideos.map((v) => {
-          const restObj = mockRestaurantes.find((r) => r.id === v.restaurante_id)
-          const infObj = mockInfluencers.find((i) => i.id === v.influencer_id)
-          return {
-            ...v,
-            restaurantes: restObj,
-            influencers: infObj,
-          }
-        })
-        return queryResult(enrichedVideos)
-      }
-      if (table === 'planos') {
-        const enrichedPlans = mockPlanos.map((p) => {
-          const restObj = mockRestaurantes.find((r) => r.id === p.restaurante_id)
-          const infObj = mockInfluencers.find((i) => i.id === p.influencer_id)
-          return {
-            ...p,
-            restaurantes: restObj,
-            influencers: infObj,
-          }
-        })
-        return queryResult(enrichedPlans)
-      }
-      return queryResult([])
-    },
-    rpc: (fn: string, args: any) => {
-      if (fn === 'buscar_restaurantes') {
-        const queryTerm = (args.p_q || '').toLowerCase().trim()
-        const cuisineFilter = args.p_tipo
-        const influencerFilter = args.p_influencer_id
-        const neighborhoodFilter = args.p_bairro
-        const priceFilter = args.p_preco
-
-        const results = mockRestaurantes
-          .filter((r) => {
-            // Apply text query matching
-            if (queryTerm) {
-              const video = mockVideos.find((v) => v.restaurante_id === r.id)
-              const nameMatch = r.nome.toLowerCase().includes(queryTerm)
-              const descMatch = r.descricao.toLowerCase().includes(queryTerm)
-              const neighborhoodMatch = r.bairro.toLowerCase().includes(queryTerm)
-              const cuisineMatch = r.tipo_cozinha.toLowerCase().includes(queryTerm)
-              const transcriptMatch = video?.transcricao?.toLowerCase().includes(queryTerm) || false
-              const dishMatch = video?.prato_destaque?.toLowerCase().includes(queryTerm) || false
-              const keywordMatch = video?.palavras_chave?.some((t) => t.toLowerCase().includes(queryTerm)) || false
-
-              if (
-                !nameMatch &&
-                !descMatch &&
-                !neighborhoodMatch &&
-                !cuisineMatch &&
-                !transcriptMatch &&
-                !dishMatch &&
-                !keywordMatch
-              ) {
-                return false
-              }
-            }
-
-            // Apply specific filters
-            if (cuisineFilter && r.tipo_cozinha !== cuisineFilter) return false
-            if (neighborhoodFilter && r.bairro !== neighborhoodFilter) return false
-            if (priceFilter && r.preco_medio !== priceFilter) return false
-
-            if (influencerFilter) {
-              const video = mockVideos.find((v) => v.restaurante_id === r.id)
-              if (!video || video.influencer_id !== influencerFilter) return false
-            }
-
-            return true
-          })
-          .map((r) => {
-            const video = mockVideos.find((v) => v.restaurante_id === r.id)
-            const influencer = mockInfluencers.find((i) => i.id === video?.influencer_id)
-            return {
-              id: r.id,
-              nome: r.nome,
-              slug: r.slug,
-              bairro: r.bairro,
-              tipo_cozinha: r.tipo_cozinha,
-              preco_medio: r.preco_medio,
-              foto_capa_url: r.foto_capa_url,
-              prato_destaque: video?.prato_destaque || null,
-              palavras_chave: video?.palavras_chave || [],
-              thumbnail_url: video?.thumbnail_url || null,
-              influencer_nome: influencer?.nome || null,
-              influencer_foto: influencer?.foto_url || null,
-              influencer_slug: influencer?.slug || null,
-            }
-          })
-
-        return { data: results, error: null }
-      }
-      return { data: [], error: null }
-    },
-    auth: {
-      getUser: async () => {
-        // Return dummy authenticated user in development
-        return {
-          data: {
-            user: {
-              id: 'admin-user-id',
-              email: 'admin@eathub.com.br',
-            },
-          },
-          error: null,
-        }
-      },
-      signOut: async () => ({ error: null }),
-      signInWithOtp: async () => ({ data: {}, error: null }),
-    },
-    storage: {
-      from: () => ({
-        upload: async () => ({ data: { path: 'mock-path' }, error: null }),
-        getPublicUrl: (filePath: string) => ({
-          data: {
-            publicUrl: filePath.startsWith('restaurantes')
-              ? 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&h=600&q=80'
-              : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&h=300&q=80',
-          },
-        }),
-      }),
-    },
+    })
+  } catch (err: any) {
+    console.error('❌ Erro na importação:', err)
+    return NextResponse.json(
+      { success: false, error: err.message || 'Erro interno na importação' },
+      { status: 500 }
+    )
   }
 }

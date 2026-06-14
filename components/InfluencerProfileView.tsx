@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { MapPin, Sparkles, Search, Compass, ExternalLink } from 'lucide-react'
+import { MapPin, Sparkles, Search, Compass } from 'lucide-react'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -126,7 +126,7 @@ export default function InfluencerProfileView({
         {filteredPartners.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredPartners.map(({ restaurant, video }) => {
-              const displayImage = video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+              const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
               const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
               const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
 

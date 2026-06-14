@@ -12,6 +12,7 @@ import {
   CreditCard,
   ExternalLink,
   LogOut,
+  Download,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -23,8 +24,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   const handleLogout = async () => {
-    const supabase = createClient()
-    await supabase.auth.signOut()
+    const isMock = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    if (isMock) {
+      document.cookie = 'sb-mock-session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;'
+    } else {
+      const supabase = createClient()
+      await supabase.auth.signOut()
+    }
     router.push('/admin/login')
   }
 
@@ -34,19 +40,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { label: 'Novo Restaurante', href: '/admin/restaurantes/novo', icon: Utensils },
     { label: 'Novo Vídeo', href: '/admin/videos/novo', icon: Video },
     { label: 'Novo Plano', href: '/admin/planos/novo', icon: CreditCard },
+    { label: 'Importar Vídeos', href: '/admin/videos/importar', icon: Download },
   ]
 
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-800 font-sans">
+    <div className="flex min-h-screen bg-[#0A0A0A] text-zinc-200 font-sans admin-container">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0">
+      <aside className="w-64 bg-black border-r border-zinc-900 flex flex-col justify-between shrink-0">
         <div>
-          <div className="h-16 border-b border-slate-200 flex items-center px-6">
+          <div className="h-16 border-b border-zinc-900 flex items-center px-6">
             <Link
               href="/admin"
-              className="text-xl font-bold font-serif text-slate-900 tracking-wide"
+              className="text-xl font-bold font-serif text-white tracking-wide"
             >
-              eat.hub <span className="text-xs text-amber-500 font-sans uppercase">Painel</span>
+              GuiaSP <span className="text-xs text-brand-gold font-sans uppercase">Painel</span>
             </Link>
           </div>
           <nav className="p-4 space-y-1">
@@ -57,13 +64,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-slate-100 text-slate-950 font-semibold'
-                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-950'
+                      ? 'bg-zinc-900 text-brand-gold font-semibold'
+                      : 'text-zinc-400 hover:bg-zinc-950/40 hover:text-white'
                   }`}
                 >
-                  <Icon className="w-5 h-5 mr-3 text-slate-400" />
+                  <Icon className="w-5 h-5 mr-3 text-zinc-500" />
                   {item.label}
                 </Link>
               )
@@ -71,26 +78,26 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </nav>
         </div>
 
-        <div className="p-4 border-t border-slate-200 space-y-1">
+        <div className="p-4 border-t border-zinc-900 space-y-1">
           <Link
             href="/"
-            className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-950 transition-colors"
+            className="flex items-center px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-450 hover:bg-zinc-950/40 hover:text-white transition-colors"
           >
-            <ExternalLink className="w-5 h-5 mr-3 text-slate-400" />
+            <ExternalLink className="w-5 h-5 mr-3 text-zinc-500" />
             Ver Site Público
           </Link>
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors text-left font-sans"
+            className="flex items-center w-full px-4 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:bg-red-950/20 hover:text-red-300 transition-colors text-left font-sans"
           >
-            <LogOut className="w-5 h-5 mr-3 text-red-400" />
+            <LogOut className="w-5 h-5 mr-3 text-red-500/80" />
             Sair
           </button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
+      <main className="flex-1 p-8 overflow-y-auto bg-[#0C0C0C]">
         <div className="max-w-5xl mx-auto">{children}</div>
       </main>
     </div>

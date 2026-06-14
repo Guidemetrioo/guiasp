@@ -5,6 +5,8 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #0A0A0A;
+  color: #F4F4F5;
 }
 
 /* Premium micro-animations and custom effects */
@@ -22,5 +24,97 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Admin Dark Theme Overrides */
+.admin-container {
+  /* Cards and Form Containers */
+  .bg-white {
+    background-color: rgba(24, 24, 27, 0.4) !important; /* zinc-900/40 */
+    border-color: rgb(24, 24, 27) !important; /* zinc-900 */
+    border-radius: 1rem !important; /* rounded-2xl */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Titles and headings */
+  .text-slate-900 {
+    color: #ffffff !important;
+  }
+  
+  /* Text and labels */
+  .text-slate-700 {
+    color: #e4e4e7 !important; /* zinc-200 */
+  }
+  .text-slate-600 {
+    color: #a1a1aa !important; /* zinc-400 */
+  }
+  .text-slate-500 {
+    color: #a1a1aa !important; /* zinc-400 */
+  }
+
+  /* Form Inputs and Controls */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="url"],
+  input[type="file"],
+  select,
+  textarea {
+    background-color: #09090b !important; /* zinc-950 */
+    border-color: #18181b !important; /* zinc-900 */
+    color: #ffffff !important;
+    border-radius: 0.75rem !important; /* rounded-xl */
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: #52525b !important; /* zinc-600 */
+  }
+  
+  /* Read-only inputs */
+  .bg-slate-50 {
+    background-color: #09090b !important; /* zinc-950 */
+    border-color: #18181b !important; /* zinc-900 */
+  }
+
+  /* Form field decorators */
+  .bg-slate-50.text-slate-500 {
+    background-color: #18181b !important; /* zinc-900 */
+    color: #a1a1aa !important; /* zinc-400 */
+    border-color: #27272a !important; /* zinc-800 */
+  }
+
+  /* Buttons */
+  button[type="submit"],
+  .bg-slate-900 {
+    background-color: #F59E0B !important; /* brand-gold */
+    color: #000000 !important;
+    border-radius: 0.75rem !important; /* rounded-xl */
+    font-weight: 600 !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.1), 0 2px 4px -1px rgba(245, 158, 11, 0.06) !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  button[type="submit"]:hover,
+  .bg-slate-900:hover {
+    background-color: #D97706 !important; /* brand-goldHover */
+    box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.2), 0 4px 6px -2px rgba(245, 158, 11, 0.1) !important;
+  }
+  
+  /* File Upload labels */
+  .file\:bg-slate-50 {
+    background-color: #18181b !important;
+    color: #e4e4e7 !important;
+  }
+  .file\:bg-slate-50:hover {
+    background-color: #27272a !important;
+  }
+  
+  /* Borders and dividers */
+  .border-slate-200,
+  .border-slate-300 {
+    border-color: #27272a !important;
   }
 }

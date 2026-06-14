@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "eat.hub — Busca de Restaurantes Curada por Influencers",
+  title: "GuiaSP — Busca de Restaurantes Curada por Influencers",
   description: "Encontre os melhores restaurantes indicados pelos seus influencers de gastronomia favoritos. Pesquise por pratos, bairros, ou veja a curadoria completa.",
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased text-slate-200">
+      <body className="font-sans antialiased bg-[#0A0A0A] text-zinc-100">
         {children}
       </body>
     </html>

@@ -49,9 +49,9 @@ export default async function AdminDashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900 font-serif">Dashboard</h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Visão geral do crescimento e conteúdos cadastrados no eat.hub.
+        <h1 className="text-3xl font-bold text-white font-serif tracking-wide">Dashboard</h1>
+        <p className="mt-1 text-sm text-zinc-400">
+          Visão geral do crescimento e conteúdos cadastrados no GuiaSP.
         </p>
       </div>
 
@@ -61,20 +61,20 @@ export default async function AdminDashboard() {
           return (
             <div
               key={item.name}
-              className="bg-white overflow-hidden shadow rounded-lg border border-slate-200"
+              className="bg-zinc-900/40 overflow-hidden shadow-2xl rounded-2xl border border-zinc-900/80 backdrop-blur-md"
             >
               <div className="p-5 flex items-center">
                 <div className="flex-shrink-0">
-                  <span className={`inline-flex items-center justify-center p-3 rounded-md shadow-sm ${item.color}`}>
-                    <Icon className="h-6 h-6 text-white" aria-hidden="true" />
+                  <span className={`inline-flex items-center justify-center p-3 rounded-xl shadow-lg ${item.color}`}>
+                    <Icon className="h-6 w-6 text-white" aria-hidden="true" />
                   </span>
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
-                    <dt className="text-sm font-medium text-slate-500 truncate">
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-450 truncate">
                       {item.name}
                     </dt>
-                    <dd className="text-3xl font-semibold text-slate-900">
+                    <dd className="text-3xl font-extrabold text-white mt-1">
                       {item.value}
                     </dd>
                   </dl>
@@ -85,14 +85,14 @@ export default async function AdminDashboard() {
         })}
       </div>
 
-      <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-4">
-        <h2 className="text-lg font-semibold text-slate-900 font-serif">
+      <div className="bg-zinc-900/30 p-8 rounded-2xl border border-zinc-900 shadow-xl space-y-4">
+        <h2 className="text-xl font-bold text-white font-serif tracking-wide">
           Bem-vindo ao Painel de Controle!
         </h2>
-        <p className="text-slate-600 text-sm leading-relaxed max-w-3xl">
+        <p className="text-zinc-400 text-sm leading-relaxed max-w-3xl">
           Use a barra lateral para cadastrar novos influencers embaixadores, adicionar
           restaurantes parceiros, carregar vídeos de indicações e vincular planos de assinatura.
-          Dica: Ao carregar um vídeo na aba "Novo Vídeo", o sistema usará inteligência artificial
+          Dica: Ao carregar um vídeo na aba &apos;Novo Vídeo&apos;, o sistema usará inteligência artificial
           para transcrever a indicação e extrair automaticamente tags e pratos principais.
         </p>
       </div>

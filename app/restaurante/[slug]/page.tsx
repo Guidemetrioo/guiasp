@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
-import { MapPin, Utensils, Compass, Sparkles, Quote, ChevronRight } from 'lucide-react'
+import { MapPin, Compass, Sparkles, Quote } from 'lucide-react'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -19,6 +19,40 @@ const InstagramIcon = ({ className }: { className?: string }) => (
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 )
+
+const isRealPhoto = (url: string | null | undefined) => {
+  if (!url) return false;
+  if (url.includes('unsplash.com')) return false;
+  if (url.includes('placeholder-avatar.png')) return false;
+  return true;
+};
+
+const getInitials = (name: string) => {
+  if (!name) return "";
+  const parts = name.split(" ").filter(p => p);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
+  if (url && isRealPhoto(url)) {
+    return (
+      <img
+        src={url}
+        alt={name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+  const initials = getInitials(name);
+  return (
+    <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
+      {initials}
+    </div>
+  );
+};
 
 export const revalidate = 60 // Cache for 60 seconds
 
@@ -108,7 +142,7 @@ export default async function RestaurantePage({ params }: PageProps) {
       <header className="backdrop-blur-md bg-black/60 border-b border-zinc-900 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
-            eat<span className="text-brand-gold">.</span>hub
+            Guia<span className="text-brand-gold">SP</span>
           </Link>
           <div className="flex items-center space-x-4">
             <Link
@@ -159,12 +193,8 @@ export default async function RestaurantePage({ params }: PageProps) {
           <section className="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-8 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-900 pb-5">
               <Link href={`/influencer/${influencer.slug}`} className="flex items-center space-x-3 group">
-                <div className="w-12 h-12 rounded-full overflow-hidden border border-zinc-800 group-hover:border-brand-gold transition-colors">
-                  <img
-                    src={influencer.foto_url || '/placeholder-avatar.png'}
-                    alt={influencer.nome}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-zinc-800 group-hover:border-brand-gold transition-colors flex items-center justify-center">
+                  {renderAvatar(influencer.foto_url, influencer.nome, "text-sm")}
                 </div>
                 <div>
                   <h3 className="text-zinc-400 text-xs font-medium">Recomendação curada por</h3>
@@ -200,11 +230,24 @@ export default async function RestaurantePage({ params }: PageProps) {
 
             {/* Quote of transcript */}
             {video?.transcricao && (
-              <div className="relative pl-6 py-1 border-l-2 border-brand-gold space-y-2">
+              <div className="relative pl-6 py-1 border-l-2 border-brand-gold space-y-4">
                 <Quote className="absolute -left-1 -top-3 w-8 h-8 text-brand-gold/10 pointer-events-none rotate-180" />
                 <p className="text-zinc-300 italic text-base leading-relaxed">
-                  "{video.transcricao}"
+                  &ldquo;{video.transcricao}&rdquo;
                 </p>
+                {video.url_original && (
+                  <div className="pt-2">
+                    <a
+                      href={video.url_original}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-900 to-pink-900 border border-pink-700/30 hover:from-purple-800 hover:to-pink-800 rounded-full text-xs font-semibold text-white transition-all shadow-md"
+                    >
+                      <InstagramIcon className="w-4 h-4 text-white" />
+                      <span>Ver Vídeo Original da Indicação</span>
+                    </a>
+                  </div>
+                )}
               </div>
             )}
 

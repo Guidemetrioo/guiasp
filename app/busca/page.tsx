@@ -3,9 +3,43 @@ import Link from 'next/link'
 import { createServer } from '@/lib/supabase-server'
 import SearchFilters from '@/components/SearchFilters'
 import SearchBar from '@/components/SearchBar'
-import { Utensils, MapPin, Sparkles, AlertCircle } from 'lucide-react'
+import { MapPin, Sparkles, AlertCircle } from 'lucide-react'
 
 export const revalidate = 0 // Search is dynamic, do not cache
+
+const isRealPhoto = (url: string | null | undefined) => {
+  if (!url) return false;
+  if (url.includes('unsplash.com')) return false;
+  if (url.includes('placeholder-avatar.png')) return false;
+  return true;
+};
+
+const getInitials = (name: string) => {
+  if (!name) return "";
+  const parts = name.split(" ").filter(p => p);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
+  if (url && isRealPhoto(url)) {
+    return (
+      <img
+        src={url}
+        alt={name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+  const initials = getInitials(name);
+  return (
+    <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
+      {initials}
+    </div>
+  );
+};
 
 interface SearchPageProps {
   searchParams: {
@@ -68,7 +102,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <header className="backdrop-blur-md bg-black/60 border-b border-zinc-900 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
-            eat<span className="text-brand-gold">.</span>hub
+            Guia<span className="text-brand-gold">SP</span>
           </Link>
           <Link
             href="/admin"
@@ -100,7 +134,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {results && results.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {results.map((item: any, idx: number) => {
-                  const displayImage = item.thumbnail_url || item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  const displayImage = item.foto_capa_url || item.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   return (
                     <div
                       key={`${item.id}-${idx}`}
@@ -163,11 +197,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           <div className="border-t border-zinc-900 pt-3 mt-2 flex items-center justify-between">
                             <Link href={`/influencer/${item.influencer_slug}`} className="flex items-center space-x-2.5 hover:opacity-85 transition-opacity">
                               <div className="w-7 h-7 rounded-full overflow-hidden border border-zinc-800">
-                                <img
-                                  src={item.influencer_foto || '/placeholder-avatar.png'}
-                                  alt={item.influencer_nome}
-                                  className="w-full h-full object-cover"
-                                />
+                                {renderAvatar(item.influencer_foto, item.influencer_nome, "text-[9px]")}
                               </div>
                               <span className="text-xs text-zinc-400 font-medium">
                                 Indicado por <span className="text-zinc-200 font-semibold">{item.influencer_nome}</span>
@@ -185,7 +215,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <AlertCircle className="w-12 h-12 text-zinc-650 mx-auto" />
                 <h3 className="font-serif font-bold text-lg text-zinc-200">Nenhum restaurante encontrado</h3>
                 <p className="text-sm text-zinc-500">
-                  Não encontramos nada para "{q || 'seus filtros'}". Tente buscar por termos mais genéricos como "hambúrguer" ou "japones".
+                  Não encontramos nada para &apos;{q || 'seus filtros'}&apos;. Tente buscar por termos mais genéricos como &apos;hambúrguer&apos; ou &apos;japones&apos;.
                 </p>
                 <Link
                   href="/busca"

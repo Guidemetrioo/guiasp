@@ -1,11 +1,44 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { createServer } from '@/lib/supabase-server'
 import SearchBar from '@/components/SearchBar'
-import { Film, Compass, MapPin, ChevronRight } from 'lucide-react'
+import { Film, Compass, MapPin } from 'lucide-react'
 
 export const revalidate = 60 // Cache for 60 seconds
+
+const isRealPhoto = (url: string | null | undefined) => {
+  if (!url) return false;
+  if (url.includes('unsplash.com')) return false;
+  if (url.includes('placeholder-avatar.png')) return false;
+  return true;
+};
+
+const getInitials = (name: string) => {
+  if (!name) return "";
+  const parts = name.split(" ").filter(p => p);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
+  if (url && isRealPhoto(url)) {
+    return (
+      <img
+        src={url}
+        alt={name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+  const initials = getInitials(name);
+  return (
+    <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
+      {initials}
+    </div>
+  );
+};
 
 export default async function Home() {
   const supabase = createServer()
@@ -33,7 +66,7 @@ export default async function Home() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
-            eat<span className="text-brand-gold">.</span>hub
+            Guia<span className="text-brand-gold">SP</span>
           </Link>
           <div className="flex items-center space-x-6">
             <Link
@@ -52,29 +85,40 @@ export default async function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-20 px-4 text-center max-w-5xl mx-auto space-y-8">
-        <div className="absolute inset-0 bg-radial-gradient from-brand-gold/10 to-transparent pointer-events-none blur-3xl rounded-full w-96 h-96 mx-auto -top-10"></div>
-        
-        <div className="space-y-4 relative">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-zinc-900 border border-zinc-800 text-brand-gold">
-            ✨ O guia dos seus criadores favoritos
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold font-serif tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Achou no vídeo. <br className="sm:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-amber-300">
-              Agora acha aqui.
-            </span>
-          </h1>
-          <p className="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto font-sans leading-relaxed">
-            Busque qualquer restaurante que você viu com os seus influencers favoritos,
-            pesquisando diretamente pelo que foi falado no vídeo.
-          </p>
+      {/* Hero Section with food background photo */}
+      <section className="relative min-h-[520px] flex flex-col items-center justify-center pt-28 pb-24 px-4 text-center border-b border-zinc-900 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/hero-bg.png"
+            alt="Fundo Gastronômico Premium"
+            className="w-full h-full object-cover object-center opacity-25 filter brightness-75 contrast-125"
+          />
+          {/* Subtle gradient overlay to blend with dark page background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#0A0A0A]/80 to-[#0A0A0A]"></div>
         </div>
 
-        {/* Search Component */}
-        <div className="relative pt-4">
-          <SearchBar />
+        <div className="relative z-10 max-w-5xl mx-auto space-y-8">
+          <div className="space-y-4">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-zinc-950/80 backdrop-blur-sm border border-zinc-800 text-brand-gold">
+              ✨ O guia dos seus criadores favoritos
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-extrabold font-serif tracking-tight text-white max-w-4xl mx-auto leading-tight drop-shadow-md">
+              Achou no vídeo. <br className="sm:hidden" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-amber-300">
+                Agora acha aqui.
+              </span>
+            </h1>
+            <p className="text-zinc-300 text-base sm:text-lg max-w-2xl mx-auto font-sans leading-relaxed drop-shadow">
+              Busque qualquer restaurante que você viu com os seus influencers favoritos,
+              pesquisando diretamente pelo que foi falado no vídeo.
+            </p>
+          </div>
+
+          {/* Search Component */}
+          <div className="relative pt-4 max-w-2xl mx-auto w-full">
+            <SearchBar />
+          </div>
         </div>
       </section>
 
@@ -95,13 +139,8 @@ export default async function Home() {
                 href={`/influencer/${inf.slug}`}
                 className="group flex-shrink-0 w-36 text-center space-y-3 transition-transform hover:-translate-y-1"
               >
-                <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-zinc-800 group-hover:border-brand-gold transition-colors shadow-lg">
-                  <img
-                    src={inf.foto_url || '/placeholder-avatar.png'}
-                    alt={inf.nome}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-2 border-zinc-800 group-hover:border-brand-gold transition-all shadow-lg flex items-center justify-center">
+                  {renderAvatar(inf.foto_url, inf.nome, "text-3xl")}
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-zinc-200 group-hover:text-white truncate">
@@ -142,7 +181,7 @@ export default async function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-gradient-to-b from-zinc-900 to-black border border-zinc-900 rounded-3xl p-8 md:p-12 space-y-10 text-center">
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-serif">Como funciona o eat.hub?</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-serif">Como funciona o GuiaSP?</h2>
             <p className="text-sm text-zinc-400 max-w-xl mx-auto">
               Transformamos vídeos perdidos em dados pesquisáveis em tempo real.
             </p>

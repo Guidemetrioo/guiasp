@@ -21,7 +21,6 @@ export default function SearchFilters({ influencers, bairros, cozinhas }: Search
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
   // Current values from URL
-  const currentQ = searchParams.get('q') || ''
   const currentTipo = searchParams.get('tipo') || ''
   const currentInfluencer = searchParams.get('influencer') || ''
   const currentBairro = searchParams.get('bairro') || ''

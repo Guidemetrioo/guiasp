@@ -19,6 +19,40 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
+const isRealPhoto = (url: string | null | undefined) => {
+  if (!url) return false;
+  if (url.includes('unsplash.com')) return false;
+  if (url.includes('placeholder-avatar.png')) return false;
+  return true;
+};
+
+const getInitials = (name: string) => {
+  if (!name) return "";
+  const parts = name.split(" ").filter(p => p);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+};
+
+const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
+  if (url && isRealPhoto(url)) {
+    return (
+      <img
+        src={url}
+        alt={name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+  const initials = getInitials(name);
+  return (
+    <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
+      {initials}
+    </div>
+  );
+};
+
 export const revalidate = 60 // Cache for 60 seconds
 
 interface PageProps {
@@ -129,7 +163,7 @@ export default async function InfluencerPage({ params }: PageProps) {
       <header className="backdrop-blur-md bg-black/60 border-b border-zinc-900 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
-            eat<span className="text-brand-gold">.</span>hub
+            Guia<span className="text-brand-gold">SP</span>
           </Link>
           <div className="flex items-center space-x-4">
             <Link
@@ -137,6 +171,12 @@ export default async function InfluencerPage({ params }: PageProps) {
               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
               Explorar
+            </Link>
+            <Link
+              href="/admin"
+              className="text-xs font-semibold px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-gold border border-zinc-800 rounded-full transition-all"
+            >
+              Painel Admin
             </Link>
           </div>
         </div>
@@ -146,28 +186,20 @@ export default async function InfluencerPage({ params }: PageProps) {
       <section className="relative h-[320px] w-full overflow-hidden flex items-end">
         {/* Banner image with dark overlay */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={influencer.foto_url || 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80'}
-            alt={influencer.nome}
-            className="w-full h-full object-cover blur-sm brightness-40 opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent"></div>
+          <div className="w-full h-full bg-gradient-to-tr from-zinc-950 via-zinc-900 to-[#1e1910] opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
         </div>
 
         {/* Header Profile Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8 z-10 flex flex-col md:flex-row items-center md:items-end md:space-x-6 space-y-4 md:space-y-0 text-center md:text-left">
-          <div className="w-28 h-28 rounded-full border-4 border-zinc-900 overflow-hidden shadow-2xl shrink-0">
-            <img
-              src={influencer.foto_url || '/placeholder-avatar.png'}
-              alt={influencer.nome}
-              className="w-full h-full object-cover"
-            />
+          <div className="w-28 h-28 rounded-full border-4 border-zinc-900 overflow-hidden shadow-2xl shrink-0 flex items-center justify-center">
+            {renderAvatar(influencer.foto_url, influencer.nome, "text-3xl")}
           </div>
           <div className="space-y-2 flex-1">
             <div className="flex flex-col md:flex-row items-center md:space-x-3 space-y-2 md:space-y-0">
               <h1 className="text-3xl sm:text-4xl font-extrabold font-serif">{influencer.nome}</h1>
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-gold text-black">
-                Parceiro Oficial eat.hub
+                Parceiro Oficial GuiaSP
               </span>
             </div>
 
