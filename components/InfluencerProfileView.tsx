@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { MapPin, Sparkles, Search, Compass, Clock } from 'lucide-react'
 import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
@@ -101,6 +101,96 @@ function getRestaurantCategory(tipoCozinha?: string | null, nomeRestaurante?: st
   return { name: 'Outras Dicas & Variados', emoji: '📍', key: 'outros', order: 7 };
 }
 
+const NEIGHBORHOOD_COORDS: Record<string, { lat: number; lon: number }> = {
+  'interlagos': { lat: -23.7013, lon: -46.6974 },
+  'mooca': { lat: -23.5562, lon: -46.5982 },
+  'morumbi': { lat: -23.6009, lon: -46.7201 },
+  'tatuapé': { lat: -23.5407, lon: -46.5756 },
+  'tatuape': { lat: -23.5407, lon: -46.5756 },
+  'paraíso': { lat: -23.5701, lon: -46.6433 },
+  'paraiso': { lat: -23.5701, lon: -46.6433 },
+  'vila mariana': { lat: -23.5891, lon: -46.6343 },
+  'itaim bibi': { lat: -23.5855, lon: -46.6789 },
+  'pinheiros': { lat: -23.5621, lon: -46.7020 },
+  'consolação': { lat: -23.5518, lon: -46.6526 },
+  'consolacao': { lat: -23.5518, lon: -46.6526 },
+  'jardins': { lat: -23.5625, lon: -46.6625 },
+  'cerqueira césar': { lat: -23.5614, lon: -46.6620 },
+  'cerqueira cesar': { lat: -23.5614, lon: -46.6620 },
+  'perdizes': { lat: -23.5365, lon: -46.6732 },
+  'vila madalena': { lat: -23.5463, lon: -46.6909 },
+  'santana': { lat: -23.5015, lon: -46.6263 },
+  'centro': { lat: -23.5489, lon: -46.6388 },
+  'bela vista': { lat: -23.5583, lon: -46.6483 },
+  'liberdade': { lat: -23.5617, lon: -46.6339 },
+  'aclimação': { lat: -23.5728, lon: -46.6251 },
+  'aclimacao': { lat: -23.5728, lon: -46.6251 },
+  'ipiranga': { lat: -23.5888, lon: -46.6083 },
+  'chácara klabin': { lat: -23.5939, lon: -46.6288 },
+  'chacara klabin': { lat: -23.5939, lon: -46.6288 },
+  'saúde': { lat: -23.6149, lon: -46.6329 },
+  'saude': { lat: -23.6149, lon: -46.6329 },
+  'moema': { lat: -23.6022, lon: -46.6621 },
+  'brooklin': { lat: -23.6111, lon: -46.6836 },
+  'campo belo': { lat: -23.6231, lon: -46.6728 },
+  'santo amaro': { lat: -23.6494, lon: -46.7081 },
+  'lapa': { lat: -23.5222, lon: -46.7029 },
+  'barra funda': { lat: -23.5262, lon: -46.6669 },
+  'higienópolis': { lat: -23.5461, lon: -46.6575 },
+  'higienopolis': { lat: -23.5461, lon: -46.6575 },
+  'santa cecília': { lat: -23.5398, lon: -46.6492 },
+  'santa cecilia': { lat: -23.5398, lon: -46.6492 },
+  'bom retiro': { lat: -23.5266, lon: -46.6366 },
+  'brás': { lat: -23.5401, lon: -46.6139 },
+  'bras': { lat: -23.5401, lon: -46.6139 },
+  'pari': { lat: -23.5298, lon: -46.6163 },
+  'belém': { lat: -23.5388, lon: -46.5931 },
+  'belem': { lat: -23.5388, lon: -46.5931 },
+  'penha': { lat: -23.5244, lon: -46.5492 },
+  'carrão': { lat: -23.5486, lon: -46.5433 },
+  'carrao': { lat: -23.5486, lon: -46.5433 },
+  'analia franco': { lat: -23.5567, lon: -46.5611 },
+  'anália franco': { lat: -23.5567, lon: -46.5611 },
+  'vila prudente': { lat: -23.5781, lon: -46.5769 },
+  'sacomã': { lat: -23.6067, lon: -46.5947 },
+  'sacoma': { lat: -23.6067, lon: -46.5947 },
+  'jabaquara': { lat: -23.6477, lon: -46.6429 },
+  'indianópolis': { lat: -23.6083, lon: -46.6583 },
+  'indianopolis': { lat: -23.6083, lon: -46.6583 },
+  'alto de pinheiros': { lat: -23.5486, lon: -46.7122 },
+  'butantã': { lat: -23.5714, lon: -46.7086 },
+  'butanta': { lat: -23.5714, lon: -46.7086 },
+  'vila leopoldina': { lat: -23.5303, lon: -46.7328 },
+  'jaguaré': { lat: -23.5422, lon: -46.7533 },
+  'jaguare': { lat: -23.5422, lon: -46.7533 },
+  'pompeia': { lat: -23.5292, lon: -46.6833 },
+  'pompéia': { lat: -23.5292, lon: -46.6833 },
+  'sumaré': { lat: -23.5436, lon: -46.6781 },
+  'sumare': { lat: -23.5436, lon: -46.6781 },
+  'vila sônia': { lat: -23.6019, lon: -46.7419 },
+  'vila sonia': { lat: -23.6019, lon: -46.7419 },
+  'campo limpo': { lat: -23.6367, lon: -46.7597 },
+  'capão redondo': { lat: -23.6601, lon: -46.7797 },
+  'capao redondo': { lat: -23.6601, lon: -46.7797 },
+}
+
+function deg2rad(deg: number): number {
+  return deg * (Math.PI / 180);
+}
+
+function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371; // Earth radius in km
+  const dLat = deg2rad(lat2 - lat1);
+  const dLon = deg2rad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c; // Distance in km
+  return Number(d.toFixed(1));
+}
+
 function supportsReservation(restaurant: Restaurant): boolean {
   const desc = (restaurant.descricao || '').toLowerCase();
   return (
@@ -137,8 +227,76 @@ export default function InfluencerProfileView({
   const [filterReserva, setFilterReserva] = useState(false)
   const [filterEntrega, setFilterEntrega] = useState(false)
 
+  const [userCoords, setUserCoords] = useState<{ lat: number; lon: number } | null>(null)
+  const [geoStatus, setGeoStatus] = useState<'idle' | 'prompting' | 'active' | 'denied' | 'error'>('idle')
+
+  const handleToggleGeo = () => {
+    if (geoStatus === 'active') {
+      setUserCoords(null)
+      setGeoStatus('idle')
+      return
+    }
+
+    if (!navigator.geolocation) {
+      setGeoStatus('error')
+      alert('Seu navegador não suporta geolocalização.')
+      return
+    }
+
+    setGeoStatus('prompting')
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setUserCoords({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        })
+        setGeoStatus('active')
+      },
+      (error) => {
+        console.error("Erro ao obter geolocalização:", error)
+        if (error.code === error.PERMISSION_DENIED) {
+          setGeoStatus('denied')
+          alert("Permissão de localização negada pelo usuário. Por favor, ative a permissão nas configurações do navegador.")
+        } else {
+          setGeoStatus('error')
+          alert("Não foi possível obter a sua localização atual.")
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      }
+    )
+  }
+
+  // Dynamically map partners to calculate real distance if GPS is active
+  const mappedPartners = useMemo(() => {
+    if (geoStatus !== 'active' || !userCoords) {
+      return partners;
+    }
+
+    return partners.map(p => {
+      const bairroLower = (p.restaurant.bairro || '').toLowerCase().trim();
+      const coords = NEIGHBORHOOD_COORDS[bairroLower];
+
+      if (coords) {
+        const dist = getDistanceFromLatLonInKm(userCoords.lat, userCoords.lon, coords.lat, coords.lon);
+        return {
+          ...p,
+          restaurant: {
+            ...p.restaurant,
+            distancia_km: dist,
+          }
+        };
+      }
+
+      return p;
+    });
+  }, [partners, geoStatus, userCoords]);
+
   // Filter partners based on search query (name, neighborhood, type of cuisine, or key tags)
-  const filteredPartners = partners.filter((p) => {
+  const filteredPartners = mappedPartners.filter((p) => {
     // 1. Search filter
     const q = searchQuery.toLowerCase().trim()
     if (q) {
@@ -213,7 +371,7 @@ export default function InfluencerProfileView({
 
   // Find available categories dynamically based on the current search text (so we don't show empty categories)
   const availableCategoriesMap: { [key: string]: CategoryDefinition } = {}
-  partners.forEach((p) => {
+  mappedPartners.forEach((p) => {
     // Show categories based on base partners
     const cat = getRestaurantCategory(
       p.restaurant.tipo_cozinha,
@@ -259,11 +417,36 @@ export default function InfluencerProfileView({
         </div>
       </div>
 
-      {/* Quick Filters (Aberto-fechado, Distancia, Reserva, Entrega) */}
+      {/* Quick Filters (GPS, Aberto-fechado, Distancia, Reserva, Entrega) */}
       <div 
         className="w-full overflow-x-auto py-1 flex items-center space-x-2.5 scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
+        <button
+          onClick={handleToggleGeo}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1.5 shrink-0 select-none ${
+            geoStatus === 'active'
+              ? 'bg-emerald-500/10 text-emerald-405 border-emerald-500/30 shadow-sm shadow-emerald-500/5'
+              : geoStatus === 'prompting'
+              ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
+              : geoStatus === 'denied' || geoStatus === 'error'
+              ? 'bg-rose-500/10 text-rose-450 border-rose-500/30'
+              : 'bg-zinc-900/40 text-zinc-450 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>
+            {geoStatus === 'active'
+              ? '📍 GPS Ativo'
+              : geoStatus === 'prompting'
+              ? '⏳ Obtendo GPS...'
+              : geoStatus === 'denied'
+              ? '🚫 GPS Negado'
+              : geoStatus === 'error'
+              ? '⚠️ Erro no GPS'
+              : '📍 Usar meu GPS'}
+          </span>
+        </button>
+
         <button
           onClick={() => setFilterOpen(!filterOpen)}
           className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
