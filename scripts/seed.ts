@@ -48,6 +48,9 @@ async function runSeed() {
 {
       nome: 'Navegando SP',
       slug: 'navegando-sp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.7,
       bio: 'Encontramos os melhores pontos gastronômicos e passeios de São Paulo. Dicas diárias e sinceras.',
       instagram_handle: 'navegandosp',
       foto_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&h=300&q=80',
@@ -55,6 +58,9 @@ async function runSeed() {
 {
       nome: 'Perambulando em SP',
       slug: 'perambulando-em-sp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.7,
       bio: 'Explorando as melhores dicas de gastronomia, passeios, viagens e achados imperdíveis em São Paulo. O seu guia para perambular pela capital!',
       instagram_handle: 'perambulandoemsp',
       foto_url: '/images/perambulando-em-sp-profile.jpg',
@@ -62,6 +68,9 @@ async function runSeed() {
 {
       nome: 'Esquenta SP',
       slug: 'esquenta-sp',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.7,
       bio: 'Dicas diárias das melhores experiências gastronômicas, rodízios, promoções e achados imperdíveis por toda São Paulo!',
       instagram_handle: 'esquentasp',
       foto_url: '/images/esquenta-sp-profile.jpg',
@@ -85,6 +94,9 @@ async function runSeed() {
 {
       nome: 'Pizzaria Vero Paradiso',
       slug: 'pizzaria-vero-paradiso',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.0,
       descricao: 'Tradicional pizzaria no Paraíso famosa pelo rodízio com mais de 50 sabores e um excelente custo-benefício, com opções de pacotes de bebidas à vontade.',
       bairro: 'Paraíso',
       cidade: 'São Paulo',
@@ -97,6 +109,9 @@ async function runSeed() {
 {
       nome: 'Casa na Praia Bar',
       slug: 'casa-na-praia-bar',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.4,
       descricao: 'Bar e restaurante aconchegante na Vila Mariana com ambiente descontraído, conhecido pelo tradicional festival de caldos servidos com diversos acompanhamentos e ótimas opções de porções.',
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -109,6 +124,9 @@ async function runSeed() {
 {
       nome: 'Hao Sushi Itaim',
       slug: 'hao-sushi-itaim',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.7,
       descricao: 'Espaço moderno na Vila Nova Conceição/Itaim focado em buffet japonês completo com mais de 100 opções frias e quentes, com bebidas (sucos, refrigerantes, sodas italianas) e sobremesas inclusas no valor fixo.',
       bairro: 'Vila Nova Conceição',
       cidade: 'São Paulo',
@@ -121,6 +139,9 @@ async function runSeed() {
 {
       nome: 'Arábia Night Paulista',
       slug: 'arabia-night-paulista',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.8,
       descricao: 'Loja boutique e perfumaria no Market Paulista especializada nos perfumes árabes importados mais desejados e virais da internet, oferecendo fragrâncias exclusivas e preços imbatíveis.',
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -133,6 +154,9 @@ async function runSeed() {
 {
       nome: 'Busger',
       slug: 'busger',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.8,
       descricao: 'Hamburgueria descolada operando de dentro de um ônibus americano antigo, famosa pelo xis prensadão gigante e lanches super recheados.',
       bairro: 'Santo Amaro',
       cidade: 'São Paulo',
@@ -145,6 +169,9 @@ async function runSeed() {
 {
       nome: 'Villa e Prosa',
       slug: 'villa-e-prosa',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: 'Restaurante acolhedor na Vila Mariana especializado em comida caseira brasileira, famoso pela gigantesca cubana de peixe que serve a família inteira.',
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -157,6 +184,9 @@ async function runSeed() {
 {
       nome: 'O Mineiro Prime',
       slug: 'o-mineiro-prime',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.4,
       descricao: 'Restaurante de comida tipicamente mineira no centro de SP, célebre pelo joelho de porco crocante e pururucado servido com acompanhamentos tradicionais fartos.',
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -169,6 +199,9 @@ async function runSeed() {
 {
       nome: 'Costelão Atibaia',
       slug: 'costelao-atibaia',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.8,
       descricao: 'Churrascaria de estrada rústica imperdível conhecida pelo rodízio de costela fogo de chão e picanha fatiada servidos à vontade a um preço fixo imbatível.',
       bairro: 'Atibaia',
       cidade: 'Atibaia',
@@ -181,6 +214,9 @@ async function runSeed() {
 {
       nome: 'Legado Parrilla',
       slug: 'legado-parrilla',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.7,
       descricao: 'Restaurante elegante de grelhados e massas no Anália Franco, famoso pelo espaguete flambado no conhaque e finalizado dentro de uma enorme peça de queijo provolone.',
       bairro: 'Anália Franco',
       cidade: 'São Paulo',
@@ -193,6 +229,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 1",
       slug: 'recomendacao-navegando-1',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.9,
       descricao: "Nunca comemos tanto chocolate na nossa vida! 😂 📍Lindt Home Of Chocolate, Suíça",
       bairro: 'Suíça',
       cidade: 'Suíça',
@@ -205,6 +244,9 @@ async function runSeed() {
     {
       nome: "Seja Total Galpão",
       slug: 'seja-total-galpao',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.8,
       descricao: "DESCOBRIMOS UMA FONTE DE SUPLEMENTOS COM OS MELHORES PREÇOS DO MERCADO!! 😍😱  Fomos navegr na @sejatotalgalpao uma loja d...",
       bairro: 'Parque Mandaqui',
       cidade: 'São Paulo',
@@ -217,6 +259,9 @@ async function runSeed() {
     {
       nome: "Pecatto Tatuapé",
       slug: 'pecatto-tatuape',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.3,
       descricao: "O RESTAURANTE MAIS ABSURDO DE SP!!! 😱😍  Fomos navegar no @pecattosp, que além de fazer o melhor parmegiana de SP, também...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -229,6 +274,9 @@ async function runSeed() {
     {
       nome: "Hippos Burger",
       slug: 'hippos-burger',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 9.2,
       descricao: "O famoso molho cannes no 🇧🇷!   Basta usar o cupom: Desconto70 no app da 99 Food! 💛  O famoso molho canes da @hipposburge...",
       bairro: 'Vila Carrão',
       cidade: 'São Paulo',
@@ -241,6 +289,9 @@ async function runSeed() {
     {
       nome: "Hellmannsbr",
       slug: 'hellmannsbr',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.2,
       descricao: "Esse é um dos hambúrgueres mais absurdos de SP! 🍔  Uma parceria entre @hellmannsbr + @stuntburger, deu origem à essa del...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -253,6 +304,9 @@ async function runSeed() {
     {
       nome: "Móveis Dubai",
       slug: 'moveis-dubai',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.9,
       descricao: "Descobrimos uma loja de móveis à preço de fábrica em SP! 🪑🛋️  Fomos navegar na @moveisdubaioficial, e esse saldão da cop...",
       bairro: 'Mogi das Cruzes',
       cidade: 'São Paulo',
@@ -265,6 +319,9 @@ async function runSeed() {
     {
       nome: "Santomar Restaurante",
       slug: 'santomar-restaurante',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.7,
       descricao: "Gostarão do sacão de frutos do mar? 🦞   Fomos conhecer o único restaurante de SP com o famoso Seafood Boil Bag (a sacola...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -277,6 +334,9 @@ async function runSeed() {
     {
       nome: "Paparoto Cucina",
       slug: 'paparoto-cucina',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.9,
       descricao: "Quanto custa comer no restaurante da campeã do Masterchef e indicado 3x ao Guia Michelin?! ⭐️🍝  Fomos navegar no @paparo...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -289,6 +349,9 @@ async function runSeed() {
     {
       nome: "Bananasoutletmegaloja",
       slug: 'bananasoutletmegaloja',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.3,
       descricao: "OUTLET DE PRODUTOS MUITO BARATOS EM SP!! 😱😍  Fomos navegar na maior outlet de utilidades de São Paulo! ❤️  São produtos ...",
       bairro: 'Vila Leopoldina',
       cidade: '199 (Marginal Tietê)',
@@ -301,6 +364,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 10",
       slug: 'recomendacao-navegando-10',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.7,
       descricao: "Basta usar o cupom: FOME84 no app da 99 Food! 💛  CURTIU? Então já marca o @ que precisa saber disso!! 🔥🔥  *Válido soment...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -313,6 +379,9 @@ async function runSeed() {
     {
       nome: "Só Marcas Outlet",
       slug: 'so-marcas-outlet-guarulhos',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.0,
       descricao: "OUTLET DE MARCAS FAMOSAS EM SP! 😱😍  Fomos navegar no @somarcasoutletgru, que está rolando diversas promoções!❤️  🚨Mas...",
       bairro: 'Jardim Santa Francisca',
       cidade: 'Guarulhos',
@@ -325,6 +394,9 @@ async function runSeed() {
     {
       nome: "Legado Parrilla",
       slug: 'legado-parrilla',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.7,
       descricao: "Uma das sobremesas mais absurdas que já vimos!! 🍰😍  Fomos navegar no @legadoparrilla, responsável por essa sobremesa abs...",
       bairro: 'Anália Franco',
       cidade: 'São Paulo',
@@ -337,6 +409,9 @@ async function runSeed() {
     {
       nome: "Móveis Junco",
       slug: 'moveis-junco',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 8.5,
       descricao: "O MAIOR FEIRÃO DE MÓVEIS EXTERNOS DO BRASIL!! 😍🇧🇷  Fomos navegar no @moveisjunco, um mega feirão de móveis externos que...",
       bairro: 'Alphaville',
       cidade: 'São Paulo',
@@ -349,6 +424,9 @@ async function runSeed() {
     {
       nome: "S Design Paraty Hotel",
       slug: 's-design-paraty-hotel',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.6,
       descricao: "HOTEL EM PARATY COM CAFÉ DA MANHÃ E PISCINA PRIVATIVA! 🏊🏻‍♂️🏝️  Fomos navegar no @sdesignparatyhotel, o mais novo Hotel ...",
       bairro: 'Centro Histórico',
       cidade: 'Paraty',
@@ -361,6 +439,9 @@ async function runSeed() {
     {
       nome: "Nestor Pizzaria",
       slug: 'nestor-pizzaria',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.6,
       descricao: "RODÍZIO DE PIZZA COM +60 SABORES A PARTIR DE 💲59,90!!😱🍕  Fomos navegar na @nestorpizzariagastro, que conta com um rodízi...",
       bairro: 'Vila Prudente',
       cidade: 'São Paulo',
@@ -373,6 +454,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 16",
       slug: 'recomendacao-navegando-16',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.3,
       descricao: "ESTÁ CHEGANDO A MELHOR FESTA JUNINA DE SÃO PAULO! 🌽😍  Vai ter de tudo😱👇🏻 • Comidas típicas de verdade • Churrasco ・ Milh...",
       bairro: 'Pinheiros',
       cidade: 'saída da estação Faria Lima',
@@ -385,6 +469,9 @@ async function runSeed() {
     {
       nome: "Cromaburguers",
       slug: 'cromaburguers',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 5.3,
       descricao: "Fui com o Enzo no Rodízio do Croma burguer  @cromaburguers   Tudo a vontade por R$ 64,90 se quiser ainda adiciona chopp ...",
       bairro: 'Vila Osasco',
       cidade: 'Osasco',
@@ -397,6 +484,9 @@ async function runSeed() {
     {
       nome: "Pokes Momo",
       slug: 'pokes-momo',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.3,
       descricao: "Bora amassar um poke? 😋😍  E esse eu pedi no @pokesmomo, que inaugurou recentemente em SP, com diversos ingredientes espe...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -409,6 +499,9 @@ async function runSeed() {
     {
       nome: "Baixo Pinheiros Bar",
       slug: 'baixo-pinheiros-bar',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.6,
       descricao: "BALADA COM GRINGOS DO MUNDO TODO EM SP! 🪩  Fomos navegar no @baixopinheirosbar, um barzinho que funciona dentro de um ho...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -421,6 +514,9 @@ async function runSeed() {
     {
       nome: "Feitiço Brasileiro",
       slug: 'feitico-brasileiro',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.1,
       descricao: "RODÍZIO DE MASSAS À VONTADE! 😍🍝  Fomos navegar no @feiticobrasileiro, um restaurante super famoso, que faz um rodízio de...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -433,6 +529,9 @@ async function runSeed() {
     {
       nome: "Hao Sushi Itaim",
       slug: 'hao-sushi-itaim',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.7,
       descricao: "RODÍZIO JAPONÊS COM MELHOR CUSTO BENEFÍCIO DE SP! 😋  Fomos navegar no @hao.sushi.itaim, junto com o @perambulandoemsp, e...",
       bairro: 'Vila Nova Conceição',
       cidade: 'São Paulo',
@@ -445,6 +544,9 @@ async function runSeed() {
     {
       nome: "Tatuapeconceito",
       slug: 'tatuapeconceito',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.8,
       descricao: "A loja mais famosa da internet @tatuapeconceito!!🔥🚀  📍Rua Tuiuti, 2636 - Tatuapé, SP",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -457,6 +559,9 @@ async function runSeed() {
     {
       nome: "Shawarmariaasmarssp",
       slug: 'shawarmariaasmarssp',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.7,
       descricao: "Você já provou shawarma? 🇱🇧❤️  Ô autentico shawarma libanês você só vai encontrar na @shawarmariaasmarssp localizada no ...",
       bairro: 'Mooca',
       cidade: '52',
@@ -469,6 +574,9 @@ async function runSeed() {
     {
       nome: "Point do Gordão",
       slug: 'point-do-gordao',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.8,
       descricao: "BIFE À PARMEGIANA GIGANTE EM SP! 🧀😍  Fomos navegar no @pointdogordaosp, que faz um dos melhores e mais famosos parmegian...",
       bairro: 'Mooca',
       cidade: 'São Paulo',
@@ -481,6 +589,9 @@ async function runSeed() {
     {
       nome: "Auraa Gastrobar",
       slug: 'auraa-gastrobar',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.9,
       descricao: "MENU PRA 2 POR APENAS 💲189,00!! 😍😱  Fomos navegar no @auraagastrobar, que inaugurou recentemente aqui em SP e já está fa...",
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -493,6 +604,9 @@ async function runSeed() {
     {
       nome: "Kureiji Candy",
       slug: 'kureiji-candy',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.8,
       descricao: "TUDO O QUE COMEMOS NA DOCERIA MAIS FAMOSA DA LIBERDADE! 😍😱  Fomos navegar na @kureijicandy, a doceria mais hypada e vira...",
       bairro: 'Liberdade',
       cidade: 'São Paulo',
@@ -505,6 +619,9 @@ async function runSeed() {
     {
       nome: "O Mineiro",
       slug: 'o-mineiro',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.0,
       descricao: "A picanha mais famosa do Brasil @omineirosp 🔥🥩",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -517,6 +634,9 @@ async function runSeed() {
     {
       nome: "Pantcho's House Burger",
       slug: 'pantchos-house-burger',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "Essa hamburgueria foi eleita uma das melhores do Brasil!! 🇧🇷🍔  Fomos navegar na @pantchoshouse, que já foi eleita uma da...",
       bairro: 'Interlagos',
       cidade: 'São Paulo',
@@ -529,6 +649,9 @@ async function runSeed() {
     {
       nome: "Cadeiras Inc",
       slug: 'cadeiras-inc',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.5,
       descricao: "CADEIRAS À PREÇO DE CUSTO!! 😍😱  Fomos navegar na @cadeirasinc, uma loja especializada em cadeiras! E o melhor de tudo: à...",
       bairro: 'São Bernardo do Campo',
       cidade: 'São Bernardo do Campo',
@@ -541,6 +664,9 @@ async function runSeed() {
     {
       nome: "Festivalsaidera",
       slug: 'festivalsaidera',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.1,
       descricao: "FESTIVAL DE COMIDAS GIGANTES AQUI EM SP! 😱😍  O @festivalsaidera irá contar com comida coreana, japonesa, árabe, churrasc...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -553,6 +679,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 32",
       slug: 'recomendacao-navegando-32',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.1,
       descricao: "NOVO FONDUE DE CHOLATE DO OUTBACK POR MENOS DE 💲73,00!! 😱😍  Basta usar o cupom: FOME84 no app da 99 Food! 💛  Somente ass...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -565,6 +694,9 @@ async function runSeed() {
     {
       nome: "Bella Paulista",
       slug: 'bella-paulista',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.8,
       descricao: "ESSA É A PADARIA MAIS FAMOSA DE SP!! 😍🥐  Fomos navegar na @padariabellapaulista, a padaria mais famosa de SP e que funci...",
       bairro: 'Cerqueira César',
       cidade: 'São Paulo',
@@ -577,6 +709,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 34",
       slug: 'recomendacao-navegando-34',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.3,
       descricao: "GLORIA GROOVE, MC THA E ORQUESTRA GRATUITO EM SP!!😱😍  O Aquarius chegará em São Paulo com um show incrível ao ar livre q...",
       bairro: 'Mooca',
       cidade: 'Itaquera',
@@ -589,6 +724,9 @@ async function runSeed() {
     {
       nome: "Botequim Paulista",
       slug: 'botequim-paulista',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.8,
       descricao: "CUPIM CASQUEIRADO NA TELHA!! 😍😱  Fomos navegar no @botequimpaulista, que faz um dos melhores cupins casqueirados de SP!!...",
       bairro: 'Moema',
       cidade: 'São Paulo',
@@ -601,6 +739,9 @@ async function runSeed() {
     {
       nome: "Kenichi Sushi Mooca",
       slug: 'kenichi-sushi-mooca',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.3,
       descricao: "Rodízio com wagyu e diversas outras iguarias à vontade!! 😱😍  Fomos navegar no novo rodízio premium do @kenichisushimooca...",
       bairro: 'Mooca',
       cidade: 'São Paulo',
@@ -613,6 +754,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 38",
       slug: 'recomendacao-navegando-38',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.7,
       descricao: "SÃO PAULO VAI VIRAR COREIA! 🇰🇷✨  O Largo da Batata vai se transformar em um pedacinho da Coreia por 3 dias cheios de cul...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -625,6 +769,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 40",
       slug: 'recomendacao-navegando-40',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.0,
       descricao: "PACOTE DE FIGURINHAS DA COPA POR APENAS R$1,50??!! 😱😍  Basta usar o cupom FOME11 no app da 99food 💛  Através do Mc Donal...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -637,6 +784,9 @@ async function runSeed() {
     {
       nome: "Estação Praça Gastrobar",
       slug: 'estacao-praca-gastrobar',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.1,
       descricao: "Esse gastrobar acabou de inaugurar no ABC e já está fazendo o maior sucesso! 😍😱  Fomos navegar no @estacaopraca, um gast...",
       bairro: 'Centro',
       cidade: 'São Bernardo do Campo',
@@ -649,6 +799,9 @@ async function runSeed() {
     {
       nome: "Casa Cunha Padaria",
       slug: 'casa-cunha-padaria',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.3,
       descricao: "CAFÉ DA MANHÃ ALL INCLUSIVE POR APENAS💲59,90! 🥐☕  Fomos navegar na @padariacasacunha, uma das padarias mais tradiciona...",
       bairro: 'Perdizes',
       cidade: 'São Paulo',
@@ -661,6 +814,9 @@ async function runSeed() {
     {
       nome: "Barbearia Hermanoss",
       slug: 'barbearia-hermanoss',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.4,
       descricao: "CORTE O CABELO A VONTADE!!! 📏  Fomos na @barbearia_hermanoss, e por lá eles mandam muito bem!! ✂️  Além de possuírem 3 p...",
       bairro: 'Mooca',
       cidade: 'São Paulo',
@@ -673,6 +829,9 @@ async function runSeed() {
     {
       nome: "Buteco de Minas",
       slug: 'buteco-de-minas',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.6,
       descricao: "PICANHA ARGENTINA PRA 3 PESSOAS 🥩🔥  Fomos navegar no @butecodeminassp, que tem uma picanha argentina deliciosa!! 😍  👉 El...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -685,6 +844,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 47",
       slug: 'recomendacao-navegando-47',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.7,
       descricao: "MILKSHAKE DA MILKY MOO APENAS R$8,43??!! 😱😍  Basta usar o cupom promo034 no app da 99food 💛  (Válido somente para primei...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -697,6 +859,9 @@ async function runSeed() {
     {
       nome: "Real 1937 Lanchonete",
       slug: 'real-1937-lanchonete',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.5,
       descricao: "MENU P/ 2 POR APENAS R$179,90! 😱😍  Fomos navegar na @real.1937, que existe desde 1937 e que possui um ótimo custo benefí...",
       bairro: 'Sumaré',
       cidade: 'São Paulo',
@@ -709,6 +874,9 @@ async function runSeed() {
     {
       nome: "Quintal Bar",
       slug: 'quintal-bar',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.5,
       descricao: "FESTIVAL DE CALDOS COM VINHO E FONDUE À VONTADE!! 😍😱  Fomos navegar no @quintalbarsp, que conta com um festival incrível...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -721,6 +889,9 @@ async function runSeed() {
     {
       nome: "Sayakinikujardimanalia",
       slug: 'sayakinikujardimanalia',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 9.7,
       descricao: "CHURRASCO JAPONÊS À VONTADE EM SP!! 🥩😍  Fomos navegar no @sayakinikujardimanalia, um rodízio que conta com diversos sush...",
       bairro: 'Anália Franco',
       cidade: 'São Paulo',
@@ -733,6 +904,9 @@ async function runSeed() {
     {
       nome: "Orbaf Biergarten",
       slug: 'orbaf-biergarten',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.6,
       descricao: "FOUNDE COM FOGUEIRA NA SERRA DA CANTAREIRA! 😍😱  Fomos navegar no @orbafbiergarden, o lugar perfeito para uma noite com f...",
       bairro: 'Mairiporã',
       cidade: 'Mairiporã',
@@ -745,6 +919,9 @@ async function runSeed() {
     {
       nome: "O Mineiro Prime",
       slug: 'o-mineiro-prime',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.4,
       descricao: "A autentica comida mineira em São Paulo 😍  @omineiroprime  R. Antonio Carlos, 282 - Consolação",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -757,6 +934,9 @@ async function runSeed() {
     {
       nome: "Recanto Costela de Chão",
       slug: 'recanto-costela-de-chao',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.3,
       descricao: "DISNEY DO CHURRASCO - TUDO ISSO À VONTADE POR APENAS 💲75,99!! 😍😋  Fomos navegar no @recaantoo, um restaurante que conta...",
       bairro: 'Caieiras',
       cidade: 'Caieiras',
@@ -769,6 +949,9 @@ async function runSeed() {
     {
       nome: "Dead Burger Lapa",
       slug: 'dead-burger-lapa',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 9.6,
       descricao: "A PRIMEIRA E ÚNICA HAMBURGUERIA TEMÁTICA DE TERROR!! 😱🧟‍♀️🍔  Fomos navegar na @deadburgerlapa, a nova unidade da hambur...",
       bairro: 'Lapa',
       cidade: 'São Paulo',
@@ -781,6 +964,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 55",
       slug: 'recomendacao-navegando-55',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.6,
       descricao: "Combo cheddar mc melt por apenas R$14,00!! 🍔😍  E eu pedi tudo através do delivery da 99food e consegui 70% de desconto! ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -793,6 +979,9 @@ async function runSeed() {
     {
       nome: "Toca do Peixe",
       slug: 'toca-do-peixe',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 0.4,
       descricao: "Tivemos que vir até Brasília para provarmos esse peixe…😱🐟  Fomos navegar no @tocadopeixedf, simplesmente um dos restaura...",
       bairro: 'Núcleo Bandeirante',
       cidade: 'Brasília',
@@ -805,6 +994,9 @@ async function runSeed() {
     {
       nome: "Tinapizzeriaoficial",
       slug: 'tinapizzeriaoficial',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.5,
       descricao: "Essa pizza viralizou nas redes sociais! 😍😱  Fomos navegar na @tinapizzeriaoficial, uma pizzaria deliciosa e super românt...",
       bairro: 'Itaquera',
       cidade: 'São Paulo',
@@ -817,6 +1009,9 @@ async function runSeed() {
     {
       nome: "99burgersp",
       slug: '99burgersp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.0,
       descricao: "A hamburgueria mais diferenciada de SP! 😍😱  Fomos navegar na @99burgersp, que faz os lanches mais absurdos e diferenciad...",
       bairro: 'Anália Franco',
       cidade: 'São Paulo',
@@ -829,6 +1024,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 60",
       slug: 'recomendacao-navegando-60',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.2,
       descricao: "Você se lambuzaria nesse chocolate quente? 🤔",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -841,6 +1039,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 61",
       slug: 'recomendacao-navegando-61',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.3,
       descricao: "FESTIVAL DAS CORES INDIANO COM ENTRADA GRATUITA EM SÃO PAULO! 😍🇮🇳  O Festival Holi vai acontecer nos dias 25 e 26 de abr...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -853,6 +1054,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 63",
       slug: 'recomendacao-navegando-63',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.5,
       descricao: "Bolo inteiro da Sodiê por apenas 17,00!! 🍰😍  E eu pedi tudo através do delivery da 99food e consegui 70% de desconto! 😋 ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -865,6 +1069,9 @@ async function runSeed() {
     {
       nome: "Trem de Guararema Carro Restaurante",
       slug: 'carro-restaurante-trem',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.4,
       descricao: "PASSEIO DE TREM ALL INCLUSIVE EM SP! 😱🚂  Fomos navegar no @carrorestaurante, o passeio de Trem de Guararema que possui t...",
       bairro: 'Guararema',
       cidade: 'Guararema',
@@ -877,6 +1084,9 @@ async function runSeed() {
     {
       nome: "New Shoes Lavanderia",
       slug: 'new-shoes-lavanderia',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.5,
       descricao: "A MAIOR E MAIS FUTURISTA LAVANDERIA DE TÊNIS EM SP!! ❤️👟  Fomos navegar na @newshoes.vilaromana, uma lavanderia especial...",
       bairro: 'Vila Romana',
       cidade: 'São Paulo',
@@ -889,6 +1099,9 @@ async function runSeed() {
     {
       nome: "Pasteldontis",
       slug: 'pasteldontis',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.7,
       descricao: "A PASTELARIA MAIS ABSURDA E MAIS BARATA DE SP! 😱😍  Fomos navegar na @pasteldontis, que fica localizado na Rua Augusta e ...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -901,6 +1114,9 @@ async function runSeed() {
     {
       nome: "Pinkynaopink",
       slug: 'pinkynaopink',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.8,
       descricao: "A PRIMEIRA DISCO BURGER DO BRASIL! 🍔😍  Fomos navegar na @pinkynaopink, que inaugurou recentemente in SP e que tem um jei...",
       bairro: 'Mooca',
       cidade: 'São Paulo',
@@ -913,6 +1129,9 @@ async function runSeed() {
     {
       nome: "Botecosenador",
       slug: 'botecosenador',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.8,
       descricao: "A feijoada mais barata de SP! 😍😱  Fomos navegar no @botecosenador, que é responsável simplesmente pela feijoada mais bar...",
       bairro: 'Mooca',
       cidade: 'Vila Mariana',
@@ -925,6 +1144,9 @@ async function runSeed() {
     {
       nome: "My Jor Doceria",
       slug: 'my-jor-doceria',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.2,
       descricao: "BOLO DE MORANGO COM CHOCOLATE TRUFADO 🍓😋  Eu pedi esse bolo na @myjordoceria no app da 99FOOD e consegui 70% de desconto...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -937,6 +1159,9 @@ async function runSeed() {
     {
       nome: "Kazzabarerestaurante",
       slug: 'kazzabarerestaurante',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.1,
       descricao: "RODÍZIO DE ESPETINHOS ALL INCLUSIVE! 😍😋  Fomos navegar no @kazzabarerestaurante, que conta com um rodízio de espetinhos ...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -949,6 +1174,9 @@ async function runSeed() {
     {
       nome: "LK Beauty Shop",
       slug: 'lk-beauty-shop',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.1,
       descricao: "A FONTE DOS COSMÉTICOS MAIS BARATA DE SP!! 🧴😍  Fomos navegar na @lkbeauty.shop, que tem os melhores preços de cosméticos...",
       bairro: 'Brás',
       cidade: 'São Paulo',
@@ -961,6 +1189,9 @@ async function runSeed() {
     {
       nome: "Carola Restobar",
       slug: 'carola-restobar',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 8.4,
       descricao: "RODÍZIO DE PETISCOS EM SP! 😍😱  Fomos navegar no @carola.restobar, que é responsável por um rodízio de petiscos completís...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -973,6 +1204,9 @@ async function runSeed() {
     {
       nome: "Fukuyarestaurante",
       slug: 'fukuyarestaurante',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.8,
       descricao: "Omakase do Chef que já liderou uma cozinha Michelin 2024 e 2025. ⭐️  Fomos navegar @fukuyarestaurante, e provamos o Omak...",
       bairro: 'Complexo JK',
       cidade: 'São Paulo',
@@ -985,6 +1219,9 @@ async function runSeed() {
     {
       nome: "Estacaogastronomicaradial",
       slug: 'estacaogastronomicaradial',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.7,
       descricao: "Tudo o que comemos no maior centro gastronômico de SP! 😱😍  Fomos navegar na @estacaogastronomicaradial, o maior centro g...",
       bairro: 'Patriarca',
       cidade: 'São Paulo',
@@ -997,6 +1234,9 @@ async function runSeed() {
     {
       nome: "Pelotasfood",
       slug: 'pelotasfood',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.2,
       descricao: "Esse hambúrguer foi eleito um dos melhores do Brasil!! 😱🇧🇷  Fomos navegar no @pelotasfood, uma hamburgueria que possui p...",
       bairro: 'Mandaqui',
       cidade: 'São Paulo',
@@ -1009,6 +1249,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 79",
       slug: 'recomendacao-navegando-79',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 7.2,
       descricao: "O MAIOR FESTIVAL ÁRABE DO BRASIL COM ENTRADA GRATUITA!! 🇦🇪  Esquece aqueles eventos com poucas opções... aqui é o maior,...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1021,6 +1264,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 80",
       slug: 'recomendacao-navegando-80',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.4,
       descricao: "Bora comer um pastel gigante comigo hoje?! 😱😍  E eu pedi tudo através do delivery da 99food na Pastelaria Dontis e conse...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1033,6 +1279,9 @@ async function runSeed() {
     {
       nome: "Kebabpointbr",
       slug: 'kebabpointbr',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.8,
       descricao: "O PRIMEIRO RESTAURANTE DE DÖNER KEBAB DE SP! 😍🌯  Fomos navegar no @kebabpointbr, o primeiro restaurante especializado em...",
       bairro: 'Itaim Bibi',
       cidade: 'São Paulo',
@@ -1045,6 +1294,9 @@ async function runSeed() {
     {
       nome: "Vaca Pollo Chancho",
       slug: 'vaca-pollo-chancho',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.1,
       descricao: "RODÍZIO MEXICANO ALL INCLUSIVE EM SP! 😍 🇲🇽  Fomos navegar no @vacapollochancho, que conta com um rodízio mexicano delic...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -1057,6 +1309,9 @@ async function runSeed() {
     {
       nome: "Jucabowling",
       slug: 'jucabowling',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.1,
       descricao: "O date perfeito existe! 😍💘  Fomos navegar no @jucabowling, tem boliche (consultar as unidades), trampolim, área gamer e ...",
       bairro: 'Santo Amaro',
       cidade: 'São Paulo',
@@ -1069,6 +1324,9 @@ async function runSeed() {
     {
       nome: "Restaurantetaquaru",
       slug: 'restaurantetaquaru',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.1,
       descricao: "Foi nesse restaurante que comemos o peixe mais fresco da vida!! 😅🐟  Fomos navegar no @restaurantetaquaru, que fica local...",
       bairro: 'Itanhaém',
       cidade: 'São Paulo',
@@ -1081,6 +1339,9 @@ async function runSeed() {
     {
       nome: "99brasil",
       slug: '99brasil',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 7.4,
       descricao: "USE O CUPOM: DESCONTO70 na 99Food e pague apenas R$7,00 em um lanche + refri 😱🍔💛  Sim, é isso mesmo… Big Mac + refri a p...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1093,6 +1354,9 @@ async function runSeed() {
     {
       nome: "Albakoasushi",
       slug: 'albakoasushi',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.2,
       descricao: "Novo rodízio japa em um rooftop! 🍣😱  Fomos navegar no @albakoasushi, que possui um rodízio japonês completo! 😋  Valores👇...",
       bairro: 'Tatuapé',
       cidade: '2°Pav Jardim Helena',
@@ -1105,6 +1369,9 @@ async function runSeed() {
     {
       nome: "Dra Mayrafernandes",
       slug: 'dra-mayrafernandes',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.3,
       descricao: "O final desse vídeo…😱😱  Que resultado IMPECÁVEL @dra.mayrafernandes 💘  Demos de presente para as nossas colaboradoras e ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1117,6 +1384,9 @@ async function runSeed() {
     {
       nome: "Marshmallow Ds",
       slug: 'marshmallow-ds',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.5,
       descricao: "BORA PROVAR O OVO DE PÁSCOA DE FATIA?! 😱😍  Pedimos esse ovo na @marshmallow_ds, e simplesmente AMAMOS, você pode ter 6 s...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1129,6 +1399,9 @@ async function runSeed() {
     {
       nome: "Padaria Carillo",
       slug: 'padaria-carillo',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.6,
       descricao: "5 lugares absurdos para você comer com menos de 💲50,00!!  1º - @padariacarillooficial  2º - @padaria.novaimperio  3º - @...",
       bairro: 'Água Rasa',
       cidade: 'São Paulo',
@@ -1141,6 +1414,9 @@ async function runSeed() {
     {
       nome: "Vieira Zushi",
       slug: 'vieira-zushi',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.6,
       descricao: "Como é uma experiência Omakase no balcão aqui em SP?! 🍣😍  Fomos navegar no @vieira_zushi, um restaurante que é responsáv...",
       bairro: 'Santana',
       cidade: 'São Paulo',
@@ -1153,6 +1429,9 @@ async function runSeed() {
     {
       nome: "Cocobambuoficial",
       slug: 'cocobambuoficial',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.9,
       descricao: "O coco bambu vai muito além dos camarões…😍  Muita gente não sabe, mas o Coco Bambu possui diversos pratos de carne que s...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1165,6 +1444,9 @@ async function runSeed() {
     {
       nome: "Meeteatsp",
       slug: 'meeteatsp',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.7,
       descricao: "ESSE É O ROOFTOP MAIS BONITO DO BR! 😍🥩  Fomos navegar no @meeteatsp, uma steak house super renomada e deliciosa! 😋  Pedi...",
       bairro: 'Vila Olímpia',
       cidade: 'São Paulo',
@@ -1177,6 +1459,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 98",
       slug: 'recomendacao-navegando-98',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.3,
       descricao: "Esses são os morangos mais famosos do world inteiro! Localizado no Borough Market, em Londres!   Sem dúvidas vale muito ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1189,6 +1474,9 @@ async function runSeed() {
     {
       nome: "Ahy Prime Sushi",
       slug: 'ahy-prime-sushi',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.6,
       descricao: "Quanto custa comer nesse Omakase?   Fomos navegar no @ahyprimesushi, que oferece uma experiência sensacional e proporci...",
       bairro: 'Jardins',
       cidade: 'São Paulo',
@@ -1201,6 +1489,9 @@ async function runSeed() {
     {
       nome: "Flor do Paraíso",
       slug: 'flor-do-paraiso',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.4,
       descricao: "A CHAPA DE PICANHA MAIS ABSURDA DE SP!  Fomos navegar na @flordoparaisooficial, um lugar que a gente ama muito! E que al...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -1213,6 +1504,9 @@ async function runSeed() {
     {
       nome: "Italianbearchocolate",
       slug: 'italianbearchocolate',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.9,
       descricao: "Essa é simplesmente uma das docerias mais absurdas de Londres! Vale muito o Hype @italianbearchocolate",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1225,6 +1519,9 @@ async function runSeed() {
     {
       nome: "Dbresciachurrascaria",
       slug: 'dbresciachurrascaria',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.6,
       descricao: "A MELHOR CHURRASCARIA BOA E BARATA DE SP!!   Fomos navegar na @dbresciachurrascaria, uma das melhores churrascarias de S...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -1237,6 +1534,9 @@ async function runSeed() {
     {
       nome: "Izmirmoveis",
       slug: 'izmirmoveis',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 5.2,
       descricao: "O OUTLET DE MÓVEIS MAIS BARATO QUE JÁ FOMOS!   Fomos navegar na @izmirmoveis, que vai inaugurar seu mega saldão à apenas...",
       bairro: 'Campinas',
       cidade: 'São Paulo',
@@ -1249,6 +1549,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 104",
       slug: 'recomendacao-navegando-104',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.2,
       descricao: "2 lanches do subway por apenas 13,50!!   E eu pedi tudo através do delivery da 99food e consegui 70% de desconto!   São ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1261,6 +1564,9 @@ async function runSeed() {
     {
       nome: "Thebestacai",
       slug: 'thebestacai',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.4,
       descricao: "O OVO DE PÁSCOA MAIS VIRALIZADO DA INTERNET VOLTOU   Fomos navegar na @thebestacai, que alem de fazer o melhor açaí de S...",
       bairro: 'Tatuapé',
       cidade: '1138',
@@ -1273,6 +1579,9 @@ async function runSeed() {
     {
       nome: "Anneclinicperdizes",
       slug: 'anneclinicperdizes',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.3,
       descricao: "MELHOR EXPERIÊNCIA DA VIDA!   Fomos navegar no @anneclinicperdizes, uma clínica de estética e Head Spa aqui em SP! É sem...",
       bairro: 'Perdizes',
       cidade: 'São Paulo',
@@ -1285,6 +1594,9 @@ async function runSeed() {
     {
       nome: "Segredosdasgerais Consolacao",
       slug: 'segredosdasgerais-consolacao',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 0.2,
       descricao: "RODÍZIO DE CERVEJA E PORÇÕES EM SP!   Fomos navegar no @segredosdasgerais_consolacao, que faz um rodízio de cervejas e p...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -1297,6 +1609,9 @@ async function runSeed() {
     {
       nome: "Nekofest Oficial",
       slug: 'nekofest-oficial',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.5,
       descricao: "FESTIVAL ASIÁTICO EM SP COM ENTRADA GRATUITA!!   Está chegando o @nekofest_oficial, um festival de cultura asiática com ...",
       bairro: 'Largo da batata',
       cidade: 'na saída da estação faria lima',
@@ -1309,6 +1624,9 @@ async function runSeed() {
     {
       nome: "Café Preto e Branco 2D",
       slug: 'cafe-preto-e-branco-2d',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.5,
       descricao: "O delicioso croissant do @cafepretoebranco2d",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1321,6 +1639,9 @@ async function runSeed() {
     {
       nome: "Restaurante Momozinho",
       slug: 'restaurante-momozinho',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 0.6,
       descricao: "BORA COMER UM TEMAKI GIGANTE COM A GENTE?!   E os responsáveis por esses temakis é o pessoal do @restaurantemomo!   CURT...",
       bairro: 'Jardins',
       cidade: 'São Paulo',
@@ -1333,6 +1654,9 @@ async function runSeed() {
     {
       nome: "Villa e Prosa",
       slug: 'villa-e-prosa',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "O famoso Parmegiana Monstrão de Filet Mignon!   E quem faz é o @villaeprosa, um restaurante recém inaugurado na Vila Mar...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -1345,6 +1669,9 @@ async function runSeed() {
     {
       nome: "Domirooftop",
       slug: 'domirooftop',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.0,
       descricao: "ROOFTOP COM ENTRADA GRATUITA E CAIPIRINHAS POR APENAS R$13,90!   Fomos navegar na @domirooftop , uma nova casa na Rua Au...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -1357,6 +1684,9 @@ async function runSeed() {
     {
       nome: "Miirooftop",
       slug: 'miirooftop',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.1,
       descricao: "Rooftop grego aqui em SP!   Fomos navegar no @miirooftop, um Rooftop grego que fica localizado aqui em SP e que conta co...",
       bairro: 'Jardim Anália Franco',
       cidade: 'São Paulo',
@@ -1369,6 +1699,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 115",
       slug: 'recomendacao-navegando-115',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.4,
       descricao: "A MELHOR PIZZA QUE EXISTE SERIA ESSA ?",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1381,6 +1714,9 @@ async function runSeed() {
     {
       nome: "Figo Br",
       slug: 'figo-br',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 9.8,
       descricao: "As clássicas e tradicionas foccacias italianas em SP!   A @figo.br fica aqui em SP e é extremamente conhecida por fazer ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1393,6 +1729,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 117",
       slug: 'recomendacao-navegando-117',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.6,
       descricao: "Bolo inteiro da Sodiê por apenas 17,00!!   E eu pedi tudo através do delivery da 99food e consegui R$40,00 de desconto! ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1405,6 +1744,9 @@ async function runSeed() {
     {
       nome: "Ouesushi",
       slug: 'ouesushi',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.4,
       descricao: "Fomos provar o 1º e autêntico bowl de unaguidon de SP!   Fomos navegar no @ouesushi, um restaurante japonês onde o Chef ...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -1417,6 +1759,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 124",
       slug: 'recomendacao-navegando-124',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.4,
       descricao: "RACLETTE DE CHOCOLATE 🍫",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1429,6 +1774,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 125",
       slug: 'recomendacao-navegando-125',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.5,
       descricao: "Bora comer um temaki gigante comigo enquanto em faço skin care?! 🧖🏻‍♀️😍  E eu pedi tudo através do delivery da 99food e ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1441,6 +1789,9 @@ async function runSeed() {
     {
       nome: "Paodequeijohaddocklobo",
       slug: 'paodequeijohaddocklobo',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 9.1,
       descricao: "A torta mais absurda de São Paulo desde 1968! ❤️😍  Fomos navegar no @paodequeijohaddocklobo que existe desde 1968 e faz ...",
       bairro: 'Jardins',
       cidade: 'São Paulo',
@@ -1453,6 +1804,9 @@ async function runSeed() {
     {
       nome: "Acaisurf",
       slug: 'acaisurf',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.2,
       descricao: "O MELHOR AÇAÍ DO BRASIL! 💜😍  Fomos navegar no @acaisurf, um lugar extremamente familiar e relaxante. Com diversos pratos...",
       bairro: 'Mooca',
       cidade: 'São Paulo',
@@ -1465,6 +1819,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 128",
       slug: 'recomendacao-navegando-128',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.8,
       descricao: "NEED FOR SPEED CHEGOU EM SP!🔥🔥  E vai acontecer no Kartódromo Aldeia da Serra. 😍  No dia 25 de abril de 2026 vai rolar o...",
       bairro: 'Barueri',
       cidade: 'São Paulo',
@@ -1477,6 +1834,9 @@ async function runSeed() {
     {
       nome: "Dueamicicantina",
       slug: 'dueamicicantina',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "MENU P/ 2 EM UMA CANTINA ITALIANA POR APENAS R$189,00! 😱😍  Fomos navegar no @dueamicicantina, uma cantina italiana absur...",
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -1489,6 +1849,9 @@ async function runSeed() {
     {
       nome: "Alecrimrestaurantes",
       slug: 'alecrimrestaurantes',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.1,
       descricao: "Esse buffet é simplesmente um dos melhores que já provamos! 😱😍  Fomos navegar no @alecrimrestaurantes, que possui um buf...",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1501,6 +1864,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 132",
       slug: 'recomendacao-navegando-132',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.3,
       descricao: "Bora provar a nova piscininha de cheddar do Mc?! 🧀😍  E eu pedi tudo através do delivery da 99food e consegui R$40,00 de ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1513,6 +1879,9 @@ async function runSeed() {
     {
       nome: "Sampagrill01",
       slug: 'sampagrill01',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.3,
       descricao: "Tudo que a gente come em um rodízio de petiscos all inclusive aqui em São Paulo! 😱😍  FUNCIONA DA SEGUINTE FORMA; Com mai...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1525,6 +1894,9 @@ async function runSeed() {
     {
       nome: "Mediterragastronomia",
       slug: 'mediterragastronomia',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.3,
       descricao: "Tivemos que vir até o litoral pra conhecer esse prato que está dando o que falar! 😍🌊  Fomos navegar no @mediterragastron...",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1537,6 +1909,9 @@ async function runSeed() {
     {
       nome: "Sloopburger",
       slug: 'sloopburger',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.2,
       descricao: "Essa hamburgueria foi um verdadeiro achado! 😱😍  Fomos navegar na @sloopburger, uma hamburgueria de altíssima qualidade e...",
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -1549,6 +1924,9 @@ async function runSeed() {
     {
       nome: "Jardim Ubatuba",
       slug: 'jardim-ubatuba',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.0,
       descricao: "Tivemos que vir até a praia para conhecermos o paraíso dos camarões!!  😍  Fomos navegar no @jardim.ubatuba, que fica loc...",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1561,6 +1939,9 @@ async function runSeed() {
     {
       nome: "Boinabrasaprime",
       slug: 'boinabrasaprime',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.3,
       descricao: "CASA DE CARNES COM MAIS DE 50 ANOS DE TRADIÇÃO!🥩😍  Fomos navegar no @boinabrasaprime, aquele clássico restaurante rai...",
       bairro: 'Vila Buarque',
       cidade: 'São Paulo',
@@ -1573,6 +1954,9 @@ async function runSeed() {
     {
       nome: "Tachaoubatuba",
       slug: 'tachaoubatuba',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.8,
       descricao: "Eu tive que vir até a praia para provar o famoso sorvete ao forno do @tachaoubatuba! 😍  E que experiência sensacional! V...",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1585,6 +1969,9 @@ async function runSeed() {
     {
       nome: "Salinasmaragogi",
       slug: 'salinasmaragogi',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.6,
       descricao: "Esse é o Resort All Inclusive mais premiado do Brasil! 🇧🇷🌊  Fomos navegar no @salinasmaragogi, que foi considerado o mel...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1597,6 +1984,9 @@ async function runSeed() {
     {
       nome: "Magoni Moveis",
       slug: 'magoni-moveis',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 8.0,
       descricao: "DESCOBRIMOS UM OUTLET DE  MÓVEIS COM PREÇOS DE FÁBRICA! 😱😍  Fomos navegar no @magoni.moveis, uma loja de outlet com preç...",
       bairro: 'Ibiúna',
       cidade: '1745',
@@ -1609,6 +1999,9 @@ async function runSeed() {
     {
       nome: "Soulquiro",
       slug: 'soulquiro',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.3,
       descricao: "Isso é quiropraxia! ✨  A @soulquiro é a melhor clínica de quiropraxia que já visitamos. Não é à toa que sempre vamos lá!...",
       bairro: 'Vila Olímpia',
       cidade: 'São Paulo',
@@ -1621,6 +2014,9 @@ async function runSeed() {
     {
       nome: "Corpfit Jardins",
       slug: 'corpfit-jardins',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 9.8,
       descricao: "SORVETERIA SAUDÁVEL EM SP! 😍😋  Fomos navegar na @corpfit.jardins, uma sorveteria e cafeteria saudável que prepara seus g...",
       bairro: 'Jardins',
       cidade: 'Tatuapé (unidade do vídeo)',
@@ -1633,6 +2029,9 @@ async function runSeed() {
     {
       nome: "Moringa Ubatuba",
       slug: 'moringa-ubatuba',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 8.1,
       descricao: "Tivemos que vir até a praia para provar o buffet mais famoso da região! 😱😍  Fomos navegar no @moringa.ubatuba, que possu...",
       bairro: 'Itaguá',
       cidade: 'Ubatuba',
@@ -1645,6 +2044,9 @@ async function runSeed() {
     {
       nome: "Dolce 011 Doceria",
       slug: 'dolce-011-doceria',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.9,
       descricao: "Bora provar um bolo matilda comigo?! 🍰😍  Esse bolo é da @dolce011sp e pedimos ele no app da 99 food! 😋  Basta usar o cup...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -1657,6 +2059,9 @@ async function runSeed() {
     {
       nome: "Familiapresto",
       slug: 'familiapresto',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.6,
       descricao: "O ORIGINAL BURGER NA MASSA DE PIZZA!! 🍕😍  Fomos navegar na @familiapresto, um restaurante super tradicional aqui em SP. ...",
       bairro: 'Aclimação',
       cidade: 'São Paulo',
@@ -1669,6 +2074,9 @@ async function runSeed() {
     {
       nome: "Senhorapaulistanamoema",
       slug: 'senhorapaulistanamoema',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.7,
       descricao: "Essa pizza de chocolate é absurda! 🍫  Fomos navegar na @senhorapaulistanamoema, que está com uma novidade sensacional al...",
       bairro: 'Moema',
       cidade: 'São Paulo',
@@ -1681,6 +2089,9 @@ async function runSeed() {
     {
       nome: "Kfcbrasil",
       slug: 'kfcbrasil',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.4,
       descricao: "A família de molhos no balde do @kfcbrasil aumentou com a chegada de um novo integrante muito especial: o Molho Coronel,...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1693,6 +2104,9 @@ async function runSeed() {
     {
       nome: "Embrasabareparrilla",
       slug: 'embrasabareparrilla',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.8,
       descricao: "FAZENDA DE CHURRASCO COM CORTES NOBRES EM SP! 😍🥩  Fomos navegar no @embrasabareparrilla que faz um dos melhores churrasc...",
       bairro: 'Aclimação',
       cidade: 'São Paulo',
@@ -1705,6 +2119,9 @@ async function runSeed() {
     {
       nome: "Djapa Moema Oficial",
       slug: 'djapa-moema-oficial',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.5,
       descricao: "Restaurante japonês mais premiado de São Paulo! ⭐️🏆  Fomos navegar no @djapa_moema_oficial, o rodízio japonês mais premi...",
       bairro: 'Moema',
       cidade: 'São Paulo',
@@ -1717,6 +2134,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 155",
       slug: 'recomendacao-navegando-155',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.8,
       descricao: "Você cairia de boca nesse monte de chocolate ? 😍😋",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1729,6 +2149,9 @@ async function runSeed() {
     {
       nome: "Sabordeinfanciacafe",
       slug: 'sabordeinfanciacafe',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.2,
       descricao: "CAFÉ COLONIAL À VONTADE NO INTERIOR DE SP!! 😱😍  Fomos navegar no @sabordeinfanciacafe, um café colonial localizado em Lo...",
       bairro: 'Louveira',
       cidade: 'São Paulo',
@@ -1741,6 +2164,9 @@ async function runSeed() {
     {
       nome: "Docasteakwine",
       slug: 'docasteakwine',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.2,
       descricao: "MENU P/ 2 POR APENAS R$179,90! 😱😍  Fomos navegar no @docasteakwine, uma casa de carnes absurdamente boa e com um ótimo c...",
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -1753,6 +2179,9 @@ async function runSeed() {
     {
       nome: "Pointbarabc",
       slug: 'pointbarabc',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.2,
       descricao: "FESTIVAL DE CARNES POR 💲59,90!! 😱😍  Fomos navegar no @pointbarabc, que agora conta com um festival de carnes sensacional...",
       bairro: 'Santo André',
       cidade: 'São Paulo',
@@ -1765,6 +2194,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 161",
       slug: 'recomendacao-navegando-161',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.5,
       descricao: "Você pagaria mais de R$3.000 nesse role? 😱",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1777,6 +2209,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 163",
       slug: 'recomendacao-navegando-163',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "Você pagaria mais de R$300 nisso? 😱",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1789,6 +2224,9 @@ async function runSeed() {
     {
       nome: "Gabrielbruno",
       slug: 'gabrielbruno',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "Você sabia que o @gabrielbruno tem uma hamburgueria? 🍔  Fomos navegar na @gababurger, a mais nova hamburgueria do Gaba! ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1801,6 +2239,9 @@ async function runSeed() {
     {
       nome: "Meu Sonho Magico",
       slug: 'meu-sonho-magico',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.2,
       descricao: "TUDO QUE COMEMOS NA DISNEY DE PARIS!! 🗼🇫🇷🎢  E com valores…😱  E quem tornou esse sonho em realidade de estarmos na Disney...",
       bairro: 'Paris',
       cidade: 'São Paulo',
@@ -1813,6 +2254,9 @@ async function runSeed() {
     {
       nome: "Ruazinhasp",
       slug: 'ruazinhasp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.8,
       descricao: "CHURRASCO LIBERADO À VONTADE! 😱😍  Fomos navegar no @ruazinhasp, que tem um buffet por apenas 💲70,00!   Com churrasco, ma...",
       bairro: 'Vila Olímpia',
       cidade: 'São Paulo',
@@ -1825,6 +2269,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 169",
       slug: 'recomendacao-navegando-169',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.3,
       descricao: "O melhor croissant que existe seria esse? 🥐",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1837,6 +2284,9 @@ async function runSeed() {
     {
       nome: "Helenadinapolipizzaria",
       slug: 'helenadinapolipizzaria',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.7,
       descricao: "TOP 3 LUGARES VIRAIS PRA SE COMER MASSA EM SP!   @helenadinapolipizzaria - que faz os deliciosos lanches italianos.   @l...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1849,6 +2299,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 171",
       slug: 'recomendacao-navegando-171',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.6,
       descricao: "Você pagaria R$1.000 por isso? 🤔",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1861,6 +2314,9 @@ async function runSeed() {
     {
       nome: "Nacionalkartindoorsp",
       slug: 'nacionalkartindoorsp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.7,
       descricao: "KART INDOOR COM UMA PISTA GIGANTE AQUI EM SP!! 🏎️ 🏁  Fomos navegar no @nacionalkartindoorsp, que fica localizado no esta...",
       bairro: 'Penha',
       cidade: 'São Paulo',
@@ -1873,6 +2329,9 @@ async function runSeed() {
     {
       nome: "Hotelvillalobos Sparomantik",
       slug: 'hotelvillalobos-sparomantik',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.6,
       descricao: "HOTEL COM SPA PERTINHO DE SP! 🧖🏻‍♀️🫧  Fomos navegar no @hotelvillalobos_sparomantik, e se você procura descanso, esse é ...",
       bairro: 'Extrema',
       cidade: 'MG.',
@@ -1885,6 +2344,9 @@ async function runSeed() {
     {
       nome: "Bakesale Pastryshop",
       slug: 'bakesale-pastryshop',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.8,
       descricao: "TOP 3 DOCERIAS EM SP DE 2025!   🥇@bakesale.pastryshop - que faz os famosos entremet franceses.   🥈@dolce011sp - que faz ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1897,6 +2359,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 176",
       slug: 'recomendacao-navegando-176',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.1,
       descricao: "Happy new year guys 🇬🇧🇧🇷 Feliz ano novo galera ❤️",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1909,6 +2374,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 178",
       slug: 'recomendacao-navegando-178',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.3,
       descricao: "TOP 5 ROLES CULTURAIS GRATUITOS NA AV PAULISTA!   E é claro que o @itau esteve com a gente nessa! Nós vivenciamos experi...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1921,6 +2389,9 @@ async function runSeed() {
     {
       nome: "Solardarepublica",
       slug: 'solardarepublica',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.6,
       descricao: "TOP 3 RESTAURANTES EM SP DE 2025!   🥇@solardarepublica - meu restaurante português preferido.   🥈@paparotocucina - coman...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -1933,6 +2404,9 @@ async function runSeed() {
     {
       nome: "Pizzaria Do Paulinho",
       slug: 'pizzaria-do-paulinho',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.4,
       descricao: "A pizzaria mais premiada de Ubatuba! 😱😍  Fomos navegar na @pizzaria_do_paulinho, que fica localizada em Ubatuba. O Pauli...",
       bairro: 'Ubatuba',
       cidade: 'São Paulo',
@@ -1945,6 +2419,9 @@ async function runSeed() {
     {
       nome: "Santingelatoartesanal",
       slug: 'santingelatoartesanal',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.5,
       descricao: "ESSA É A SORVETERIA MAIS FAMOSA DO LITORAL! 😍😱  Fomos navegar na @santingelatoartesanal, uma gelateria localizada no Lit...",
       bairro: 'Ubatuba',
       cidade: 'São Paulo',
@@ -1957,6 +2434,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 182",
       slug: 'recomendacao-navegando-182',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.8,
       descricao: "UM DOS PONTOS TURÍSTICOS MAIS EMBLEMÁTICOS DO MUNDO! 😍🏝️  O Fiordo di Furore é uma enseada estreita e profunda na deslum...",
       bairro: 'Furore',
       cidade: 'Itália',
@@ -1969,6 +2449,9 @@ async function runSeed() {
     {
       nome: "Hotelort",
       slug: 'hotelort',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.0,
       descricao: "HOTEL DE LUXO ECAMPOS DO JORDÃO! 😍🍁  Fomos navegar no @hotelort, situado numa reserva florestal em Campos do Jordão. O h...",
       bairro: 'Campos do Jordão',
       cidade: 'São Paulo',
@@ -1981,6 +2464,9 @@ async function runSeed() {
     {
       nome: "Killerburgerbr",
       slug: 'killerburgerbr',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.9,
       descricao: "Essa hamburgueria fica dentro de uma prisão! 😱😳  Fomos navegar na @killerburgerbr, uma hamburgueria cheia de detentos, c...",
       bairro: 'Barueri',
       cidade: 'São Paulo',
@@ -1993,6 +2479,9 @@ async function runSeed() {
     {
       nome: "Novasucuri",
       slug: 'novasucuri',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 3.8,
       descricao: "Esse é o atacadista de bebidas mais barato de SP!! 😱😍  A @novasucuri é uma distribuidora de bebidas e sem dúvidas é o lu...",
       bairro: 'Jardim Peri',
       cidade: 'São Paulo',
@@ -2005,6 +2494,9 @@ async function runSeed() {
     {
       nome: "Circensebr",
       slug: 'circensebr',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.8,
       descricao: "OUTLET DE BOLSAS DE COURO LEGÍTIMO A PARTIR DE APENAS 💲99,90!! 😍😱  O maior e mais famoso outlet itinerante de produtos e...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -2017,6 +2509,9 @@ async function runSeed() {
     {
       nome: "Babaegelato",
       slug: 'babaegelato',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.2,
       descricao: "GELATO EM MONTANHAS? 😱😍  Fomos navegar na @babaegelato ❤️  Que é responsável por fazer os melhores gelatos de SP e são o...",
       bairro: 'Pinheiros',
       cidade: 'Pinheiros',
@@ -2029,6 +2524,9 @@ async function runSeed() {
     {
       nome: "Noryosushi",
       slug: 'noryosushi',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.8,
       descricao: "O dia que levamos o @gordaodaoutlet para curtir o rodízio do @noryosushi! 😋😍  O rodízio é completasso! E o destaque vai ...",
       bairro: 'Jardim Taquaral',
       cidade: 'São Paulo',
@@ -2041,6 +2539,9 @@ async function runSeed() {
     {
       nome: "Recomendação Navegando 200",
       slug: 'recomendacao-navegando-200',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.9,
       descricao: "COMBO DO OUTBACK POR APENAS R$12,12?! 😱😍  Basta usar o cupom DESCONTO70 no app da 99food 💛  (Válido somente para primeir...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2053,6 +2554,9 @@ async function runSeed() {
     {
       nome: "Padaria Nova Império",
       slug: 'padaria-nova-imperio',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.7,
       descricao: "MAIOR BOLO PUDIM DE SP! 🤤🍮  Perambulamos na @padaria.novaimperio que faz monstro de 12kg com cada fatia pesando 2kg e cu...",
       bairro: 'Cachoeirinha',
       cidade: 'São Paulo',
@@ -2065,6 +2569,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 1",
       slug: 'recomendacao-perambulando-em-sp-1',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.7,
       descricao: "10 FESTAS JUNINAS EM SP !  FESTA JUNINA DE VOTORANTIN 📅 Início: 21/05/2026 📅 Término: 21/06/2026 🕒 Horários: • Qui-Sex: ...",
       bairro: 'Barra Funda',
       cidade: 'São Paulo',
@@ -2077,6 +2584,9 @@ async function runSeed() {
     {
       nome: "Fabinhodoacaraje",
       slug: 'fabinhodoacaraje',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.2,
       descricao: "ACARAJÉ DE 1 KG 😱  Perambulamos aqui em ilhéus no @fabinhodoacaraje junto com nossos amigos comilões @juliocasalnascimen...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2089,6 +2599,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 3",
       slug: 'recomendacao-perambulando-em-sp-3',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 8.9,
       descricao: "Porque será?",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2101,6 +2614,9 @@ async function runSeed() {
     {
       nome: "Hotel Villa Charmosa",
       slug: 'hotel-villa-charmosa',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.4,
       descricao: "DESTINO PERFEITO PERTINHO DE SP!  Esse é o @hotelvillacharmosa e conta com tudo isso 👇🏻 Piscina climatizada, sauna úmida...",
       bairro: 'São Pedro',
       cidade: 'São Pedro',
@@ -2113,6 +2629,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 5",
       slug: 'recomendacao-perambulando-em-sp-5',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 9.1,
       descricao: "Comemorando o aniversário em grande estilo 🎉🥳",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2125,6 +2644,9 @@ async function runSeed() {
     {
       nome: "Villa Cafebg",
       slug: 'villa-cafebg',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.9,
       descricao: "A TAPIOCA MAIS RECHEADA DA BAHIA!  Encontramos na @villa_cafebg e pesou mais de 1,5kg cada uma delas.  Se tem recheio nã...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2137,6 +2659,9 @@ async function runSeed() {
     {
       nome: "Maraupeninsulaparadise",
       slug: 'maraupeninsulaparadise',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.4,
       descricao: "ACHAMOS A CASA DE PRAIA PERFEITA NA BAHIA! 🏝️  Essa é a @maraupeninsulaparadise que fica em Barra Grande - BA, dentro do...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2149,6 +2674,9 @@ async function runSeed() {
     {
       nome: "Kiyomi Sushi",
       slug: 'kiyomi-sushi',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.7,
       descricao: "🍣 🚢 RODÍZIO DE SUSHI COM NAVIO DE 1,5M  Fomos perambular no @kiyomisushimariana e descobrimos um rodízio diferente: eles...",
       bairro: 'Vila Clementino',
       cidade: 'São Paulo',
@@ -2161,6 +2689,9 @@ async function runSeed() {
     {
       nome: "Hotel Fazenda Aurora",
       slug: 'hotel-fazenda-aurora',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.1,
       descricao: "🔴 LANÇAMENTO: O PRIMEIRO HOTEL FAZENDA COM TUDO INCLUSO DE SP 🐮🌾  Fomos conhecer em primeira mão o novíssimo @hotelfazen...",
       bairro: 'Santa Isabel',
       cidade: 'Santa Isabel',
@@ -2173,6 +2704,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 11",
       slug: 'recomendacao-perambulando-em-sp-11',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.9,
       descricao: "FONDUE DO OUTBACK POR R$36!  Sim galera usando o CUPOM: DESCONTO70 no 99food o fondue doce sai de R$112,90 por R$72,90! ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2185,6 +2719,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 12",
       slug: 'recomendacao-perambulando-em-sp-12',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.0,
       descricao: "JÁ MARCA O @ QUE VAI LEVAR VOCÊ! 😍  No dia 27 de junho de 2026 vai rolar o maior evento de carros e drift da cidade de S...",
       bairro: 'Barueri',
       cidade: 'São Paulo',
@@ -2197,6 +2734,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 14",
       slug: 'recomendacao-perambulando-em-sp-14',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.2,
       descricao: "A maior festa junina de São Paulo já tem data confirmada 🎉🔥  Prepare-se para viver a festa junina mais aguardada da capi...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2209,6 +2749,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 15",
       slug: 'recomendacao-perambulando-em-sp-15',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.3,
       descricao: "MILK SHAKE POR APENAS R$9 😱  Esse valor você só consegue pedindo pelo aplicativo da 99 com o cupom: DESCONTO70  PEDIDO P...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2221,6 +2764,9 @@ async function runSeed() {
     {
       nome: "Quintaldeprati",
       slug: 'quintaldeprati',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 5.8,
       descricao: "FESTIVAL DE CALDOS POR 💲49,90 À VONTADE! 🍲😍  Perambulamos no @quintaldeprati que tem mais de 8 opções de caldos delicios...",
       bairro: 'Anália Franco',
       cidade: 'São Paulo',
@@ -2233,6 +2779,9 @@ async function runSeed() {
     {
       nome: "The Steak Factory",
       slug: 'the-steak-factory',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.0,
       descricao: "FESTIVAL DE FONDUE EM SP!  Fomos perambular no @thesteakfactory e nesse tempinho é o lugar perfeito para ir com o crush!...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -2245,6 +2794,9 @@ async function runSeed() {
     {
       nome: "Espetinho do Juiz Patriarca",
       slug: 'espetinho-do-juiz-patriarca',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.8,
       descricao: "BAR MAIS BARATO DE SP 🍻🔥  Fomos perambular no @espetinhodojuizpatriarca que tem preços inacreditáveis!  Olha o que tem l...",
       bairro: 'Patriarca',
       cidade: 'São Paulo',
@@ -2257,6 +2809,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 20",
       slug: 'recomendacao-perambulando-em-sp-20',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 3.9,
       descricao: "FESTIVAL COREANO EM SP 🇰🇷🍜  Perambulamos na 16ª edição do Festival da Cultura Coreana que vai rolar no Bom Retiro!  Olha...",
       bairro: 'Praça Coronel Fernando Prestes',
       cidade: 'São Paulo',
@@ -2269,6 +2824,9 @@ async function runSeed() {
     {
       nome: "Moveisjunco",
       slug: 'moveisjunco',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.0,
       descricao: "O MAIOR FEIRÃO DE MÓVEIS DO BRASIL!! 🔥  Perambulamos no @moveisjunco , um feirão de móveis gigantesco que está rolando l...",
       bairro: 'Barueri',
       cidade: 'Alphaville',
@@ -2281,6 +2839,9 @@ async function runSeed() {
     {
       nome: "Fazenda Vale da Costela",
       slug: 'fazenda-vale-da-costela',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 0.3,
       descricao: "COSTELA E PICANHA A VONTADE EM SP 🥩🐷  Fomos perambular no @fazendavaledacostela_atibaia  ☕ CAFÉ DA MANHÃ GRÁTIS das 9h à...",
       bairro: 'Atibaia',
       cidade: 'Atibaia',
@@ -2293,6 +2854,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 24",
       slug: 'recomendacao-perambulando-em-sp-24',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.3,
       descricao: "NEED FOR SPEED CHEGOU EM SP! 🔥🔥  E vai acontecer no Kartódromo Aldeia da Serra. 😍  No dia 27 de junho de 2026 vai rolar ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2305,6 +2869,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 25",
       slug: 'recomendacao-perambulando-em-sp-25',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.4,
       descricao: "FIGURINHAS DA COPA POR R$1,50 ⚽️🇧🇷  Use o cupom DESCONTO70 no app 99 (70% OFF até R$40 em pedidos acima de R$30 — válido...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2317,6 +2884,9 @@ async function runSeed() {
     {
       nome: "Restaurante Parmesano",
       slug: 'restaurante-parmesano',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 7.7,
       descricao: "SPAGHETTI DENTRO DO PARMESÃO GIGANTE 🍝🧀  Fomos perambular no @restaurante.parmesano que faz o famoso spaghetti finalizad...",
       bairro: 'Consolação',
       cidade: 'São Paulo',
@@ -2329,6 +2899,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 28",
       slug: 'recomendacao-perambulando-em-sp-28',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.7,
       descricao: "A MELHOR FESTA JUNINA DE SÃO PAULO TÁ CHEGANDO! 🌽🔥🎶  Esquece festa sem graça… dias 6 e 7 de junho o Largo da Batata vai ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2341,6 +2914,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 29",
       slug: 'recomendacao-perambulando-em-sp-29',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.8,
       descricao: "MAIOR EVENTO TOKYO DRIFT DE SP!  E os ingressos promocionais estão custando apenas R$39,90!  Esse é o @sameculture.br qu...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2353,6 +2929,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 30",
       slug: 'recomendacao-perambulando-em-sp-30',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.0,
       descricao: "COMBO SECRETO NO BK - BK SEGRETO 😱  • Como conseguir 👇 Use o cupom FOME02 no app 99 (70% OFF até R$40 in pedidos acima d...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2365,6 +2944,9 @@ async function runSeed() {
     {
       nome: "Kabuto Bento",
       slug: 'kabuto-bento',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.5,
       descricao: "O MELHOR BENTO QUE JÁ COMEMOS EM SP 🍱  Perambulamos no @kabuto.bento que faz bentos tradicionais japoneses super caprich...",
       bairro: 'Liberdade',
       cidade: 'São Paulo',
@@ -2377,6 +2959,9 @@ async function runSeed() {
     {
       nome: "Headspasaopaulo",
       slug: 'headspasaopaulo',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.4,
       descricao: "HEAD SPA VIRALIZADO EM SP 💆🏻‍♀️✨  Fomos perambular no @headspasaopaulo e experimentamos o tratamento capilar que está fa...",
       bairro: 'Jardins',
       cidade: 'São Paulo',
@@ -2389,6 +2974,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 34",
       slug: 'recomendacao-perambulando-em-sp-34',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.4,
       descricao: "Figurinhas da Copa por apenas R$1,50!  • Como conseguir 👇 Use o cupom DESCONTO70 no app 99 (70% OFF até R$40 em pedidos ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2401,6 +2989,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 36",
       slug: 'recomendacao-perambulando-em-sp-36',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.6,
       descricao: "COMBO NO MC DONALD COM FIGURINHA DA COPA POR R$12!  Nesse valor você só garante pedindo pelo aplicativo da 99 com o cupo...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2413,6 +3004,9 @@ async function runSeed() {
     {
       nome: "Santomarestaurante",
       slug: 'santomarestaurante',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.5,
       descricao: "SACO DE FRUTOS DO MAR MAIS FAMOSO DO MUNDO!  O QUE ACOMPANHA 👇  Lagosta  Camarões  Caranguejos  King Crab Mexilhões Cala...",
       bairro: 'Santana',
       cidade: 'São Paulo',
@@ -2425,6 +3019,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 38",
       slug: 'recomendacao-perambulando-em-sp-38',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.8,
       descricao: "MAIOR EVENTO DE DRIFT DENTRO DE ESTACIONAMENTO EM SP!  Esse é o @sameculture.br que vai acontecer dentro de um estaciona...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2437,6 +3034,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 39",
       slug: 'recomendacao-perambulando-em-sp-39',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.9,
       descricao: "NEED FOR SPEED CHEGOU EM SP! 🔥🔥  E vai acontecer no Kartódromo Aldeia da Serra. 😍  No dia 27 de junho de 2026 vai rolar ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2449,6 +3049,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 40",
       slug: 'recomendacao-perambulando-em-sp-40',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.1,
       descricao: "🐔🔥 PÉ DE GALINHA POR APENAS R$ 1,99 E CHURRASCO À VONTADE POR R$ 34,90! 😱  Fomos no Espetinho do Juiz Patriarca e eles e...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2461,6 +3064,9 @@ async function runSeed() {
     {
       nome: "Pizzariabatepapo",
       slug: 'pizzariabatepapo',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.1,
       descricao: "🍕 PIZZA EM DOBRO NO COMPRA E GANHA! 😱  Fomos na @pizzariabatepapo, que tem uma das melhores pizzas de SP, e eles estão c...",
       bairro: 'Guarujá',
       cidade: 'São Paulo',
@@ -2473,6 +3079,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 42",
       slug: 'recomendacao-perambulando-em-sp-42',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.3,
       descricao: "🥩 COSTELA FOGO DE CHÃO À VONTADE COM PARQUE DE DIVERSÕES E PISCINA GRÁTIS! 😱  Fomos no único restaurante do Brasil com c...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2485,6 +3094,9 @@ async function runSeed() {
     {
       nome: "Massaria Sp",
       slug: 'massaria-sp',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 5.6,
       descricao: "🍝 MASSAS A PARTIR DE R$ 24,90 NA ZONA LESTE! 😱  Fomos conhecer a nova unidade do @massaria_sp no Tatuapé, que traz massa...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2497,6 +3109,9 @@ async function runSeed() {
     {
       nome: "Paleteriasp",
       slug: 'paleteriasp',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.6,
       descricao: "🍦 MINI PALETAS MEXICANAS À VONTADE POR APENAS R$ 29,90! 😱  Fomos no rodízio de paletas mexicanas da @paleteriasp e ficam...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2509,6 +3124,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 45",
       slug: 'recomendacao-perambulando-em-sp-45',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.6,
       descricao: "🍔 COMBO DO OUTBACK POR APENAS R$ 14,90! 😱  Você consegue pedir um combo completo com hambúrguer e acompanhamento por um ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2521,6 +3139,9 @@ async function runSeed() {
     {
       nome: "Resortvaledosol",
       slug: 'resortvaledosol',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 9.0,
       descricao: "🏨 RESORT DE LUXO COM PENSÃO COMPLETA A 1H DE SP! 🌴  Fomos conhecer o @resortvaledosol, um resort incrível em Mairiporã c...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2533,6 +3154,9 @@ async function runSeed() {
     {
       nome: "Casanostrapizzaria",
       slug: 'casanostrapizzaria',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.7,
       descricao: "🍕 FESTIVAL DE PIZZA COM MASSAS À VONTADE POR APENAS R$ 39,90! 😱  Fomos no rodízio do @casanostrapizzaria que oferece mai...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2545,6 +3169,9 @@ async function runSeed() {
     {
       nome: "Cervejariadopaulo",
       slug: 'cervejariadopaulo',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.4,
       descricao: "🍺 RODÍZIO DE CHOPP BRAHMA E PETISCOS POR R$ 69,90! 🍻  Fomos na @cervejariadopaulo que está com a promoção mais insana de...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2557,6 +3184,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 49",
       slug: 'recomendacao-perambulando-em-sp-49',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.0,
       descricao: "🍔 COMBOS DO BK POR APENAS R$ 9,90! 😱  Você consegue pedir o Whopper ou qualquer outro combo do Burger King por um preço ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2569,6 +3199,9 @@ async function runSeed() {
     {
       nome: "Hotelfazendariopretoe",
       slug: 'hotelfazendariopretoe',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.5,
       descricao: "🏨 HOTEL FAZENDA COM TUDO INCLUSO A 2H DE SP! 🐴🌾  Fomos conhecer o @hotelfazendariopretoe, localizado em São José do Rio ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2581,6 +3214,9 @@ async function runSeed() {
     {
       nome: "Sushibar Sp",
       slug: 'sushibar-sp',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.2,
       descricao: "🍣 RODÍZIO JAPONÊS COMPLETO POR APENAS R$ 69,90! 🍣  Fomos conhecer o @sushibar_sp que oferece um dos rodízios mais barato...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2593,6 +3229,9 @@ async function runSeed() {
     {
       nome: "Recomendação Perambulando 52",
       slug: 'recomendacao-perambulando-em-sp-52',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.4,
       descricao: "🍔 COMBOS DO MC COM REFRIL E BATATA POR R$ 11,50! 😱  Temos um truque para quem ama McDonald's: você consegue pedir 1 comb...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2605,6 +3244,9 @@ async function runSeed() {
     {
       nome: "Glow Park",
       slug: 'glow-park',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.5,
       descricao: "🪩 PARQUE DE TRAMPOLIM GIGANTE EM SP 🪩  Fomos conhecer o @glowparkoficial, considerado um dos maiores parques de trampoli...",
       bairro: 'Brooklin',
       cidade: 'São Paulo',
@@ -2617,6 +3259,9 @@ async function runSeed() {
     {
       nome: "Omineirosp",
       slug: 'omineirosp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.8,
       descricao: "🍲 UMA DAS FEIJOADAS MAIS COMPLETAS DE SP 🍲  Fomos no @omineirosp, que faz uma das melhores e mais tradicionais feijoadas...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2629,6 +3274,9 @@ async function runSeed() {
     {
       nome: "Volt Club",
       slug: 'volt-club',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.9,
       descricao: "🪩NOVA BALADA EM SÃO PAULO 💃  A @voltclubsp chegou em SP trazendo um espaço com vários ambientes em neon, performances, p...",
       bairro: 'Bela Vista',
       cidade: 'São Paulo',
@@ -2641,6 +3289,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 56",
       slug: 'recomendacao-esquenta-sp-56',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.8,
       descricao: "FOR SPEED EM SP! 🔥💨  No dia 14 de fevereiro de 2026 vai rolar o maior evento de carros e drift da cidade de SP! 🤩  Olha ...",
       bairro: 'Barueri',
       cidade: 'São Paulo',
@@ -2653,6 +3304,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 57",
       slug: 'recomendacao-esquenta-sp-57',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.9,
       descricao: "🪄 BAILE DO HARRY POTTER EM SP 🪄  Chegou em São Paulo uma experiência inédita inspirada no filme Harry Potter e o Cálice ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2665,6 +3319,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 58",
       slug: 'recomendacao-esquenta-sp-58',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 7.0,
       descricao: "🍔 COMBO DO KFC POR APENAS R$ 14,25 😱  Você consegue pedir um combo 3 em 1 com molho especial por um preço muito barato u...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2677,6 +3334,9 @@ async function runSeed() {
     {
       nome: "Dopamineland Experience",
       slug: 'dopamineland-experience',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 4.3,
       descricao: "DA FELICIDADE EM SP 🏛️😁  Essa experiência multissensorial única existe em São Paulo e é feita cientificamente pra te dei...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2689,6 +3349,9 @@ async function runSeed() {
     {
       nome: "Cachacariadorancho86",
       slug: 'cachacariadorancho86',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.6,
       descricao: "🔥 ROLÊ BOM E BARATO QUE VIRALIZOU EM SP 🔥  Fomos na @cachacariadorancho86 que tá lotando toda semana por causa da feijoa...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2701,6 +3364,9 @@ async function runSeed() {
     {
       nome: "Cavalo Preto Restaurante",
       slug: 'cavalo-preto-restaurante',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 4.9,
       descricao: "DE DIVERSÕES COM COSTELA E CAMARÃO À VONTADE  ⚠️ RESERVA OBRIGATÓRIA PELO WHATSAPP: (11) 99211-4664  Descobrimos um para...",
       bairro: 'Atibaia',
       cidade: 'Atibaia',
@@ -2713,6 +3379,9 @@ async function runSeed() {
     {
       nome: "Resort Fazenda São João",
       slug: 'resort-fazenda-sao-joao',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 5.4,
       descricao: "🏨 COMO É E QUANTO CUSTA SE HOSPEDAR NO MELHOR RESORT DO INTERIOR DE SP?  O @resortfazendasaojoao foi eleito 5 vezes o me...",
       bairro: 'São Pedro',
       cidade: 'São Pedro',
@@ -2725,6 +3394,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 64",
       slug: 'recomendacao-esquenta-sp-64',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.7,
       descricao: "🍔 COMBOS DO OUTBACK POR APENAS R$ 10,10 😱  Temos um segredo para quem gosta de Outback: você consegue pedir 1 combo comp...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2737,6 +3409,9 @@ async function runSeed() {
     {
       nome: "Restaurantemomo",
       slug: 'restaurantemomo',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.8,
       descricao: "🍣 RODÍZIO JAPA COM PATA DE KING CRAB E LAGOSTA! 🍣  Fomos no @restaurantemomo, localizado na Vila Leopoldina, que serve v...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2749,6 +3424,9 @@ async function runSeed() {
     {
       nome: "Flordoparaisooficial",
       slug: 'flordoparaisooficial',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 8.9,
       descricao: "🍺 RODÍZIO DE PORÇÕES COM CHOPP BRAHMA 🍺  Fomos até a @flordoparaisooficial que está com dois rodízios perfeitos pra junt...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2761,6 +3439,9 @@ async function runSeed() {
     {
       nome: "Cerejeirabar",
       slug: 'cerejeirabar',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 8.5,
       descricao: "CHURRASCO DE GRAÇA EM SÃO PAULO  Por aqui você tem um buffet com mais de 20 opções além de churrascada à vontade!  Estam...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2773,6 +3454,9 @@ async function runSeed() {
     {
       nome: "Temporadasubatuba",
       slug: 'temporadasubatuba-',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.6,
       descricao: "APARTAMENTO EM UBATUBA POR R$42 🤯  A gente foi até o litoral norte conhecer esse apê que fica em um condomínio residenci...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2785,6 +3469,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 70",
       slug: 'recomendacao-esquenta-sp-70',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 6.4,
       descricao: "🍟 SUPER COMBO DO MC POR R$16,44 🍔  Esse combo custa até R$49,80, mas se for seu 1º pedido, você só precisa usar o cupom ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2797,6 +3484,9 @@ async function runSeed() {
     {
       nome: "Punta Piedras Parrilla",
       slug: 'punta-piedras-parrilla',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.2,
       descricao: "🥩 FILE MIGNON MAIS BARATO DE SP 🥩  O @puntapiedrasparrilla é um restaurante muito bonito que fica em uma das regiões mai...",
       bairro: 'Itaim Bibi',
       cidade: 'São Paulo',
@@ -2809,6 +3499,9 @@ async function runSeed() {
     {
       nome: "Snack Break Food",
       slug: 'snack-break-food',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 0.9,
       descricao: "🎄 CHOCOTONES SAUDÁVEIS EM SP! 🎄  Fomos conhecer a @snackbreakfood que chegou com tudo em São Paulo trazendo chocotones 1...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -2821,6 +3514,9 @@ async function runSeed() {
     {
       nome: "Rede Capivara",
       slug: 'rede-capivara',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.1,
       descricao: "BAR FAMOSO MAIS MOVIMENTADO DE PINHEIROS 🍻  Fomos até o @redecapivara e descobrimos um barzinho raiz com mesas na calçad...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2833,6 +3529,9 @@ async function runSeed() {
     {
       nome: "O C do Padre",
       slug: 'o-c-do-padre',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.5,
       descricao: "C DO PADRE - A CASA DE BATIDAS MAIS FAMOSA DE SP ⛪️💥  Fomos na casa das batidas mais antiga e famosa de SP — @ocdopadre ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2845,6 +3544,9 @@ async function runSeed() {
     {
       nome: "Barakiah Esfihas",
       slug: 'barakiah-esfihas',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 5.3,
       descricao: "RESTAURANTE ÁRABE HISTÓRICO EM SÃO PAULO 🏠  São 50 anos fazendo esfihas e mais de 20 anos de história no Barakiah. 🤌  • ...",
       bairro: 'Vila Guilherme',
       cidade: 'São Paulo',
@@ -2857,6 +3559,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 77",
       slug: 'recomendacao-esquenta-sp-77',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.1,
       descricao: "FESTIVAL DE FRUTOS DO MAR QUE VIRALIZOU NO MUNDO 🦐  Fomos conhecer o único restaurante de São Paulo que serve o famoso S...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2869,6 +3574,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 78",
       slug: 'recomendacao-esquenta-sp-78',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.2,
       descricao: "♨️ PARQUE AQUÁTICO COM ÁGUAS QUENTES A 30 MIN DE SP! 🔥  Na compra de 1 ingresso, você garante entrada pros DOIS PARQUES:...",
       bairro: 'Cotia',
       cidade: 'São Paulo',
@@ -2881,6 +3589,9 @@ async function runSeed() {
     {
       nome: "Restaurante Rancho",
       slug: 'restaurante-rancho',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 3.7,
       descricao: "🥩COSTELA E LEITÃO À VONTADE POR APENAS R$74,90 POR PESSOA! 😱  Fomos conhecer o @restaurante_rancho do Vale, um restauran...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2893,6 +3604,9 @@ async function runSeed() {
     {
       nome: "Resorthotelfazenda Sp",
       slug: 'resorthotelfazenda-sp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 8.0,
       descricao: "🏨 RESORT COMPLETO COM DIÁRIAS BARATAS NO INTERIOR DE SP! 🌴  Fomos conhecer o @resorthotelfazenda_sp, um resort incrível ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2905,6 +3619,9 @@ async function runSeed() {
     {
       nome: "Secretbar Sp",
       slug: 'secretbar-sp',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.5,
       descricao: "BAR SECRETO COM ENTRADA PELA GELADEIRA EM SP! 🤫🍹  Fomos conhecer o @secretbar_sp, um bar super instagramável e escondido...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2917,6 +3634,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 83",
       slug: 'recomendacao-esquenta-sp-83',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.8,
       descricao: "👜 OUTLET DE BOLSAS DE COURO COM PREÇO DE FÁBRICA! 👜  Chegou a São Paulo o maior outlet itinerante de produtos de couro l...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2929,6 +3649,9 @@ async function runSeed() {
     {
       nome: "Seafood Sp",
       slug: 'seafood-sp',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 4.1,
       descricao: "🦐 SACALADA DE FRUTOS DO MAR QUE VIRALIZOU! 🦐🔥  Viemos conhecer o Seafood Boil Bag do @seafood_sp, a famosa sacolada de f...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -2941,6 +3664,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 86",
       slug: 'recomendacao-esquenta-sp-86',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.1,
       descricao: "♨️ PARQUE AQUÁTICO COM ÁGUAS QUENTES E ENTRADA DUPLA! 💦  Comprando 1 ingresso para o Thermas da Mata, você ganha 1 ingre...",
       bairro: 'Cotia',
       cidade: 'São Paulo',
@@ -2953,6 +3679,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 87",
       slug: 'recomendacao-esquenta-sp-87',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.2,
       descricao: "🍔 COMBOS DO OUTBACK POR R$ 10,10! 😱  Você consegue pedir 1 combo completo do Outback por apenas R$ 10,10 no app da 99 Fo...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2965,6 +3694,9 @@ async function runSeed() {
     {
       nome: "Residencialmaia",
       slug: 'residencialmaia',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.3,
       descricao: "🏡 HOSPEDAGEM EM UBATUBA POR APENAS R$ 42 POR PESSOA! 🏖️  Fomos conhecer esse apartamento completo em condomínio fechado ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -2977,6 +3709,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 89",
       slug: 'recomendacao-esquenta-sp-89',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.4,
       descricao: "🍟 COMBOS DO MC COM REFRIL E BATATA POR R$ 11,50! 😱  Você consegue pedir 1 combo médio do McDonald's por apenas R$ 11,50 ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -2989,6 +3724,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 92",
       slug: 'recomendacao-esquenta-sp-92',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 6.8,
       descricao: "🪄 BAILE DO HARRY POTTER EM SÃO PAULO! 🧙‍♂️✨  Chegou na capital a experiência oficial inspirada no Baile Tribruxo de Harr...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3001,6 +3739,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 93",
       slug: 'recomendacao-esquenta-sp-93',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.9,
       descricao: "🍔 COMBOS DO BK POR APENAS R$ 9,90! 😱  Você consegue pedir o Whopper Combo do Burger King por apenas R$ 9,90 no app da 99...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3013,6 +3754,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 95",
       slug: 'recomendacao-esquenta-sp-95',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 7.1,
       descricao: "🎄 GRAMADO EM SP COM NEVE DE VERDADE E ENTRADA GRATUITA! ❄️🎅  Fomos conhecer a Vila de Natal de São Paulo, uma experiênci...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -3025,6 +3769,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 96",
       slug: 'recomendacao-esquenta-sp-96',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.2,
       descricao: "🍔 COMBOS DO KFC POR APENAS R$ 14,25! 😱  Você consegue pedir o Combo Crunch do KFC por apenas R$ 14,25 no app da 99 Food ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3037,6 +3784,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 99",
       slug: 'recomendacao-esquenta-sp-99',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 7.5,
       descricao: "👜 OUTLET DE BOLSAS DE COURO ITINERANTE EM SP! 👜✨  O maior outlet de bolsas e calçados de couro do país chega a São Paulo...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3049,6 +3799,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 100",
       slug: 'recomendacao-esquenta-sp-100',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 0.9,
       descricao: "🍽️ CHURRASCO E COSTELA FOGO DE CHÃO À VONTADE COM PISCINA GRÁTIS! 🥩🏊  Fomos no Rancho do Ricardinho em Mairiporã, o únic...",
       bairro: 'Mairiporã',
       cidade: 'São Paulo',
@@ -3061,6 +3814,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 105",
       slug: 'recomendacao-esquenta-sp-105',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.4,
       descricao: "🍔 COMBOS DO BK E MC POR MENOS DE R$ 10! 😱  Descobrimos a melhor promoção de delivery da internet: você consegue pedir co...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3073,6 +3829,9 @@ async function runSeed() {
     {
       nome: "Temporadasubatuba",
       slug: 'temporadasubatuba--',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 6.1,
       descricao: "APARTAMENTO NA PRAIA POR APENAS R$ 42 A DIÁRIA! 🏖️🏡  Encontramos o apartamento perfeito em Ubatuba para ir com os amigos...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3085,6 +3844,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 111",
       slug: 'recomendacao-esquenta-sp-111',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.1,
       descricao: "🍔 COMBO DO MC POR APENAS R$ 16,44 COM NUGGETS E REFRI! 😱  Você consegue pedir 1 McOferta Média Clássica (Big Mac ou Ched...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3097,6 +3859,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 117",
       slug: 'recomendacao-esquenta-sp-117',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.7,
       descricao: "🍕 ESFIHAS E ESFIHAS TEMÁTICAS EM SP A PARTIR DE R$ 9,50! 🍕✨  Fomos conhecer o Barakiah, uma casa de esfihas com mais de ...",
       bairro: 'Vila Guilherme',
       cidade: 'São Paulo',
@@ -3109,6 +3874,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 118",
       slug: 'recomendacao-esquenta-sp-118',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.8,
       descricao: "🦐 SACALADA DE FRUTOS DO MAR QUE VIRALIZOU! 🦐🔥  Fomos conhecer a famosa sacolada de frutos do mar que é sucesso nos EUA e...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -3121,6 +3889,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 120",
       slug: 'recomendacao-esquenta-sp-120',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.1,
       descricao: "🍔 COMBOS DO OUTBACK POR R$ 10,10 NO DELIVEY! 😱  Você consegue pedir o delicioso Smoked Cheeseburger do Outback com batat...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3133,6 +3904,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 123",
       slug: 'recomendacao-esquenta-sp-123',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.4,
       descricao: "🍔 COMBOS DO BK POR R$ 9,90! 😱  Como pedir 1 combo completo do Burger King com refrigerante e batata por menos de 10 reai...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3145,6 +3919,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 124",
       slug: 'recomendacao-esquenta-sp-124',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.5,
       descricao: "🪄 BAILE DO HARRY POTTER EM SÃO PAULO! 🧙‍♂️✨  Fomos na experiência oficial do Harry Potter: Um Grande Baile Tribruxo que ...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3157,6 +3934,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 127",
       slug: 'recomendacao-esquenta-sp-127',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.8,
       descricao: "👜 OUTLET DE BOLSAS DE COURO COM PREÇO DE FÁBRICA EM SP! 👜✨  O maior outlet de bolsas e calçados de couro do país chega a...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3169,6 +3949,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 128",
       slug: 'recomendacao-esquenta-sp-128',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.9,
       descricao: "🍽️ CHURRASCO E COSTELA FOGO DE CHÃO À VONTADE COM PISCINA GRÁTIS! 🥩🏊  Fomos conhecer o Rancho do Ricardinho em Mairiporã...",
       bairro: 'Mairiporã',
       cidade: 'São Paulo',
@@ -3181,6 +3964,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 130",
       slug: 'recomendacao-esquenta-sp-130',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.2,
       descricao: "🍔 COMBOS DO OUTBACK POR R$ 10,10! 😱  Você consegue pedir 1 combo completo do Outback por apenas R$ 10,10 no app da 99 Fo...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3193,6 +3979,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 136",
       slug: 'recomendacao-esquenta-sp-136',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.8,
       descricao: "🍔 COMBO DO MC POR APENAS R$ 16,44 COM NUGGETS E REFRI! 😱  Você consegue pedir 1 McOferta Média Clássica (Big Mac ou Ched...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3205,6 +3994,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 143",
       slug: 'recomendacao-esquenta-sp-143',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.6,
       descricao: "🍕 ESFIHAS E ESFIHAS TEMÁTICAS EM SP A PARTIR DE R$ 9,50! 🍕✨  Fomos conhecer o Barakiah, uma casa de esfihas com mais de ...",
       bairro: 'Vila Guilherme',
       cidade: 'São Paulo',
@@ -3217,6 +4009,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 144",
       slug: 'recomendacao-esquenta-sp-144',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.7,
       descricao: "🦐 SACALADA DE FRUTOS DO MAR QUE VIRALIZOU! 🦐🔥  Fomos conhecer a famosa sacolada de frutos do mar que é sucesso nos EUA e...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -3229,6 +4024,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 145",
       slug: 'recomendacao-esquenta-sp-145',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 1.8,
       descricao: "♨️ PARQUE AQUÁTICO COM ÁGUAS QUENTES E ENTRADA DUPLA! 💦  Comprando 1 ingresso para o Thermas da Mata, você ganha 1 ingre...",
       bairro: 'Cotia',
       cidade: 'São Paulo',
@@ -3241,6 +4039,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 146",
       slug: 'recomendacao-esquenta-sp-146',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.9,
       descricao: "♨️ PARQUE AQUÁTICO COM ÁGUAS QUENTES E ENTRADA DUPLA! 💦  Comprando 1 ingresso para o Thermas da Mata, você ganha 1 ingre...",
       bairro: 'Cotia',
       cidade: 'São Paulo',
@@ -3253,6 +4054,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 147",
       slug: 'recomendacao-esquenta-sp-147',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.0,
       descricao: "🍔 COMBOS DO OUTBACK POR R$ 10,10! 😱  Você consegue pedir 1 combo completo do Outback por apenas R$ 10,10 no app da 99 Fo...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3265,6 +4069,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 149",
       slug: 'recomendacao-esquenta-sp-149',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.2,
       descricao: "🍟 COMBOS DO MC COM REFRIL E BATATA POR R$ 11,50! 😱  Você consegue pedir 1 combo médio do McDonald's por apenas R$ 11,50 ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3277,6 +4084,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 152",
       slug: 'recomendacao-esquenta-sp-152',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.6,
       descricao: "🪄 BAILE DO HARRY POTTER EM SÃO PAULO! 🧙‍♂️✨  Chegou na capital a experiência oficial inspirada no Baile Tribruxo de Harr...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3289,6 +4099,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 153",
       slug: 'recomendacao-esquenta-sp-153',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 1.7,
       descricao: "🍔 COMBOS DO BK POR APENAS R$ 9,90! 😱  Você consegue pedir o Whopper Combo do Burger King por apenas R$ 9,90 no app da 99...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3301,6 +4114,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 155",
       slug: 'recomendacao-esquenta-sp-155',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.9,
       descricao: "🎄 GRAMADO EM SP COM NEVE DE VERDADE E ENTRADA GRATUITA! ❄️🎅  Fomos conhecer a Vila de Natal de São Paulo, uma experiênci...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',
@@ -3313,6 +4129,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 159",
       slug: 'recomendacao-esquenta-sp-159',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.3,
       descricao: "🍔 COMBO DO MC POR APENAS R$ 16,44 COM NUGGETS E REFRI! 😱  Você consegue pedir 1 McOferta Média Clássica (Big Mac ou Ched...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3325,6 +4144,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 165",
       slug: 'recomendacao-esquenta-sp-165',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.0,
       descricao: "🍕 ESFIHAS E ESFIHAS TEMÁTICAS EM SP A PARTIR DE R$ 9,50! 🍕✨  Fomos conhecer o Barakiah, uma casa de esfihas com mais de ...",
       bairro: 'Vila Guilherme',
       cidade: 'São Paulo',
@@ -3337,6 +4159,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 166",
       slug: 'recomendacao-esquenta-sp-166',
+      horario_abertura: '18:00',
+      horario_fechamento: '02:00',
+      distancia_km: 2.1,
       descricao: "🦐 SACALADA DE FRUTOS DO MAR QUE VIRALIZOU! 🦐🔥  Fomos conhecer a famosa sacolada de frutos do mar que é sucesso nos EUA e...",
       bairro: 'Tatuapé',
       cidade: 'São Paulo',
@@ -3349,6 +4174,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 167",
       slug: 'recomendacao-esquenta-sp-167',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.2,
       descricao: "♨️ PARQUE AQUÁTICO COM ÁGUAS QUENTES E ENTRADA DUPLA! 💦  Comprando 1 ingresso para o Thermas da Mata, você ganha 1 ingre...",
       bairro: 'Cotia',
       cidade: 'São Paulo',
@@ -3361,6 +4189,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 168",
       slug: 'recomendacao-esquenta-sp-168',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.3,
       descricao: "🍔 COMBOS DO OUTBACK POR R$ 10,10! 😱  Você consegue pedir 1 combo completo do Outback por apenas R$ 10,10 no app da 99 Fo...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3373,6 +4204,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 170",
       slug: 'recomendacao-esquenta-sp-170',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.6,
       descricao: "🍟 COMBOS DO MC COM REFRIL E BATATA POR R$ 11,50! 😱  Você consegue pedir 1 combo médio do McDonald's por apenas R$ 11,50 ...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3385,6 +4219,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 173",
       slug: 'recomendacao-esquenta-sp-173',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 1.9,
       descricao: "🪄 BAILE DO HARRY POTTER EM SÃO PAULO! 🧙‍♂️✨  Chegou na capital a experiência oficial inspirada no Baile Tribruxo de Harr...",
       bairro: 'Pinheiros',
       cidade: 'São Paulo',
@@ -3397,6 +4234,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 174",
       slug: 'recomendacao-esquenta-sp-174',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
+      distancia_km: 2.0,
       descricao: "🍔 COMBOS DO BK POR APENAS R$ 9,90! 😱  Você consegue pedir o Whopper Combo do Burger King por apenas R$ 9,90 no app da 99...",
       bairro: 'Delivery',
       cidade: 'São Paulo',
@@ -3409,6 +4249,9 @@ async function runSeed() {
     {
       nome: "Recomendação Esquenta 176",
       slug: 'recomendacao-esquenta-sp-176',
+      horario_abertura: '08:00',
+      horario_fechamento: '18:00',
+      distancia_km: 2.2,
       descricao: "🎄 GRAMADO EM SP COM NEVE DE VERDADE E ENTRADA GRATUITA! ❄️🎅  Fomos conhecer a Vila de Natal de São Paulo, uma experiênci...",
       bairro: 'Vila Mariana',
       cidade: 'São Paulo',

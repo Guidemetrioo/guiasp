@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { MapPin, Sparkles, Search, Compass } from 'lucide-react'
+import { MapPin, Sparkles, Search, Compass, Clock } from 'lucide-react'
+import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -30,6 +31,9 @@ interface Restaurant {
   preco_medio: string
   instagram_handle: string
   foto_capa_url: string
+  horario_abertura?: string
+  horario_fechamento?: string
+  distancia_km?: number
 }
 
 interface Video {
@@ -85,6 +89,13 @@ export default function InfluencerProfileView({
     return nameMatch || neighborhoodMatch || cuisineMatch || dishMatch || keywordMatch
   })
 
+  // Sort partners: Open first, then closest distance
+  const sortedPartners = sortRestaurants(filteredPartners, (p) => ({
+    horario_abertura: p.restaurant.horario_abertura,
+    horario_fechamento: p.restaurant.horario_fechamento,
+    distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
+  }))
+
   // Filter all videos
   const filteredVideos = allVideos.filter((v) => {
     const q = searchQuery.toLowerCase().trim()
@@ -123,24 +134,37 @@ export default function InfluencerProfileView({
           </p>
         </div>
 
-        {filteredPartners.length > 0 ? (
+        {sortedPartners.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredPartners.map(({ restaurant, video }) => {
+            {sortedPartners.map(({ restaurant, video }) => {
               const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
               const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
               const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
+              const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
 
               return (
                 <div
                   key={restaurant.id}
-                  className="bg-zinc-900/40 border border-zinc-900 rounded-2xl overflow-hidden hover:border-brand-gold/20 transition-all flex flex-col justify-between group"
+                  className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all flex flex-col justify-between group ${
+                    isOpen ? 'border-zinc-900 hover:border-brand-gold/20' : 'border-zinc-950/80 opacity-75'
+                  }`}
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={displayImage}
                       alt={restaurant.nome}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                      className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                        !isOpen ? 'grayscale opacity-40' : ''
+                      }`}
                     />
+                    {/* Closed overlay sign */}
+                    {!isOpen && (
+                      <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
+                        <span className="px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-950/95 text-zinc-400 border border-zinc-800 shadow-2xl">
+                          Fechado
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-gold text-black">
                       Parceiro
                     </div>
@@ -151,23 +175,45 @@ export default function InfluencerProfileView({
 
                   <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                     <div className="space-y-2">
-                      <div className="flex items-center space-x-2 text-xs text-zinc-400 capitalize">
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 capitalize">
                         <span className="font-semibold text-zinc-300">{restaurant.tipo_cozinha}</span>
                         <span>•</span>
                         <span className="flex items-center">
                           <MapPin className="w-3 h-3 mr-1 text-zinc-500" />
                           {restaurant.bairro}
                         </span>
+                        {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
+                          <>
+                            <span>•</span>
+                            <span className="text-zinc-300 font-medium">{restaurant.distancia_km} km</span>
+                          </>
+                        )}
                       </div>
 
                       <Link href={`/restaurante/${restaurant.slug}`}>
-                        <h3 className="text-xl font-bold font-serif text-white hover:text-brand-gold transition-colors">
+                        <h3 className={`text-xl font-bold font-serif hover:text-brand-gold transition-colors ${
+                          isOpen ? 'text-white' : 'text-zinc-300'
+                        }`}>
                           {restaurant.nome}
                         </h3>
                       </Link>
 
+                      {/* Operating Status Block */}
+                      <div className="flex items-center space-x-1.5 text-xs pt-0.5">
+                        <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
+                        {isOpen ? (
+                          <span className="text-emerald-500 font-medium">
+                            Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
+                          </span>
+                        ) : (
+                          <span className="text-zinc-400 font-medium">
+                            Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
+                          </span>
+                        )}
+                      </div>
+
                       {video?.prato_destaque && (
-                        <p className="text-sm italic text-brand-gold flex items-center">
+                        <p className="text-sm italic text-brand-gold flex items-center pt-1">
                           <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" />
                           Destaque: {video.prato_destaque}
                         </p>

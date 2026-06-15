@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
 import PremiumVideoPlayer from '@/components/PremiumVideoPlayer'
 import { MapPin, Compass, Sparkles, Quote, Clock, Phone, DollarSign, Calendar, ShoppingBag, Film } from 'lucide-react'
+import { isRestaurantOpen } from '@/lib/utils'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -271,22 +272,41 @@ export default async function RestaurantePage({ params }: PageProps) {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-10 z-10 space-y-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-gold text-black">
-              {restaurant.preco_medio}
-            </span>
-            <span className="text-sm text-zinc-300 font-semibold uppercase tracking-wider capitalize">
-              {restaurant.tipo_cozinha}
-            </span>
-            <span className="text-zinc-500">•</span>
-            <span className="text-sm text-zinc-300 flex items-center">
-              <MapPin className="w-4 h-4 mr-1 text-zinc-400" />
-              {restaurant.bairro}, {restaurant.cidade}
-            </span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-serif tracking-tight text-white leading-tight">
-            {restaurant.nome}
-          </h1>
+          {(() => {
+            const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+            return (
+              <>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-gold text-black">
+                    {restaurant.preco_medio}
+                  </span>
+                  <span className="text-sm text-zinc-300 font-semibold uppercase tracking-wider capitalize">
+                    {restaurant.tipo_cozinha}
+                  </span>
+                  <span className="text-zinc-500">•</span>
+                  <span className="text-sm text-zinc-300 flex items-center">
+                    <MapPin className="w-4 h-4 mr-1 text-zinc-400" />
+                    {restaurant.bairro}, {restaurant.cidade}
+                  </span>
+                  {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
+                    <>
+                      <span className="text-zinc-500">•</span>
+                      <span className="text-sm text-zinc-350 font-medium">{restaurant.distancia_km} km de distância</span>
+                    </>
+                  )}
+                  <span className="text-zinc-500">•</span>
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                    isOpen ? 'bg-emerald-955/80 text-emerald-400 border border-emerald-800/40' : 'bg-zinc-955/80 text-zinc-400 border border-zinc-800/40'
+                  }`}>
+                    {isOpen ? `Aberto agora (fecha às ${restaurant.horario_fechamento})` : `Fechado agora (abre às ${restaurant.horario_abertura})`}
+                  </span>
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-extrabold font-serif tracking-tight text-white leading-tight">
+                  {restaurant.nome}
+                </h1>
+              </>
+            )
+          })()}
         </div>
       </section>
 
@@ -532,15 +552,23 @@ export default async function RestaurantePage({ params }: PageProps) {
           <section className="bg-zinc-900/40 border border-zinc-900/80 rounded-3xl p-6 space-y-4 shadow-xl">
             <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Informações Práticas</h3>
             <div className="space-y-4 text-xs text-zinc-350">
-              <div className="flex items-start space-x-3">
-                <Clock className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                <div className="space-y-0.5">
-                  <p className="font-semibold text-zinc-200">Horário de Funcionamento</p>
-                  <p className="text-zinc-400">Terça a Quinta: 12h - 23h</p>
-                  <p className="text-zinc-400">Sexta e Sábado: 12h - 00h</p>
-                  <p className="text-zinc-400">Domingo: 12h - 22h</p>
-                </div>
-              </div>
+              {(() => {
+                const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+                return (
+                  <div className="flex items-start space-x-3">
+                    <Clock className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
+                    <div className="space-y-0.5">
+                      <p className="font-semibold text-zinc-200">Horário de Funcionamento</p>
+                      <p className="text-zinc-400">Todos os dias: {restaurant.horario_abertura} - {restaurant.horario_fechamento}</p>
+                      <p className="text-zinc-450 italic text-[10px] pt-1">
+                        Status atual: <span className={isOpen ? 'text-emerald-450 font-bold' : 'text-zinc-400 font-bold'}>
+                          {isOpen ? 'Aberto agora' : 'Fechado no momento'}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                )
+              })()}
               <div className="flex items-start space-x-3">
                 <Phone className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
                 <div className="space-y-0.5">

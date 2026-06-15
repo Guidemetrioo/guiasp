@@ -3,43 +3,10 @@ import Link from 'next/link'
 import { createServer } from '@/lib/supabase-server'
 import SearchFilters from '@/components/SearchFilters'
 import SearchBar from '@/components/SearchBar'
-import { MapPin, Sparkles, AlertCircle } from 'lucide-react'
+import { MapPin, Sparkles, AlertCircle, Clock } from 'lucide-react'
+import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
 
 export const revalidate = 0 // Search is dynamic, do not cache
-
-const isRealPhoto = (url: string | null | undefined) => {
-  if (!url) return false;
-  if (url.includes('unsplash.com')) return false;
-  if (url.includes('placeholder-avatar.png')) return false;
-  return true;
-};
-
-const getInitials = (name: string) => {
-  if (!name) return "";
-  const parts = name.split(" ").filter(p => p);
-  if (parts.length === 0) return "";
-  if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
-  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-};
-
-const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
-  if (url && isRealPhoto(url)) {
-    return (
-      <img
-        src={url}
-        alt={name}
-        className="w-full h-full object-cover"
-        loading="lazy"
-      />
-    );
-  }
-  const initials = getInitials(name);
-  return (
-    <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
-      {initials}
-    </div>
-  );
-};
 
 interface SearchPageProps {
   searchParams: {
@@ -96,6 +63,49 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   const influencersList = allInfluencers || []
 
+  // Dynamic sorting: Open first, then closest distance
+  const sortedResults = results
+    ? sortRestaurants(results, (r: any) => ({
+        horario_abertura: r.horario_abertura,
+        horario_fechamento: r.horario_fechamento,
+        distancia_km: r.distancia_km ? Number(r.distancia_km) : null,
+      }))
+    : []
+
+  const isRealPhoto = (url: string | null | undefined) => {
+    if (!url) return false;
+    if (url.includes('unsplash.com')) return false;
+    if (url.includes('placeholder-avatar.png')) return false;
+    return true;
+  };
+
+  const getInitials = (name: string) => {
+    if (!name) return "";
+    const parts = name.split(" ").filter(p => p);
+    if (parts.length === 0) return "";
+    if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
+  const renderAvatar = (url: string | null | undefined, name: string, sizeTextClass = "text-xl") => {
+    if (url && isRealPhoto(url)) {
+      return (
+        <img
+          src={url}
+          alt={name}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      );
+    }
+    const initials = getInitials(name);
+    return (
+      <div className={`w-full h-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center font-serif text-brand-gold border border-brand-gold/30 font-bold ${sizeTextClass} uppercase`}>
+        {initials}
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-brand-gold selection:text-black font-sans pb-20">
       {/* Header */}
@@ -131,22 +141,36 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
           {/* Results Grid */}
           <div className="flex-1">
-            {results && results.length > 0 ? (
+            {sortedResults && sortedResults.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {results.map((item: any, idx: number) => {
+                {sortedResults.map((item: any, idx: number) => {
+                  const isOpen = isRestaurantOpen(item.horario_abertura, item.horario_fechamento)
                   const displayImage = item.foto_capa_url || item.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  
                   return (
                     <div
                       key={`${item.id}-${idx}`}
-                      className="bg-zinc-900/40 border border-zinc-900 rounded-2xl overflow-hidden hover:border-brand-gold/30 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                      className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${
+                        isOpen ? 'border-zinc-900 hover:border-brand-gold/30' : 'border-zinc-950/80 opacity-75'
+                      }`}
                     >
                       <Link href={`/restaurante/${item.slug}`} className="block overflow-hidden relative aspect-video">
                         <img
                           src={displayImage}
                           alt={item.nome}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                            !isOpen ? 'grayscale opacity-40' : ''
+                          }`}
                           loading="lazy"
                         />
+                        {/* Closed overlay sign */}
+                        {!isOpen && (
+                          <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
+                            <span className="px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-950/95 text-zinc-400 border border-zinc-800 shadow-2xl">
+                              Fechado
+                            </span>
+                          </div>
+                        )}
                         <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800 text-brand-gold backdrop-blur-sm">
                           {item.preco_medio}
                         </div>
@@ -154,23 +178,45 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                         <div className="space-y-2">
-                          <div className="flex items-center space-x-2 text-xs text-zinc-400 capitalize">
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 capitalize">
                             <span className="font-semibold text-zinc-300">{item.tipo_cozinha}</span>
                             <span>•</span>
                             <span className="flex items-center">
                               <MapPin className="w-3 h-3 mr-1 text-zinc-500" />
                               {item.bairro}
                             </span>
+                            {item.distancia_km !== undefined && item.distancia_km !== null && (
+                              <>
+                                <span>•</span>
+                                <span className="text-zinc-300 font-medium">{item.distancia_km} km</span>
+                              </>
+                            )}
                           </div>
                           
                           <Link href={`/restaurante/${item.slug}`} className="block">
-                            <h2 className="text-xl font-bold font-serif text-white hover:text-brand-gold transition-colors">
+                            <h2 className={`text-xl font-bold font-serif hover:text-brand-gold transition-colors ${
+                              isOpen ? 'text-white' : 'text-zinc-300'
+                            }`}>
                               {item.nome}
                             </h2>
                           </Link>
 
+                          {/* Operating Status Block */}
+                          <div className="flex items-center space-x-1.5 text-xs pt-0.5">
+                            <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
+                            {isOpen ? (
+                              <span className="text-emerald-500 font-medium">
+                                Aberto <span className="text-zinc-500 font-normal">• Fecha às {item.horario_fechamento}</span>
+                              </span>
+                            ) : (
+                              <span className="text-zinc-400 font-medium">
+                                Fechado <span className="text-zinc-500 font-normal">• Abre às {item.horario_abertura}</span>
+                              </span>
+                            )}
+                          </div>
+
                           {item.prato_destaque && (
-                            <p className="text-sm italic text-brand-gold flex items-center">
+                            <p className="text-sm italic text-brand-gold flex items-center pt-1">
                               <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" />
                               Destaque: {item.prato_destaque}
                             </p>
@@ -194,7 +240,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
                         {/* Influencer tag bottom */}
                         {item.influencer_nome && (
-                          <div className="border-t border-zinc-900 pt-3 mt-2 flex items-center justify-between">
+                          <div className="border-t border-zinc-900/60 pt-3 mt-2 flex items-center justify-between">
                             <Link href={`/influencer/${item.influencer_slug}`} className="flex items-center space-x-2.5 hover:opacity-85 transition-opacity">
                               <div className="w-7 h-7 rounded-full overflow-hidden border border-zinc-800">
                                 {renderAvatar(item.influencer_foto, item.influencer_nome, "text-[9px]")}
