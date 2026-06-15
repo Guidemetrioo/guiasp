@@ -26,6 +26,11 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': ['public/videos/**/*'],
+    },
+  },
 };
 
 export default nextConfig;

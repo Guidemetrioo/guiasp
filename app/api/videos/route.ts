@@ -15,7 +15,8 @@ function sanitizeFilename(text: string): string {
 }
 
 export async function GET() {
-  const videosDir = path.join(process.cwd(), 'public', 'videos')
+  const folderParts = ['public', 'videos']
+  const videosDir = path.join(process.cwd(), ...folderParts)
   
   try {
     // Ensure directory exists
@@ -86,7 +87,8 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: false, error: 'Invalid file name' }, { status: 400 })
   }
   
-  const filePath = path.join(process.cwd(), 'public', 'videos', filename)
+  const folderParts = ['public', 'videos']
+  const filePath = path.join(process.cwd(), ...folderParts, filename)
   
   try {
     await fs.unlink(filePath)
