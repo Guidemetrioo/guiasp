@@ -174,6 +174,20 @@ const NEIGHBORHOOD_COORDS: Record<string, { lat: number; lon: number }> = {
   'capao redondo': { lat: -23.6601, lon: -46.7797 },
 }
 
+const RESTAURANT_COORDS: Record<string, { lat: number; lon: number }> = {
+  'pantchos-house-burger': { lat: -23.7315, lon: -46.6855 },
+  'pecatto-bar-restaurante': { lat: -23.5435, lon: -46.5684 },
+  'outlet-do-suplemento': { lat: -23.5786, lon: -46.5937 },
+  'stunt-burger': { lat: -23.5976, lon: -46.7214 },
+  'santomar-restaurante': { lat: -23.543, lon: -46.568 },
+  'pizzaria-vero-paradiso': { lat: -23.5714, lon: -46.6433 },
+  'casa-na-praia-bar': { lat: -23.5836, lon: -46.6472 },
+  'hao-sushi-itaim': { lat: -23.5939, lon: -46.6789 },
+  'seja-total-galpao': { lat: -23.4768, lon: -46.6329 },
+  'pecatto-tatuape': { lat: -23.5435, lon: -46.5684 },
+  'hellmannsbr': { lat: -23.5671, lon: -46.7002 },
+}
+
 function deg2rad(deg: number): number {
   return deg * (Math.PI / 180);
 }
@@ -278,7 +292,7 @@ export default function InfluencerProfileView({
 
     return partners.map(p => {
       const bairroLower = (p.restaurant.bairro || '').toLowerCase().trim();
-      const coords = NEIGHBORHOOD_COORDS[bairroLower];
+      const coords = RESTAURANT_COORDS[p.restaurant.slug] || NEIGHBORHOOD_COORDS[bairroLower];
 
       if (coords) {
         const dist = getDistanceFromLatLonInKm(userCoords.lat, userCoords.lon, coords.lat, coords.lon);
@@ -426,24 +440,24 @@ export default function InfluencerProfileView({
           onClick={handleToggleGeo}
           className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1.5 shrink-0 select-none ${
             geoStatus === 'active'
-              ? 'bg-emerald-500/10 text-emerald-405 border-emerald-500/30 shadow-sm shadow-emerald-500/5'
+              ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30 shadow-sm shadow-emerald-500/5'
               : geoStatus === 'prompting'
               ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
               : geoStatus === 'denied' || geoStatus === 'error'
-              ? 'bg-rose-500/10 text-rose-450 border-rose-500/30'
-              : 'bg-zinc-900/40 text-zinc-450 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+              ? 'bg-rose-500/10 text-rose-400 border-rose-500/30'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-800 hover:border-zinc-800 hover:text-zinc-300'
           }`}
         >
           <span>
             {geoStatus === 'active'
-              ? '📍 GPS Ativo'
+              ? '📍 Perto de mim'
               : geoStatus === 'prompting'
-              ? '⏳ Obtendo GPS...'
+              ? '⏳ Perto de mim...'
               : geoStatus === 'denied'
-              ? '🚫 GPS Negado'
+              ? '🚫 Perto de mim'
               : geoStatus === 'error'
-              ? '⚠️ Erro no GPS'
-              : '📍 Usar meu GPS'}
+              ? '⚠️ Perto de mim'
+              : '📍 Perto de mim'}
           </span>
         </button>
 

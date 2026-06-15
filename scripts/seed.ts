@@ -91,11 +91,11 @@ async function runSeed() {
   // 3. Criar Restaurantes
   console.log('🍔 Criando restaurantes...')
   const restaurantesData = [
-{
+    {
       nome: 'Pizzaria Vero Paradiso',
       slug: 'pizzaria-vero-paradiso',
-      horario_abertura: '12:00',
-      horario_fechamento: '23:00',
+      horario_abertura: '18:00',
+      horario_fechamento: '23:30',
       distancia_km: 3.0,
       descricao: 'Tradicional pizzaria no Paraíso famosa pelo rodízio com mais de 50 sabores e um excelente custo-benefício, com opções de pacotes de bebidas à vontade.',
       bairro: 'Paraíso',
@@ -106,11 +106,11 @@ async function runSeed() {
       foto_capa_url: '/images/pizzaria-vero-paradiso.jpg',
       ativo: true,
     },
-{
+    {
       nome: 'Casa na Praia Bar',
       slug: 'casa-na-praia-bar',
-      horario_abertura: '12:00',
-      horario_fechamento: '23:00',
+      horario_abertura: '11:00',
+      horario_fechamento: '01:00',
       distancia_km: 3.4,
       descricao: 'Bar e restaurante aconchegante na Vila Mariana com ambiente descontraído, conhecido pelo tradicional festival de caldos servidos com diversos acompanhamentos e ótimas opções de porções.',
       bairro: 'Vila Mariana',
@@ -121,11 +121,11 @@ async function runSeed() {
       foto_capa_url: '/images/casa-na-praia-bar.jpg',
       ativo: true,
     },
-{
+    {
       nome: 'Hao Sushi Itaim',
       slug: 'hao-sushi-itaim',
-      horario_abertura: '08:00',
-      horario_fechamento: '18:00',
+      horario_abertura: '16:30',
+      horario_fechamento: '23:00',
       distancia_km: 3.7,
       descricao: 'Espaço moderno na Vila Nova Conceição/Itaim focado em buffet japonês completo com mais de 100 opções frias e quentes, com bebidas (sucos, refrigerantes, sodas italianas) e sobremesas inclusas no valor fixo.',
       bairro: 'Vila Nova Conceição',
@@ -244,8 +244,8 @@ async function runSeed() {
     {
       nome: "Seja Total Galpão",
       slug: 'seja-total-galpao',
-      horario_abertura: '08:00',
-      horario_fechamento: '18:00',
+      horario_abertura: '10:00',
+      horario_fechamento: '22:00',
       distancia_km: 3.8,
       descricao: "DESCOBRIMOS UMA FONTE DE SUPLEMENTOS COM OS MELHORES PREÇOS DO MERCADO!! 😍😱  Fomos navegr na @sejatotalgalpao uma loja d...",
       bairro: 'Parque Mandaqui',
@@ -259,8 +259,8 @@ async function runSeed() {
     {
       nome: "Pecatto Tatuapé",
       slug: 'pecatto-tatuape',
-      horario_abertura: '08:00',
-      horario_fechamento: '18:00',
+      horario_abertura: '11:30',
+      horario_fechamento: '23:00',
       distancia_km: 0.3,
       descricao: "O RESTAURANTE MAIS ABSURDO DE SP!!! 😱😍  Fomos navegar no @pecattosp, que além de fazer o melhor parmegiana de SP, também...",
       bairro: 'Tatuapé',
@@ -289,8 +289,8 @@ async function runSeed() {
     {
       nome: "Hellmannsbr",
       slug: 'hellmannsbr',
-      horario_abertura: '18:00',
-      horario_fechamento: '02:00',
+      horario_abertura: '12:00',
+      horario_fechamento: '23:00',
       distancia_km: 1.2,
       descricao: "Esse é um dos hambúrgueres mais absurdos de SP! 🍔  Uma parceria entre @hellmannsbr + @stuntburger, deu origem à essa del...",
       bairro: 'Pinheiros',
@@ -635,7 +635,7 @@ async function runSeed() {
       nome: "Pantcho's House Burger",
       slug: 'pantchos-house-burger',
       horario_abertura: '18:00',
-      horario_fechamento: '02:00',
+      horario_fechamento: '23:00',
       distancia_km: 1.7,
       descricao: "Essa hamburgueria foi eleita uma das melhores do Brasil!! 🇧🇷🍔  Fomos navegar na @pantchoshouse, que já foi eleita uma da...",
       bairro: 'Interlagos',
