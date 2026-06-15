@@ -1,0 +1,1070 @@
+{
+  "pantchos-house-burger": {
+    "endereco": "Avenida Manuel Alves Soares, 404 - Parque Colonial, São Paulo - SP, 04821-270",
+    "telefone": "(11) 2589-0467",
+    "whatsapp": "551123656435",
+    "deliveryUrl": "https://deliverydireto.com.br/pantchoshousehamburgueria"
+  },
+  "pecatto-bar-restaurante": {
+    "endereco": "Rua Emília Marengo, 1286 - Tatuapé, São Paulo - SP, 03336-000",
+    "telefone": "(11) 2673-9193",
+    "whatsapp": "551126739193",
+    "deliveryUrl": "https://pecatto.anota.ai"
+  },
+  "pecatto-tatuape": {
+    "endereco": "Rua Emília Marengo, 1286 - Tatuapé, São Paulo - SP, 03336-000",
+    "telefone": "(11) 2673-9193",
+    "whatsapp": "551126739193",
+    "deliveryUrl": "https://pecatto.anota.ai"
+  },
+  "outlet-do-suplemento": {
+    "endereco": "Rua Ponta Grossa, 237 - Parque Mandaqui, São Paulo - SP, 02420-010",
+    "telefone": "(11) 2365-6435",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://sejatotal.com"
+  },
+  "seja-total-galpao": {
+    "endereco": "Rua Ponta Grossa, 237 - Parque Mandaqui, São Paulo - SP, 02420-010",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://sejatotal.com"
+  },
+  "stunt-burger": {
+    "endereco": "Rua José Jannarelli, 426 - Vila Progredior, São Paulo - SP, 05615-000",
+    "telefone": "(11) 3721-3538",
+    "whatsapp": "5511955206206",
+    "deliveryUrl": "https://www.stuntburger.com.br"
+  },
+  "hellmannsbr": {
+    "endereco": "Rua José Jannarelli, 426 - Vila Progredior, São Paulo - SP, 05615-000",
+    "telefone": "(11) 3721-3538",
+    "whatsapp": "5511955206206",
+    "deliveryUrl": "https://www.stuntburger.com.br"
+  },
+  "santomar-restaurante": {
+    "endereco": "Rua Francisco Marengo, 773 - Tatuapé, São Paulo - SP, 03313-000",
+    "telefone": "(11) 2942-7594",
+    "whatsapp": "5511944672523",
+    "deliveryUrl": "https://santomar.anota.ai"
+  },
+  "pizzaria-vero-paradiso": {
+    "endereco": "Rua Tutóia, 194 - Paraíso, São Paulo - SP, 04007-000",
+    "telefone": "(11) 3884-3646",
+    "whatsapp": "551138843646",
+    "deliveryUrl": "https://veroparadiso.anota.ai"
+  },
+  "casa-na-praia-bar": {
+    "endereco": "Rua Doutor Amâncio de Carvalho, 329 - Vila Mariana, São Paulo - SP, 04012-090",
+    "telefone": "(11) 5082-5002",
+    "whatsapp": "551150825002",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hao-sushi-itaim": {
+    "endereco": "Rua João Cachoeira, 1556 - Vila Nova Conceição, São Paulo - SP, 04535-007",
+    "telefone": "(11) 5536-0783",
+    "whatsapp": "551155360783",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "arabia-night-paulista": {
+    "endereco": "Av. Paulista, 1941 (Shopping Market Paulista) - Bela Vista, São Paulo - SP, 01311-300",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.marketpaulista.com.br"
+  },
+  "busger": {
+    "endereco": "Av. Vereador José Diniz, 3700 - Campo Belo, São Paulo - SP, 04606-007",
+    "telefone": "(11) 2365-1695",
+    "whatsapp": "551123651695",
+    "deliveryUrl": "https://www.ifood.com.br/delivery/sao-paulo-sp/busger---campo-belo-campo-belo"
+  },
+  "villa-e-prosa": {
+    "endereco": "Rua Cubatão, 1116 - Vila Mariana, São Paulo - SP, 04013-004",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "o-mineiro-prime": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "costelao-atibaia": {
+    "endereco": "Atibaia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "legado-parrilla": {
+    "endereco": "Anália Franco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hippos-burger": {
+    "endereco": "Vila Carrão - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "moveis-dubai": {
+    "endereco": "Mogi das Cruzes - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "paparoto-cucina": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "bananasoutletmegaloja": {
+    "endereco": "Vila Leopoldina - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "so-marcas-outlet-guarulhos": {
+    "endereco": "Jardim Santa Francisca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "moveis-junco": {
+    "endereco": "Alphaville - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "s-design-paraty-hotel": {
+    "endereco": "Centro Histórico - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "nestor-pizzaria": {
+    "endereco": "Vila Prudente - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cromaburguers": {
+    "endereco": "Vila Osasco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pokes-momo": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "baixo-pinheiros-bar": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "feitico-brasileiro": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "tatuapeconceito": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "shawarmariaasmarssp": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "point-do-gordao": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "auraa-gastrobar": {
+    "endereco": "Bela Vista - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kureiji-candy": {
+    "endereco": "Liberdade - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "o-mineiro": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cadeiras-inc": {
+    "endereco": "São Bernardo do Campo - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "festivalsaidera": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "bella-paulista": {
+    "endereco": "Cerqueira César - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "botequim-paulista": {
+    "endereco": "Moema - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kenichi-sushi-mooca": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "estacao-praca-gastrobar": {
+    "endereco": "Centro - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "casa-cunha-padaria": {
+    "endereco": "Perdizes - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "barbearia-hermanoss": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "buteco-de-minas": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "real-1937-lanchonete": {
+    "endereco": "Sumaré - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "quintal-bar": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "sayakinikujardimanalia": {
+    "endereco": "Anália Franco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "orbaf-biergarten": {
+    "endereco": "Mairiporã - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "recanto-costela-de-chao": {
+    "endereco": "Caieiras - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dead-burger-lapa": {
+    "endereco": "Lapa - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "toca-do-peixe": {
+    "endereco": "Núcleo Bandeirante - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "tinapizzeriaoficial": {
+    "endereco": "Itaquera - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "99burgersp": {
+    "endereco": "Anália Franco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "carro-restaurante-trem": {
+    "endereco": "Guararema - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "new-shoes-lavanderia": {
+    "endereco": "Vila Romana - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pasteldontis": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pinkynaopink": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "botecosenador": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "my-jor-doceria": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kazzabarerestaurante": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "lk-beauty-shop": {
+    "endereco": "Brás - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "carola-restobar": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "fukuyarestaurante": {
+    "endereco": "Complexo JK - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "estacaogastronomicaradial": {
+    "endereco": "Patriarca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pelotasfood": {
+    "endereco": "Mandaqui - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kebabpointbr": {
+    "endereco": "Itaim Bibi - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "vaca-pollo-chancho": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "jucabowling": {
+    "endereco": "Santo Amaro - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "restaurantetaquaru": {
+    "endereco": "Itanhaém - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "99brasil": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "albakoasushi": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dra-mayrafernandes": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "marshmallow-ds": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "padaria-carillo": {
+    "endereco": "Água Rasa - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "vieira-zushi": {
+    "endereco": "Santana - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cocobambuoficial": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "meeteatsp": {
+    "endereco": "Vila Olímpia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "ahy-prime-sushi": {
+    "endereco": "Jardins - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "flor-do-paraiso": {
+    "endereco": "Vila Mariana - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "italianbearchocolate": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dbresciachurrascaria": {
+    "endereco": "Vila Mariana - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "izmirmoveis": {
+    "endereco": "Campinas - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "thebestacai": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "anneclinicperdizes": {
+    "endereco": "Perdizes - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "segredosdasgerais-consolacao": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "nekofest-oficial": {
+    "endereco": "Largo da batata - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cafe-preto-e-branco-2d": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "restaurante-momozinho": {
+    "endereco": "Jardins - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "domirooftop": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "miirooftop": {
+    "endereco": "Jardim Anália Franco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "figo-br": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "ouesushi": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "paodequeijohaddocklobo": {
+    "endereco": "Jardins - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "acaisurf": {
+    "endereco": "Mooca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dueamicicantina": {
+    "endereco": "Bela Vista - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "alecrimrestaurantes": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "sampagrill01": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "mediterragastronomia": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "sloopburger": {
+    "endereco": "Bela Vista - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "jardim-ubatuba": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "boinabrasaprime": {
+    "endereco": "Vila Buarque - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "tachaoubatuba": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "salinasmaragogi": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "magoni-moveis": {
+    "endereco": "Ibiúna - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "soulquiro": {
+    "endereco": "Vila Olímpia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "corpfit-jardins": {
+    "endereco": "Jardins - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "moringa-ubatuba": {
+    "endereco": "Itaguá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dolce-011-doceria": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "familiapresto": {
+    "endereco": "Aclimação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "senhorapaulistanamoema": {
+    "endereco": "Moema - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kfcbrasil": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "embrasabareparrilla": {
+    "endereco": "Aclimação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "djapa-moema-oficial": {
+    "endereco": "Moema - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "sabordeinfanciacafe": {
+    "endereco": "Louveira - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "docasteakwine": {
+    "endereco": "Bela Vista - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pointbarabc": {
+    "endereco": "Santo André - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "gabrielbruno": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "meu-sonho-magico": {
+    "endereco": "Paris - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "ruazinhasp": {
+    "endereco": "Vila Olímpia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "helenadinapolipizzaria": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "nacionalkartindoorsp": {
+    "endereco": "Penha - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hotelvillalobos-sparomantik": {
+    "endereco": "Extrema - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "bakesale-pastryshop": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "solardarepublica": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pizzaria-do-paulinho": {
+    "endereco": "Ubatuba - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "santingelatoartesanal": {
+    "endereco": "Ubatuba - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hotelort": {
+    "endereco": "Campos do Jordão - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "killerburgerbr": {
+    "endereco": "Barueri - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "novasucuri": {
+    "endereco": "Jardim Peri - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "circensebr": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "babaegelato": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "noryosushi": {
+    "endereco": "Jardim Taquaral - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "padaria-nova-imperio": {
+    "endereco": "Cachoeirinha - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "fabinhodoacaraje": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hotel-villa-charmosa": {
+    "endereco": "São Pedro - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "villa-cafebg": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "maraupeninsulaparadise": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kiyomi-sushi": {
+    "endereco": "Vila Clementino - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hotel-fazenda-aurora": {
+    "endereco": "Santa Isabel - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "quintaldeprati": {
+    "endereco": "Anália Franco - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "the-steak-factory": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "espetinho-do-juiz-patriarca": {
+    "endereco": "Patriarca - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "moveisjunco": {
+    "endereco": "Barueri - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "fazenda-vale-da-costela": {
+    "endereco": "Atibaia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "restaurante-parmesano": {
+    "endereco": "Consolação - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "kabuto-bento": {
+    "endereco": "Liberdade - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "headspasaopaulo": {
+    "endereco": "Jardins - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "santomarestaurante": {
+    "endereco": "Santana - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "pizzariabatepapo": {
+    "endereco": "Guarujá - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "massaria-sp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "paleteriasp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "resortvaledosol": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "casanostrapizzaria": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cervejariadopaulo": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "hotelfazendariopretoe": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "sushibar-sp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "glow-park": {
+    "endereco": "Brooklin - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "omineirosp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "volt-club": {
+    "endereco": "Bela Vista - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "dopamineland-experience": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cachacariadorancho86": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cavalo-preto-restaurante": {
+    "endereco": "Atibaia - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "resort-fazenda-sao-joao": {
+    "endereco": "São Pedro - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "restaurantemomo": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "flordoparaisooficial": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "cerejeirabar": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "temporadasubatuba-": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "punta-piedras-parrilla": {
+    "endereco": "Itaim Bibi - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "snack-break-food": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "rede-capivara": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "o-c-do-padre": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "barakiah-esfihas": {
+    "endereco": "Vila Guilherme - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "restaurante-rancho": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "resorthotelfazenda-sp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "secretbar-sp": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "seafood-sp": {
+    "endereco": "Tatuapé - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "residencialmaia": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  },
+  "temporadasubatuba--": {
+    "endereco": "Pinheiros - São Paulo, SP",
+    "telefone": "N/A",
+    "whatsapp": "5511999999999",
+    "deliveryUrl": "https://www.ifood.com.br"
+  }
+}

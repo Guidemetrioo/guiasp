@@ -7,6 +7,7 @@ import {
   ShoppingBag, Film, Quote, ChevronDown, ChevronUp, Share2, Award, Heart, MessageSquare
 } from 'lucide-react'
 import { isRestaurantOpen } from '@/lib/utils'
+import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
 // Icones Sociais
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -39,8 +40,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-// Dicionário de Contatos Reais por Slug
-export const RESTAURANT_CONTACTS: Record<string, {
+// Dicionário de Contatos Reais por Slug (Manual Overrides)
+const MANUAL_CONTACTS: Record<string, {
   endereco: string;
   telefone: string;
   whatsapp: string; // apenas numeros para links de wa.me
@@ -130,6 +131,17 @@ export const RESTAURANT_CONTACTS: Record<string, {
     whatsapp: '5511999999999',
     deliveryUrl: 'https://www.ifood.com.br'
   }
+}
+
+// Dicionário de Contatos Reais por Slug (Merged with Seeded Contacts)
+export const RESTAURANT_CONTACTS: Record<string, {
+  endereco: string;
+  telefone: string;
+  whatsapp: string;
+  deliveryUrl?: string;
+}> = {
+  ...seededContacts,
+  ...MANUAL_CONTACTS
 }
 
 // Dicionário de Dúvidas Frequentes por Culinária
