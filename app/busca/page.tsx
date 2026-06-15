@@ -80,6 +80,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           horario_fechamento: r.horario_fechamento,
           distancia_km: r.distancia_km ? Number(r.distancia_km) : null,
           horarios_semana: contacts?.horarios_semana,
+          descricao: r.descricao,
+          thumbnail_url: r.thumbnail_url,
         }
       })
     : []

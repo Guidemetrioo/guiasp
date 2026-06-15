@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { MapPin, Sparkles, Clock, Heart } from 'lucide-react'
-import { getLiveStatusMessage } from '@/lib/utils'
+import { getLiveStatusMessage, isCadastroPronto } from '@/lib/utils'
 import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
 const isRealPhoto = (url: string | null | undefined) => {
@@ -117,13 +117,23 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
             const isOpen = status.isOpen
             const statusMessage = status.message
             const displayImage = item.foto_capa_url || item.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+            const isReady = isCadastroPronto({
+              horario_abertura: item.horario_abertura,
+              horario_fechamento: item.horario_fechamento,
+              descricao: item.descricao,
+              thumbnail_url: item.thumbnail_url
+            })
             const isSaved = savedSlugs.includes(item.slug)
 
             return (
               <div
                 key={`${item.id}-${idx}`}
-                className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${
-                  isOpen ? 'border-zinc-900 hover:border-brand-gold/30' : 'border-zinc-950/80 opacity-75'
+                className={`bg-zinc-900/40 border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group ${
+                  isReady
+                    ? 'border-brand-gold/30 shadow-md shadow-brand-gold/[0.03] hover:border-brand-gold hover:shadow-brand-gold/15'
+                    : isOpen
+                    ? 'border-zinc-900 hover:border-brand-gold/30 hover:shadow-xl'
+                    : 'border-zinc-950/80 opacity-75 hover:shadow-xl'
                 }`}
               >
                 <Link href={`/restaurante/${item.slug}`} className="block overflow-hidden relative aspect-video">
@@ -143,8 +153,15 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
                       </span>
                     </div>
                   )}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800 text-brand-gold backdrop-blur-sm">
-                    {item.preco_medio}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800/40 text-brand-gold backdrop-blur-sm select-none">
+                      {item.preco_medio}
+                    </span>
+                    {isReady && (
+                      <span className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold via-amber-500 to-amber-300 text-black shadow-md flex items-center gap-0.5 select-none animate-pulse">
+                        ✨ Destaque
+                      </span>
+                    )}
                   </div>
                   
                   {/* Heart Button */}

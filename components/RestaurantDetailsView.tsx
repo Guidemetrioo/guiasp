@@ -512,19 +512,13 @@ export default function RestaurantDetailsView({
               )}
             </div>
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4">
-              <div className="w-14 h-14 rounded-full bg-zinc-900 border border-brand-gold/15 flex items-center justify-center text-brand-gold shadow">
-                <Clock className="w-6 h-6 animate-pulse" />
-              </div>
-              <div className="space-y-1.5">
-                <h5 className="font-serif font-bold text-white text-sm">Review Em Breve</h5>
-                <p className="text-zinc-400 text-[11px] leading-relaxed max-w-[200px] mx-auto">
-                  A avaliação em vídeo de **{restaurant.nome}** estará disponível muito em breve!
-                </p>
-              </div>
-              <span className="text-[9px] uppercase tracking-wider text-brand-gold/50 bg-brand-gold/5 border border-brand-gold/10 px-2 py-0.5 rounded-full">
-                Aguardando Upload
-              </span>
+            <div className="relative w-full h-full">
+              <img 
+                src={restaurant.foto_capa_url || '/images/placeholder-restaurant.jpg'} 
+                alt={restaurant.nome}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
           )}
         </div>

@@ -145,7 +145,24 @@ export function isRestaurantOpen(
 }
 
 /**
- * Sorts restaurants by open/closed status (open first) and then by distance (closest first).
+ * Checks if a restaurant has a complete registration:
+ * has opening hours, description (not placeholder), and video (thumbnail not placeholder).
+ */
+export function isCadastroPronto(r: {
+  horario_abertura?: string | null;
+  horario_fechamento?: string | null;
+  descricao?: string | null;
+  thumbnail_url?: string | null;
+}): boolean {
+  if (!r.horario_abertura || !r.horario_fechamento) return false;
+  if (!r.descricao || r.descricao.toLowerCase().includes('placeholder')) return false;
+  if (!r.thumbnail_url || r.thumbnail_url.includes('placeholder')) return false;
+  return true;
+}
+
+/**
+ * Sorts restaurants: complete registration (cadastro pronto) first,
+ * then open status (open first), and then distance (closest first).
  */
 export function sortRestaurants<T>(
   items: T[],
@@ -154,20 +171,29 @@ export function sortRestaurants<T>(
     horario_fechamento?: string | null;
     distancia_km?: number | null;
     horarios_semana?: any;
+    descricao?: string | null;
+    thumbnail_url?: string | null;
   }
 ): T[] {
   return [...items].sort((a, b) => {
     const dataA = getRestaurantData(a);
     const dataB = getRestaurantData(b);
 
+    const readyA = isCadastroPronto(dataA);
+    const readyB = isCadastroPronto(dataB);
+
+    // 1. Sort by complete registration first
+    if (readyA && !readyB) return -1;
+    if (!readyA && readyB) return 1;
+
+    // 2. Sort by open status
     const openA = isRestaurantOpen(dataA.horario_abertura, dataA.horario_fechamento, dataA.horarios_semana);
     const openB = isRestaurantOpen(dataB.horario_abertura, dataB.horario_fechamento, dataB.horarios_semana);
 
-    // 1. Sort by open first
     if (openA && !openB) return -1;
     if (!openA && openB) return 1;
 
-    // 2. Sort by distance ascending (closest first)
+    // 3. Sort by distance ascending (closest first)
     const distA = dataA.distancia_km ?? 999;
     const distB = dataB.distancia_km ?? 999;
     return distA - distB;
