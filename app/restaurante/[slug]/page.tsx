@@ -1,7 +1,28 @@
+import type { Metadata } from 'next'
 import React from 'react'
 import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
 import RestaurantDetailsView from '@/components/RestaurantDetailsView'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const supabase = createServer()
+  const { data: restaurant } = await supabase
+    .from('restaurantes')
+    .select('nome, descricao, bairro')
+    .eq('slug', params.slug)
+    .single()
+
+  if (!restaurant) {
+    return {
+      title: "Restaurante Não Encontrado | GuiaSP",
+    }
+  }
+
+  return {
+    title: `${restaurant.nome} - ${restaurant.bairro} | GuiaSP`,
+    description: restaurant.descricao || `Confira as indicações de pratos, fotos da galeria, horários de funcionamento reais e contatos para o restaurante ${restaurant.nome} no GuiaSP.`,
+  }
+}
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg

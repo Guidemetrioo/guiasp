@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { createServer } from '@/lib/supabase-server'
 import SearchBar from '@/components/SearchBar'
-import { Film, Compass, MapPin } from 'lucide-react'
+import { Film, Compass, MapPin, Heart } from 'lucide-react'
 
 export const revalidate = 60 // Cache for 60 seconds
 
@@ -74,6 +74,13 @@ export default async function Home() {
               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
               Explorar
+            </Link>
+            <Link
+              href="/busca?saved=true"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1"
+            >
+              <Heart className="w-3.5 h-3.5 text-brand-gold fill-brand-gold/10" />
+              <span className="hidden sm:inline">Salvos</span>
             </Link>
             <Link
               href="/admin"
@@ -211,6 +218,35 @@ export default async function Home() {
               <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
                 Acessa a localização, o vídeo original e reservas com um clique para aproveitar.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PWA Promotion & Install instructions */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-16">
+        <div className="relative overflow-hidden bg-gradient-to-r from-zinc-950 via-zinc-900/60 to-zinc-950 border border-zinc-850 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute -left-10 -top-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <div className="space-y-2 text-center md:text-left z-10">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brand-gold/15 text-brand-gold border border-brand-gold/30">
+              Instale o App 📱
+            </span>
+            <h3 className="text-xl font-bold font-serif text-white">Adicione o GuiaSP à sua tela inicial</h3>
+            <p className="text-sm text-zinc-400 max-w-xl">
+              Navegue instantaneamente, acesse seus favoritos offline e compartilhe indicações direto pelo seu celular como se fosse um aplicativo nativo da App Store ou Google Play.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 z-10 text-center">
+            <div className="flex flex-col items-center justify-center gap-1 text-[11px] text-zinc-450 bg-zinc-900/60 border border-zinc-850 px-4 py-3 rounded-2xl">
+              <span className="text-zinc-300 font-semibold">No iPhone (iOS):</span>
+              <span>Clique em <span className="text-brand-gold font-semibold">Compartilhar</span> e depois em <span className="text-zinc-200 font-semibold">Adicionar à Tela de Início</span></span>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1 text-[11px] text-zinc-450 bg-zinc-900/60 border border-zinc-850 px-4 py-3 rounded-2xl">
+              <span className="text-zinc-300 font-semibold">No Android:</span>
+              <span>Clique nos <span className="text-brand-gold font-semibold">três pontos</span> e depois em <span className="text-zinc-200 font-semibold">Instalar aplicativo</span></span>
             </div>
           </div>
         </div>

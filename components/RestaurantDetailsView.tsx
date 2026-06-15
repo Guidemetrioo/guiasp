@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { 
   MapPin, Compass, Sparkles, Clock, Phone, DollarSign, Calendar, 
-  ShoppingBag, Film, Quote, ChevronDown, ChevronUp, Share2, Award, Heart, MessageSquare
+  ShoppingBag, Film, Quote, ChevronDown, ChevronUp, Share2, Award, Heart, MessageSquare, CheckCircle2
 } from 'lucide-react'
 import { isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
 import seededContacts from '@/lib/restaurant-contacts-seeded.json'
@@ -215,6 +215,67 @@ export default function RestaurantDetailsView({
   const [checkingVideo, setCheckingVideo] = useState<boolean>(true)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [currentVideoUrl, setCurrentVideoUrl] = useState<string | null>(null)
+
+  // Favorites & Share logic
+  const [isFavorited, setIsFavorited] = useState(false)
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    const saved = localStorage.getItem('guiasp-favoritos')
+    const favs = saved ? JSON.parse(saved) : []
+    setIsFavorited(favs.includes(restaurant.slug))
+  }, [restaurant.slug])
+
+  const toggleFavorite = () => {
+    const saved = localStorage.getItem('guiasp-favoritos')
+    let favs = saved ? JSON.parse(saved) : []
+    
+    if (favs.includes(restaurant.slug)) {
+      favs = favs.filter((s: string) => s !== restaurant.slug)
+      setIsFavorited(false)
+      showToast('Removido dos favoritos')
+    } else {
+      favs.push(restaurant.slug)
+      setIsFavorited(true)
+      showToast('Salvo nos seus favoritos! ❤️')
+    }
+    localStorage.setItem('guiasp-favoritos', JSON.stringify(favs))
+  }
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg)
+  }
+
+  // Clear toast automatically after 3s
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => setToastMessage(null), 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [toastMessage])
+
+  const handleShare = async () => {
+    const shareData = {
+      title: `GuiaSP - ${restaurant.nome}`,
+      text: `Olha essa indicação do ${influencer?.nome || 'influencer'} no GuiaSP: ${restaurant.nome} (${restaurant.tipo_cozinha} no ${restaurant.bairro})!`,
+      url: window.location.href
+    }
+    
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        console.error('Error sharing:', err)
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        showToast('Link copiado para a área de transferência! 🔗')
+      } catch (err) {
+        showToast('Não foi possível copiar o link')
+      }
+    }
+  }
   
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -389,6 +450,19 @@ export default function RestaurantDetailsView({
             >
               Explorar
             </Link>
+            <Link
+              href="/busca?saved=true"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1"
+            >
+              <Heart className="w-3.5 h-3.5 text-brand-gold fill-brand-gold/10" />
+              <span className="hidden sm:inline">Salvos</span>
+            </Link>
+            <Link
+              href="/admin"
+              className="text-xs font-semibold px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-gold border border-zinc-800 rounded-full transition-all"
+            >
+              Painel Admin
+            </Link>
           </div>
         </div>
       </header>
@@ -472,7 +546,7 @@ export default function RestaurantDetailsView({
             <MapPin className="w-3.5 h-3.5 mr-1 text-zinc-500" />
             {restaurant.bairro}, {restaurant.cidade}
           </p>
-          <div className="pt-1.5 flex justify-center">
+          <div className="pt-1.5 flex flex-col items-center gap-3">
             <span className={`px-3 py-1 rounded-full text-[10px] font-bold border ${
               isOpen 
                 ? 'bg-emerald-950/40 text-emerald-400 border-emerald-500/25' 
@@ -480,6 +554,28 @@ export default function RestaurantDetailsView({
             }`}>
               {isOpen ? '●' : '○'} {statusMessage}
             </span>
+            
+            <div className="flex items-center gap-2.5 pt-1">
+              <button
+                onClick={toggleFavorite}
+                className={`p-2.5 rounded-full border transition-all duration-300 ${
+                  isFavorited
+                    ? 'bg-brand-gold/20 border-brand-gold text-brand-gold scale-105 shadow-lg shadow-brand-gold/10'
+                    : 'bg-zinc-900/40 border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700'
+                }`}
+                title={isFavorited ? "Remover dos favoritos" : "Salvar nos favoritos"}
+              >
+                <Heart className={`w-4 h-4 ${isFavorited ? 'fill-current' : ''}`} />
+              </button>
+              
+              <button
+                onClick={handleShare}
+                className="p-2.5 rounded-full border bg-zinc-900/40 border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all duration-300"
+                title="Compartilhar indicação"
+              >
+                <Share2 className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -924,6 +1020,14 @@ export default function RestaurantDetailsView({
           </section>
         )}
       </main>
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-brand-gold text-black font-semibold px-4 py-2.5 rounded-xl shadow-2xl flex items-center space-x-2 text-xs border border-brand-gold/20 animate-in fade-in slide-in-from-bottom-5 duration-200">
+          <CheckCircle2 className="w-4 h-4 fill-current text-black shrink-0" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </div>
   )
 }

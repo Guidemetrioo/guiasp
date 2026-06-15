@@ -1,8 +1,10 @@
+import type { Metadata } from 'next'
 import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createServer } from '@/lib/supabase-server'
 import InfluencerProfileView from '@/components/InfluencerProfileView'
+import { Heart } from 'lucide-react'
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -58,6 +60,26 @@ export const revalidate = 60 // Cache for 60 seconds
 interface PageProps {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServer()
+  const { data: influencer } = await supabase
+    .from('influencers')
+    .select('nome, bio, instagram_handle')
+    .eq('slug', params.slug)
+    .single()
+
+  if (!influencer) {
+    return {
+      title: "Influenciador Não Encontrado | GuiaSP",
+    }
+  }
+
+  return {
+    title: `${influencer.nome} (@${influencer.instagram_handle}) - Curadoria de Restaurantes | GuiaSP`,
+    description: influencer.bio || `Confira todos os restaurantes indicados e recomendados por ${influencer.nome} no GuiaSP.`,
   }
 }
 
@@ -171,6 +193,13 @@ export default async function InfluencerPage({ params }: PageProps) {
               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
               Explorar
+            </Link>
+            <Link
+              href="/busca?saved=true"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1"
+            >
+              <Heart className="w-3.5 h-3.5 text-brand-gold fill-brand-gold/10" />
+              <span className="hidden sm:inline">Salvos</span>
             </Link>
             <Link
               href="/admin"

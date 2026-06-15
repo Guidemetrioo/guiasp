@@ -1,0 +1,17 @@
+{
+  "name": "GuiaSP - Curadoria de Restaurantes",
+  "short_name": "GuiaSP",
+  "description": "Os melhores pontos gastronômicos de São Paulo recomendados pelos maiores criadores de conteúdo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

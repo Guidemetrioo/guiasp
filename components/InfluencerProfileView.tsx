@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import { MapPin, Sparkles, Search, Compass, Clock } from 'lucide-react'
+import { MapPin, Sparkles, Search, Compass, Clock, Heart } from 'lucide-react'
 import { sortRestaurants, isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
 import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
@@ -244,6 +244,25 @@ export default function InfluencerProfileView({
   const [filterDistance5km, setFilterDistance5km] = useState(false)
   const [filterReserva, setFilterReserva] = useState(false)
   const [filterEntrega, setFilterEntrega] = useState(false)
+  const [filterSaved, setFilterSaved] = useState(false)
+  const [savedSlugs, setSavedSlugs] = useState<string[]>([])
+  
+  useEffect(() => {
+    const saved = localStorage.getItem('guiasp-favoritos')
+    setSavedSlugs(saved ? JSON.parse(saved) : [])
+  }, [])
+
+  const handleToggleFavorite = (slug: string) => {
+    const saved = localStorage.getItem('guiasp-favoritos')
+    let favs = saved ? JSON.parse(saved) : []
+    if (favs.includes(slug)) {
+      favs = favs.filter((s: string) => s !== slug)
+    } else {
+      favs.push(slug)
+    }
+    localStorage.setItem('guiasp-favoritos', JSON.stringify(favs))
+    setSavedSlugs(favs)
+  }
 
   const [userCoords, setUserCoords] = useState<{ lat: number; lon: number } | null>(null)
   const [geoStatus, setGeoStatus] = useState<'idle' | 'prompting' | 'active' | 'denied' | 'error'>('idle')
@@ -360,6 +379,11 @@ export default function InfluencerProfileView({
     // 5. Delivery filter
     if (filterEntrega) {
       if (!supportsDelivery(p.restaurant)) return false
+    }
+
+    // 6. Saved filter
+    if (filterSaved) {
+      if (!savedSlugs.includes(p.restaurant.slug)) return false
     }
 
     return true
@@ -543,6 +567,17 @@ export default function InfluencerProfileView({
         >
           <span>🛵 Entrega</span>
         </button>
+
+        <button
+          onClick={() => setFilterSaved(!filterSaved)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
+            filterSaved
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>❤️ Salvos</span>
+        </button>
       </div>
 
       {/* Categories Horizontal Carousel (iFood Style) */}
@@ -663,6 +698,17 @@ export default function InfluencerProfileView({
                         <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
                           Parceiro
                         </div>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            handleToggleFavorite(restaurant.slug)
+                          }}
+                          className="absolute top-1.5 right-1.5 p-1.5 rounded-full bg-black/60 border border-zinc-800/40 text-zinc-400 hover:text-white transition-all scale-90 z-20"
+                          title={savedSlugs.includes(restaurant.slug) ? "Remover dos favoritos" : "Salvar nos favoritos"}
+                        >
+                          <Heart className={`w-3.5 h-3.5 ${savedSlugs.includes(restaurant.slug) ? 'text-brand-gold fill-current' : ''}`} />
+                        </button>
                       </div>
 
                       {/* Details Section (Right) */}
@@ -817,6 +863,17 @@ export default function InfluencerProfileView({
                           <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
                             Parceiro
                           </div>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              handleToggleFavorite(restaurant.slug)
+                            }}
+                            className="absolute top-1.5 right-1.5 p-1.5 rounded-full bg-black/60 border border-zinc-800/40 text-zinc-400 hover:text-white transition-all scale-90 z-20"
+                            title={savedSlugs.includes(restaurant.slug) ? "Remover dos favoritos" : "Salvar nos favoritos"}
+                          >
+                            <Heart className={`w-3.5 h-3.5 ${savedSlugs.includes(restaurant.slug) ? 'text-brand-gold fill-current' : ''}`} />
+                          </button>
                         </div>
 
                         {/* Details Section (Right) */}
