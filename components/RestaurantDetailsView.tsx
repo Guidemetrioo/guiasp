@@ -180,6 +180,16 @@ const getFAQ = (tipoCozinha: string, name: string): { q: string; a: string }[] =
   ];
 };
 
+function sanitizeFilename(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove accents
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "") // Remove non-alphanumeric except spaces/hyphens
+    .replace(/[\s_]+/g, "-") // Replace spaces/underscores with hyphens
+    .replace(/^-+|-+$/g, ""); // Strip leading/trailing hyphens
+}
+
 interface RestaurantDetailsViewProps {
   restaurant: any
   video: any
@@ -204,6 +214,7 @@ export default function RestaurantDetailsView({
   const [videoExists, setVideoExists] = useState<boolean>(false)
   const [checkingVideo, setCheckingVideo] = useState<boolean>(true)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [currentVideoUrl, setCurrentVideoUrl] = useState<string | null>(null)
   
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -256,9 +267,9 @@ export default function RestaurantDetailsView({
   const waMessage = encodeURIComponent(`Olá! Vi a indicação do ${restaurant.nome} no GuiaSP e gostaria de saber mais informações sobre mesas e reservas.`)
   const waUrl = `https://wa.me/${contacts.whatsapp}?text=${waMessage}`
 
-  // Check if video file exists
+  // Check if video file exists and support local override
   useEffect(() => {
-    if (!video?.video_url) {
+    if (!video) {
       setVideoExists(false)
       setCheckingVideo(false)
       return
@@ -267,7 +278,40 @@ export default function RestaurantDetailsView({
     let active = true
     async function checkVideo() {
       try {
-        const response = await fetch(video.video_url, { method: 'HEAD' })
+        let resolvedUrl = video.video_url
+
+        // Try to match local videos list first
+        if (video.titulo) {
+          try {
+            const listRes = await fetch('/api/videos')
+            const listData = await listRes.json()
+            if (listData.success && listData.videos) {
+              const sanitizedTitle = sanitizeFilename(video.titulo)
+              const matched = listData.videos.find((v: any) => {
+                const baseName = v.filename.substring(0, v.filename.lastIndexOf('.'))
+                return baseName === sanitizedTitle
+              })
+              if (matched) {
+                resolvedUrl = `/videos/${matched.filename}`
+                console.log(`[Fuzzy Video Matcher]: Matched local video for restaurant ${restaurant.nome}: ${resolvedUrl}`)
+              }
+            }
+          } catch (e) {
+            console.error('Failed to query local videos API:', e)
+          }
+        }
+
+        if (!active) return
+
+        if (!resolvedUrl) {
+          setVideoExists(false)
+          setCheckingVideo(false)
+          return
+        }
+
+        setCurrentVideoUrl(resolvedUrl)
+
+        const response = await fetch(resolvedUrl, { method: 'HEAD' })
         if (active) {
           setVideoExists(response.ok)
         }
@@ -286,7 +330,7 @@ export default function RestaurantDetailsView({
     return () => {
       active = false
     }
-  }, [video?.video_url])
+  }, [video, restaurant.nome])
 
   // Fullscreen video control
   useEffect(() => {
@@ -371,7 +415,7 @@ export default function RestaurantDetailsView({
             <div className="relative w-full h-full group">
               <video
                 ref={videoRef}
-                src={video.video_url}
+                src={currentVideoUrl || video?.video_url || undefined}
                 poster={video.thumbnail_url || restaurant.foto_capa_url}
                 playsInline
                 className="w-full h-full object-cover"

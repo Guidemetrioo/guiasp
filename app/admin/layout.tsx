@@ -38,6 +38,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { label: 'Restaurantes', href: '/admin/restaurantes', icon: Utensils },
     { label: 'Vídeos de Reviews', href: '/admin/videos', icon: Video },
+    { label: 'Downloader de Reels', href: '/admin/videos/downloader', icon: Download },
     { label: 'Novo Influencer', href: '/admin/influencers/novo', icon: Users },
     { label: 'Novo Plano', href: '/admin/planos/novo', icon: CreditCard },
     { label: 'Importar Vídeos', href: '/admin/videos/importar', icon: Download },
