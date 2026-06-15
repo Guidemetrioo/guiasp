@@ -68,6 +68,39 @@ interface InfluencerProfileViewProps {
   allVideos: Video[]
 }
 
+interface CategoryDefinition {
+  name: string
+  emoji: string
+  key: string
+  order: number
+}
+
+function getRestaurantCategory(tipoCozinha?: string | null, nomeRestaurante?: string | null, descricao?: string | null): CategoryDefinition {
+  const tc = (tipoCozinha || '').toLowerCase().trim();
+  const name = (nomeRestaurante || '').toLowerCase();
+  const desc = (descricao || '').toLowerCase();
+
+  if (tc === 'hamburguer') {
+    return { name: 'Hambúrgueres', emoji: '🍔', key: 'hamburguer', order: 1 };
+  }
+  if (tc === 'italiano' || tc === 'pizza') {
+    return { name: 'Massas & Italiano', emoji: '🍝', key: 'italiano', order: 2 };
+  }
+  if (tc === 'japones' || tc === 'frutos do mar') {
+    return { name: 'Japonês & Frutos do Mar', emoji: '🍣', key: 'peixe', order: 3 };
+  }
+  if (tc === 'saudavel' || name.includes('suplemento') || desc.includes('suplemento')) {
+    return { name: 'Saudável & Suplementos', emoji: '🥗', key: 'saudavel', order: 4 };
+  }
+  if (tc === 'churrasco') {
+    return { name: 'Churrasco & Grelhados', emoji: '🥩', key: 'churrasco', order: 5 };
+  }
+  if (tc === 'sobremesa') {
+    return { name: 'Doces & Confeitaria', emoji: '🍰', key: 'doces', order: 6 };
+  }
+  return { name: 'Outras Dicas & Variados', emoji: '📍', key: 'outros', order: 7 };
+}
+
 export default function InfluencerProfileView({
   influencer,
   partners,
@@ -95,6 +128,26 @@ export default function InfluencerProfileView({
     horario_fechamento: p.restaurant.horario_fechamento,
     distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
   }))
+
+  // Group sorted partners into categories
+  const groupedPartnersMap: { [key: string]: { category: CategoryDefinition; items: typeof sortedPartners } } = {}
+
+  sortedPartners.forEach((p) => {
+    const cat = getRestaurantCategory(
+      p.restaurant.tipo_cozinha,
+      p.restaurant.nome,
+      p.restaurant.descricao || ''
+    )
+    if (!groupedPartnersMap[cat.key]) {
+      groupedPartnersMap[cat.key] = { category: cat, items: [] }
+    }
+    groupedPartnersMap[cat.key].items.push(p)
+  })
+
+  // Get categories sorted by predefined order
+  const sortedCategories = Object.values(groupedPartnersMap).sort(
+    (a, b) => a.category.order - b.category.order
+  )
 
   // Filter all videos
   const filteredVideos = allVideos.filter((v) => {
@@ -126,129 +179,144 @@ export default function InfluencerProfileView({
       </div>
 
       {/* Partner Restaurants */}
-      <section className="space-y-6">
+      <section className="space-y-8">
         <div className="border-b border-zinc-900 pb-4">
           <h2 className="text-2xl font-bold font-serif">Restaurantes Parceiros</h2>
           <p className="text-sm text-zinc-500">
-            Estabelecimentos verificados vinculados ao perfil oficial de {influencer.nome}.
+            Estabelecimentos recomendados agrupados por categoria e vinculados ao perfil oficial de {influencer.nome}.
           </p>
         </div>
 
-        {sortedPartners.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sortedPartners.map(({ restaurant, video }) => {
-              const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
-              const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
-              const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
-              const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+        {sortedCategories.length > 0 ? (
+          <div className="space-y-12">
+            {sortedCategories.map(({ category, items }) => (
+              <div key={category.key} className="space-y-5">
+                {/* Category Section Header */}
+                <h3 className="text-lg font-bold font-serif flex items-center space-x-2 text-brand-gold border-b border-zinc-900/40 pb-2">
+                  <span>{category.emoji}</span>
+                  <span>{category.name}</span>
+                  <span className="text-xs font-normal text-zinc-500 font-sans bg-zinc-900/60 px-2 py-0.5 rounded-full">
+                    {items.length} {items.length === 1 ? 'recomendação' : 'recomendações'}
+                  </span>
+                </h3>
 
-              return (
-                <div
-                  key={restaurant.id}
-                  className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all flex flex-col justify-between group ${
-                    isOpen ? 'border-zinc-900 hover:border-brand-gold/20' : 'border-zinc-950/80 opacity-75'
-                  }`}
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={displayImage}
-                      alt={restaurant.nome}
-                      className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                        !isOpen ? 'grayscale opacity-40' : ''
-                      }`}
-                    />
-                    {/* Closed overlay sign */}
-                    {!isOpen && (
-                      <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
-                        <span className="px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-950/95 text-zinc-400 border border-zinc-800 shadow-2xl">
-                          Fechado
-                        </span>
-                      </div>
-                    )}
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-gold text-black">
-                      Parceiro
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800 text-brand-gold backdrop-blur-sm">
-                      {restaurant.preco_medio}
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {items.map(({ restaurant, video }) => {
+                    const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
+                    const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
+                    const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
 
-                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 capitalize">
-                        <span className="font-semibold text-zinc-300">{restaurant.tipo_cozinha}</span>
-                        <span>•</span>
-                        <span className="flex items-center">
-                          <MapPin className="w-3 h-3 mr-1 text-zinc-500" />
-                          {restaurant.bairro}
-                        </span>
-                        {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
-                          <>
-                            <span>•</span>
-                            <span className="text-zinc-300 font-medium">{restaurant.distancia_km} km</span>
-                          </>
-                        )}
-                      </div>
-
-                      <Link href={`/restaurante/${restaurant.slug}`}>
-                        <h3 className={`text-xl font-bold font-serif hover:text-brand-gold transition-colors ${
-                          isOpen ? 'text-white' : 'text-zinc-300'
-                        }`}>
-                          {restaurant.nome}
-                        </h3>
-                      </Link>
-
-                      {/* Operating Status Block */}
-                      <div className="flex items-center space-x-1.5 text-xs pt-0.5">
-                        <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
-                        {isOpen ? (
-                          <span className="text-emerald-500 font-medium">
-                            Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
-                          </span>
-                        ) : (
-                          <span className="text-zinc-400 font-medium">
-                            Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
-                          </span>
-                        )}
-                      </div>
-
-                      {video?.prato_destaque && (
-                        <p className="text-sm italic text-brand-gold flex items-center pt-1">
-                          <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" />
-                          Destaque: {video.prato_destaque}
-                        </p>
-                      )}
-
-                      <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2 pt-1">
-                        {restaurant.descricao || video?.resumo}
-                      </p>
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-900/60">
-                      <a
-                        href={instagramUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center space-x-2 py-2 border border-zinc-800 hover:border-zinc-700 text-xs font-semibold rounded-lg text-zinc-300 hover:text-white transition-colors"
+                    return (
+                      <div
+                        key={restaurant.id}
+                        className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all flex flex-col justify-between group ${
+                          isOpen ? 'border-zinc-900 hover:border-brand-gold/20' : 'border-zinc-950/80 opacity-75'
+                        }`}
                       >
-                        <InstagramIcon className="w-3.5 h-3.5" />
-                        <span>Instagram</span>
-                      </a>
-                      <a
-                        href={mapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center space-x-2 py-2 bg-zinc-900 hover:bg-zinc-850 text-xs font-semibold rounded-lg text-brand-gold border border-zinc-850 transition-colors"
-                      >
-                        <Compass className="w-3.5 h-3.5" />
-                        <span>Como chegar</span>
-                      </a>
-                    </div>
-                  </div>
+                        <div className="relative aspect-video overflow-hidden">
+                          <img
+                            src={displayImage}
+                            alt={restaurant.nome}
+                            className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                              !isOpen ? 'grayscale opacity-40' : ''
+                            }`}
+                          />
+                          {/* Closed overlay sign */}
+                          {!isOpen && (
+                            <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
+                              <span className="px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-950/95 text-zinc-400 border border-zinc-800 shadow-2xl">
+                                Fechado
+                              </span>
+                            </div>
+                          )}
+                          <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-gold text-black">
+                            Parceiro
+                          </div>
+                          <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800 text-brand-gold backdrop-blur-sm">
+                            {restaurant.preco_medio}
+                          </div>
+                        </div>
+
+                        <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                          <div className="space-y-2">
+                            <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 capitalize">
+                              <span className="font-semibold text-zinc-300">{restaurant.tipo_cozinha}</span>
+                              <span>•</span>
+                              <span className="flex items-center">
+                                <MapPin className="w-3 h-3 mr-1 text-zinc-500" />
+                                {restaurant.bairro}
+                              </span>
+                              {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
+                                <>
+                                  <span>•</span>
+                                  <span className="text-zinc-300 font-medium">{restaurant.distancia_km} km</span>
+                                </>
+                              )}
+                            </div>
+
+                            <Link href={`/restaurante/${restaurant.slug}`}>
+                              <h3 className={`text-xl font-bold font-serif hover:text-brand-gold transition-colors ${
+                                isOpen ? 'text-white' : 'text-zinc-300'
+                              }`}>
+                                {restaurant.nome}
+                              </h3>
+                            </Link>
+
+                            {/* Operating Status Block */}
+                            <div className="flex items-center space-x-1.5 text-xs pt-0.5">
+                              <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
+                              {isOpen ? (
+                                <span className="text-emerald-500 font-medium">
+                                  Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
+                                </span>
+                              ) : (
+                                <span className="text-zinc-400 font-medium">
+                                  Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
+                                </span>
+                              )}
+                            </div>
+
+                            {video?.prato_destaque && (
+                              <p className="text-sm italic text-brand-gold flex items-center pt-1">
+                                <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+                                Destaque: {video.prato_destaque}
+                              </p>
+                            )}
+
+                            <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2 pt-1">
+                              {restaurant.descricao || video?.resumo}
+                            </p>
+                          </div>
+
+                          {/* Action buttons */}
+                          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-900/60">
+                            <a
+                              href={instagramUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center space-x-2 py-2 border border-zinc-800 hover:border-zinc-700 text-xs font-semibold rounded-lg text-zinc-300 hover:text-white transition-colors"
+                            >
+                              <InstagramIcon className="w-3.5 h-3.5" />
+                              <span>Instagram</span>
+                            </a>
+                            <a
+                              href={mapsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center space-x-2 py-2 bg-zinc-900 hover:bg-zinc-850 text-xs font-semibold rounded-lg text-brand-gold border border-zinc-850 transition-colors"
+                            >
+                              <Compass className="w-3.5 h-3.5" />
+                              <span>Como chegar</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
-              )
-            })}
+              </div>
+            ))}
           </div>
         ) : (
           <div className="text-zinc-500 text-sm text-center py-10 bg-zinc-950/20 border border-zinc-900 rounded-xl">
