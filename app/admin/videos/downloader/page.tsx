@@ -60,9 +60,16 @@ export default function ReelsDownloader() {
   
   // Preview video modal
   const [previewFile, setPreviewFile] = useState<string | null>(null)
+  const [isVercel, setIsVercel] = useState(false)
 
   useEffect(() => {
     fetchLocalVideos()
+    if (typeof window !== 'undefined') {
+      const host = window.location.hostname
+      if (host !== 'localhost' && host !== '127.0.0.1') {
+        setIsVercel(true)
+      }
+    }
   }, [])
 
   const fetchLocalVideos = async () => {
@@ -226,6 +233,21 @@ export default function ReelsDownloader() {
           Insira o link ou uma lista de links de Reels do Instagram para salvá-los como MP4 localmente e associá-los ao restaurante automaticamente.
         </p>
       </div>
+
+      {isVercel && (
+        <div className="p-4 bg-amber-950/20 border border-amber-900/40 rounded-2xl flex items-start space-x-3 text-sm text-amber-300">
+          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-amber-400 animate-pulse" />
+          <div className="space-y-1">
+            <span className="font-bold block text-white">⚠️ Executando no Servidor de Produção (Vercel)</span>
+            <p className="text-xs text-zinc-300 leading-relaxed">
+              O Downloader de Reels é uma <strong>ferramenta administrativa local</strong>. Na nuvem do Vercel, o ambiente é <em>serverless</em> (sem o interpretador Python instalado por padrão) e o sistema de arquivos é **somente leitura** (read-only), o que impede salvar novos arquivos MP4 em <code>public/videos/</code>.
+            </p>
+            <p className="text-xs text-zinc-300 leading-relaxed">
+              Para baixar novos Reels e sincronizá-los, por favor, execute o projeto localmente e acesse: <a href="http://localhost:3000/admin/videos/downloader" className="text-brand-gold hover:underline font-semibold">http://localhost:3000/admin/videos/downloader</a>.
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Form & Queue */}
