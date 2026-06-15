@@ -6,7 +6,7 @@ import {
   MapPin, Compass, Sparkles, Clock, Phone, DollarSign, Calendar, 
   ShoppingBag, Film, Quote, ChevronDown, ChevronUp, Share2, Award, Heart, MessageSquare
 } from 'lucide-react'
-import { isRestaurantOpen } from '@/lib/utils'
+import { isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
 import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
 // Icones Sociais
@@ -213,19 +213,40 @@ export default function RestaurantDetailsView({
     whatsapp: '5511999999999'
   }
 
-  const [isOpen, setIsOpen] = useState(() => isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+  const [status, setStatus] = useState(() => 
+    getLiveStatusMessage(
+      restaurant.horario_abertura,
+      restaurant.horario_fechamento,
+      (contacts as any)?.horarios_semana
+    )
+  )
 
   useEffect(() => {
     // Recalculate immediately on mount to ensure client time is accurate
-    setIsOpen(isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+    setStatus(
+      getLiveStatusMessage(
+        restaurant.horario_abertura,
+        restaurant.horario_fechamento,
+        (contacts as any)?.horarios_semana
+      )
+    )
 
     // Update the open status dynamically every 10 seconds
     const interval = setInterval(() => {
-      setIsOpen(isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+      setStatus(
+        getLiveStatusMessage(
+          restaurant.horario_abertura,
+          restaurant.horario_fechamento,
+          (contacts as any)?.horarios_semana
+        )
+      )
     }, 10000)
 
     return () => clearInterval(interval)
-  }, [restaurant.horario_abertura, restaurant.horario_fechamento])
+  }, [restaurant.horario_abertura, restaurant.horario_fechamento, contacts])
+
+  const isOpen = status.isOpen
+  const statusMessage = status.message
   const faqs = getFAQ(restaurant.tipo_cozinha, restaurant.nome)
 
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${contacts.endereco}`)}`
@@ -413,7 +434,7 @@ export default function RestaurantDetailsView({
                 ? 'bg-emerald-950/40 text-emerald-400 border-emerald-500/25' 
                 : 'bg-zinc-900/60 text-zinc-400 border-zinc-800'
             }`}>
-              {isOpen ? `● Aberto (Fecha às ${restaurant.horario_fechamento})` : `○ Fechado (Abre às ${restaurant.horario_abertura})`}
+              {isOpen ? '●' : '○'} {statusMessage}
             </span>
           </div>
         </div>
@@ -644,12 +665,62 @@ export default function RestaurantDetailsView({
                   <div className="p-2 rounded-lg bg-zinc-900 text-brand-gold shrink-0 border border-zinc-800">
                     <Clock className="w-5 h-5" />
                   </div>
-                  <div className="space-y-0.5">
+                  <div className="space-y-2 flex-1">
                     <p className="font-semibold text-zinc-200">Horário de Funcionamento</p>
-                    <p className="text-zinc-400 text-xs">Todos os dias: {restaurant.horario_abertura} - {restaurant.horario_fechamento}</p>
+                    
+                    {contacts.horarios_semana ? (
+                      <div className="bg-zinc-900/40 border border-zinc-850 rounded-2xl p-4 mt-2 space-y-2 text-xs">
+                        {(() => {
+                          const daysMap = ["domingo", "segunda", "terca", "quarta", "quinta", "sexta", "sabado"];
+                          const daysPretty = {
+                            segunda: "Segunda-feira",
+                            terca: "Terça-feira",
+                            quarta: "Quarta-feira",
+                            quinta: "Quinta-feira",
+                            sexta: "Sexta-feira",
+                            sabado: "Sábado",
+                            domingo: "Domingo"
+                          };
+                          const todayIndex = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" })).getDay();
+                          const todayName = daysMap[todayIndex];
+
+                          return Object.keys(daysPretty).map((dayKey) => {
+                            const config = (contacts as any).horarios_semana[dayKey];
+                            const isToday = dayKey === todayName;
+                            const label = (daysPretty as any)[dayKey];
+                            
+                            let hoursStr = "Fechado";
+                            if (config?.aberto && config.turnos?.length > 0) {
+                              hoursStr = config.turnos.map((t: any) => `${t.abertura} - ${t.fechamento}`).join(", ");
+                            }
+
+                            return (
+                              <div
+                                key={dayKey}
+                                className={`flex justify-between items-center py-1 px-2 rounded-lg transition-colors ${
+                                  isToday
+                                    ? "bg-brand-gold/10 text-brand-gold border border-brand-gold/20 font-semibold"
+                                    : "text-zinc-400 border border-transparent"
+                                }`}
+                              >
+                                <span>{label}</span>
+                                <span className={isToday ? "text-brand-gold font-bold" : config?.aberto ? "text-zinc-350" : "text-zinc-650"}>
+                                  {hoursStr}
+                                </span>
+                              </div>
+                            );
+                          });
+                        })()}
+                      </div>
+                    ) : (
+                      <p className="text-zinc-400 text-xs">
+                        Todos os dias: {restaurant.horario_abertura} - {restaurant.horario_fechamento}
+                      </p>
+                    )}
+
                     <p className="text-[10px] pt-1">
                       Status atual: <span className={isOpen ? 'text-emerald-400 font-bold' : 'text-zinc-500 font-bold'}>
-                        {isOpen ? '● Aberto agora' : '○ Fechado no momento'}
+                        {isOpen ? `● ${statusMessage}` : `○ ${statusMessage}`}
                       </span>
                     </p>
                   </div>
