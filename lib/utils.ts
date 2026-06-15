@@ -153,14 +153,15 @@ export function sortRestaurants<T>(
     horario_abertura?: string | null;
     horario_fechamento?: string | null;
     distancia_km?: number | null;
+    horarios_semana?: any;
   }
 ): T[] {
   return [...items].sort((a, b) => {
     const dataA = getRestaurantData(a);
     const dataB = getRestaurantData(b);
 
-    const openA = isRestaurantOpen(dataA.horario_abertura, dataA.horario_fechamento);
-    const openB = isRestaurantOpen(dataB.horario_abertura, dataB.horario_fechamento);
+    const openA = isRestaurantOpen(dataA.horario_abertura, dataA.horario_fechamento, dataA.horarios_semana);
+    const openB = isRestaurantOpen(dataB.horario_abertura, dataB.horario_fechamento, dataB.horarios_semana);
 
     // 1. Sort by open first
     if (openA && !openB) return -1;

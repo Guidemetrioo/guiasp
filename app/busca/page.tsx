@@ -4,7 +4,8 @@ import { createServer } from '@/lib/supabase-server'
 import SearchFilters from '@/components/SearchFilters'
 import SearchBar from '@/components/SearchBar'
 import { MapPin, Sparkles, AlertCircle, Clock } from 'lucide-react'
-import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
+import { sortRestaurants, isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
+import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
 export const revalidate = 0 // Search is dynamic, do not cache
 
@@ -65,11 +66,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   // Dynamic sorting: Open first, then closest distance
   const sortedResults = results
-    ? sortRestaurants(results, (r: any) => ({
-        horario_abertura: r.horario_abertura,
-        horario_fechamento: r.horario_fechamento,
-        distancia_km: r.distancia_km ? Number(r.distancia_km) : null,
-      }))
+    ? sortRestaurants(results, (r: any) => {
+        const contacts = (seededContacts as any)[r.slug]
+        return {
+          horario_abertura: r.horario_abertura,
+          horario_fechamento: r.horario_fechamento,
+          distancia_km: r.distancia_km ? Number(r.distancia_km) : null,
+          horarios_semana: contacts?.horarios_semana,
+        }
+      })
     : []
 
   const isRealPhoto = (url: string | null | undefined) => {
@@ -144,7 +149,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {sortedResults && sortedResults.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {sortedResults.map((item: any, idx: number) => {
-                  const isOpen = isRestaurantOpen(item.horario_abertura, item.horario_fechamento)
+                  const contacts = (seededContacts as any)[item.slug]
+                  const status = getLiveStatusMessage(item.horario_abertura, item.horario_fechamento, contacts?.horarios_semana)
+                  const isOpen = status.isOpen
+                  const statusMessage = status.message
                   const displayImage = item.foto_capa_url || item.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   
                   return (
@@ -204,15 +212,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           {/* Operating Status Block */}
                           <div className="flex items-center space-x-1.5 text-xs pt-0.5">
                             <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
-                            {isOpen ? (
-                              <span className="text-emerald-500 font-medium">
-                                Aberto <span className="text-zinc-500 font-normal">• Fecha às {item.horario_fechamento}</span>
-                              </span>
-                            ) : (
-                              <span className="text-zinc-400 font-medium">
-                                Fechado <span className="text-zinc-500 font-normal">• Abre às {item.horario_abertura}</span>
-                              </span>
-                            )}
+                            <span className={`${isOpen ? 'text-emerald-500' : 'text-zinc-400'} font-medium`}>
+                              {statusMessage}
+                            </span>
                           </div>
 
                           {item.prato_destaque && (

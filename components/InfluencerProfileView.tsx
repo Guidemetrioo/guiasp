@@ -3,7 +3,8 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { MapPin, Sparkles, Search, Compass, Clock } from 'lucide-react'
-import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
+import { sortRestaurants, isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
+import seededContacts from '@/lib/restaurant-contacts-seeded.json'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg
@@ -340,7 +341,8 @@ export default function InfluencerProfileView({
 
     // 2. Open now filter
     if (filterOpen) {
-      const isOpen = isRestaurantOpen(p.restaurant.horario_abertura, p.restaurant.horario_fechamento)
+      const contacts = (seededContacts as any)[p.restaurant.slug]
+      const isOpen = isRestaurantOpen(p.restaurant.horario_abertura, p.restaurant.horario_fechamento, contacts?.horarios_semana)
       if (!isOpen) return false
     }
 
@@ -630,7 +632,10 @@ export default function InfluencerProfileView({
                   const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                   const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
-                  const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+                  const contacts = (seededContacts as any)[restaurant.slug]
+                  const status = getLiveStatusMessage(restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
+                  const isOpen = status.isOpen
+                  const statusMessage = status.message
 
                   return (
                     <div
@@ -693,15 +698,9 @@ export default function InfluencerProfileView({
 
                           <div className="flex items-center space-x-1.5 text-[10px] md:text-xs">
                             <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-550'}`} />
-                            {isOpen ? (
-                              <span className="text-emerald-500 font-medium">
-                                Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
-                              </span>
-                            ) : (
-                              <span className="text-zinc-400 font-medium">
-                                Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
-                              </span>
-                            )}
+                            <span className={`${isOpen ? 'text-emerald-500' : 'text-zinc-400'} font-medium`}>
+                              {statusMessage}
+                            </span>
                           </div>
 
                           {video?.prato_destaque ? (
@@ -786,7 +785,10 @@ export default function InfluencerProfileView({
                     const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                     const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
-                    const isOpen = isRestaurantOpen(restaurant.horaria_abertura || restaurant.horario_abertura, restaurant.horario_fechamento)
+                    const contacts = (seededContacts as any)[restaurant.slug]
+                    const status = getLiveStatusMessage(restaurant.horaria_abertura || restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
+                    const isOpen = status.isOpen
+                    const statusMessage = status.message
 
                     return (
                       <div
@@ -853,15 +855,9 @@ export default function InfluencerProfileView({
                             {/* Line 3: Horários */}
                             <div className="flex items-center space-x-1.5 text-[10px] md:text-xs">
                               <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-550'}`} />
-                              {isOpen ? (
-                                <span className="text-emerald-500 font-medium">
-                                  Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
-                                </span>
-                              ) : (
-                                <span className="text-zinc-400 font-medium">
-                                  Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
-                                </span>
-                              )}
+                              <span className={`${isOpen ? 'text-emerald-500' : 'text-zinc-400'} font-medium`}>
+                                {statusMessage}
+                              </span>
                             </div>
 
                             {/* Line 4: Destaque or description */}
