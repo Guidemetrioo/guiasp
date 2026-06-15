@@ -101,25 +101,81 @@ function getRestaurantCategory(tipoCozinha?: string | null, nomeRestaurante?: st
   return { name: 'Outras Dicas & Variados', emoji: '📍', key: 'outros', order: 7 };
 }
 
+function supportsReservation(restaurant: Restaurant): boolean {
+  const desc = (restaurant.descricao || '').toLowerCase();
+  return (
+    restaurant.preco_medio.length >= 2 || // $$ or $$$
+    desc.includes('reserva') ||
+    desc.includes('reservar')
+  );
+}
+
+function supportsDelivery(restaurant: Restaurant): boolean {
+  const tc = (restaurant.tipo_cozinha || '').toLowerCase();
+  const name = restaurant.nome.toLowerCase();
+  const desc = (restaurant.descricao || '').toLowerCase();
+  return (
+    name.includes('suplemento') ||
+    tc === 'hamburguer' ||
+    tc === 'pizza' ||
+    tc === 'sobremesa' ||
+    desc.includes('entrega') ||
+    desc.includes('delivery') ||
+    desc.includes('ifood')
+  );
+}
+
 export default function InfluencerProfileView({
   influencer,
   partners,
   allVideos,
 }: InfluencerProfileViewProps) {
   const [searchQuery, setSearchQuery] = useState('')
+  const [activeCategory, setActiveCategory] = useState('todos')
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [filterDistance5km, setFilterDistance5km] = useState(false)
+  const [filterReserva, setFilterReserva] = useState(false)
+  const [filterEntrega, setFilterEntrega] = useState(false)
 
   // Filter partners based on search query (name, neighborhood, type of cuisine, or key tags)
   const filteredPartners = partners.filter((p) => {
+    // 1. Search filter
     const q = searchQuery.toLowerCase().trim()
-    if (!q) return true
-    
-    const nameMatch = p.restaurant.nome.toLowerCase().includes(q)
-    const neighborhoodMatch = p.restaurant.bairro.toLowerCase().includes(q)
-    const cuisineMatch = p.restaurant.tipo_cozinha.toLowerCase().includes(q)
-    const dishMatch = p.video?.prato_destaque?.toLowerCase().includes(q) || false
-    const keywordMatch = p.video?.palavras_chave?.some(tag => tag.toLowerCase().includes(q)) || false
+    if (q) {
+      const nameMatch = p.restaurant.nome.toLowerCase().includes(q)
+      const neighborhoodMatch = p.restaurant.bairro.toLowerCase().includes(q)
+      const cuisineMatch = p.restaurant.tipo_cozinha.toLowerCase().includes(q)
+      const dishMatch = p.video?.prato_destaque?.toLowerCase().includes(q) || false
+      const keywordMatch = p.video?.palavras_chave?.some(tag => tag.toLowerCase().includes(q)) || false
 
-    return nameMatch || neighborhoodMatch || cuisineMatch || dishMatch || keywordMatch
+      if (!(nameMatch || neighborhoodMatch || cuisineMatch || dishMatch || keywordMatch)) {
+        return false
+      }
+    }
+
+    // 2. Open now filter
+    if (filterOpen) {
+      const isOpen = isRestaurantOpen(p.restaurant.horario_abertura, p.restaurant.horario_fechamento)
+      if (!isOpen) return false
+    }
+
+    // 3. Distance <= 5km filter
+    if (filterDistance5km) {
+      const dist = p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null
+      if (dist === null || dist > 5) return false
+    }
+
+    // 4. Reservation filter
+    if (filterReserva) {
+      if (!supportsReservation(p.restaurant)) return false
+    }
+
+    // 5. Delivery filter
+    if (filterEntrega) {
+      if (!supportsDelivery(p.restaurant)) return false
+    }
+
+    return true
   })
 
   // Sort partners: Open first, then closest distance
@@ -138,6 +194,12 @@ export default function InfluencerProfileView({
       p.restaurant.nome,
       p.restaurant.descricao || ''
     )
+
+    // Active Category Filter
+    if (activeCategory !== 'todos' && cat.key !== activeCategory) {
+      return
+    }
+
     if (!groupedPartnersMap[cat.key]) {
       groupedPartnersMap[cat.key] = { category: cat, items: [] }
     }
@@ -147,6 +209,21 @@ export default function InfluencerProfileView({
   // Get categories sorted by predefined order
   const sortedCategories = Object.values(groupedPartnersMap).sort(
     (a, b) => a.category.order - b.category.order
+  )
+
+  // Find available categories dynamically based on the current search text (so we don't show empty categories)
+  const availableCategoriesMap: { [key: string]: CategoryDefinition } = {}
+  partners.forEach((p) => {
+    // Show categories based on base partners
+    const cat = getRestaurantCategory(
+      p.restaurant.tipo_cozinha,
+      p.restaurant.nome,
+      p.restaurant.descricao || ''
+    )
+    availableCategoriesMap[cat.key] = cat
+  })
+  const availableCategoriesList = Object.values(availableCategoriesMap).sort(
+    (a, b) => a.order - b.order
   )
 
   // Filter all videos
@@ -163,44 +240,152 @@ export default function InfluencerProfileView({
   })
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       {/* Search Internal */}
       <div className="max-w-md mx-auto">
-        <div className="relative flex items-center bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden focus-within:border-brand-gold/60 transition-all px-3">
+        <div className="relative flex items-center bg-zinc-900/60 border border-zinc-850 rounded-xl overflow-hidden focus-within:border-brand-gold/60 transition-all px-3">
           <Search className="w-5 h-5 text-zinc-500 mr-2 shrink-0" />
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value)
+              // Reset category to "todos" when performing a fresh text search to show matching results
+              setActiveCategory('todos')
+            }}
             placeholder={`Buscar nos restaurantes de ${influencer.nome}...`}
             className="w-full bg-transparent border-none outline-none py-3 text-sm text-white placeholder-zinc-500"
           />
         </div>
       </div>
 
+      {/* Quick Filters (Aberto-fechado, Distancia, Reserva, Entrega) */}
+      <div 
+        className="w-full overflow-x-auto py-1 flex items-center space-x-2.5 scroll-smooth"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <button
+          onClick={() => setFilterOpen(!filterOpen)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
+            filterOpen
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>🕒 Aberto</span>
+        </button>
+
+        <button
+          onClick={() => setFilterDistance5km(!filterDistance5km)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
+            filterDistance5km
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>📍 Até 5 km</span>
+        </button>
+
+        <button
+          onClick={() => setFilterReserva(!filterReserva)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
+            filterReserva
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>📅 Aceita Reserva</span>
+        </button>
+
+        <button
+          onClick={() => setFilterEntrega(!filterEntrega)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1 shrink-0 select-none ${
+            filterEntrega
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>🛵 Entrega</span>
+        </button>
+      </div>
+
+      {/* Categories Horizontal Carousel (iFood Style) */}
+      <div className="space-y-3">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Categorias</h4>
+        <div 
+          className="w-full overflow-x-auto py-2 flex items-center space-x-5 scroll-smooth"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <button
+            onClick={() => setActiveCategory('todos')}
+            className="flex flex-col items-center space-y-1.5 focus:outline-none group shrink-0"
+          >
+            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl transition-all border ${
+              activeCategory === 'todos'
+                ? 'bg-brand-gold text-black border-brand-gold scale-105 shadow-md shadow-brand-gold/10'
+                : 'bg-zinc-900/40 hover:bg-zinc-850 border-zinc-850 text-zinc-350 hover:text-white'
+            }`}>
+              🍽️
+            </div>
+            <span className={`text-[11px] font-medium transition-colors ${
+              activeCategory === 'todos' ? 'text-brand-gold font-semibold' : 'text-zinc-400 group-hover:text-zinc-200'
+            }`}>
+              Todos
+            </span>
+          </button>
+
+          {availableCategoriesList.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className="flex flex-col items-center space-y-1.5 focus:outline-none group shrink-0"
+            >
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl transition-all border ${
+                activeCategory === cat.key
+                  ? 'bg-brand-gold text-black border-brand-gold scale-105 shadow-md shadow-brand-gold/10'
+                  : 'bg-zinc-900/40 hover:bg-zinc-850 border-zinc-850 text-zinc-350 hover:text-white'
+              }`}>
+                {cat.emoji}
+              </div>
+              <span className={`text-[11px] font-medium transition-colors ${
+                activeCategory === cat.key ? 'text-brand-gold font-semibold' : 'text-zinc-400 group-hover:text-zinc-200'
+              }`}>
+                {cat.name.split(' ')[0]}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Partner Restaurants */}
-      <section className="space-y-8">
-        <div className="border-b border-zinc-900 pb-4">
-          <h2 className="text-2xl font-bold font-serif">Restaurantes Parceiros</h2>
-          <p className="text-sm text-zinc-500">
-            Estabelecimentos recomendados agrupados por categoria e vinculados ao perfil oficial de {influencer.nome}.
-          </p>
+      <section className="space-y-6">
+        <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-bold font-serif text-white">Recomendações Curadas</h2>
+            <p className="text-xs text-zinc-500">
+              Restaurantes parceiros indicados por {influencer.nome}.
+            </p>
+          </div>
+          <span className="text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-850 px-2.5 py-1 rounded-full">
+            {sortedPartners.length} {sortedPartners.length === 1 ? 'resultado' : 'resultados'}
+          </span>
         </div>
 
         {sortedCategories.length > 0 ? (
-          <div className="space-y-12">
+          <div className="space-y-10">
             {sortedCategories.map(({ category, items }) => (
-              <div key={category.key} className="space-y-5">
+              <div key={category.key} className="space-y-4">
                 {/* Category Section Header */}
-                <h3 className="text-lg font-bold font-serif flex items-center space-x-2 text-brand-gold border-b border-zinc-900/40 pb-2">
+                <h3 className="text-base font-bold font-serif flex items-center space-x-2 text-brand-gold border-b border-zinc-900/30 pb-1.5">
                   <span>{category.emoji}</span>
                   <span>{category.name}</span>
-                  <span className="text-xs font-normal text-zinc-500 font-sans bg-zinc-900/60 px-2 py-0.5 rounded-full">
-                    {items.length} {items.length === 1 ? 'recomendação' : 'recomendações'}
+                  <span className="text-[10px] font-normal text-zinc-500 font-sans bg-zinc-900/50 px-1.5 py-0.5 rounded-md">
+                    {items.length}
                   </span>
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Horizontal Card List Layout (iFood Style) */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {items.map(({ restaurant, video }) => {
                     const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
@@ -210,62 +395,63 @@ export default function InfluencerProfileView({
                     return (
                       <div
                         key={restaurant.id}
-                        className={`bg-zinc-900/40 border rounded-2xl overflow-hidden hover:shadow-xl transition-all flex flex-col justify-between group ${
-                          isOpen ? 'border-zinc-900 hover:border-brand-gold/20' : 'border-zinc-950/80 opacity-75'
+                        className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/20 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
+                          isOpen ? 'border-zinc-900' : 'border-zinc-950/80 opacity-75'
                         }`}
                       >
-                        <div className="relative aspect-video overflow-hidden">
+                        {/* Image Section (Left) */}
+                        <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
                           <img
                             src={displayImage}
                             alt={restaurant.nome}
                             className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                              !isOpen ? 'grayscale opacity-40' : ''
+                              !isOpen ? 'grayscale opacity-30' : ''
                             }`}
                           />
                           {/* Closed overlay sign */}
                           {!isOpen && (
-                            <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
-                              <span className="px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-950/95 text-zinc-400 border border-zinc-800 shadow-2xl">
+                            <div className="absolute inset-0 bg-black/45 flex items-center justify-center pointer-events-none">
+                              <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-zinc-950/90 text-zinc-400 border border-zinc-800 shadow">
                                 Fechado
                               </span>
                             </div>
                           )}
-                          <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-gold text-black">
+                          <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
                             Parceiro
-                          </div>
-                          <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800 text-brand-gold backdrop-blur-sm">
-                            {restaurant.preco_medio}
                           </div>
                         </div>
 
-                        <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                          <div className="space-y-2">
-                            <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400 capitalize">
-                              <span className="font-semibold text-zinc-300">{restaurant.tipo_cozinha}</span>
+                        {/* Details Section (Right) */}
+                        <div className="flex-1 min-w-0 flex flex-col justify-between">
+                          <div className="space-y-1 md:space-y-1.5">
+                            {/* Line 1: Cuisine & Bairro & Distance */}
+                            <div className="flex flex-wrap items-center gap-1.5 text-[10px] md:text-xs text-zinc-400 capitalize">
+                              <span className="font-semibold text-zinc-350">{restaurant.tipo_cozinha}</span>
                               <span>•</span>
                               <span className="flex items-center">
-                                <MapPin className="w-3 h-3 mr-1 text-zinc-500" />
+                                <MapPin className="w-3 h-3 mr-0.5 text-zinc-500" />
                                 {restaurant.bairro}
                               </span>
                               {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
                                 <>
                                   <span>•</span>
-                                  <span className="text-zinc-300 font-medium">{restaurant.distancia_km} km</span>
+                                  <span className="text-zinc-350 font-medium">{restaurant.distancia_km} km</span>
                                 </>
                               )}
                             </div>
 
-                            <Link href={`/restaurante/${restaurant.slug}`}>
-                              <h3 className={`text-xl font-bold font-serif hover:text-brand-gold transition-colors ${
-                                isOpen ? 'text-white' : 'text-zinc-300'
+                            {/* Line 2: Name */}
+                            <Link href={`/restaurante/${restaurant.slug}`} className="block">
+                              <h3 className={`text-base md:text-lg font-bold font-serif hover:text-brand-gold transition-colors truncate leading-tight ${
+                                isOpen ? 'text-white' : 'text-zinc-350'
                               }`}>
                                 {restaurant.nome}
                               </h3>
                             </Link>
 
-                            {/* Operating Status Block */}
-                            <div className="flex items-center space-x-1.5 text-xs pt-0.5">
-                              <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-500'}`} />
+                            {/* Line 3: Horários */}
+                            <div className="flex items-center space-x-1.5 text-[10px] md:text-xs">
+                              <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-550'}`} />
                               {isOpen ? (
                                 <span className="text-emerald-500 font-medium">
                                   Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
@@ -277,40 +463,64 @@ export default function InfluencerProfileView({
                               )}
                             </div>
 
-                            {video?.prato_destaque && (
-                              <p className="text-sm italic text-brand-gold flex items-center pt-1">
-                                <Sparkles className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+                            {/* Line 4: Destaque or description */}
+                            {video?.prato_destaque ? (
+                              <p className="text-[11px] md:text-xs italic text-brand-gold flex items-center truncate">
+                                <Sparkles className="w-3 h-3 mr-1 shrink-0" />
                                 Destaque: {video.prato_destaque}
                               </p>
+                            ) : (
+                              restaurant.descricao && (
+                                <p className="text-[11px] md:text-xs text-zinc-450 line-clamp-1">
+                                  {restaurant.descricao}
+                                </p>
+                              )
                             )}
-
-                            <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2 pt-1">
-                              {restaurant.descricao || video?.resumo}
-                            </p>
                           </div>
 
-                          {/* Action buttons */}
-                          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-900/60">
-                            <a
-                              href={instagramUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center space-x-2 py-2 border border-zinc-800 hover:border-zinc-700 text-xs font-semibold rounded-lg text-zinc-300 hover:text-white transition-colors"
-                            >
-                              <InstagramIcon className="w-3.5 h-3.5" />
-                              <span>Instagram</span>
-                            </a>
-                            <a
-                              href={mapsUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center space-x-2 py-2 bg-zinc-900 hover:bg-zinc-850 text-xs font-semibold rounded-lg text-brand-gold border border-zinc-850 transition-colors"
-                            >
-                              <Compass className="w-3.5 h-3.5" />
-                              <span>Como chegar</span>
-                            </a>
+                          {/* Line 5: Badges / Tags & Action buttons */}
+                          <div className="flex items-center justify-between pt-1.5 border-t border-zinc-900/40">
+                            {/* Badges for filters */}
+                            <div className="flex items-center space-x-1.5 select-none scale-90 md:scale-100 origin-left">
+                              {supportsReservation(restaurant) && (
+                                <span className="px-1.5 py-0.5 rounded-md text-[9px] font-semibold bg-zinc-900/80 border border-zinc-800 text-zinc-400">
+                                  📅 Reserva
+                                </span>
+                              )}
+                              {supportsDelivery(restaurant) && (
+                                <span className="px-1.5 py-0.5 rounded-md text-[9px] font-semibold bg-zinc-900/80 border border-zinc-800 text-zinc-400">
+                                  🛵 Entrega
+                                </span>
+                              )}
+                              <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-zinc-900/60 border border-zinc-850 text-brand-gold">
+                                {restaurant.preco_medio}
+                              </span>
+                            </div>
+
+                            {/* Action Buttons compact */}
+                            <div className="flex items-center space-x-1.5 shrink-0 scale-90 md:scale-100 origin-right">
+                              <a
+                                href={instagramUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-1.5 rounded-lg border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white transition-colors"
+                                title="Instagram"
+                              >
+                                <InstagramIcon className="w-3.5 h-3.5" />
+                              </a>
+                              <a
+                                href={mapsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-850 text-brand-gold hover:text-white transition-colors"
+                                title="Como chegar"
+                              >
+                                <Compass className="w-3.5 h-3.5" />
+                              </a>
+                            </div>
                           </div>
                         </div>
+
                       </div>
                     )
                   })}
@@ -320,16 +530,16 @@ export default function InfluencerProfileView({
           </div>
         ) : (
           <div className="text-zinc-500 text-sm text-center py-10 bg-zinc-950/20 border border-zinc-900 rounded-xl">
-            Nenhum restaurante parceiro encontrado para a busca.
+            Nenhum restaurante parceiro corresponde aos filtros selecionados.
           </div>
         )}
       </section>
 
       {/* Videos Section */}
       <section className="space-y-6">
-        <div className="border-b border-zinc-900 pb-4">
-          <h2 className="text-2xl font-bold font-serif">Todos os Vídeos</h2>
-          <p className="text-sm text-zinc-500">
+        <div className="border-b border-zinc-900 pb-3">
+          <h2 className="text-xl font-bold font-serif text-white">Todos os Vídeos</h2>
+          <p className="text-xs text-zinc-500">
             Assista às avaliações e veja os pratos destaques recomendados por {influencer.nome}.
           </p>
         </div>
@@ -353,7 +563,7 @@ export default function InfluencerProfileView({
                   </div>
                   <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
                     <div>
-                      <h4 className="text-xs font-bold text-brand-gold uppercase tracking-wider">
+                      <h4 className="text-[10px] font-bold text-brand-gold uppercase tracking-wider">
                         {video.restaurante_nome}
                       </h4>
                       <h3 className="text-sm font-semibold text-zinc-200 group-hover:text-white line-clamp-2 leading-snug pt-1">
