@@ -44,61 +44,91 @@ export const RESTAURANT_CONTACTS: Record<string, {
   endereco: string;
   telefone: string;
   whatsapp: string; // apenas numeros para links de wa.me
+  deliveryUrl?: string;
 }> = {
   'pantchos-house-burger': {
     endereco: 'Avenida Manuel Alves Soares, 404 - Parque Colonial, São Paulo - SP, 04821-270',
     telefone: '(11) 2589-0467',
-    whatsapp: '551123656435'
+    whatsapp: '551123656435',
+    deliveryUrl: 'https://deliverydireto.com.br/pantchoshousehamburgueria'
   },
   'pecatto-bar-restaurante': {
     endereco: 'Rua Emília Marengo, 1286 - Tatuapé, São Paulo - SP, 03336-000',
     telefone: '(11) 2673-9193',
-    whatsapp: '551126739193'
+    whatsapp: '551126739193',
+    deliveryUrl: 'https://pecatto.anota.ai'
   },
   'pecatto-tatuape': {
     endereco: 'Rua Emília Marengo, 1286 - Tatuapé, São Paulo - SP, 03336-000',
     telefone: '(11) 2673-9193',
-    whatsapp: '551126739193'
+    whatsapp: '551126739193',
+    deliveryUrl: 'https://pecatto.anota.ai'
   },
   'outlet-do-suplemento': {
     endereco: 'Rua Ponta Grossa, 237 - Parque Mandaqui, São Paulo - SP, 02420-010',
     telefone: '(11) 2365-6435', // e-commerce/central
-    whatsapp: '5511999999999'
+    whatsapp: '5511999999999',
+    deliveryUrl: 'https://sejatotal.com'
   },
   'seja-total-galpao': {
     endereco: 'Rua Ponta Grossa, 237 - Parque Mandaqui, São Paulo - SP, 02420-010',
     telefone: 'N/A',
-    whatsapp: '5511999999999'
+    whatsapp: '5511999999999',
+    deliveryUrl: 'https://sejatotal.com'
   },
   'stunt-burger': {
     endereco: 'Rua José Jannarelli, 426 - Vila Progredior, São Paulo - SP, 05615-000',
     telefone: '(11) 3721-3538',
-    whatsapp: '5511955206206'
+    whatsapp: '5511955206206',
+    deliveryUrl: 'https://www.stuntburger.com.br'
   },
   'hellmannsbr': {
     endereco: 'Rua José Jannarelli, 426 - Vila Progredior, São Paulo - SP, 05615-000',
     telefone: '(11) 3721-3538',
-    whatsapp: '5511955206206'
+    whatsapp: '5511955206206',
+    deliveryUrl: 'https://www.stuntburger.com.br'
   },
   'santomar-restaurante': {
     endereco: 'Rua Francisco Marengo, 773 - Tatuapé, São Paulo - SP, 03313-000',
     telefone: '(11) 2942-7594',
-    whatsapp: '5511944672523'
+    whatsapp: '5511944672523',
+    deliveryUrl: 'https://santomar.anota.ai'
   },
   'pizzaria-vero-paradiso': {
     endereco: 'Rua Tutóia, 194 - Paraíso, São Paulo - SP, 04007-000',
     telefone: '(11) 3884-3646',
-    whatsapp: '551138843646'
+    whatsapp: '551138843646',
+    deliveryUrl: 'https://veroparadiso.anota.ai'
   },
   'casa-na-praia-bar': {
     endereco: 'Rua Doutor Amâncio de Carvalho, 329 - Vila Mariana, São Paulo - SP, 04012-090',
     telefone: '(11) 5082-5002',
-    whatsapp: '551150825002'
+    whatsapp: '551150825002',
+    deliveryUrl: 'https://www.ifood.com.br'
   },
   'hao-sushi-itaim': {
     endereco: 'Rua João Cachoeira, 1556 - Vila Nova Conceição, São Paulo - SP, 04535-007',
     telefone: '(11) 5536-0783',
-    whatsapp: '551155360783'
+    whatsapp: '551155360783',
+    deliveryUrl: 'https://www.ifood.com.br'
+  },
+  'arabia-night-paulista': {
+    endereco: 'Av. Paulista, 1941 (Shopping Market Paulista) - Bela Vista, São Paulo - SP, 01311-300',
+    telefone: 'N/A',
+    whatsapp: '5511999999999',
+    deliveryUrl: 'https://www.marketpaulista.com.br'
+  },
+  'busger': {
+    endereco: 'Av. Vereador José Diniz, 3700 - Campo Belo, São Paulo - SP, 04606-007',
+    telefone: '(11) 2365-1695',
+    whatsapp: '551123651695',
+    deliveryUrl: 'https://www.ifood.com.br/delivery/sao-paulo-sp/busger---campo-belo-campo-belo'
+  },
+  'villa-e-prosa': {
+    endereco: 'Rua Cubatão, 1116 - Vila Mariana, São Paulo - SP, 04013-004',
+    telefone: 'N/A',
+    whatsapp: '5511999999999',
+    deliveryUrl: 'https://www.ifood.com.br'
   }
 }
 
@@ -569,7 +599,7 @@ export default function RestaurantDetailsView({
                   <span>Reservar Mesa via WhatsApp</span>
                 </a>
                 <a
-                  href="https://www.ifood.com.br"
+                  href={contacts.deliveryUrl || "https://www.ifood.com.br"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-2 py-3 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 text-zinc-300 hover:text-white text-sm font-semibold rounded-xl transition-all"

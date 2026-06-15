@@ -139,8 +139,8 @@ async function runSeed() {
 {
       nome: 'Arábia Night Paulista',
       slug: 'arabia-night-paulista',
-      horario_abertura: '12:00',
-      horario_fechamento: '23:00',
+      horario_abertura: '10:00',
+      horario_fechamento: '20:00',
       distancia_km: 6.8,
       descricao: 'Loja boutique e perfumaria no Market Paulista especializada nos perfumes árabes importados mais desejados e virais da internet, oferecendo fragrâncias exclusivas e preços imbatíveis.',
       bairro: 'Bela Vista',

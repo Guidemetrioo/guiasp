@@ -186,6 +186,9 @@ const RESTAURANT_COORDS: Record<string, { lat: number; lon: number }> = {
   'seja-total-galpao': { lat: -23.4768, lon: -46.6329 },
   'pecatto-tatuape': { lat: -23.5435, lon: -46.5684 },
   'hellmannsbr': { lat: -23.5671, lon: -46.7002 },
+  'arabia-night-paulista': { lat: -23.5594, lon: -46.6583 },
+  'busger': { lat: -23.6268, lon: -46.6859 },
+  'villa-e-prosa': { lat: -23.5781, lon: -46.6421 },
 }
 
 function deg2rad(deg: number): number {
@@ -350,14 +353,38 @@ export default function InfluencerProfileView({
     return true
   })
 
-  // Sort partners: Open first, then closest distance
-  const sortedPartners = sortRestaurants(filteredPartners, (p) => ({
-    horario_abertura: p.restaurant.horario_abertura,
-    horario_fechamento: p.restaurant.horario_fechamento,
-    distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
-  }))
+  // Sort partners: if GPS is active, strictly closest distance first. Else, open first, then closest distance.
+  const sortedPartners = useMemo(() => {
+    if (geoStatus === 'active') {
+      return [...filteredPartners].sort((a, b) => {
+        const distA = a.restaurant.distancia_km !== undefined && a.restaurant.distancia_km !== null ? Number(a.restaurant.distancia_km) : 999;
+        const distB = b.restaurant.distancia_km !== undefined && b.restaurant.distancia_km !== null ? Number(b.restaurant.distancia_km) : 999;
+        return distA - distB;
+      });
+    }
+    return sortRestaurants(filteredPartners, (p) => ({
+      horario_abertura: p.restaurant.horario_abertura,
+      horario_fechamento: p.restaurant.horario_fechamento,
+      distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
+    }));
+  }, [filteredPartners, geoStatus]);
 
-  // Group sorted partners into categories
+  // Filter for display flat list when GPS is active
+  const displayPartners = useMemo(() => {
+    if (activeCategory === 'todos') {
+      return sortedPartners;
+    }
+    return sortedPartners.filter((p) => {
+      const cat = getRestaurantCategory(
+        p.restaurant.tipo_cozinha,
+        p.restaurant.nome,
+        p.restaurant.descricao || ''
+      )
+      return cat.key === activeCategory;
+    });
+  }, [sortedPartners, activeCategory]);
+
+  // Group sorted partners into categories (for standard view)
   const groupedPartnersMap: { [key: string]: { category: CategoryDefinition; items: typeof sortedPartners } } = {}
 
   sortedPartners.forEach((p) => {
@@ -564,11 +591,173 @@ export default function InfluencerProfileView({
             </p>
           </div>
           <span className="text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-850 px-2.5 py-1 rounded-full">
-            {sortedPartners.length} {sortedPartners.length === 1 ? 'resultado' : 'resultados'}
+            {displayPartners.length} {displayPartners.length === 1 ? 'resultado' : 'resultados'}
           </span>
         </div>
 
-        {sortedCategories.length > 0 ? (
+        {geoStatus === 'active' ? (
+          displayPartners.length > 0 ? (
+            <div className="space-y-4">
+              {/* Single Flat List Header */}
+              <h3 className="text-base font-bold font-serif flex items-center space-x-2 text-emerald-400 border-b border-zinc-900/30 pb-1.5">
+                <span>📍</span>
+                <span>
+                  {activeCategory === 'todos' 
+                    ? 'Mais Próximos de Você' 
+                    : `${availableCategoriesList.find(c => c.key === activeCategory)?.emoji || ''} ${
+                        availableCategoriesList.find(c => c.key === activeCategory)?.name || 'Mais Próximos'
+                      }`
+                  }
+                </span>
+                <span className="text-[10px] font-normal text-zinc-500 font-sans bg-zinc-900/50 px-1.5 py-0.5 rounded-md">
+                  {displayPartners.length}
+                </span>
+              </h3>
+
+              {/* Flat Card List Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fadeIn">
+                {displayPartners.map(({ restaurant, video }) => {
+                  const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
+                  const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
+                  const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+
+                  return (
+                    <div
+                      key={restaurant.id}
+                      className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/20 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
+                        isOpen ? 'border-zinc-900' : 'border-zinc-950/80 opacity-75'
+                      }`}
+                    >
+                      {/* Image Section (Left) */}
+                      <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
+                        <img
+                          src={displayImage}
+                          alt={restaurant.nome}
+                          className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                            !isOpen ? 'grayscale opacity-30' : ''
+                          }`}
+                        />
+                        {!isOpen && (
+                          <div className="absolute inset-0 bg-black/45 flex items-center justify-center pointer-events-none">
+                            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-zinc-950/90 text-zinc-400 border border-zinc-800 shadow">
+                              Fechado
+                            </span>
+                          </div>
+                        )}
+                        <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
+                          Parceiro
+                        </div>
+                      </div>
+
+                      {/* Details Section (Right) */}
+                      <div className="flex-1 min-w-0 flex flex-col justify-between">
+                        <div className="space-y-1 md:space-y-1.5">
+                          <div className="flex flex-wrap items-center gap-1.5 text-[10px] md:text-xs text-zinc-400 capitalize">
+                            <span className="font-semibold text-zinc-350">{restaurant.tipo_cozinha}</span>
+                            <span>•</span>
+                            <span className="flex items-center">
+                              <MapPin className="w-3 h-3 mr-0.5 text-zinc-500" />
+                              {restaurant.bairro}
+                            </span>
+                            {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
+                              <>
+                                <span>•</span>
+                                <span className="text-zinc-350 font-medium">
+                                  {typeof restaurant.distancia_km === 'number' 
+                                    ? restaurant.distancia_km.toFixed(1) 
+                                    : Number(restaurant.distancia_km).toFixed(1)
+                                  } km
+                                </span>
+                              </>
+                            )}
+                          </div>
+
+                          <Link href={`/restaurante/${restaurant.slug}`} className="block">
+                            <h3 className={`text-base md:text-lg font-bold font-serif hover:text-brand-gold transition-colors truncate leading-tight ${
+                              isOpen ? 'text-white' : 'text-zinc-350'
+                            }`}>
+                              {restaurant.nome}
+                            </h3>
+                          </Link>
+
+                          <div className="flex items-center space-x-1.5 text-[10px] md:text-xs">
+                            <Clock className={`w-3.5 h-3.5 ${isOpen ? 'text-emerald-500' : 'text-zinc-550'}`} />
+                            {isOpen ? (
+                              <span className="text-emerald-500 font-medium">
+                                Aberto <span className="text-zinc-500 font-normal">• Fecha às {restaurant.horario_fechamento}</span>
+                              </span>
+                            ) : (
+                              <span className="text-zinc-400 font-medium">
+                                Fechado <span className="text-zinc-500 font-normal">• Abre às {restaurant.horario_abertura}</span>
+                              </span>
+                            )}
+                          </div>
+
+                          {video?.prato_destaque ? (
+                            <p className="text-[11px] md:text-xs italic text-brand-gold flex items-center truncate">
+                              <Sparkles className="w-3 h-3 mr-1 shrink-0" />
+                              Destaque: {video.prato_destaque}
+                            </p>
+                          ) : (
+                            restaurant.descricao && (
+                              <p className="text-[11px] md:text-xs text-zinc-450 line-clamp-1">
+                                {restaurant.descricao}
+                              </p>
+                            )
+                          )}
+                        </div>
+
+                        <div className="flex items-center justify-between pt-1.5 border-t border-zinc-900/40">
+                          <div className="flex items-center space-x-1.5 select-none scale-90 md:scale-100 origin-left">
+                            {supportsReservation(restaurant) && (
+                              <span className="px-1.5 py-0.5 rounded-md text-[9px] font-semibold bg-zinc-900/80 border border-zinc-800 text-zinc-400">
+                                📅 Reserva
+                              </span>
+                            )}
+                            {supportsDelivery(restaurant) && (
+                              <span className="px-1.5 py-0.5 rounded-md text-[9px] font-semibold bg-zinc-900/80 border border-zinc-800 text-zinc-400">
+                                🛵 Entrega
+                              </span>
+                            )}
+                            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-zinc-900/60 border border-zinc-850 text-brand-gold">
+                              {restaurant.preco_medio}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center space-x-1.5 shrink-0 scale-90 md:scale-100 origin-right">
+                            <a
+                              href={instagramUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-1.5 rounded-lg border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white transition-colors"
+                              title="Instagram"
+                            >
+                              <InstagramIcon className="w-3.5 h-3.5" />
+                            </a>
+                            <a
+                              href={mapsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-850 text-brand-gold hover:text-white transition-colors"
+                              title="Como chegar"
+                            >
+                              <Compass className="w-3.5 h-3.5" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="text-zinc-550 text-sm text-center py-10 bg-zinc-950/20 border border-zinc-900 rounded-xl animate-fadeIn">
+              Nenhum restaurante parceiro corresponde aos filtros selecionados.
+            </div>
+          )
+        ) : sortedCategories.length > 0 ? (
           <div className="space-y-10">
             {sortedCategories.map(({ category, items }) => (
               <div key={category.key} className="space-y-4">
@@ -587,7 +776,7 @@ export default function InfluencerProfileView({
                     const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                     const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
-                    const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+                    const isOpen = isRestaurantOpen(restaurant.horaria_abertura || restaurant.horario_abertura, restaurant.horario_fechamento)
 
                     return (
                       <div
@@ -632,7 +821,12 @@ export default function InfluencerProfileView({
                               {restaurant.distancia_km !== undefined && restaurant.distancia_km !== null && (
                                 <>
                                   <span>•</span>
-                                  <span className="text-zinc-350 font-medium">{restaurant.distancia_km} km</span>
+                                  <span className="text-zinc-350 font-medium">
+                                    {typeof restaurant.distancia_km === 'number' 
+                                      ? restaurant.distancia_km.toFixed(1) 
+                                      : Number(restaurant.distancia_km).toFixed(1)
+                                    } km
+                                  </span>
                                 </>
                               )}
                             </div>
@@ -726,7 +920,7 @@ export default function InfluencerProfileView({
             ))}
           </div>
         ) : (
-          <div className="text-zinc-500 text-sm text-center py-10 bg-zinc-950/20 border border-zinc-900 rounded-xl">
+          <div className="text-zinc-550 text-sm text-center py-10 bg-zinc-950/20 border border-zinc-900 rounded-xl animate-fadeIn">
             Nenhum restaurante parceiro corresponde aos filtros selecionados.
           </div>
         )}
