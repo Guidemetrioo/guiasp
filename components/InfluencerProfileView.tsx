@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { MapPin, Sparkles, Search, Compass, Clock } from 'lucide-react'
 import { sortRestaurants, isRestaurantOpen } from '@/lib/utils'
@@ -247,6 +247,16 @@ export default function InfluencerProfileView({
   const [userCoords, setUserCoords] = useState<{ lat: number; lon: number } | null>(null)
   const [geoStatus, setGeoStatus] = useState<'idle' | 'prompting' | 'active' | 'denied' | 'error'>('idle')
 
+  // State ticker to update restaurant open/closed status live every 10 seconds
+  const [liveTick, setLiveTick] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveTick(t => t + 1)
+    }, 10000)
+    return () => clearInterval(interval)
+  }, [])
+
   const handleToggleGeo = () => {
     if (geoStatus === 'active') {
       setUserCoords(null)
@@ -367,7 +377,7 @@ export default function InfluencerProfileView({
       horario_fechamento: p.restaurant.horario_fechamento,
       distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
     }));
-  }, [filteredPartners, geoStatus]);
+  }, [filteredPartners, geoStatus, liveTick]);
 
   // Filter for display flat list when GPS is active
   const displayPartners = useMemo(() => {

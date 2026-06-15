@@ -213,7 +213,19 @@ export default function RestaurantDetailsView({
     whatsapp: '5511999999999'
   }
 
-  const isOpen = isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento)
+  const [isOpen, setIsOpen] = useState(() => isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+
+  useEffect(() => {
+    // Recalculate immediately on mount to ensure client time is accurate
+    setIsOpen(isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+
+    // Update the open status dynamically every 10 seconds
+    const interval = setInterval(() => {
+      setIsOpen(isRestaurantOpen(restaurant.horario_abertura, restaurant.horario_fechamento))
+    }, 10000)
+
+    return () => clearInterval(interval)
+  }, [restaurant.horario_abertura, restaurant.horario_fechamento])
   const faqs = getFAQ(restaurant.tipo_cozinha, restaurant.nome)
 
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${contacts.endereco}`)}`

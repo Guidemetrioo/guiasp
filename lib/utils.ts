@@ -7,8 +7,12 @@ export function isRestaurantOpen(abertura?: string | null, fechamento?: string |
 
   try {
     const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+    // Convert to America/Sao_Paulo timezone to ensure consistency between server and client
+    const spTimeString = now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
+    const spDate = new Date(spTimeString);
+
+    const currentHour = spDate.getHours();
+    const currentMinute = spDate.getMinutes();
     const currentTimeVal = currentHour * 60 + currentMinute;
 
     const [hA, mA] = abertura.split(':').map(Number);
