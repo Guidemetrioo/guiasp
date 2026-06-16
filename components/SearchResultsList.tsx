@@ -43,15 +43,18 @@ const renderAvatar = (url: string | null | undefined, name: string, sizeTextClas
 
 interface SearchResultsListProps {
   initialResults: any[]
+  videoRestauranteIds?: string[]
 }
 
-export default function SearchResultsList({ initialResults }: SearchResultsListProps) {
+export default function SearchResultsList({ initialResults, videoRestauranteIds = [] }: SearchResultsListProps) {
   const searchParams = useSearchParams()
   const savedParam = searchParams ? searchParams.get('saved') === 'true' : false
+  const tipoParam = searchParams ? searchParams.get('tipo') : null
 
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
   const [showOnlySaved, setShowOnlySaved] = useState(false)
-  const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
+  const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set(videoRestauranteIds))
+  const [downloadedVideos, setDownloadedVideos] = useState<any[]>([])
 
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -64,6 +67,7 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
         const res = await fetch('/api/videos')
         const data = await res.json()
         if (data.success && data.videos) {
+          setDownloadedVideos(data.videos)
           const ids = new Set<string>()
           data.videos.forEach((v: any) => {
             if (v.restauranteId) {
@@ -100,6 +104,9 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
   // Filter results
   const filteredResults = initialResults.filter(item => {
     if (showOnlySaved && !savedSlugs.includes(item.slug)) {
+      return false
+    }
+    if (tipoParam === 'video' && !downloadedRestIds.has(item.id)) {
       return false
     }
     return true
@@ -157,6 +164,7 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
             })
             const isSaved = savedSlugs.includes(item.slug)
             const hasVideo = downloadedRestIds.has(item.id)
+            const videoFile = downloadedVideos.find((v: any) => v.restauranteId === item.id)
 
             return (
               <div
@@ -172,14 +180,28 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
                 }`}
               >
                 <Link href={`/restaurante/${item.slug}`} className="block overflow-hidden relative aspect-video">
-                  <img
-                    src={displayImage}
-                    alt={item.nome}
-                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
-                      !isOpen ? 'grayscale opacity-40' : ''
-                    }`}
-                    loading="lazy"
-                  />
+                  {hasVideo && videoFile ? (
+                    <video
+                      src={`/videos/${videoFile.filename}`}
+                      poster={displayImage}
+                      className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                        !isOpen ? 'grayscale opacity-40' : ''
+                      }`}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                    />
+                  ) : (
+                    <img
+                      src={displayImage}
+                      alt={item.nome}
+                      className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                        !isOpen ? 'grayscale opacity-40' : ''
+                      }`}
+                      loading="lazy"
+                    />
+                  )}
                   {/* Closed overlay sign */}
                   {!isOpen && (
                     <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">

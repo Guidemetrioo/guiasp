@@ -247,6 +247,7 @@ export default function InfluencerProfileView({
   const [filterSaved, setFilterSaved] = useState(false)
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
   const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
+  const [downloadedRestVideos, setDownloadedRestVideos] = useState<Map<string, any>>(new Map())
   
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -259,12 +260,15 @@ export default function InfluencerProfileView({
         const res = await fetch('/api/videos')
         const data = await res.json()
         if (data.success && data.videos) {
+          const videosMap = new Map<string, any>()
           const ids = new Set<string>()
           data.videos.forEach((v: any) => {
             if (v.restauranteId) {
+              videosMap.set(v.restauranteId, v)
               ids.add(v.restauranteId)
             }
           })
+          setDownloadedRestVideos(videosMap)
           setDownloadedRestIds(ids)
         }
       } catch (err) {
@@ -442,6 +446,9 @@ export default function InfluencerProfileView({
     if (activeCategory === 'todos') {
       return sortedPartners;
     }
+    if (activeCategory === 'video') {
+      return sortedPartners.filter(p => downloadedRestIds.has(p.restaurant.id))
+    }
     return sortedPartners.filter((p) => {
       const cat = getRestaurantCategory(
         p.restaurant.tipo_cozinha,
@@ -450,12 +457,27 @@ export default function InfluencerProfileView({
       )
       return cat.key === activeCategory;
     });
-  }, [sortedPartners, activeCategory]);
+  }, [sortedPartners, activeCategory, downloadedRestIds]);
 
   // Group sorted partners into categories (for standard view)
   const groupedPartnersMap: { [key: string]: { category: CategoryDefinition; items: typeof sortedPartners } } = {}
 
   sortedPartners.forEach((p) => {
+    if (activeCategory === 'video') {
+      if (!downloadedRestIds.has(p.restaurant.id)) {
+        return
+      }
+      const catKey = 'video'
+      if (!groupedPartnersMap[catKey]) {
+        groupedPartnersMap[catKey] = {
+          category: { name: 'Com Vídeo', emoji: '🎥', key: 'video', order: 0 },
+          items: []
+        }
+      }
+      groupedPartnersMap[catKey].items.push(p)
+      return
+    }
+
     const cat = getRestaurantCategory(
       p.restaurant.tipo_cozinha,
       p.restaurant.nome,
@@ -505,6 +527,10 @@ export default function InfluencerProfileView({
 
     return titleMatch || dishMatch || restaurantMatch || keywordMatch
   })
+
+  const hasAnyVideo = useMemo(() => {
+    return partners.some(p => downloadedRestIds.has(p.restaurant.id))
+  }, [partners, downloadedRestIds])
 
   return (
     <div className="space-y-10">
@@ -637,6 +663,26 @@ export default function InfluencerProfileView({
             </span>
           </button>
 
+          {hasAnyVideo && (
+            <button
+              onClick={() => setActiveCategory('video')}
+              className="flex flex-col items-center space-y-1.5 focus:outline-none group shrink-0"
+            >
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl transition-all border ${
+                activeCategory === 'video'
+                  ? 'bg-brand-gold text-black border-brand-gold scale-105 shadow-md shadow-brand-gold/10'
+                  : 'bg-zinc-900/40 hover:bg-zinc-850 border-zinc-850 text-zinc-350 hover:text-white'
+              }`}>
+                🎥
+              </div>
+              <span className={`text-[11px] font-medium transition-colors ${
+                activeCategory === 'video' ? 'text-brand-gold font-semibold' : 'text-zinc-400 group-hover:text-zinc-200'
+              }`}>
+                Vídeos
+              </span>
+            </button>
+          )}
+
           {availableCategoriesList.map((cat) => (
             <button
               key={cat.key}
@@ -704,6 +750,7 @@ export default function InfluencerProfileView({
                   const isOpen = status.isOpen
                   const statusMessage = status.message
                   const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
+                  const videoFileObj = downloadedRestVideos.get(restaurant.id)
 
                   return (
                     <div
@@ -718,13 +765,27 @@ export default function InfluencerProfileView({
                     >
                       {/* Image Section (Left) */}
                       <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
-                        <img
-                           src={displayImage}
-                           alt={restaurant.nome}
-                           className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                             !isOpen ? 'grayscale opacity-30' : ''
-                           }`}
-                        />
+                        {hasVideoFile && videoFileObj ? (
+                          <video
+                            src={`/videos/${videoFileObj.filename}`}
+                            poster={displayImage}
+                            className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                              !isOpen ? 'grayscale opacity-30' : ''
+                            }`}
+                            muted
+                            loop
+                            playsInline
+                            autoPlay
+                          />
+                        ) : (
+                          <img
+                            src={displayImage}
+                            alt={restaurant.nome}
+                            className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                              !isOpen ? 'grayscale opacity-30' : ''
+                            }`}
+                          />
+                        )}
                         {!isOpen && (
                           <div className="absolute inset-0 bg-black/45 flex items-center justify-center pointer-events-none">
                             <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-zinc-950/90 text-zinc-400 border border-zinc-800 shadow">
@@ -879,6 +940,7 @@ export default function InfluencerProfileView({
                     const isOpen = status.isOpen
                     const statusMessage = status.message
                     const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
+                    const videoFileObj = downloadedRestVideos.get(restaurant.id)
 
                     return (
                       <div
@@ -893,13 +955,27 @@ export default function InfluencerProfileView({
                       >
                         {/* Image Section (Left) */}
                         <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
-                          <img
-                            src={displayImage}
-                            alt={restaurant.nome}
-                            className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                              !isOpen ? 'grayscale opacity-30' : ''
-                            }`}
-                          />
+                          {hasVideoFile && videoFileObj ? (
+                            <video
+                              src={`/videos/${videoFileObj.filename}`}
+                              poster={displayImage}
+                              className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                                !isOpen ? 'grayscale opacity-30' : ''
+                              }`}
+                              muted
+                              loop
+                              playsInline
+                              autoPlay
+                            />
+                          ) : (
+                            <img
+                              src={displayImage}
+                              alt={restaurant.nome}
+                              className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                                !isOpen ? 'grayscale opacity-30' : ''
+                              }`}
+                            />
+                          )}
                           {/* Closed overlay sign */}
                           {!isOpen && (
                             <div className="absolute inset-0 bg-black/45 flex items-center justify-center pointer-events-none">

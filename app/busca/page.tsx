@@ -8,6 +8,8 @@ import SearchResultsList from '@/components/SearchResultsList'
 import { MapPin, Sparkles, AlertCircle, Clock, Heart } from 'lucide-react'
 import { sortRestaurants, isRestaurantOpen, getLiveStatusMessage } from '@/lib/utils'
 import seededContacts from '@/lib/restaurant-contacts-seeded.json'
+import { promises as fs } from 'fs'
+import path from 'path'
 
 export const revalidate = 0 // Search is dynamic, do not cache
 
@@ -41,14 +43,16 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     { data: allInfluencers },
     { data: allRestaurantesBairros },
     { data: allRestaurantesCozinhas },
+    { data: dbVideos },
     { data: results, error: searchError }
   ] = await Promise.all([
     supabase.from('influencers').select('id, nome').order('nome'),
     supabase.from('restaurantes').select('bairro').eq('ativo', true),
     supabase.from('restaurantes').select('tipo_cozinha').eq('ativo', true),
+    supabase.from('videos').select('id, titulo, restaurante_id'),
     supabase.rpc('buscar_restaurantes', {
       p_q: q,
-      p_tipo: tipo,
+      p_tipo: tipo === 'video' ? null : tipo,
       p_influencer_id: influencer,
       p_bairro: bairro,
       p_preco: preco
@@ -59,6 +63,38 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   if (searchError) {
     console.error('Database query error:', searchError.message)
   }
+
+  // Read local video files to cross-reference
+  const listPath = path.join(process.cwd(), 'lib', 'videos-list.json')
+  let localVideosList: string[] = []
+  try {
+    const fileContent = await fs.readFile(listPath, 'utf-8')
+    localVideosList = JSON.parse(fileContent)
+  } catch (e) {
+    console.error('Error reading videos-list.json:', e)
+  }
+
+  const sanitizeFilename = (text: string) => {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  const videoRestauranteIds: string[] = []
+  localVideosList.forEach((filename: string) => {
+    const baseName = filename.substring(0, filename.lastIndexOf('.'))
+    const dbVideo = dbVideos?.find((v: any) => {
+      if (!v.titulo) return false
+      return sanitizeFilename(v.titulo) === baseName
+    })
+    if (dbVideo?.restaurante_id) {
+      videoRestauranteIds.push(dbVideo.restaurante_id)
+    }
+  })
 
   // Extract unique filters
   const uniqueBairros = Array.from(
@@ -130,7 +166,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
           {/* Results Grid */}
           <div className="flex-1">
-            <SearchResultsList initialResults={sortedResults} />
+            <SearchResultsList 
+              initialResults={sortedResults} 
+              videoRestauranteIds={videoRestauranteIds}
+            />
           </div>
         </div>
       </div>

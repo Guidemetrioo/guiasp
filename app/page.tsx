@@ -50,6 +50,7 @@ export default async function Home() {
     .order('nome')
 
   const categories = [
+    { label: '🎥 Com Vídeo', query: 'video' },
     { label: 'Hambúrguer', query: 'hamburguer' },
     { label: 'Japonês', query: 'japones' },
     { label: 'Italiano', query: 'italiano' },

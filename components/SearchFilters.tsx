@@ -98,6 +98,16 @@ export default function SearchFilters({ influencers, bairros, cozinhas }: Search
             />
             <span>Todas</span>
           </label>
+          <label className="flex items-center space-x-2 text-sm text-brand-gold hover:text-brand-gold/80 cursor-pointer font-medium">
+            <input
+              type="radio"
+              name="tipo"
+              checked={currentTipo === 'video'}
+              onChange={() => updateFilter('tipo', 'video')}
+              className="accent-brand-gold bg-zinc-900 border-zinc-800"
+            />
+            <span className="flex items-center gap-1">🎥 Com Vídeo</span>
+          </label>
           {cozinhas.map((coz) => (
             <label
               key={coz}
