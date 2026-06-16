@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { createServer } from '@/lib/supabase-server'
+import mp4Files from '@/lib/videos-list.json'
 
 // Keep in sync with scripts/download_reel.py sanitize_filename
 function sanitizeFilename(text: string): string {
@@ -15,17 +16,7 @@ function sanitizeFilename(text: string): string {
 }
 
 export async function GET() {
-  const folderParts = ['public', 'videos']
-  const videosDir = path.join(process.cwd(), ...folderParts)
-  
   try {
-    // Ensure directory exists
-    await fs.mkdir(videosDir, { recursive: true })
-    
-    // Read files
-    const files = await fs.readdir(videosDir)
-    const mp4Files = files.filter(f => f.toLowerCase().endsWith('.mp4'))
-    
     // Fetch videos from DB/mock
     const supabase = createServer()
     const { data: dbVideos } = await supabase
@@ -87,11 +78,22 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: false, error: 'Invalid file name' }, { status: 400 })
   }
   
-  const folderParts = ['public', 'videos']
-  const filePath = path.join(process.cwd(), ...folderParts, filename)
+  const filePath = path.join(process.cwd(), 'public', 'videos', filename)
   
   try {
     await fs.unlink(filePath)
+    
+    // Update videos-list.json dynamically
+    const listPath = path.join(process.cwd(), 'lib', 'videos-list.json')
+    try {
+      const listContent = await fs.readFile(listPath, 'utf-8')
+      const vList = JSON.parse(listContent)
+      const updatedList = vList.filter((f: string) => f !== filename)
+      await fs.writeFile(listPath, JSON.stringify(updatedList, null, 2), 'utf-8')
+    } catch (e) {
+      console.error('Error updating videos-list.json on delete:', e)
+    }
+    
     return NextResponse.json({ success: true, message: `File ${filename} deleted successfully` })
   } catch (error: any) {
     console.error(`Error deleting file ${filename}:`, error)

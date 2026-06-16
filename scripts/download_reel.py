@@ -138,6 +138,21 @@ def main():
             with yt_dlp.YoutubeDL(ydl_opts) as ydl_down:
                 ydl_down.download([url])
             print(f"\nSuccess! Video downloaded and saved to: {output_path}")
+            
+            # Update lib/videos-list.json if it exists
+            json_path = os.path.join("lib", "videos-list.json")
+            if os.path.exists(json_path):
+                import json
+                try:
+                    with open(json_path, "r", encoding="utf-8") as f:
+                        v_list = json.load(f)
+                    if filename not in v_list:
+                        v_list.append(filename)
+                        with open(json_path, "w", encoding="utf-8") as f:
+                            json.dump(v_list, f, indent=2)
+                        print(f"Added '{filename}' to {json_path}")
+                except Exception as je:
+                    print(f"Warning: Could not update {json_path}: {je}")
         except Exception as e:
             print(f"Error downloading video file: {e}")
             sys.exit(1)
