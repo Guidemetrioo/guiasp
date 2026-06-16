@@ -46,7 +46,7 @@ export default function ListVideos() {
           restaurantes ( nome ),
           influencers ( nome )
         `)
-        .order('criado_em', { ascending: False })
+        .order('criado_em', { ascending: false })
 
       if (error) throw error
       setVideos((data as any) || [])
@@ -99,13 +99,22 @@ export default function ListVideos() {
             Gerencie e edite os vídeos transcritos e associados aos estabelecimentos.
           </p>
         </div>
-        <Link
-          href="/admin/videos/novo"
-          className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-gold hover:bg-brand-goldHover text-black text-xs font-bold rounded-xl transition-all shadow-lg shadow-brand-gold/10 shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Novo Vídeo</span>
-        </Link>
+        <div className="flex items-center space-x-3 shrink-0">
+          <Link
+            href="/admin/videos/auto-link"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-brand-gold text-xs font-bold rounded-xl transition-all shadow-lg shrink-0"
+          >
+            <Film className="w-4 h-4" />
+            <span>Vincular Vídeo por IA</span>
+          </Link>
+          <Link
+            href="/admin/videos/novo"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-brand-gold hover:bg-brand-goldHover text-black text-xs font-bold rounded-xl transition-all shadow-lg shadow-brand-gold/10 shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Novo Vídeo</span>
+          </Link>
+        </div>
       </div>
 
       {error && (

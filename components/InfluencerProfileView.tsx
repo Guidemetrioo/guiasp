@@ -246,10 +246,32 @@ export default function InfluencerProfileView({
   const [filterEntrega, setFilterEntrega] = useState(false)
   const [filterSaved, setFilterSaved] = useState(false)
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
+  const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
   
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
     setSavedSlugs(saved ? JSON.parse(saved) : [])
+  }, [])
+
+  useEffect(() => {
+    async function fetchDownloadedVideos() {
+      try {
+        const res = await fetch('/api/videos')
+        const data = await res.json()
+        if (data.success && data.videos) {
+          const ids = new Set<string>()
+          data.videos.forEach((v: any) => {
+            if (v.restauranteId) {
+              ids.add(v.restauranteId)
+            }
+          })
+          setDownloadedRestIds(ids)
+        }
+      } catch (err) {
+        console.error('Error fetching downloaded videos:', err)
+      }
+    }
+    fetchDownloadedVideos()
   }, [])
 
   const handleToggleFavorite = (slug: string) => {
@@ -389,21 +411,31 @@ export default function InfluencerProfileView({
     return true
   })
 
-  // Sort partners: if GPS is active, strictly closest distance first. Else, open first, then closest distance.
+  // Sort partners: prioritize physical video presence, then if GPS is active, strictly closest distance first. Else, open first, then closest distance.
   const sortedPartners = useMemo(() => {
-    if (geoStatus === 'active') {
-      return [...filteredPartners].sort((a, b) => {
+    return [...filteredPartners].sort((a, b) => {
+      // 1. Prioritize having a downloaded video file
+      const videoA = (a.video && downloadedRestIds.has(a.restaurant.id)) ? 1 : 0;
+      const videoB = (b.video && downloadedRestIds.has(b.restaurant.id)) ? 1 : 0;
+      if (videoA !== videoB) return videoB - videoA;
+
+      // 2. Secondary sorting
+      if (geoStatus === 'active') {
         const distA = a.restaurant.distancia_km !== undefined && a.restaurant.distancia_km !== null ? Number(a.restaurant.distancia_km) : 999;
         const distB = b.restaurant.distancia_km !== undefined && b.restaurant.distancia_km !== null ? Number(b.restaurant.distancia_km) : 999;
         return distA - distB;
-      });
-    }
-    return sortRestaurants(filteredPartners, (p) => ({
-      horario_abertura: p.restaurant.horario_abertura,
-      horario_fechamento: p.restaurant.horario_fechamento,
-      distancia_km: p.restaurant.distancia_km ? Number(p.restaurant.distancia_km) : null,
-    }));
-  }, [filteredPartners, geoStatus, liveTick]);
+      }
+
+      const openA = isRestaurantOpen(a.restaurant.horario_abertura, a.restaurant.horario_fechamento, (seededContacts as any)[a.restaurant.slug]?.horarios_semana);
+      const openB = isRestaurantOpen(b.restaurant.horario_abertura, b.restaurant.horario_fechamento, (seededContacts as any)[b.restaurant.slug]?.horarios_semana);
+      if (openA && !openB) return -1;
+      if (!openA && openB) return 1;
+
+      const distA = a.restaurant.distancia_km ? Number(a.restaurant.distancia_km) : 999;
+      const distB = b.restaurant.distancia_km ? Number(b.restaurant.distancia_km) : 999;
+      return distA - distB;
+    });
+  }, [filteredPartners, geoStatus, liveTick, downloadedRestIds]);
 
   // Filter for display flat list when GPS is active
   const displayPartners = useMemo(() => {
@@ -664,29 +696,34 @@ export default function InfluencerProfileView({
               {/* Flat Card List Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fadeIn">
                 {displayPartners.map(({ restaurant, video }) => {
-                  const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  const displayImage = video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                   const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                   const contacts = (seededContacts as any)[restaurant.slug]
                   const status = getLiveStatusMessage(restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
                   const isOpen = status.isOpen
                   const statusMessage = status.message
+                  const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
 
                   return (
                     <div
                       key={restaurant.id}
-                      className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/20 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
-                        isOpen ? 'border-zinc-900' : 'border-zinc-950/80 opacity-75'
+                      className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/40 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
+                        hasVideoFile
+                          ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-r from-zinc-900/40 to-zinc-950/30 ring-1 ring-brand-gold/20'
+                          : isOpen
+                          ? 'border-zinc-900'
+                          : 'border-zinc-950/80 opacity-75'
                       }`}
                     >
                       {/* Image Section (Left) */}
                       <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
                         <img
-                          src={displayImage}
-                          alt={restaurant.nome}
-                          className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                            !isOpen ? 'grayscale opacity-30' : ''
-                          }`}
+                           src={displayImage}
+                           alt={restaurant.nome}
+                           className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
+                             !isOpen ? 'grayscale opacity-30' : ''
+                           }`}
                         />
                         {!isOpen && (
                           <div className="absolute inset-0 bg-black/45 flex items-center justify-center pointer-events-none">
@@ -698,6 +735,12 @@ export default function InfluencerProfileView({
                         <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
                           Parceiro
                         </div>
+                        {hasVideoFile && (
+                          <div className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8.5px] font-bold tracking-wider uppercase bg-gradient-to-r from-red-600 to-rose-500 text-white scale-90 origin-bottom-left shadow-md flex items-center gap-1 z-10 animate-pulse">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                            <span>🎥 Vídeo</span>
+                          </div>
+                        )}
                         <button
                           onClick={(e) => {
                             e.preventDefault()
@@ -828,19 +871,24 @@ export default function InfluencerProfileView({
                 {/* Horizontal Card List Layout (iFood Style) */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {items.map(({ restaurant, video }) => {
-                    const displayImage = restaurant.foto_capa_url || video?.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                    const displayImage = video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                     const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                     const contacts = (seededContacts as any)[restaurant.slug]
-                    const status = getLiveStatusMessage(restaurant.horaria_abertura || restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
+                    const status = getLiveStatusMessage(restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
                     const isOpen = status.isOpen
                     const statusMessage = status.message
+                    const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
 
                     return (
                       <div
                         key={restaurant.id}
-                        className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/20 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
-                          isOpen ? 'border-zinc-900' : 'border-zinc-950/80 opacity-75'
+                        className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/40 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
+                          hasVideoFile
+                            ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-r from-zinc-900/40 to-zinc-950/30 ring-1 ring-brand-gold/20'
+                            : isOpen
+                            ? 'border-zinc-900'
+                            : 'border-zinc-950/80 opacity-75'
                         }`}
                       >
                         {/* Image Section (Left) */}
@@ -863,6 +911,12 @@ export default function InfluencerProfileView({
                           <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold tracking-wider uppercase bg-brand-gold text-black scale-90 origin-top-left shadow">
                             Parceiro
                           </div>
+                          {hasVideoFile && (
+                            <div className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8.5px] font-bold tracking-wider uppercase bg-gradient-to-r from-red-600 to-rose-500 text-white scale-90 origin-bottom-left shadow-md flex items-center gap-1 z-10 animate-pulse">
+                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                              <span>🎥 Vídeo</span>
+                            </div>
+                          )}
                           <button
                             onClick={(e) => {
                               e.preventDefault()

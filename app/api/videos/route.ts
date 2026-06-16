@@ -45,7 +45,7 @@ export async function GET() {
       const baseName = filename.substring(0, filename.lastIndexOf('.'))
       
       // Try to find matching video in DB based on sanitized title
-      const dbVideo = dbVideos?.find(v => {
+      const dbVideo = dbVideos?.find((v: any) => {
         if (!v.titulo) return false
         return sanitizeFilename(v.titulo) === baseName
       })

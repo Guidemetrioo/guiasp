@@ -99,7 +99,7 @@ def main():
     
     # 2. Configure yt-dlp options
     ydl_opts = {
-        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+        'format': 'best[ext=mp4]/best',
         'quiet': False,
         'no_warnings': False,
     }

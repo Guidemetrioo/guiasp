@@ -12312,11 +12312,11 @@ const mockPlanos = [
 ]
 
 export function createMockSupabaseClient() {
-  const queryResult = (data: any) => ({
+  const queryResult = (data: any, tableName?: string) => ({
     data,
     error: null,
     count: data ? (Array.isArray(data) ? data.length : 1) : 0,
-    select: () => queryResult(data),
+    select: () => queryResult(data, tableName),
     single: () => ({ data: Array.isArray(data) ? data[0] : data, error: null }),
     maybeSingle: () => ({ data: Array.isArray(data) ? data[0] || null : data, error: null }),
     eq: (col: string, val: any) => {
@@ -12334,7 +12334,7 @@ export function createMockSupabaseClient() {
           filtered = data.filter((x) => x.status === val)
         }
       }
-      return queryResult(filtered)
+      return queryResult(filtered, tableName)
     },
     neq: (col: string, val: any) => {
       let filtered = data
@@ -12343,28 +12343,75 @@ export function createMockSupabaseClient() {
           filtered = data.filter((x) => x.restaurante_id !== val)
         }
       }
-      return queryResult(filtered)
+      return queryResult(filtered, tableName)
     },
-    order: () => queryResult(data),
+    order: () => queryResult(data, tableName),
     limit: (l: number) => {
       const limited = Array.isArray(data) ? data.slice(0, l) : data
-      return queryResult(limited)
+      return queryResult(limited, tableName)
     },
     insert: (insertData: any) => {
-      return queryResult(insertData)
+      const items = Array.isArray(insertData) ? insertData : [insertData]
+      if (tableName === 'videos') {
+        items.forEach((item) => {
+          mockVideos.push({
+            id: item.id || `v${Math.random().toString(36).substring(2, 9)}`,
+            criado_em: new Date().toISOString(),
+            ...item
+          })
+        })
+      } else if (tableName === 'restaurantes') {
+        items.forEach((item) => {
+          mockRestaurantes.push({
+            id: item.id || `r${Math.random().toString(36).substring(2, 9)}`,
+            criado_em: new Date().toISOString(),
+            ...item
+          })
+        })
+      } else if (tableName === 'influencers') {
+        items.forEach((item) => {
+          mockInfluencers.push({
+            id: item.id || `i${Math.random().toString(36).substring(2, 9)}`,
+            criado_em: new Date().toISOString(),
+            ...item
+          })
+        })
+      } else if (tableName === 'planos') {
+        items.forEach((item) => {
+          mockPlanos.push({
+            id: item.id || `p${Math.random().toString(36).substring(2, 9)}`,
+            criado_em: new Date().toISOString(),
+            ...item
+          })
+        })
+      }
+      return queryResult(insertData, tableName)
     },
     update: (updateData: any) => {
-      return queryResult(updateData)
+      return queryResult(updateData, tableName)
     },
+    delete: () => {
+      return {
+        eq: (col: string, val: any) => {
+          if (tableName === 'videos' && col === 'id') {
+            const index = mockVideos.findIndex((v) => v.id === val)
+            if (index !== -1) {
+              mockVideos.splice(index, 1)
+            }
+          }
+          return { data: null, error: null }
+        }
+      }
+    }
   })
 
   return {
     from: (table: string) => {
       if (table === 'influencers') {
-        return queryResult(mockInfluencers)
+        return queryResult(mockInfluencers, table)
       }
       if (table === 'restaurantes') {
-        return queryResult(mockRestaurantes)
+        return queryResult(mockRestaurantes, table)
       }
       if (table === 'videos') {
         // Mock join structures if loaded dynamically
@@ -12377,7 +12424,7 @@ export function createMockSupabaseClient() {
             influencers: infObj,
           }
         })
-        return queryResult(enrichedVideos)
+        return queryResult(enrichedVideos, table)
       }
       if (table === 'planos') {
         const enrichedPlans = mockPlanos.map((p) => {
@@ -12389,9 +12436,9 @@ export function createMockSupabaseClient() {
             influencers: infObj,
           }
         })
-        return queryResult(enrichedPlans)
+        return queryResult(enrichedPlans, table)
       }
-      return queryResult([])
+      return queryResult([], table)
     },
     rpc: (fn: string, args: any) => {
       if (fn === 'buscar_restaurantes') {

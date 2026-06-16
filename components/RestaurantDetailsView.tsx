@@ -139,6 +139,7 @@ export const RESTAURANT_CONTACTS: Record<string, {
   telefone: string;
   whatsapp: string;
   deliveryUrl?: string;
+  horarios_semana?: any;
 }> = {
   ...seededContacts,
   ...MANUAL_CONTACTS

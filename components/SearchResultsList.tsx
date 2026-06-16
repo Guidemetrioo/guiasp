@@ -51,10 +51,32 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
 
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
   const [showOnlySaved, setShowOnlySaved] = useState(false)
+  const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
     setSavedSlugs(saved ? JSON.parse(saved) : [])
+  }, [])
+
+  useEffect(() => {
+    async function fetchDownloadedVideos() {
+      try {
+        const res = await fetch('/api/videos')
+        const data = await res.json()
+        if (data.success && data.videos) {
+          const ids = new Set<string>()
+          data.videos.forEach((v: any) => {
+            if (v.restauranteId) {
+              ids.add(v.restauranteId)
+            }
+          })
+          setDownloadedRestIds(ids)
+        }
+      } catch (err) {
+        console.error('Error fetching downloaded videos:', err)
+      }
+    }
+    fetchDownloadedVideos()
   }, [])
 
   useEffect(() => {
@@ -83,6 +105,16 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
     return true
   })
 
+  // Sort: downloaded videos first
+  const sortedResults = React.useMemo(() => {
+    return [...filteredResults].sort((a, b) => {
+      const hasVideoA = downloadedRestIds.has(a.id) ? 1 : 0
+      const hasVideoB = downloadedRestIds.has(b.id) ? 1 : 0
+      if (hasVideoA !== hasVideoB) return hasVideoB - hasVideoA
+      return 0 // Keep original order
+    })
+  }, [filteredResults, downloadedRestIds])
+
   return (
     <div className="space-y-6">
       {/* List Header Actions */}
@@ -109,14 +141,14 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
         </button>
       </div>
 
-      {filteredResults.length > 0 ? (
+      {sortedResults.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 animate-fadeIn">
-          {filteredResults.map((item: any, idx: number) => {
+          {sortedResults.map((item: any, idx: number) => {
             const contacts = (seededContacts as any)[item.slug]
             const status = getLiveStatusMessage(item.horario_abertura, item.horario_fechamento, contacts?.horarios_semana)
             const isOpen = status.isOpen
             const statusMessage = status.message
-            const displayImage = item.foto_capa_url || item.thumbnail_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+            const displayImage = item.thumbnail_url || item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
             const isReady = isCadastroPronto({
               horario_abertura: item.horario_abertura,
               horario_fechamento: item.horario_fechamento,
@@ -124,12 +156,15 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
               thumbnail_url: item.thumbnail_url
             })
             const isSaved = savedSlugs.includes(item.slug)
+            const hasVideo = downloadedRestIds.has(item.id)
 
             return (
               <div
                 key={`${item.id}-${idx}`}
                 className={`bg-zinc-900/40 border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group ${
-                  isReady
+                  hasVideo
+                    ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-b from-zinc-900/40 to-zinc-950/20 ring-1 ring-brand-gold/15 hover:border-brand-gold hover:shadow-brand-gold/15'
+                    : isReady
                     ? 'border-brand-gold/30 shadow-md shadow-brand-gold/[0.03] hover:border-brand-gold hover:shadow-brand-gold/15'
                     : isOpen
                     ? 'border-zinc-900 hover:border-brand-gold/30 hover:shadow-xl'
@@ -157,7 +192,13 @@ export default function SearchResultsList({ initialResults }: SearchResultsListP
                     <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-black/70 border border-zinc-800/40 text-brand-gold backdrop-blur-sm select-none">
                       {item.preco_medio}
                     </span>
-                    {isReady && (
+                    {hasVideo && (
+                      <span className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-red-600 to-rose-500 text-white shadow-md flex items-center gap-1.5 select-none animate-pulse">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                        🎥 Vídeo
+                      </span>
+                    )}
+                    {isReady && !hasVideo && (
                       <span className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold via-amber-500 to-amber-300 text-black shadow-md flex items-center gap-0.5 select-none animate-pulse">
                         ✨ Destaque
                       </span>

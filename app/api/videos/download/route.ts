@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       args.push('--browser', browser.toLowerCase())
     }
     
-    return new Promise((resolve) => {
+    return new Promise<Response>((resolve) => {
       // Spawn python process
       const pythonProcess = spawn('python', args, {
         cwd: process.cwd(),
