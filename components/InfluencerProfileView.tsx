@@ -245,6 +245,7 @@ export default function InfluencerProfileView({
   const [filterReserva, setFilterReserva] = useState(false)
   const [filterEntrega, setFilterEntrega] = useState(false)
   const [filterSaved, setFilterSaved] = useState(false)
+  const [filterVideo, setFilterVideo] = useState(false)
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
   const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
   const [downloadedRestVideos, setDownloadedRestVideos] = useState<Map<string, any>>(new Map())
@@ -410,6 +411,11 @@ export default function InfluencerProfileView({
     // 6. Saved filter
     if (filterSaved) {
       if (!savedSlugs.includes(p.restaurant.slug)) return false
+    }
+
+    // 7. Video filter
+    if (filterVideo) {
+      if (!downloadedRestIds.has(p.restaurant.id)) return false
     }
 
     return true
@@ -591,6 +597,17 @@ export default function InfluencerProfileView({
           }`}
         >
           <span>🕒 Aberto</span>
+        </button>
+
+        <button
+          onClick={() => setFilterVideo(!filterVideo)}
+          className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center space-x-1.5 shrink-0 select-none ${
+            filterVideo
+              ? 'bg-brand-gold/15 text-brand-gold border-brand-gold/40 shadow-sm shadow-brand-gold/5'
+              : 'bg-zinc-900/40 text-zinc-400 border-zinc-850 hover:border-zinc-800 hover:text-zinc-300'
+          }`}
+        >
+          <span>🎥 Com Vídeo</span>
         </button>
 
         <button
