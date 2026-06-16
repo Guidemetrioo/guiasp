@@ -419,8 +419,8 @@ export default function InfluencerProfileView({
   const sortedPartners = useMemo(() => {
     return [...filteredPartners].sort((a, b) => {
       // 1. Prioritize having a downloaded video file
-      const videoA = (a.video && downloadedRestIds.has(a.restaurant.id)) ? 1 : 0;
-      const videoB = (b.video && downloadedRestIds.has(b.restaurant.id)) ? 1 : 0;
+      const videoA = downloadedRestIds.has(a.restaurant.id) ? 1 : 0;
+      const videoB = downloadedRestIds.has(b.restaurant.id) ? 1 : 0;
       if (videoA !== videoB) return videoB - videoA;
 
       // 2. Secondary sorting
@@ -742,15 +742,15 @@ export default function InfluencerProfileView({
               {/* Flat Card List Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fadeIn">
                 {displayPartners.map(({ restaurant, video }) => {
-                  const displayImage = video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  const videoFileObj = downloadedRestVideos.get(restaurant.id)
+                  const displayImage = video?.thumbnail_url || videoFileObj?.thumbnailUrl || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                   const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                   const contacts = (seededContacts as any)[restaurant.slug]
                   const status = getLiveStatusMessage(restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
                   const isOpen = status.isOpen
                   const statusMessage = status.message
-                  const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
-                  const videoFileObj = downloadedRestVideos.get(restaurant.id)
+                  const hasVideoFile = downloadedRestIds.has(restaurant.id)
 
                   return (
                     <div
@@ -932,15 +932,15 @@ export default function InfluencerProfileView({
                 {/* Horizontal Card List Layout (iFood Style) */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {items.map(({ restaurant, video }) => {
-                    const displayImage = video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                    const videoFileObj = downloadedRestVideos.get(restaurant.id)
+                    const displayImage = video?.thumbnail_url || videoFileObj?.thumbnailUrl || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                     const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                     const contacts = (seededContacts as any)[restaurant.slug]
                     const status = getLiveStatusMessage(restaurant.horario_abertura, restaurant.horario_fechamento, contacts?.horarios_semana)
                     const isOpen = status.isOpen
                     const statusMessage = status.message
-                    const hasVideoFile = video && downloadedRestIds.has(restaurant.id)
-                    const videoFileObj = downloadedRestVideos.get(restaurant.id)
+                    const hasVideoFile = downloadedRestIds.has(restaurant.id)
 
                     return (
                       <div

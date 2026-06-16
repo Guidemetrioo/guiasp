@@ -27,6 +27,7 @@ export async function GET() {
         prato_destaque,
         restaurante_id,
         influencer_id,
+        thumbnail_url,
         restaurantes ( nome, foto_capa_url ),
         influencers ( nome )
       `)
@@ -49,7 +50,8 @@ export async function GET() {
         restauranteNome: dbVideo?.restaurantes?.nome || null,
         fotoCapaUrl: dbVideo?.restaurantes?.foto_capa_url || null,
         influencerNome: dbVideo?.influencers?.nome || null,
-        dbVideoId: dbVideo?.id || null
+        dbVideoId: dbVideo?.id || null,
+        thumbnailUrl: dbVideo?.thumbnail_url || null
       }
     })
     
