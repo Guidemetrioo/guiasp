@@ -216,6 +216,7 @@ export default function RestaurantDetailsView({
   const [checkingVideo, setCheckingVideo] = useState<boolean>(true)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [currentVideoUrl, setCurrentVideoUrl] = useState<string | null>(null)
+  const [currentThumbnailUrl, setCurrentThumbnailUrl] = useState<string | null>(null)
 
   // Favorites & Share logic
   const [isFavorited, setIsFavorited] = useState(false)
@@ -355,6 +356,9 @@ export default function RestaurantDetailsView({
               })
               if (matched) {
                 resolvedUrl = `/videos/${matched.filename}`
+                if (matched.thumbnailUrl) {
+                  setCurrentThumbnailUrl(matched.thumbnailUrl)
+                }
                 console.log(`[Fuzzy Video Matcher]: Matched local video for restaurant ${restaurant.nome}: ${resolvedUrl}`)
               }
             }
@@ -473,7 +477,7 @@ export default function RestaurantDetailsView({
         {/* Blurry Background */}
         <div className="absolute inset-0 z-0 opacity-20 filter blur-2xl scale-110 pointer-events-none">
           <img 
-            src={video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=600&q=80'} 
+            src={currentThumbnailUrl || video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=600&q=80'} 
             className="w-full h-full object-cover" 
             alt="Blur bg" 
           />
@@ -491,7 +495,7 @@ export default function RestaurantDetailsView({
               <video
                 ref={videoRef}
                 src={currentVideoUrl || video?.video_url || undefined}
-                poster={video.thumbnail_url || restaurant.foto_capa_url}
+                poster={currentThumbnailUrl || video?.thumbnail_url || restaurant.foto_capa_url}
                 playsInline
                 className="w-full h-full object-cover"
               />

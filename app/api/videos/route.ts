@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
+import { promises as fs, existsSync } from 'fs'
 import path from 'path'
 import { createServer } from '@/lib/supabase-server'
 import mp4Files from '@/lib/videos-list.json'
@@ -41,6 +41,11 @@ export async function GET() {
         if (!v.titulo) return false
         return sanitizeFilename(v.titulo) === baseName
       })
+
+      // Check if local generated thumbnail exists
+      const thumbPath = path.join(process.cwd(), 'public', 'videos', 'thumbnails', `${baseName}.jpg`)
+      const hasLocalThumb = existsSync(thumbPath)
+      const localThumbUrl = hasLocalThumb ? `/videos/thumbnails/${baseName}.jpg` : null
       
       return {
         filename,
@@ -51,7 +56,7 @@ export async function GET() {
         fotoCapaUrl: dbVideo?.restaurantes?.foto_capa_url || null,
         influencerNome: dbVideo?.influencers?.nome || null,
         dbVideoId: dbVideo?.id || null,
-        thumbnailUrl: dbVideo?.thumbnail_url || null
+        thumbnailUrl: localThumbUrl || dbVideo?.thumbnail_url || null
       }
     })
     

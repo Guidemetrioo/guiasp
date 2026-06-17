@@ -760,7 +760,7 @@ export default function InfluencerProfileView({
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fadeIn">
                 {displayPartners.map(({ restaurant, video }) => {
                   const videoFileObj = downloadedRestVideos.get(restaurant.id)
-                  const displayImage = video?.thumbnail_url || videoFileObj?.thumbnailUrl || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                  const displayImage = videoFileObj?.thumbnailUrl || video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                   const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                   const contacts = (seededContacts as any)[restaurant.slug]
@@ -950,7 +950,7 @@ export default function InfluencerProfileView({
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {items.map(({ restaurant, video }) => {
                     const videoFileObj = downloadedRestVideos.get(restaurant.id)
-                    const displayImage = video?.thumbnail_url || videoFileObj?.thumbnailUrl || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+                    const displayImage = videoFileObj?.thumbnailUrl || video?.thumbnail_url || restaurant.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
                     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.nome} ${restaurant.bairro} São Paulo`)}`
                     const instagramUrl = `https://instagram.com/${restaurant.instagram_handle}`
                     const contacts = (seededContacts as any)[restaurant.slug]
