@@ -673,6 +673,41 @@ export default function RestaurantDetailsView({
               </div>
             </div>
 
+            {/* Cardápio (Menu Items) */}
+            <div className="space-y-6 pt-4">
+              <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-white">Pratos Populares</h3>
+                  <p className="text-xs text-zinc-500 mt-0.5">Itens altamente recomendados do cardápio oficial.</p>
+                </div>
+                <span className="text-xs bg-zinc-900 border border-zinc-800 text-zinc-450 px-2.5 py-1 rounded-md font-semibold font-serif">
+                  Média: {estimatedCost}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {menuItems.map((item, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex space-x-4 p-4 rounded-2xl bg-zinc-950/40 border border-zinc-900 hover:border-brand-gold/10 transition-colors"
+                  >
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-zinc-900 bg-zinc-950">
+                      <img src={item.foto} alt={item.nome} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div className="space-y-0.5">
+                        <div className="flex items-baseline justify-between gap-2">
+                          <h4 className="text-sm font-bold text-white font-serif">{item.nome}</h4>
+                          <span className="text-sm font-extrabold text-brand-gold font-sans shrink-0">{item.preco}</span>
+                        </div>
+                        <p className="text-xs text-zinc-400 leading-normal line-clamp-2">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Indicação do Influenciador */}
             {influencer ? (
               <div className="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-6 sm:p-8 space-y-6">
@@ -759,41 +794,6 @@ export default function RestaurantDetailsView({
                 </p>
               </div>
             )}
-
-            {/* Cardápio (Menu Items) */}
-            <div className="space-y-6 pt-4">
-              <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-bold font-serif text-white">Pratos Populares</h3>
-                  <p className="text-xs text-zinc-500 mt-0.5">Itens altamente recomendados do cardápio oficial.</p>
-                </div>
-                <span className="text-xs bg-zinc-900 border border-zinc-800 text-zinc-450 px-2.5 py-1 rounded-md font-semibold font-serif">
-                  Média: {estimatedCost}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4">
-                {menuItems.map((item, idx) => (
-                  <div 
-                    key={idx} 
-                    className="flex space-x-4 p-4 rounded-2xl bg-zinc-950/40 border border-zinc-900 hover:border-brand-gold/10 transition-colors"
-                  >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-zinc-900 bg-zinc-950">
-                      <img src={item.foto} alt={item.nome} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div className="space-y-0.5">
-                        <div className="flex items-baseline justify-between gap-2">
-                          <h4 className="text-sm font-bold text-white font-serif">{item.nome}</h4>
-                          <span className="text-sm font-extrabold text-brand-gold font-sans shrink-0">{item.preco}</span>
-                        </div>
-                        <p className="text-xs text-zinc-400 leading-normal line-clamp-2">{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         )}
 
