@@ -56,6 +56,26 @@ def parse_objects(array_str):
                 current_obj = []
     return objects
 
+def is_real_instagram_url(url):
+    parts = [p for p in url.split('/') if p]
+    if not parts:
+        return False
+    shortcode = parts[-1]
+    if 'reel' in parts:
+        idx = parts.index('reel')
+        if idx + 1 < len(parts):
+            shortcode = parts[idx+1]
+    elif 'p' in parts:
+        idx = parts.index('p')
+        if idx + 1 < len(parts):
+            shortcode = parts[idx+1]
+    shortcode = shortcode.split('?')[0]
+    if len(shortcode) != 11:
+        return False
+    if shortcode.startswith('C-') or shortcode.startswith('C8_'):
+        return False
+    return True
+
 def load_missing_videos():
     if not os.path.exists(mock_file):
         print(f"Erro: Arquivo {mock_file} não encontrado.")
@@ -88,7 +108,7 @@ def load_missing_videos():
             sanitized = sanitize_filename(title)
             url = url_m.group(1)
             
-            if sanitized not in local_files:
+            if sanitized not in local_files and is_real_instagram_url(url):
                 missing_videos.append({
                     "title": title,
                     "filename": f"{sanitized}.mp4",
@@ -100,6 +120,7 @@ def load_missing_videos():
 def main():
     browser_name = None
     limit = None
+    cookies_path = None
     
     if "--browser" in sys.argv:
         try:
@@ -112,6 +133,13 @@ def main():
         try:
             l_idx = sys.argv.index("--limit")
             limit = int(sys.argv[l_idx + 1])
+        except Exception:
+            pass
+            
+    if "--cookies" in sys.argv:
+        try:
+            c_idx = sys.argv.index("--cookies")
+            cookies_path = sys.argv[c_idx + 1]
         except Exception:
             pass
             
@@ -134,12 +162,28 @@ def main():
         'no_warnings': True,
     }
     
-    if browser_name:
+    # Priority for authentication:
+    # 1. Parameter --cookies
+    # 2. Root/scripts cookies.txt
+    # 3. Parameter --browser
+    if cookies_path:
+        print(f"Utilizando arquivo de cookies especificado: '{cookies_path}' para autenticação...")
+        ydl_opts['cookiefile'] = cookies_path
+    elif os.path.exists("cookies.txt"):
+        print("Utilizando arquivo 'cookies.txt' encontrado no diretório raiz para autenticação...")
+        ydl_opts['cookiefile'] = "cookies.txt"
+    elif os.path.exists("scripts/cookies.txt"):
+        print("Utilizando arquivo 'cookies.txt' encontrado na pasta scripts para autenticação...")
+        ydl_opts['cookiefile'] = "scripts/cookies.txt"
+    elif browser_name:
         print(f"Utilizando cookies do navegador: '{browser_name}' para autenticação...")
         ydl_opts['cookiesfrombrowser'] = (browser_name,)
+    else:
+        print("DICA: Se os downloads falharem, feche o navegador e execute com '--browser chrome' ou exporte cookies para 'cookies.txt'.")
         
     success_count = 0
     fail_count = 0
+    consecutive_auth_failures = 0
     
     start_time = time.time()
     
@@ -161,6 +205,7 @@ def main():
                     ydl.download([url])
                 print("   ✓ Download concluído com sucesso!")
                 success_count += 1
+                consecutive_auth_failures = 0
                 
                 # Sincronizar videos-list.json em tempo real
                 json_path = os.path.join("lib", "videos-list.json")
@@ -177,7 +222,9 @@ def main():
                     except Exception as je:
                         print(f"   ⚠️ Erro ao sincronizar JSON: {je}")
             except Exception as e:
+                err_msg = str(e)
                 print(f"   ❌ Erro ao baixar este vídeo: {e}")
+                
                 # Remove file if it was partially downloaded
                 if os.path.exists(output_path):
                     try:
@@ -185,6 +232,18 @@ def main():
                     except Exception:
                         pass
                 fail_count += 1
+                
+                # Check for common authentication / cookie errors to log helpful advice
+                is_cookie_error = "cookie" in err_msg.lower() or "dpapi" in err_msg.lower()
+                is_auth_error = "empty media response" in err_msg.lower() or "login" in err_msg.lower()
+                
+                if is_cookie_error or is_auth_error:
+                    if "copy chrome cookie database" in err_msg.lower():
+                        print("  👉 Dica: O Chrome pode estar aberto e bloqueando o acesso aos cookies.")
+                    elif "dpapi" in err_msg.lower():
+                        print("  👉 Dica: O Windows impede a descriptografia direta. Use o 'cookies.txt'.")
+                    elif "empty media response" in err_msg.lower():
+                        print("  👉 Dica: Este post específico pode ter sido deletado, arquivado, tornado privado ou exige login.")
                 
             # Sleep slightly to prevent aggressive rate limiting
             time.sleep(1)

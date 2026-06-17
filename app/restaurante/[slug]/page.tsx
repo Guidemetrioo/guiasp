@@ -238,7 +238,10 @@ export default async function RestaurantePage({ params }: PageProps) {
           bairro,
           tipo_cozinha,
           preco_medio,
-          foto_capa_url
+          foto_capa_url,
+          videos (
+            thumbnail_url
+          )
         )
       `)
       .eq('influencer_id', influencer.id)

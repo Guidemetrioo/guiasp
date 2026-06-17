@@ -82,12 +82,21 @@ def main():
         
     url = sys.argv[1]
     browser_name = None
+    cookies_path = None
     
     # Parse optional --browser flag
     if "--browser" in sys.argv:
         try:
             b_idx = sys.argv.index("--browser")
             browser_name = sys.argv[b_idx + 1]
+        except Exception:
+            pass
+
+    # Parse optional --cookies flag
+    if "--cookies" in sys.argv:
+        try:
+            c_idx = sys.argv.index("--cookies")
+            cookies_path = sys.argv[c_idx + 1]
         except Exception:
             pass
 
@@ -104,7 +113,20 @@ def main():
         'no_warnings': False,
     }
     
-    if browser_name:
+    # Priority for authentication:
+    # 1. Parameter --cookies
+    # 2. Root/scripts cookies.txt
+    # 3. Parameter --browser
+    if cookies_path:
+        print(f"Using cookies from file: '{cookies_path}' to bypass login gates...")
+        ydl_opts['cookiefile'] = cookies_path
+    elif os.path.exists("cookies.txt"):
+        print("Using 'cookies.txt' found in the root directory...")
+        ydl_opts['cookiefile'] = "cookies.txt"
+    elif os.path.exists("scripts/cookies.txt"):
+        print("Using 'cookies.txt' found in the scripts directory...")
+        ydl_opts['cookiefile'] = "scripts/cookies.txt"
+    elif browser_name:
         print(f"Using cookies from browser: '{browser_name}' to bypass login gates...")
         ydl_opts['cookiesfrombrowser'] = (browser_name,)
 

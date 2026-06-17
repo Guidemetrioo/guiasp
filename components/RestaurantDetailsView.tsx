@@ -987,30 +987,33 @@ export default function RestaurantDetailsView({
             </div>
 
             <div className="flex overflow-x-auto space-x-4 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 scrollbar-none">
-              {otherRecommendations.map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/restaurante/${item.slug}`}
-                  className="group flex-shrink-0 w-56 bg-zinc-900/20 border border-zinc-900/80 rounded-xl overflow-hidden hover:border-brand-gold/15 transition-all flex flex-col justify-between"
-                >
-                  <div className="relative aspect-video overflow-hidden bg-zinc-950">
-                    <img
-                      src={item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=300&h=200&q=80'}
-                      alt={item.nome}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-3.5 space-y-1.5">
-                    <div className="flex items-center justify-between text-[9px] text-zinc-500 font-bold uppercase tracking-wider">
-                      <span>{item.tipo_cozinha}</span>
-                      <span>{item.bairro}</span>
+              {otherRecommendations.map((item) => {
+                const displayImage = item.videos?.[0]?.thumbnail_url || item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=300&h=200&q=80'
+                return (
+                  <Link
+                    key={item.id}
+                    href={`/restaurante/${item.slug}`}
+                    className="group flex-shrink-0 w-56 bg-zinc-900/20 border border-zinc-900/80 rounded-xl overflow-hidden hover:border-brand-gold/15 transition-all flex flex-col justify-between"
+                  >
+                    <div className="relative aspect-video overflow-hidden bg-zinc-950">
+                      <img
+                        src={displayImage}
+                        alt={item.nome}
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                      />
                     </div>
-                    <h4 className="text-xs font-bold text-zinc-300 group-hover:text-brand-gold transition-colors font-serif truncate">
-                      {item.nome}
-                    </h4>
-                  </div>
-                </Link>
-              ))}
+                    <div className="p-3.5 space-y-1.5">
+                      <div className="flex items-center justify-between text-[9px] text-zinc-500 font-bold uppercase tracking-wider">
+                        <span>{item.tipo_cozinha}</span>
+                        <span>{item.bairro}</span>
+                      </div>
+                      <h4 className="text-xs font-bold text-zinc-300 group-hover:text-brand-gold transition-colors font-serif truncate">
+                        {item.nome}
+                      </h4>
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           </section>
         )}

@@ -155,16 +155,16 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
             const status = getLiveStatusMessage(item.horario_abertura, item.horario_fechamento, contacts?.horarios_semana)
             const isOpen = status.isOpen
             const statusMessage = status.message
-            const displayImage = item.thumbnail_url || item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
+            const isSaved = savedSlugs.includes(item.slug)
+            const hasVideo = downloadedRestIds.has(item.id)
+            const videoFile = downloadedVideos.find((v: any) => v.restauranteId === item.id)
+            const displayImage = item.thumbnail_url || videoFile?.thumbnailUrl || item.foto_capa_url || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=450&q=80'
             const isReady = isCadastroPronto({
               horario_abertura: item.horario_abertura,
               horario_fechamento: item.horario_fechamento,
               descricao: item.descricao,
               thumbnail_url: item.thumbnail_url
             })
-            const isSaved = savedSlugs.includes(item.slug)
-            const hasVideo = downloadedRestIds.has(item.id)
-            const videoFile = downloadedVideos.find((v: any) => v.restauranteId === item.id)
 
             return (
               <div

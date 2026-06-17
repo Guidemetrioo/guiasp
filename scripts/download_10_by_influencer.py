@@ -92,10 +92,18 @@ def main():
             pass
             
     browser_name = None
+    cookies_path = None
     if "--browser" in sys.argv:
         try:
             b_idx = sys.argv.index("--browser")
             browser_name = sys.argv[b_idx + 1]
+        except Exception:
+            pass
+            
+    if "--cookies" in sys.argv:
+        try:
+            c_idx = sys.argv.index("--cookies")
+            cookies_path = sys.argv[c_idx + 1]
         except Exception:
             pass
 
@@ -149,9 +157,24 @@ def main():
         'no_warnings': True,
     }
     
-    if browser_name:
+    # Priority for authentication:
+    # 1. Parameter --cookies
+    # 2. Root/scripts cookies.txt
+    # 3. Parameter --browser
+    if cookies_path:
+        print(f"Utilizando cookies do arquivo: '{cookies_path}'...")
+        ydl_opts['cookiefile'] = cookies_path
+    elif os.path.exists("cookies.txt"):
+        print("Utilizando arquivo 'cookies.txt' encontrado no diretório raiz...")
+        ydl_opts['cookiefile'] = "cookies.txt"
+    elif os.path.exists("scripts/cookies.txt"):
+        print("Utilizando arquivo 'cookies.txt' encontrado na pasta scripts...")
+        ydl_opts['cookiefile'] = "scripts/cookies.txt"
+    elif browser_name:
         print(f"Utilizando cookies do navegador '{browser_name}'...")
         ydl_opts['cookiesfrombrowser'] = (browser_name,)
+    else:
+        print("DICA: Se os downloads falharem, feche o navegador e execute com '--browser chrome' ou exporte cookies para 'cookies.txt'.")
 
     start_time = time.time()
     
@@ -184,12 +207,32 @@ def main():
                     print("       ✓ Sucesso!")
                     success_this_run += 1
                 except Exception as e:
+                    err_msg = str(e)
                     print(f"       ❌ Erro: {e}")
                     if os.path.exists(output_path):
                         try:
                             os.remove(output_path)
                         except Exception:
                             pass
+                            
+                    # Check for common authentication / cookie errors to stop early
+                    is_cookie_error = "cookie" in err_msg.lower() or "dpapi" in err_msg.lower()
+                    is_auth_error = "empty media response" in err_msg.lower() or "login" in err_msg.lower()
+                    
+                    if is_cookie_error or is_auth_error:
+                        print("\n⚠️ DETECTADO ERRO DE AUTENTICAÇÃO/COOKIES:")
+                        if "copy chrome cookie database" in err_msg.lower():
+                            print("  👉 O Chrome está aberto e bloqueando o acesso aos cookies.")
+                            print("  👉 Solução: FECHE O CHROME e tente rodar novamente, ou use o arquivo 'cookies.txt'.")
+                        elif "dpapi" in err_msg.lower():
+                            print("  👉 O Windows impede a descriptografia de cookies por outra sessão (DPAPI).")
+                            print("  👉 Solução: Exporte seus cookies do Instagram para um arquivo 'cookies.txt' na raiz.")
+                        elif "empty media response" in err_msg.lower():
+                            print("  👉 O Instagram bloqueou a requisição (exige login).")
+                            print("  👉 Solução: Rode com '--browser chrome' (com Chrome fechado) ou use 'cookies.txt'.")
+                        
+                        print("\nParando execução para evitar novas falhas consecutivas.")
+                        raise KeyboardInterrupt
                             
                 time.sleep(1)
                 
