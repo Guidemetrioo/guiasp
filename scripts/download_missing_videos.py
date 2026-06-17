@@ -5,6 +5,14 @@ import unicodedata
 import subprocess
 import time
 
+# Force UTF-8 encoding for Windows console to prevent UnicodeEncodeError with emojis
+if sys.platform.startswith('win'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
+
 # Verify dependencies
 def ensure_dependencies():
     try:
@@ -153,6 +161,21 @@ def main():
                     ydl.download([url])
                 print("   ✓ Download concluído com sucesso!")
                 success_count += 1
+                
+                # Sincronizar videos-list.json em tempo real
+                json_path = os.path.join("lib", "videos-list.json")
+                if os.path.exists(json_path):
+                    import json
+                    try:
+                        with open(json_path, "r", encoding="utf-8") as f:
+                            v_list = json.load(f)
+                        if filename not in v_list:
+                            v_list.append(filename)
+                            with open(json_path, "w", encoding="utf-8") as f:
+                                json.dump(v_list, f, indent=2)
+                            print("   ✓ Sincronizado no videos-list.json!")
+                    except Exception as je:
+                        print(f"   ⚠️ Erro ao sincronizar JSON: {je}")
             except Exception as e:
                 print(f"   ❌ Erro ao baixar este vídeo: {e}")
                 # Remove file if it was partially downloaded
