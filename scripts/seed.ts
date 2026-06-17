@@ -106,7 +106,7 @@ async function runSeed() {
       foto_capa_url: '/images/pizzaria-vero-paradiso.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Casa na Praia Bar',
       slug: 'casa-na-praia-bar',
       horario_abertura: '11:00',
@@ -121,7 +121,7 @@ async function runSeed() {
       foto_capa_url: '/images/casa-na-praia-bar.jpg',
       ativo: true,
     },
-    {
+{
       nome: 'Hao Sushi Itaim',
       slug: 'hao-sushi-itaim',
       horario_abertura: '16:30',
@@ -226,7 +226,7 @@ async function runSeed() {
       foto_capa_url: '/images/legado-parrilla.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 1",
       slug: 'recomendacao-navegando-1',
       horario_abertura: '18:00',
@@ -241,7 +241,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Seja Total Galpão",
       slug: 'seja-total-galpao',
       horario_abertura: '10:00',
@@ -256,7 +256,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pecatto Tatuapé",
       slug: 'pecatto-tatuape',
       horario_abertura: '11:30',
@@ -271,7 +271,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Hippos Burger",
       slug: 'hippos-burger',
       horario_abertura: '18:00',
@@ -286,7 +286,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Hellmannsbr",
       slug: 'hellmannsbr',
       horario_abertura: '12:00',
@@ -301,7 +301,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Móveis Dubai",
       slug: 'moveis-dubai',
       horario_abertura: '12:00',
@@ -316,7 +316,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Santomar Restaurante",
       slug: 'santomar-restaurante',
       horario_abertura: '12:00',
@@ -331,7 +331,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Paparoto Cucina",
       slug: 'paparoto-cucina',
       horario_abertura: '12:00',
@@ -346,7 +346,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Bananasoutletmegaloja",
       slug: 'bananasoutletmegaloja',
       horario_abertura: '08:00',
@@ -361,7 +361,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 10",
       slug: 'recomendacao-navegando-10',
       horario_abertura: '18:00',
@@ -376,7 +376,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Só Marcas Outlet",
       slug: 'so-marcas-outlet-guarulhos',
       horario_abertura: '18:00',
@@ -391,7 +391,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Legado Parrilla",
       slug: 'legado-parrilla',
       horario_abertura: '08:00',
@@ -406,7 +406,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Móveis Junco",
       slug: 'moveis-junco',
       horario_abertura: '08:00',
@@ -421,7 +421,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "S Design Paraty Hotel",
       slug: 's-design-paraty-hotel',
       horario_abertura: '08:00',
@@ -436,7 +436,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Nestor Pizzaria",
       slug: 'nestor-pizzaria',
       horario_abertura: '08:00',
@@ -451,7 +451,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 16",
       slug: 'recomendacao-navegando-16',
       horario_abertura: '18:00',
@@ -466,7 +466,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cromaburguers",
       slug: 'cromaburguers',
       horario_abertura: '08:00',
@@ -481,7 +481,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pokes Momo",
       slug: 'pokes-momo',
       horario_abertura: '08:00',
@@ -496,7 +496,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Baixo Pinheiros Bar",
       slug: 'baixo-pinheiros-bar',
       horario_abertura: '08:00',
@@ -511,7 +511,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Feitiço Brasileiro",
       slug: 'feitico-brasileiro',
       horario_abertura: '18:00',
@@ -526,7 +526,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hao Sushi Itaim",
       slug: 'hao-sushi-itaim',
       horario_abertura: '08:00',
@@ -541,7 +541,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Tatuapeconceito",
       slug: 'tatuapeconceito',
       horario_abertura: '12:00',
@@ -556,7 +556,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Shawarmariaasmarssp",
       slug: 'shawarmariaasmarssp',
       horario_abertura: '08:00',
@@ -571,7 +571,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Point do Gordão",
       slug: 'point-do-gordao',
       horario_abertura: '12:00',
@@ -586,7 +586,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Auraa Gastrobar",
       slug: 'auraa-gastrobar',
       horario_abertura: '08:00',
@@ -601,7 +601,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kureiji Candy",
       slug: 'kureiji-candy',
       horario_abertura: '18:00',
@@ -616,7 +616,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "O Mineiro",
       slug: 'o-mineiro',
       horario_abertura: '08:00',
@@ -631,7 +631,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pantcho's House Burger",
       slug: 'pantchos-house-burger',
       horario_abertura: '18:00',
@@ -646,7 +646,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cadeiras Inc",
       slug: 'cadeiras-inc',
       horario_abertura: '08:00',
@@ -661,7 +661,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Festivalsaidera",
       slug: 'festivalsaidera',
       horario_abertura: '18:00',
@@ -676,7 +676,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 32",
       slug: 'recomendacao-navegando-32',
       horario_abertura: '08:00',
@@ -691,7 +691,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Bella Paulista",
       slug: 'bella-paulista',
       horario_abertura: '08:00',
@@ -706,7 +706,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 34",
       slug: 'recomendacao-navegando-34',
       horario_abertura: '18:00',
@@ -721,7 +721,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Botequim Paulista",
       slug: 'botequim-paulista',
       horario_abertura: '12:00',
@@ -736,7 +736,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kenichi Sushi Mooca",
       slug: 'kenichi-sushi-mooca',
       horario_abertura: '08:00',
@@ -751,7 +751,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 38",
       slug: 'recomendacao-navegando-38',
       horario_abertura: '08:00',
@@ -766,7 +766,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 40",
       slug: 'recomendacao-navegando-40',
       horario_abertura: '18:00',
@@ -781,7 +781,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Estação Praça Gastrobar",
       slug: 'estacao-praca-gastrobar',
       horario_abertura: '12:00',
@@ -796,7 +796,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Casa Cunha Padaria",
       slug: 'casa-cunha-padaria',
       horario_abertura: '18:00',
@@ -811,7 +811,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Barbearia Hermanoss",
       slug: 'barbearia-hermanoss',
       horario_abertura: '18:00',
@@ -826,7 +826,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Buteco de Minas",
       slug: 'buteco-de-minas',
       horario_abertura: '08:00',
@@ -841,7 +841,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 47",
       slug: 'recomendacao-navegando-47',
       horario_abertura: '08:00',
@@ -856,7 +856,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Real 1937 Lanchonete",
       slug: 'real-1937-lanchonete',
       horario_abertura: '12:00',
@@ -871,7 +871,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Quintal Bar",
       slug: 'quintal-bar',
       horario_abertura: '18:00',
@@ -886,7 +886,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Sayakinikujardimanalia",
       slug: 'sayakinikujardimanalia',
       horario_abertura: '18:00',
@@ -901,7 +901,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Orbaf Biergarten",
       slug: 'orbaf-biergarten',
       horario_abertura: '12:00',
@@ -916,7 +916,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "O Mineiro Prime",
       slug: 'o-mineiro-prime',
       horario_abertura: '12:00',
@@ -931,7 +931,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recanto Costela de Chão",
       slug: 'recanto-costela-de-chao',
       horario_abertura: '18:00',
@@ -946,7 +946,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Dead Burger Lapa",
       slug: 'dead-burger-lapa',
       horario_abertura: '18:00',
@@ -961,7 +961,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 55",
       slug: 'recomendacao-navegando-55',
       horario_abertura: '18:00',
@@ -976,7 +976,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Toca do Peixe",
       slug: 'toca-do-peixe',
       horario_abertura: '12:00',
@@ -991,7 +991,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Tinapizzeriaoficial",
       slug: 'tinapizzeriaoficial',
       horario_abertura: '08:00',
@@ -1006,7 +1006,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "99burgersp",
       slug: '99burgersp',
       horario_abertura: '18:00',
@@ -1021,7 +1021,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 60",
       slug: 'recomendacao-navegando-60',
       horario_abertura: '12:00',
@@ -1036,7 +1036,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 61",
       slug: 'recomendacao-navegando-61',
       horario_abertura: '18:00',
@@ -1051,7 +1051,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 63",
       slug: 'recomendacao-navegando-63',
       horario_abertura: '12:00',
@@ -1066,7 +1066,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Trem de Guararema Carro Restaurante",
       slug: 'carro-restaurante-trem',
       horario_abertura: '18:00',
@@ -1081,7 +1081,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "New Shoes Lavanderia",
       slug: 'new-shoes-lavanderia',
       horario_abertura: '12:00',
@@ -1096,7 +1096,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pasteldontis",
       slug: 'pasteldontis',
       horario_abertura: '18:00',
@@ -1111,7 +1111,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pinkynaopink",
       slug: 'pinkynaopink',
       horario_abertura: '08:00',
@@ -1126,7 +1126,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Botecosenador",
       slug: 'botecosenador',
       horario_abertura: '18:00',
@@ -1141,7 +1141,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "My Jor Doceria",
       slug: 'my-jor-doceria',
       horario_abertura: '18:00',
@@ -1156,7 +1156,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kazzabarerestaurante",
       slug: 'kazzabarerestaurante',
       horario_abertura: '08:00',
@@ -1171,7 +1171,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "LK Beauty Shop",
       slug: 'lk-beauty-shop',
       horario_abertura: '08:00',
@@ -1186,7 +1186,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Carola Restobar",
       slug: 'carola-restobar',
       horario_abertura: '18:00',
@@ -1201,7 +1201,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Fukuyarestaurante",
       slug: 'fukuyarestaurante',
       horario_abertura: '08:00',
@@ -1216,7 +1216,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Estacaogastronomicaradial",
       slug: 'estacaogastronomicaradial',
       horario_abertura: '18:00',
@@ -1231,7 +1231,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pelotasfood",
       slug: 'pelotasfood',
       horario_abertura: '08:00',
@@ -1246,7 +1246,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 79",
       slug: 'recomendacao-navegando-79',
       horario_abertura: '18:00',
@@ -1261,7 +1261,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 80",
       slug: 'recomendacao-navegando-80',
       horario_abertura: '08:00',
@@ -1276,7 +1276,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kebabpointbr",
       slug: 'kebabpointbr',
       horario_abertura: '18:00',
@@ -1291,7 +1291,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Vaca Pollo Chancho",
       slug: 'vaca-pollo-chancho',
       horario_abertura: '08:00',
@@ -1306,7 +1306,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Jucabowling",
       slug: 'jucabowling',
       horario_abertura: '12:00',
@@ -1321,7 +1321,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1538588936307-cfd86a4c62f4?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Restaurantetaquaru",
       slug: 'restaurantetaquaru',
       horario_abertura: '18:00',
@@ -1336,7 +1336,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "99brasil",
       slug: '99brasil',
       horario_abertura: '18:00',
@@ -1351,7 +1351,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Albakoasushi",
       slug: 'albakoasushi',
       horario_abertura: '08:00',
@@ -1366,7 +1366,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Dra Mayrafernandes",
       slug: 'dra-mayrafernandes',
       horario_abertura: '08:00',
@@ -1381,7 +1381,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Marshmallow Ds",
       slug: 'marshmallow-ds',
       horario_abertura: '08:00',
@@ -1396,7 +1396,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Padaria Carillo",
       slug: 'padaria-carillo',
       horario_abertura: '12:00',
@@ -1411,7 +1411,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Vieira Zushi",
       slug: 'vieira-zushi',
       horario_abertura: '12:00',
@@ -1426,7 +1426,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cocobambuoficial",
       slug: 'cocobambuoficial',
       horario_abertura: '18:00',
@@ -1441,7 +1441,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Meeteatsp",
       slug: 'meeteatsp',
       horario_abertura: '08:00',
@@ -1456,7 +1456,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 98",
       slug: 'recomendacao-navegando-98',
       horario_abertura: '08:00',
@@ -1471,7 +1471,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Ahy Prime Sushi",
       slug: 'ahy-prime-sushi',
       horario_abertura: '12:00',
@@ -1486,7 +1486,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Flor do Paraíso",
       slug: 'flor-do-paraiso',
       horario_abertura: '08:00',
@@ -1501,7 +1501,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Italianbearchocolate",
       slug: 'italianbearchocolate',
       horario_abertura: '12:00',
@@ -1516,7 +1516,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Dbresciachurrascaria",
       slug: 'dbresciachurrascaria',
       horario_abertura: '18:00',
@@ -1531,7 +1531,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Izmirmoveis",
       slug: 'izmirmoveis',
       horario_abertura: '08:00',
@@ -1546,7 +1546,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 104",
       slug: 'recomendacao-navegando-104',
       horario_abertura: '08:00',
@@ -1561,7 +1561,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Thebestacai",
       slug: 'thebestacai',
       horario_abertura: '12:00',
@@ -1576,7 +1576,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Anneclinicperdizes",
       slug: 'anneclinicperdizes',
       horario_abertura: '12:00',
@@ -1591,7 +1591,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Segredosdasgerais Consolacao",
       slug: 'segredosdasgerais-consolacao',
       horario_abertura: '12:00',
@@ -1606,7 +1606,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Nekofest Oficial",
       slug: 'nekofest-oficial',
       horario_abertura: '12:00',
@@ -1621,7 +1621,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Café Preto e Branco 2D",
       slug: 'cafe-preto-e-branco-2d',
       horario_abertura: '12:00',
@@ -1636,7 +1636,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Restaurante Momozinho",
       slug: 'restaurante-momozinho',
       horario_abertura: '12:00',
@@ -1651,7 +1651,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Villa e Prosa",
       slug: 'villa-e-prosa',
       horario_abertura: '18:00',
@@ -1666,7 +1666,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Domirooftop",
       slug: 'domirooftop',
       horario_abertura: '08:00',
@@ -1681,7 +1681,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Miirooftop",
       slug: 'miirooftop',
       horario_abertura: '18:00',
@@ -1696,7 +1696,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 115",
       slug: 'recomendacao-navegando-115',
       horario_abertura: '18:00',
@@ -1711,7 +1711,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Figo Br",
       slug: 'figo-br',
       horario_abertura: '12:00',
@@ -1726,7 +1726,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 117",
       slug: 'recomendacao-navegando-117',
       horario_abertura: '12:00',
@@ -1741,7 +1741,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Ouesushi",
       slug: 'ouesushi',
       horario_abertura: '12:00',
@@ -1756,7 +1756,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 124",
       slug: 'recomendacao-navegando-124',
       horario_abertura: '18:00',
@@ -1771,7 +1771,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 125",
       slug: 'recomendacao-navegando-125',
       horario_abertura: '08:00',
@@ -1786,7 +1786,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Paodequeijohaddocklobo",
       slug: 'paodequeijohaddocklobo',
       horario_abertura: '18:00',
@@ -1801,7 +1801,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Acaisurf",
       slug: 'acaisurf',
       horario_abertura: '12:00',
@@ -1816,7 +1816,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 128",
       slug: 'recomendacao-navegando-128',
       horario_abertura: '08:00',
@@ -1831,7 +1831,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Dueamicicantina",
       slug: 'dueamicicantina',
       horario_abertura: '18:00',
@@ -1846,7 +1846,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Alecrimrestaurantes",
       slug: 'alecrimrestaurantes',
       horario_abertura: '12:00',
@@ -1861,7 +1861,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 132",
       slug: 'recomendacao-navegando-132',
       horario_abertura: '12:00',
@@ -1876,7 +1876,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Sampagrill01",
       slug: 'sampagrill01',
       horario_abertura: '18:00',
@@ -1891,7 +1891,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Mediterragastronomia",
       slug: 'mediterragastronomia',
       horario_abertura: '12:00',
@@ -1906,7 +1906,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Sloopburger",
       slug: 'sloopburger',
       horario_abertura: '18:00',
@@ -1921,7 +1921,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Jardim Ubatuba",
       slug: 'jardim-ubatuba',
       horario_abertura: '12:00',
@@ -1936,7 +1936,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Boinabrasaprime",
       slug: 'boinabrasaprime',
       horario_abertura: '08:00',
@@ -1951,7 +1951,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Tachaoubatuba",
       slug: 'tachaoubatuba',
       horario_abertura: '08:00',
@@ -1966,7 +1966,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Salinasmaragogi",
       slug: 'salinasmaragogi',
       horario_abertura: '08:00',
@@ -1981,7 +1981,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Magoni Moveis",
       slug: 'magoni-moveis',
       horario_abertura: '18:00',
@@ -1996,7 +1996,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Soulquiro",
       slug: 'soulquiro',
       horario_abertura: '12:00',
@@ -2011,7 +2011,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Corpfit Jardins",
       slug: 'corpfit-jardins',
       horario_abertura: '12:00',
@@ -2026,7 +2026,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Moringa Ubatuba",
       slug: 'moringa-ubatuba',
       horario_abertura: '18:00',
@@ -2041,7 +2041,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Dolce 011 Doceria",
       slug: 'dolce-011-doceria',
       horario_abertura: '12:00',
@@ -2056,7 +2056,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Familiapresto",
       slug: 'familiapresto',
       horario_abertura: '12:00',
@@ -2071,7 +2071,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1534080391025-096d09965645?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Senhorapaulistanamoema",
       slug: 'senhorapaulistanamoema',
       horario_abertura: '18:00',
@@ -2086,7 +2086,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1574085733277-851d9d856a3a?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Kfcbrasil",
       slug: 'kfcbrasil',
       horario_abertura: '12:00',
@@ -2101,7 +2101,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Embrasabareparrilla",
       slug: 'embrasabareparrilla',
       horario_abertura: '18:00',
@@ -2116,7 +2116,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Djapa Moema Oficial",
       slug: 'djapa-moema-oficial',
       horario_abertura: '08:00',
@@ -2131,7 +2131,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 155",
       slug: 'recomendacao-navegando-155',
       horario_abertura: '08:00',
@@ -2146,7 +2146,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Sabordeinfanciacafe",
       slug: 'sabordeinfanciacafe',
       horario_abertura: '18:00',
@@ -2161,7 +2161,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Docasteakwine",
       slug: 'docasteakwine',
       horario_abertura: '18:00',
@@ -2176,7 +2176,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pointbarabc",
       slug: 'pointbarabc',
       horario_abertura: '08:00',
@@ -2191,7 +2191,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 161",
       slug: 'recomendacao-navegando-161',
       horario_abertura: '08:00',
@@ -2206,7 +2206,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 163",
       slug: 'recomendacao-navegando-163',
       horario_abertura: '18:00',
@@ -2221,7 +2221,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Gabrielbruno",
       slug: 'gabrielbruno',
       horario_abertura: '18:00',
@@ -2236,7 +2236,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Meu Sonho Magico",
       slug: 'meu-sonho-magico',
       horario_abertura: '08:00',
@@ -2251,7 +2251,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Ruazinhasp",
       slug: 'ruazinhasp',
       horario_abertura: '18:00',
@@ -2266,7 +2266,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 169",
       slug: 'recomendacao-navegando-169',
       horario_abertura: '18:00',
@@ -2281,7 +2281,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Helenadinapolipizzaria",
       slug: 'helenadinapolipizzaria',
       horario_abertura: '12:00',
@@ -2296,7 +2296,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 171",
       slug: 'recomendacao-navegando-171',
       horario_abertura: '12:00',
@@ -2311,7 +2311,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Nacionalkartindoorsp",
       slug: 'nacionalkartindoorsp',
       horario_abertura: '18:00',
@@ -2326,7 +2326,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hotelvillalobos Sparomantik",
       slug: 'hotelvillalobos-sparomantik',
       horario_abertura: '18:00',
@@ -2341,7 +2341,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Bakesale Pastryshop",
       slug: 'bakesale-pastryshop',
       horario_abertura: '12:00',
@@ -2356,7 +2356,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 176",
       slug: 'recomendacao-navegando-176',
       horario_abertura: '08:00',
@@ -2371,7 +2371,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 178",
       slug: 'recomendacao-navegando-178',
       horario_abertura: '18:00',
@@ -2386,7 +2386,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Solardarepublica",
       slug: 'solardarepublica',
       horario_abertura: '18:00',
@@ -2401,7 +2401,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pizzaria Do Paulinho",
       slug: 'pizzaria-do-paulinho',
       horario_abertura: '08:00',
@@ -2416,7 +2416,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Santingelatoartesanal",
       slug: 'santingelatoartesanal',
       horario_abertura: '12:00',
@@ -2431,7 +2431,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 182",
       slug: 'recomendacao-navegando-182',
       horario_abertura: '08:00',
@@ -2446,7 +2446,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hotelort",
       slug: 'hotelort',
       horario_abertura: '08:00',
@@ -2461,7 +2461,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Killerburgerbr",
       slug: 'killerburgerbr',
       horario_abertura: '08:00',
@@ -2476,7 +2476,7 @@ async function runSeed() {
       foto_capa_url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&h=600&q=80',
       ativo: true,
     },
-    {
+{
       nome: "Novasucuri",
       slug: 'novasucuri',
       horario_abertura: '08:00',
@@ -2491,7 +2491,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Circensebr",
       slug: 'circensebr',
       horario_abertura: '12:00',
@@ -2506,7 +2506,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Babaegelato",
       slug: 'babaegelato',
       horario_abertura: '08:00',
@@ -2521,7 +2521,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Noryosushi",
       slug: 'noryosushi',
       horario_abertura: '18:00',
@@ -2536,7 +2536,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Navegando 200",
       slug: 'recomendacao-navegando-200',
       horario_abertura: '08:00',
@@ -2551,7 +2551,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Padaria Nova Império",
       slug: 'padaria-nova-imperio',
       horario_abertura: '18:00',
@@ -2566,7 +2566,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 1",
       slug: 'recomendacao-perambulando-em-sp-1',
       horario_abertura: '12:00',
@@ -2581,7 +2581,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Fabinhodoacaraje",
       slug: 'fabinhodoacaraje',
       horario_abertura: '08:00',
@@ -2596,7 +2596,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 3",
       slug: 'recomendacao-perambulando-em-sp-3',
       horario_abertura: '08:00',
@@ -2611,7 +2611,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hotel Villa Charmosa",
       slug: 'hotel-villa-charmosa',
       horario_abertura: '08:00',
@@ -2626,7 +2626,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 5",
       slug: 'recomendacao-perambulando-em-sp-5',
       horario_abertura: '18:00',
@@ -2641,7 +2641,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Villa Cafebg",
       slug: 'villa-cafebg',
       horario_abertura: '08:00',
@@ -2656,7 +2656,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Maraupeninsulaparadise",
       slug: 'maraupeninsulaparadise',
       horario_abertura: '18:00',
@@ -2671,7 +2671,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kiyomi Sushi",
       slug: 'kiyomi-sushi',
       horario_abertura: '08:00',
@@ -2686,7 +2686,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hotel Fazenda Aurora",
       slug: 'hotel-fazenda-aurora',
       horario_abertura: '08:00',
@@ -2701,7 +2701,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 11",
       slug: 'recomendacao-perambulando-em-sp-11',
       horario_abertura: '18:00',
@@ -2716,7 +2716,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 12",
       slug: 'recomendacao-perambulando-em-sp-12',
       horario_abertura: '08:00',
@@ -2731,7 +2731,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 14",
       slug: 'recomendacao-perambulando-em-sp-14',
       horario_abertura: '18:00',
@@ -2746,7 +2746,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 15",
       slug: 'recomendacao-perambulando-em-sp-15',
       horario_abertura: '08:00',
@@ -2761,7 +2761,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Quintaldeprati",
       slug: 'quintaldeprati',
       horario_abertura: '08:00',
@@ -2776,7 +2776,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "The Steak Factory",
       slug: 'the-steak-factory',
       horario_abertura: '12:00',
@@ -2791,7 +2791,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Espetinho do Juiz Patriarca",
       slug: 'espetinho-do-juiz-patriarca',
       horario_abertura: '18:00',
@@ -2806,7 +2806,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 20",
       slug: 'recomendacao-perambulando-em-sp-20',
       horario_abertura: '18:00',
@@ -2821,22 +2821,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
-      nome: "Moveisjunco",
-      slug: 'moveisjunco',
-      horario_abertura: '08:00',
-      horario_fechamento: '18:00',
-      distancia_km: 4.0,
-      descricao: "O MAIOR FEIRÃO DE MÓVEIS DO BRASIL!! 🔥  Perambulamos no @moveisjunco , um feirão de móveis gigantesco que está rolando l...",
-      bairro: 'Barueri',
-      cidade: 'Alphaville',
-      tipo_cozinha: 'utilidades',
-      preco_medio: '$$',
-      instagram_handle: 'moveisjunco',
-      foto_capa_url: '/images/placeholder-restaurant.jpg',
-      ativo: true,
-    },
-    {
+{
       nome: "Fazenda Vale da Costela",
       slug: 'fazenda-vale-da-costela',
       horario_abertura: '12:00',
@@ -2851,7 +2836,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 24",
       slug: 'recomendacao-perambulando-em-sp-24',
       horario_abertura: '08:00',
@@ -2866,7 +2851,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 25",
       slug: 'recomendacao-perambulando-em-sp-25',
       horario_abertura: '12:00',
@@ -2881,7 +2866,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Restaurante Parmesano",
       slug: 'restaurante-parmesano',
       horario_abertura: '18:00',
@@ -2896,7 +2881,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 28",
       slug: 'recomendacao-perambulando-em-sp-28',
       horario_abertura: '12:00',
@@ -2911,7 +2896,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 29",
       slug: 'recomendacao-perambulando-em-sp-29',
       horario_abertura: '18:00',
@@ -2926,7 +2911,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 30",
       slug: 'recomendacao-perambulando-em-sp-30',
       horario_abertura: '08:00',
@@ -2941,7 +2926,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Kabuto Bento",
       slug: 'kabuto-bento',
       horario_abertura: '12:00',
@@ -2956,7 +2941,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Headspasaopaulo",
       slug: 'headspasaopaulo',
       horario_abertura: '18:00',
@@ -2971,7 +2956,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 34",
       slug: 'recomendacao-perambulando-em-sp-34',
       horario_abertura: '12:00',
@@ -2986,7 +2971,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 36",
       slug: 'recomendacao-perambulando-em-sp-36',
       horario_abertura: '08:00',
@@ -3001,7 +2986,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Santomarestaurante",
       slug: 'santomarestaurante',
       horario_abertura: '12:00',
@@ -3016,7 +3001,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 38",
       slug: 'recomendacao-perambulando-em-sp-38',
       horario_abertura: '18:00',
@@ -3031,7 +3016,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 39",
       slug: 'recomendacao-perambulando-em-sp-39',
       horario_abertura: '08:00',
@@ -3046,7 +3031,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 40",
       slug: 'recomendacao-perambulando-em-sp-40',
       horario_abertura: '12:00',
@@ -3061,7 +3046,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Pizzariabatepapo",
       slug: 'pizzariabatepapo',
       horario_abertura: '08:00',
@@ -3076,7 +3061,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 42",
       slug: 'recomendacao-perambulando-em-sp-42',
       horario_abertura: '08:00',
@@ -3091,7 +3076,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Massaria Sp",
       slug: 'massaria-sp',
       horario_abertura: '08:00',
@@ -3106,7 +3091,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Paleteriasp",
       slug: 'paleteriasp',
       horario_abertura: '08:00',
@@ -3121,7 +3106,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 45",
       slug: 'recomendacao-perambulando-em-sp-45',
       horario_abertura: '08:00',
@@ -3136,7 +3121,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Resortvaledosol",
       slug: 'resortvaledosol',
       horario_abertura: '08:00',
@@ -3151,7 +3136,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Casanostrapizzaria",
       slug: 'casanostrapizzaria',
       horario_abertura: '18:00',
@@ -3166,7 +3151,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cervejariadopaulo",
       slug: 'cervejariadopaulo',
       horario_abertura: '08:00',
@@ -3181,7 +3166,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 49",
       slug: 'recomendacao-perambulando-em-sp-49',
       horario_abertura: '12:00',
@@ -3196,7 +3181,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Hotelfazendariopretoe",
       slug: 'hotelfazendariopretoe',
       horario_abertura: '18:00',
@@ -3211,7 +3196,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Sushibar Sp",
       slug: 'sushibar-sp',
       horario_abertura: '12:00',
@@ -3226,7 +3211,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Perambulando 52",
       slug: 'recomendacao-perambulando-em-sp-52',
       horario_abertura: '12:00',
@@ -3241,7 +3226,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Glow Park",
       slug: 'glow-park',
       horario_abertura: '18:00',
@@ -3256,7 +3241,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Omineirosp",
       slug: 'omineirosp',
       horario_abertura: '18:00',
@@ -3271,7 +3256,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Volt Club",
       slug: 'volt-club',
       horario_abertura: '08:00',
@@ -3286,7 +3271,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 56",
       slug: 'recomendacao-esquenta-sp-56',
       horario_abertura: '08:00',
@@ -3301,7 +3286,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 57",
       slug: 'recomendacao-esquenta-sp-57',
       horario_abertura: '12:00',
@@ -3316,7 +3301,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 58",
       slug: 'recomendacao-esquenta-sp-58',
       horario_abertura: '18:00',
@@ -3331,7 +3316,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Dopamineland Experience",
       slug: 'dopamineland-experience',
       horario_abertura: '08:00',
@@ -3346,7 +3331,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cachacariadorancho86",
       slug: 'cachacariadorancho86',
       horario_abertura: '08:00',
@@ -3361,7 +3346,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cavalo Preto Restaurante",
       slug: 'cavalo-preto-restaurante',
       horario_abertura: '12:00',
@@ -3376,7 +3361,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Resort Fazenda São João",
       slug: 'resort-fazenda-sao-joao',
       horario_abertura: '12:00',
@@ -3391,7 +3376,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 64",
       slug: 'recomendacao-esquenta-sp-64',
       horario_abertura: '18:00',
@@ -3406,7 +3391,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Restaurantemomo",
       slug: 'restaurantemomo',
       horario_abertura: '12:00',
@@ -3421,7 +3406,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Flordoparaisooficial",
       slug: 'flordoparaisooficial',
       horario_abertura: '12:00',
@@ -3436,7 +3421,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Cerejeirabar",
       slug: 'cerejeirabar',
       horario_abertura: '08:00',
@@ -3451,7 +3436,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Temporadasubatuba",
       slug: 'temporadasubatuba-',
       horario_abertura: '12:00',
@@ -3466,7 +3451,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 70",
       slug: 'recomendacao-esquenta-sp-70',
       horario_abertura: '18:00',
@@ -3481,7 +3466,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Punta Piedras Parrilla",
       slug: 'punta-piedras-parrilla',
       horario_abertura: '12:00',
@@ -3496,7 +3481,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Snack Break Food",
       slug: 'snack-break-food',
       horario_abertura: '08:00',
@@ -3511,7 +3496,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Rede Capivara",
       slug: 'rede-capivara',
       horario_abertura: '18:00',
@@ -3526,7 +3511,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "O C do Padre",
       slug: 'o-c-do-padre',
       horario_abertura: '12:00',
@@ -3541,7 +3526,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Barakiah Esfihas",
       slug: 'barakiah-esfihas',
       horario_abertura: '18:00',
@@ -3556,7 +3541,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 77",
       slug: 'recomendacao-esquenta-sp-77',
       horario_abertura: '08:00',
@@ -3571,7 +3556,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 78",
       slug: 'recomendacao-esquenta-sp-78',
       horario_abertura: '12:00',
@@ -3586,7 +3571,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Restaurante Rancho",
       slug: 'restaurante-rancho',
       horario_abertura: '12:00',
@@ -3601,7 +3586,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Resorthotelfazenda Sp",
       slug: 'resorthotelfazenda-sp',
       horario_abertura: '18:00',
@@ -3616,7 +3601,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Secretbar Sp",
       slug: 'secretbar-sp',
       horario_abertura: '12:00',
@@ -3631,7 +3616,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 83",
       slug: 'recomendacao-esquenta-sp-83',
       horario_abertura: '08:00',
@@ -3646,7 +3631,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Seafood Sp",
       slug: 'seafood-sp',
       horario_abertura: '18:00',
@@ -3661,7 +3646,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 86",
       slug: 'recomendacao-esquenta-sp-86',
       horario_abertura: '08:00',
@@ -3676,7 +3661,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 87",
       slug: 'recomendacao-esquenta-sp-87',
       horario_abertura: '12:00',
@@ -3691,7 +3676,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Residencialmaia",
       slug: 'residencialmaia',
       horario_abertura: '12:00',
@@ -3706,7 +3691,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 89",
       slug: 'recomendacao-esquenta-sp-89',
       horario_abertura: '08:00',
@@ -3721,7 +3706,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 92",
       slug: 'recomendacao-esquenta-sp-92',
       horario_abertura: '08:00',
@@ -3736,7 +3721,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 93",
       slug: 'recomendacao-esquenta-sp-93',
       horario_abertura: '12:00',
@@ -3751,7 +3736,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 95",
       slug: 'recomendacao-esquenta-sp-95',
       horario_abertura: '08:00',
@@ -3766,7 +3751,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 96",
       slug: 'recomendacao-esquenta-sp-96',
       horario_abertura: '12:00',
@@ -3781,7 +3766,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 99",
       slug: 'recomendacao-esquenta-sp-99',
       horario_abertura: '12:00',
@@ -3796,7 +3781,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 100",
       slug: 'recomendacao-esquenta-sp-100',
       horario_abertura: '18:00',
@@ -3811,7 +3796,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 105",
       slug: 'recomendacao-esquenta-sp-105',
       horario_abertura: '12:00',
@@ -3826,22 +3811,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
-      nome: "Temporadasubatuba",
-      slug: 'temporadasubatuba--',
-      horario_abertura: '12:00',
-      horario_fechamento: '23:00',
-      distancia_km: 6.1,
-      descricao: "APARTAMENTO NA PRAIA POR APENAS R$ 42 A DIÁRIA! 🏖️🏡  Encontramos o apartamento perfeito em Ubatuba para ir com os amigos...",
-      bairro: 'Pinheiros',
-      cidade: 'São Paulo',
-      tipo_cozinha: 'hotel',
-      preco_medio: '$$',
-      instagram_handle: 'temporadasubatuba_.',
-      foto_capa_url: '/images/placeholder-restaurant.jpg',
-      ativo: true,
-    },
-    {
+{
       nome: "Recomendação Esquenta 111",
       slug: 'recomendacao-esquenta-sp-111',
       horario_abertura: '12:00',
@@ -3856,7 +3826,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 117",
       slug: 'recomendacao-esquenta-sp-117',
       horario_abertura: '12:00',
@@ -3871,7 +3841,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 118",
       slug: 'recomendacao-esquenta-sp-118',
       horario_abertura: '18:00',
@@ -3886,7 +3856,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 120",
       slug: 'recomendacao-esquenta-sp-120',
       horario_abertura: '12:00',
@@ -3901,7 +3871,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 123",
       slug: 'recomendacao-esquenta-sp-123',
       horario_abertura: '12:00',
@@ -3916,7 +3886,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 124",
       slug: 'recomendacao-esquenta-sp-124',
       horario_abertura: '18:00',
@@ -3931,7 +3901,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 127",
       slug: 'recomendacao-esquenta-sp-127',
       horario_abertura: '18:00',
@@ -3946,7 +3916,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 128",
       slug: 'recomendacao-esquenta-sp-128',
       horario_abertura: '08:00',
@@ -3961,7 +3931,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 130",
       slug: 'recomendacao-esquenta-sp-130',
       horario_abertura: '18:00',
@@ -3976,7 +3946,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 136",
       slug: 'recomendacao-esquenta-sp-136',
       horario_abertura: '18:00',
@@ -3991,7 +3961,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 143",
       slug: 'recomendacao-esquenta-sp-143',
       horario_abertura: '08:00',
@@ -4006,7 +3976,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 144",
       slug: 'recomendacao-esquenta-sp-144',
       horario_abertura: '12:00',
@@ -4021,7 +3991,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 145",
       slug: 'recomendacao-esquenta-sp-145',
       horario_abertura: '18:00',
@@ -4036,7 +4006,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 146",
       slug: 'recomendacao-esquenta-sp-146',
       horario_abertura: '08:00',
@@ -4051,7 +4021,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 147",
       slug: 'recomendacao-esquenta-sp-147',
       horario_abertura: '12:00',
@@ -4066,7 +4036,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 149",
       slug: 'recomendacao-esquenta-sp-149',
       horario_abertura: '08:00',
@@ -4081,7 +4051,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 152",
       slug: 'recomendacao-esquenta-sp-152',
       horario_abertura: '08:00',
@@ -4096,7 +4066,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 153",
       slug: 'recomendacao-esquenta-sp-153',
       horario_abertura: '12:00',
@@ -4111,7 +4081,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 155",
       slug: 'recomendacao-esquenta-sp-155',
       horario_abertura: '08:00',
@@ -4126,7 +4096,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 159",
       slug: 'recomendacao-esquenta-sp-159',
       horario_abertura: '12:00',
@@ -4141,7 +4111,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 165",
       slug: 'recomendacao-esquenta-sp-165',
       horario_abertura: '12:00',
@@ -4156,7 +4126,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 166",
       slug: 'recomendacao-esquenta-sp-166',
       horario_abertura: '18:00',
@@ -4171,7 +4141,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 167",
       slug: 'recomendacao-esquenta-sp-167',
       horario_abertura: '08:00',
@@ -4186,7 +4156,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 168",
       slug: 'recomendacao-esquenta-sp-168',
       horario_abertura: '12:00',
@@ -4201,7 +4171,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 170",
       slug: 'recomendacao-esquenta-sp-170',
       horario_abertura: '08:00',
@@ -4216,7 +4186,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 173",
       slug: 'recomendacao-esquenta-sp-173',
       horario_abertura: '08:00',
@@ -4231,7 +4201,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 174",
       slug: 'recomendacao-esquenta-sp-174',
       horario_abertura: '12:00',
@@ -4246,7 +4216,7 @@ async function runSeed() {
       foto_capa_url: '/images/placeholder-restaurant.jpg',
       ativo: true,
     },
-    {
+{
       nome: "Recomendação Esquenta 176",
       slug: 'recomendacao-esquenta-sp-176',
       horario_abertura: '08:00',
@@ -4478,7 +4448,7 @@ async function runSeed() {
       inicio_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('moveisjunco'),
+      restaurante_id: mapRestaurante('moveis-junco'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       status: 'ativo',
       valor_mensal: 1500.0,
@@ -4947,7 +4917,7 @@ async function runSeed() {
       inicio_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('temporadasubatuba--'),
+      restaurante_id: mapRestaurante('temporadasubatuba-'),
       influencer_id: mapInfluencer('esquenta-sp'),
       status: 'ativo',
       valor_mensal: 1200.0,
@@ -8193,7 +8163,7 @@ async function runSeed() {
       publicado_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('moveisjunco'),
+      restaurante_id: mapRestaurante('moveis-junco'),
       influencer_id: mapInfluencer('perambulando-em-sp'),
       titulo: "Review de Moveisjunco por @perambulandosp",
       url_original: 'https://www.instagram.com/p/DZOHXQkhWIQ/',
@@ -9337,7 +9307,7 @@ async function runSeed() {
       publicado_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('temporadasubatuba--'),
+      restaurante_id: mapRestaurante('temporadasubatuba-'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: "Review de Temporadasubatuba por @esquentasp",
       url_original: 'https://www.instagram.com/p/DR3A3-HgfSD/',
@@ -9662,7 +9632,7 @@ async function runSeed() {
       publicado_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('temporadasubatuba--'),
+      restaurante_id: mapRestaurante('temporadasubatuba-'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: "Review de Temporadasubatuba por @esquentasp",
       url_original: 'https://www.instagram.com/p/DUrCCJZyAZmE/',
@@ -9961,7 +9931,7 @@ async function runSeed() {
       publicado_em: new Date().toISOString(),
     },
     {
-      restaurante_id: mapRestaurante('temporadasubatuba--'),
+      restaurante_id: mapRestaurante('temporadasubatuba-'),
       influencer_id: mapInfluencer('esquenta-sp'),
       titulo: "Review de Temporadasubatuba por @esquentasp",
       url_original: 'https://www.instagram.com/p/DR3A3-HgfSD/',
