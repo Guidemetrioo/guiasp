@@ -249,6 +249,7 @@ export default function InfluencerProfileView({
   const [savedSlugs, setSavedSlugs] = useState<string[]>([])
   const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set())
   const [downloadedRestVideos, setDownloadedRestVideos] = useState<Map<string, any>>(new Map())
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
   
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -772,6 +773,8 @@ export default function InfluencerProfileView({
                   return (
                     <div
                       key={restaurant.id}
+                      onMouseEnter={() => setHoveredCardId(restaurant.id)}
+                      onMouseLeave={() => setHoveredCardId(null)}
                       className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/40 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
                         hasVideoFile
                           ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-r from-zinc-900/40 to-zinc-950/30 ring-1 ring-brand-gold/20'
@@ -782,7 +785,7 @@ export default function InfluencerProfileView({
                     >
                       {/* Image Section (Left) */}
                       <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
-                        {hasVideoFile && videoFileObj ? (
+                        {hasVideoFile && videoFileObj && hoveredCardId === restaurant.id ? (
                           <video
                             src={`/videos/${videoFileObj.filename}`}
                             poster={displayImage}
@@ -962,6 +965,8 @@ export default function InfluencerProfileView({
                     return (
                       <div
                         key={restaurant.id}
+                        onMouseEnter={() => setHoveredCardId(restaurant.id)}
+                        onMouseLeave={() => setHoveredCardId(null)}
                         className={`bg-zinc-900/15 border rounded-2xl overflow-hidden hover:shadow-xl hover:border-brand-gold/40 transition-all flex flex-row p-3 md:p-4 gap-3 md:gap-5 group relative ${
                           hasVideoFile
                             ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-r from-zinc-900/40 to-zinc-950/30 ring-1 ring-brand-gold/20'
@@ -972,7 +977,7 @@ export default function InfluencerProfileView({
                       >
                         {/* Image Section (Left) */}
                         <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden shrink-0 bg-zinc-950">
-                          {hasVideoFile && videoFileObj ? (
+                          {hasVideoFile && videoFileObj && hoveredCardId === restaurant.id ? (
                             <video
                               src={`/videos/${videoFileObj.filename}`}
                               poster={displayImage}

@@ -261,5 +261,16 @@ def main():
     print(f"  - Falhas: {fail_count}")
     print(f"  - Tempo decorrido: {int(m)}m {int(s)}s")
     
+    if success_count > 0:
+        try:
+            print("\n⚡ Gerando thumbnails automaticamente para os novos vídeos...")
+            scripts_dir = os.path.dirname(os.path.abspath(__file__))
+            if scripts_dir not in sys.path:
+                sys.path.append(scripts_dir)
+            from generate_video_thumbnails import main as generate_thumbs
+            generate_thumbs()
+        except Exception as e:
+            print(f"⚠️ Não foi possível gerar thumbnails automaticamente: {e}")
+            
 if __name__ == "__main__":
     main()

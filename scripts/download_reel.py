@@ -175,6 +175,17 @@ def main():
                         print(f"Added '{filename}' to {json_path}")
                 except Exception as je:
                     print(f"Warning: Could not update {json_path}: {je}")
+            
+            # Automatically generate thumbnail for the downloaded video
+            try:
+                print("\n⚡ Gerando thumbnail automaticamente para o novo vídeo...")
+                scripts_dir = os.path.dirname(os.path.abspath(__file__))
+                if scripts_dir not in sys.path:
+                    sys.path.append(scripts_dir)
+                from generate_video_thumbnails import main as generate_thumbs
+                generate_thumbs()
+            except Exception as e:
+                print(f"Warning: Could not generate thumbnail automatically: {e}")
         except Exception as e:
             print(f"Error downloading video file: {e}")
             sys.exit(1)

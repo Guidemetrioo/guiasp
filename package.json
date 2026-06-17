@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-videos-list.js",
+    "prebuild": "node scripts/generate-videos-list.js && python scripts/generate_video_thumbnails.py",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { promises as fs, existsSync } from 'fs'
+import { promises as fs, existsSync, readdirSync } from 'fs'
 import path from 'path'
 import { createServer } from '@/lib/supabase-server'
 import mp4Files from '@/lib/videos-list.json'
@@ -32,6 +32,14 @@ export async function GET() {
         influencers ( nome )
       `)
     
+    // Read existing local thumbnails directory once
+    const thumbnailsDir = path.join(process.cwd(), 'public', 'videos', 'thumbnails')
+    const existingThumbs = new Set(
+      existsSync(thumbnailsDir) 
+        ? readdirSync(thumbnailsDir).map((f: string) => f.toLowerCase()) 
+        : []
+    )
+    
     // Map local files to DB videos
     const videosList = mp4Files.map(filename => {
       const baseName = filename.substring(0, filename.lastIndexOf('.'))
@@ -42,9 +50,8 @@ export async function GET() {
         return sanitizeFilename(v.titulo) === baseName
       })
 
-      // Check if local generated thumbnail exists
-      const thumbPath = path.join(process.cwd(), 'public', 'videos', 'thumbnails', `${baseName}.jpg`)
-      const hasLocalThumb = existsSync(thumbPath)
+      // Check if local generated thumbnail exists in pre-read Set
+      const hasLocalThumb = existingThumbs.has(`${baseName}.jpg`.toLowerCase())
       const localThumbUrl = hasLocalThumb ? `/videos/thumbnails/${baseName}.jpg` : null
       
       return {

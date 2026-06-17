@@ -55,6 +55,7 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
   const [showOnlySaved, setShowOnlySaved] = useState(false)
   const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set(videoRestauranteIds))
   const [downloadedVideos, setDownloadedVideos] = useState<any[]>([])
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
 
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -169,6 +170,8 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
             return (
               <div
                 key={`${item.id}-${idx}`}
+                onMouseEnter={() => setHoveredCardId(item.id)}
+                onMouseLeave={() => setHoveredCardId(null)}
                 className={`bg-zinc-900/40 border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group ${
                   hasVideo
                     ? 'border-brand-gold/45 shadow-lg shadow-brand-gold/[0.04] bg-gradient-to-b from-zinc-900/40 to-zinc-950/20 ring-1 ring-brand-gold/15 hover:border-brand-gold hover:shadow-brand-gold/15'
@@ -180,7 +183,7 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
                 }`}
               >
                 <Link href={`/restaurante/${item.slug}`} className="block overflow-hidden relative aspect-video">
-                  {hasVideo && videoFile ? (
+                  {hasVideo && videoFile && hoveredCardId === item.id ? (
                     <video
                       src={`/videos/${videoFile.filename}`}
                       poster={displayImage}
