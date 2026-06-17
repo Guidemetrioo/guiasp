@@ -2,7 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import { createServer } from '@/lib/supabase-server'
 import SearchBar from '@/components/SearchBar'
+import HomeFeaturedGrid from '@/components/HomeFeaturedGrid'
 import { Film, Compass, MapPin, Heart } from 'lucide-react'
+import { promises as fs } from 'fs'
+import path from 'path'
 
 export const revalidate = 60 // Cache for 60 seconds
 
@@ -49,6 +52,89 @@ export default async function Home() {
     .select('*')
     .order('nome')
 
+  // Fetch active restaurants
+  const { data: dbRestaurants } = await supabase
+    .from('restaurantes')
+    .select('*')
+    .eq('ativo', true)
+
+  // Fetch all videos with influencer info
+  const { data: dbVideos } = await supabase
+    .from('videos')
+    .select(`
+      id,
+      titulo,
+      prato_destaque,
+      restaurante_id,
+      influencer_id,
+      influencers (
+        nome,
+        foto_url
+      )
+    `)
+
+  // Read local video files
+  const listPath = path.join(process.cwd(), 'lib', 'videos-list.json')
+  let localVideosList: string[] = []
+  try {
+    const fileContent = await fs.readFile(listPath, 'utf-8')
+    localVideosList = JSON.parse(fileContent)
+  } catch (e) {
+    console.error('Error reading videos-list.json:', e)
+  }
+
+  const sanitizeFilename = (text: string) => {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  // Cross-reference restaurants with local video files
+  const mappedRestaurants = (dbRestaurants || []).map((rest: any) => {
+    const restVideos = (dbVideos || []).filter((v: any) => v.restaurante_id === rest.id)
+    let videoFile = null
+    let pratoDestaque = null
+    let influencerObj = null
+
+    for (const v of restVideos) {
+      if (!v.titulo) continue
+      const sanitized = sanitizeFilename(v.titulo)
+      const matchedFile = localVideosList.find((f: string) => {
+        const baseName = f.substring(0, f.lastIndexOf('.'))
+        return baseName === sanitized
+      })
+      if (matchedFile) {
+        videoFile = {
+          filename: matchedFile,
+          thumbnailUrl: `/videos/thumbnails/${matchedFile.substring(0, matchedFile.lastIndexOf('.'))}.jpg`
+        }
+        pratoDestaque = v.prato_destaque
+        influencerObj = v.influencers
+        break
+      }
+    }
+
+    return {
+      ...rest,
+      videoFile,
+      prato_destaque: pratoDestaque || rest.prato_destaque,
+      influencer: influencerObj
+    }
+  })
+
+  // Sort: restaurants with videos first, then take the top 6
+  const featuredRestaurants = mappedRestaurants
+    .sort((a: any, b: any) => {
+      const hasA = a.videoFile ? 1 : 0
+      const hasB = b.videoFile ? 1 : 0
+      return hasB - hasA
+    })
+    .slice(0, 6)
+
   const categories = [
     { label: '🎥 Com Vídeo', query: 'video' },
     { label: 'Hambúrguer', query: 'hamburguer' },
@@ -64,7 +150,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-brand-gold selection:text-black font-sans pb-20">
       {/* Sticky Premium Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-zinc-900">
+      <header className="sticky top-0 z-50 premium-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
             Guia<span className="text-brand-gold">SP</span>
@@ -160,6 +246,19 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Featured Restaurants Grid Section */}
+      {featuredRestaurants.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
+          <div className="space-y-1 border-b border-zinc-900/60 pb-4">
+            <h2 className="text-xl sm:text-2xl font-bold font-serif flex items-center gap-2">
+              Recomendados em Destaque <span className="text-brand-gold animate-pulse">🎥</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-zinc-500">Confira avaliações e pratos indicados pelos curadores.</p>
+          </div>
+          <HomeFeaturedGrid restaurants={featuredRestaurants} />
+        </section>
+      )}
 
       {/* Cuisine Pills Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">

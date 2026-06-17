@@ -221,6 +221,23 @@ export default function RestaurantDetailsView({
   // Favorites & Share logic
   const [isFavorited, setIsFavorited] = useState(false)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true)
+      } else {
+        setShowScrollTop(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -443,7 +460,7 @@ export default function RestaurantDetailsView({
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-brand-gold selection:text-black font-sans pb-24">
       {/* Header */}
-      <header className="backdrop-blur-md bg-black/60 border-b border-zinc-900 sticky top-0 z-40">
+      <header className="sticky top-0 z-40 premium-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
             Guia<span className="text-brand-gold">SP</span>
@@ -583,24 +600,14 @@ export default function RestaurantDetailsView({
       <div className="sticky top-16 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 z-30">
         <div className="max-w-3xl mx-auto px-4 flex items-center justify-between overflow-x-auto scrollbar-none py-3.5 space-x-6">
           <button
-            onClick={() => setActiveTab('indicacao')}
+            onClick={() => setActiveTab('cardapio')}
             className={`text-sm font-semibold tracking-wide shrink-0 pb-1 border-b-2 transition-all select-none ${
-              activeTab === 'indicacao' 
+              activeTab === 'cardapio' 
                 ? 'text-brand-gold border-brand-gold' 
                 : 'text-zinc-400 border-transparent hover:text-zinc-200'
             }`}
           >
-            ✨ Indicação
-          </button>
-          <button
-            onClick={() => setActiveTab('menu')}
-            className={`text-sm font-semibold tracking-wide shrink-0 pb-1 border-b-2 transition-all select-none ${
-              activeTab === 'menu' 
-                ? 'text-brand-gold border-brand-gold' 
-                : 'text-zinc-400 border-transparent hover:text-zinc-200'
-            }`}
-          >
-            📋 Cardápio
+            📋 Cardápio & Dica
           </button>
           <button
             onClick={() => setActiveTab('informacoes')}
@@ -638,9 +645,35 @@ export default function RestaurantDetailsView({
       {/* Main Tabbed Content Area */}
       <main className="max-w-3xl mx-auto px-4 py-8">
         
-        {/* Tab 1: Indicação */}
-        {activeTab === 'indicacao' && (
-          <div className="space-y-6 animate-fadeIn">
+        {/* Tab 1: Cardápio & Dica (Merged with Quick Actions at top) */}
+        {activeTab === 'cardapio' && (
+          <div className="space-y-8 animate-fadeIn">
+            {/* Quick Actions Panel - Placed at the very top */}
+            <div className="bg-zinc-900/25 border border-zinc-900 rounded-3xl p-6 space-y-4 shadow-xl">
+              <h3 className="text-xs font-serif font-bold text-zinc-450 uppercase tracking-wider">Ações Rápidas</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-2 py-3.5 bg-brand-gold hover:bg-brand-goldHover text-black text-sm font-bold rounded-xl transition-all shadow shadow-brand-gold/10"
+                >
+                  <Calendar className="w-4 h-4 shrink-0" />
+                  <span>Reservar Mesa via WhatsApp</span>
+                </a>
+                <a
+                  href={contacts.deliveryUrl || "https://www.ifood.com.br"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-2 py-3.5 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 text-zinc-300 hover:text-white text-sm font-semibold rounded-xl transition-all"
+                >
+                  <ShoppingBag className="w-4 h-4 shrink-0 text-brand-gold" />
+                  <span>Pedir Delivery</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Indicação do Influenciador */}
             {influencer ? (
               <div className="bg-zinc-900/30 border border-zinc-900 rounded-3xl p-6 sm:p-8 space-y-6">
                 {/* Influencer profile strip */}
@@ -656,7 +689,7 @@ export default function RestaurantDetailsView({
                       )}
                     </div>
                     <div>
-                      <h3 className="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Curador do GuiaSP</h3>
+                      <h3 className="text-zinc-550 text-[10px] font-bold uppercase tracking-wider">Curador do GuiaSP</h3>
                       <h2 className="text-base font-bold text-white group-hover:text-brand-gold transition-colors font-serif">
                         {influencer.nome}
                       </h2>
@@ -679,7 +712,7 @@ export default function RestaurantDetailsView({
                 {/* Indicated Dish Spotlight */}
                 {video?.prato_destaque && (
                   <div className="space-y-1">
-                    <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Prato Indicado</h4>
+                    <h4 className="text-zinc-550 text-[10px] font-bold uppercase tracking-wider">Prato Indicado</h4>
                     <p className="text-xl sm:text-2xl font-bold font-serif text-brand-gold flex items-center leading-snug">
                       <Sparkles className="w-5 h-5 mr-2 shrink-0 animate-pulse" />
                       {video.prato_destaque}
@@ -713,7 +746,7 @@ export default function RestaurantDetailsView({
                 {/* Restaurant Description */}
                 {restaurant.descricao && (
                   <div className="text-zinc-400 text-sm leading-relaxed border-t border-zinc-900 pt-5 space-y-2">
-                    <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Sobre a Experiência</h4>
+                    <h4 className="text-zinc-550 text-[10px] font-bold uppercase tracking-wider">Sobre a Experiência</h4>
                     <p>{restaurant.descricao}</p>
                   </div>
                 )}
@@ -726,42 +759,40 @@ export default function RestaurantDetailsView({
                 </p>
               </div>
             )}
-          </div>
-        )}
 
-        {/* Tab 2: Menu */}
-        {activeTab === 'menu' && (
-          <div className="space-y-6 animate-fadeIn">
-            <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold font-serif text-white">Pratos Populares</h3>
-                <p className="text-xs text-zinc-500 mt-0.5">Itens altamente recomendados do cardápio oficial.</p>
+            {/* Cardápio (Menu Items) */}
+            <div className="space-y-6 pt-4">
+              <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-white">Pratos Populares</h3>
+                  <p className="text-xs text-zinc-500 mt-0.5">Itens altamente recomendados do cardápio oficial.</p>
+                </div>
+                <span className="text-xs bg-zinc-900 border border-zinc-800 text-zinc-450 px-2.5 py-1 rounded-md font-semibold font-serif">
+                  Média: {estimatedCost}
+                </span>
               </div>
-              <span className="text-xs bg-zinc-900 border border-zinc-800 text-zinc-400 px-2.5 py-1 rounded-md font-semibold font-serif">
-                Média: {estimatedCost}
-              </span>
-            </div>
 
-            <div className="space-y-4">
-              {menuItems.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex space-x-4 p-4 rounded-2xl bg-zinc-950/40 border border-zinc-900 hover:border-brand-gold/10 transition-colors"
-                >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-zinc-900">
-                    <img src={item.foto} alt={item.nome} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div className="space-y-0.5">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <h4 className="text-sm font-bold text-white font-serif">{item.nome}</h4>
-                        <span className="text-sm font-extrabold text-brand-gold font-sans shrink-0">{item.preco}</span>
+              <div className="grid grid-cols-1 gap-4">
+                {menuItems.map((item, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex space-x-4 p-4 rounded-2xl bg-zinc-950/40 border border-zinc-900 hover:border-brand-gold/10 transition-colors"
+                  >
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-zinc-900 bg-zinc-950">
+                      <img src={item.foto} alt={item.nome} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div className="space-y-0.5">
+                        <div className="flex items-baseline justify-between gap-2">
+                          <h4 className="text-sm font-bold text-white font-serif">{item.nome}</h4>
+                          <span className="text-sm font-extrabold text-brand-gold font-sans shrink-0">{item.preco}</span>
+                        </div>
+                        <p className="text-xs text-zinc-400 leading-normal line-clamp-2">{item.desc}</p>
                       </div>
-                      <p className="text-xs text-zinc-400 leading-normal line-clamp-2">{item.desc}</p>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -1022,6 +1053,27 @@ export default function RestaurantDetailsView({
           </section>
         )}
       </main>
+
+      {/* Floating Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-3 bg-brand-gold text-black rounded-full shadow-2xl hover:bg-brand-goldHover hover:scale-105 active:scale-95 transition-all animate-in fade-in slide-in-from-bottom-4 duration-300 border border-brand-gold/15"
+          title="Voltar ao topo"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5"
+          >
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+        </button>
+      )}
 
       {/* Toast Notification */}
       {toastMessage && (

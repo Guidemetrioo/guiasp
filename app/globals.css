@@ -14,6 +14,13 @@ body {
   .animate-fade-in {
     animation: fadeIn 0.4s ease-out forwards;
   }
+  .premium-header {
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    background-color: rgba(10, 10, 10, 0.75) !important;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.15) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6) !important;
+  }
 }
 
 @keyframes fadeIn {

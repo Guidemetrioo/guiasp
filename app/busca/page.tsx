@@ -125,7 +125,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-brand-gold selection:text-black font-sans pb-20">
       {/* Header */}
-      <header className="backdrop-blur-md bg-black/60 border-b border-zinc-900 sticky top-0 z-40">
+      <header className="sticky top-0 z-40 premium-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wide">
             Guia<span className="text-brand-gold">SP</span>

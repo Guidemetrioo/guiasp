@@ -56,6 +56,8 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
   const [downloadedRestIds, setDownloadedRestIds] = useState<Set<string>>(new Set(videoRestauranteIds))
   const [downloadedVideos, setDownloadedVideos] = useState<any[]>([])
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem('guiasp-favoritos')
@@ -65,6 +67,7 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
   useEffect(() => {
     async function fetchDownloadedVideos() {
       try {
+        setIsLoading(true)
         const res = await fetch('/api/videos')
         const data = await res.json()
         if (data.success && data.videos) {
@@ -79,10 +82,28 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
         }
       } catch (err) {
         console.error('Error fetching downloaded videos:', err)
+      } finally {
+        setIsLoading(false)
       }
     }
     fetchDownloadedVideos()
   }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true)
+      } else {
+        setShowScrollTop(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   useEffect(() => {
     if (savedParam) {
@@ -149,7 +170,23 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
         </button>
       </div>
 
-      {sortedResults.length > 0 ? (
+      {isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="bg-zinc-900/20 border border-zinc-900/60 rounded-2xl overflow-hidden h-[380px] animate-pulse flex flex-col justify-between">
+              <div className="aspect-video bg-zinc-950/60 w-full"></div>
+              <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="h-3 bg-zinc-900 rounded w-1/3"></div>
+                  <div className="h-6 bg-zinc-900 rounded w-3/4"></div>
+                  <div className="h-3 bg-zinc-900 rounded w-1/2"></div>
+                </div>
+                <div className="h-5 bg-zinc-900 rounded w-1/4"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : sortedResults.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 animate-fadeIn">
           {sortedResults.map((item: any, idx: number) => {
             const contacts = (seededContacts as any)[item.slug]
@@ -351,6 +388,27 @@ export default function SearchResultsList({ initialResults, videoRestauranteIds 
             </Link>
           )}
         </div>
+      )}
+
+      {/* Floating Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-3 bg-brand-gold text-black rounded-full shadow-2xl hover:bg-brand-goldHover hover:scale-105 active:scale-95 transition-all animate-in fade-in slide-in-from-bottom-4 duration-300 border border-brand-gold/15"
+          title="Voltar ao topo"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5"
+          >
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+        </button>
       )}
     </div>
   )
